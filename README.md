@@ -187,14 +187,3 @@ No environment variables required for basic functionality. Add any API keys or e
 ## 📄 License
 
 This project is proprietary software developed for Kyndryl. All rights reserved.
-
-## 📞 Support
-
-For technical support or questions:
-- **Internal Team**: Contact the development team
-- **Issues**: Use the repository issue tracker
-- **Documentation**: Refer to component JSDoc comments
-
----
-
-**Built with ❤️ by the Kyndryl Alliance Experience Team**
