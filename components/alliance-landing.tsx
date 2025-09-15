@@ -90,7 +90,10 @@ export default function AllianceLanding({
       {isDemosModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
           <div className="bg-white rounded-lg overflow-hidden">
-            <DemosModal onClose={() => setIsDemosModalOpen(false)} />
+            <DemosModal
+              onClose={() => setIsDemosModalOpen(false)}
+              learnMoreUrl={title === "AWS" ? "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com" : undefined}
+            />
           </div>
         </div>
       )}

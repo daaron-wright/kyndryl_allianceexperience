@@ -4,54 +4,40 @@ import { useState } from "react"
 
 interface DemosModalProps {
   onClose: () => void
+  learnMoreUrl?: string
 }
 
-export default function DemosModal({ onClose }: DemosModalProps) {
-  const [currentPage, setCurrentPage] = useState(2)
+export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
+  const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState("")
 
   const demoCards = [
     {
-      title: "Content title",
+      title: "Appointment Management - Book/Cancel/Reschedule/List",
       description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      tags: ["Healthcare"],
     },
     {
-      title: "Content title",
+      title: "Prescription Management - Get prescriptions details",
       description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      tags: ["AWS"],
     },
     {
-      title: "Content title",
+      title: "Medication Refill Management - Check refill eligibility and Place Refill request",
       description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      tags: ["Chabot"],
     },
     {
-      title: "Content title",
+      title: "General Query - Information from available knowledgebase of the documents",
       description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      tags: ["Knowledge Base"],
     },
   ]
+
+  const handleLearnMoreClick = () => {
+    const targetUrl = learnMoreUrl || "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com"
+    window.open(targetUrl, "_blank", "noopener,noreferrer")
+  }
 
   return (
     <div className="w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
@@ -111,6 +97,7 @@ export default function DemosModal({ onClose }: DemosModalProps) {
               <div
                 className="flex items-center text-[#3D3C3C] text-sm font-medium mb-4 cursor-pointer hover:text-[#FF462D]"
                 style={{ fontFamily: "TWK Everett, sans-serif" }}
+                onClick={handleLearnMoreClick}
               >
                 Learn more
                 <svg
@@ -141,72 +128,6 @@ export default function DemosModal({ onClose }: DemosModalProps) {
             </div>
           ))}
         </div>
-
-        {/* Pagination */}
-        <div className="flex justify-center mt-12 mb-8">
-          <div className="flex items-center gap-8">
-            {[1, 2, 3, 4].map((page) => (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`text-lg px-3 py-2 rounded transition-colors ${
-                  currentPage === page
-                    ? "border-2 border-[#FF462D] bg-white text-[#FF462D] font-medium"
-                    : "text-[#9E9287] border-2 border-transparent"
-                }`}
-                style={{ fontFamily: "TWK Everett, sans-serif" }}
-              >
-                {page}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Footer Navigation */}
-      <div className="flex items-center justify-between p-6 bg-[#F2F1EE] border-t border-gray-200">
-        <button
-          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-          disabled={currentPage === 1}
-          className={`flex items-center text-sm font-medium ${
-            currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
-          }`}
-          style={{ fontFamily: "TWK Everett, sans-serif" }}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="mr-2"
-          >
-            <polyline points="15,18 9,12 15,6" />
-          </svg>
-          Previous
-        </button>
-        <button
-          onClick={() => setCurrentPage(Math.min(4, currentPage + 1))}
-          disabled={currentPage === 4}
-          className={`flex items-center text-sm font-medium ${
-            currentPage === 4 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
-          }`}
-          style={{ fontFamily: "TWK Everett, sans-serif" }}
-        >
-          Next
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="ml-2"
-          >
-            <polyline points="9,18 15,12 9,6" />
-          </svg>
-        </button>
       </div>
     </div>
   )
