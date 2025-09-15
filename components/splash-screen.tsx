@@ -59,27 +59,39 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       role="button"
       aria-label="Kyndryl splash video - click or press enter to continue"
     >
-      <div className="relative w-full h-full flex items-center justify-center z-10">
-        <iframe
-          ref={videoRef}
-          src="https://drive.google.com/file/d/1DiyhiCCOWyn8IebKkhFUscFOWhlYO102/preview"
-          width="1920"
-          height="1080"
-          className="object-contain relative z-20"
-          allow="autoplay"
-          onLoad={() => setVideoLoaded(true)}
-          title="Kyndryl splash video"
-        />
+      <div className="relative w-full h-full flex items-center justify-center z-10 p-2 sm:p-4 md:p-6 lg:p-8 xl:p-12">
+        <div className="relative w-full h-full max-w-[95vw] max-h-[85vh] sm:max-w-[90vw] sm:max-h-[80vh] md:max-w-[85vw] md:max-h-[75vh] lg:max-w-7xl lg:max-h-[70vh] xl:max-h-[75vh] 2xl:max-h-[80vh]">
+          <div className="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg shadow-2xl">
+            <iframe
+              ref={videoRef}
+              src="https://drive.google.com/file/d/1DiyhiCCOWyn8IebKkhFUscFOWhlYO102/preview"
+              className="absolute top-0 left-0 w-full h-full border-0"
+              style={{
+                minWidth: "280px",
+                minHeight: "157px",
+              }}
+              allow="autoplay"
+              onLoad={() => setVideoLoaded(true)}
+              title="Kyndryl splash video"
+            />
+          </div>
+        </div>
 
         {!videoLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-[#FF462D] z-10">
-            <div className="text-white text-xl">Loading...</div>
+            <div className="text-white font-medium" style={{ fontSize: "clamp(1rem, 3vw, 2rem)" }}>
+              Loading...
+            </div>
           </div>
         )}
 
         <button
           onClick={handleVideoComplete}
-          className="absolute top-4 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-75 px-4 py-2 rounded-lg transition-all duration-200 text-sm z-30"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 text-white bg-black bg-opacity-50 hover:bg-opacity-75 rounded-lg transition-all duration-200 z-30 font-medium"
+          style={{
+            fontSize: "clamp(0.75rem, 2vw, 1rem)",
+            padding: "clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1.25rem)",
+          }}
           aria-label="Skip video"
         >
           Skip

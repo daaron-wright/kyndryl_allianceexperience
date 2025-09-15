@@ -45,12 +45,13 @@ export default function AllianceHomeFixed({
 
   return (
     <div
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden min-h-screen"
       style={{
         aspectRatio: "16/9",
         minHeight: "100vh",
         background: C.bg,
         outline: "1px solid transparent",
+        fontSize: "clamp(0.75rem, 1.5vw, 2rem)",
       }}
     >
       <div style={{ position: "absolute", left: 0, top: "5.28%", width: "100%", height: "94.72%" }} />
@@ -67,9 +68,10 @@ export default function AllianceHomeFixed({
           left: "50%",
           transform: "translateX(-50%)",
           top: "5.28%",
-          width: "99.88%",
-          height: "16.89%",
+          width: "clamp(90%, 99.88%, 100%)",
+          height: "clamp(12%, 16.89%, 20%)",
           objectFit: "contain",
+          maxWidth: "100vw",
         }}
       />
 
@@ -82,7 +84,11 @@ export default function AllianceHomeFixed({
         onClick={() => setWireframe((v) => !v)}
       >
         <svg
-          className="w-auto h-auto max-w-[20vw] max-h-[4.33vh]"
+          className="w-auto h-auto"
+          style={{
+            maxWidth: "clamp(120px, 20vw, 300px)",
+            maxHeight: "clamp(30px, 4.33vh, 80px)",
+          }}
           viewBox="0 0 193 47"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -179,8 +185,8 @@ export default function AllianceHomeFixed({
           position: "absolute",
           left: "4.69%",
           top: "92.61%",
-          width: "6.5%",
-          height: "3.72%",
+          width: "clamp(4%, 6.5%, 10%)",
+          height: "clamp(2.5%, 3.72%, 6%)",
         }}
       >
         <img
@@ -229,12 +235,12 @@ function Tile({
   titleImage?: string
   onClick?: () => void
 }) {
-  const isTall = rect.h >= 46.28 // Updated threshold for tall cards based on percentage
+  const isTall = rect.h >= 46.28
 
-  const iconSize = `clamp(2rem, ${rect.w * 0.08}vw, 6rem)`
-  const titleFontSize = `clamp(1.5rem, ${rect.w * 0.15}vw, 8rem)`
-  const subtitleFontSize = `clamp(0.8rem, ${rect.w * 0.02}vw, 1.5rem)`
-  const padding = `${rect.w * 0.04}%`
+  const iconSize = `clamp(1.5rem, ${rect.w * 0.08}vw, 8rem)`
+  const titleFontSize = `clamp(1.2rem, ${rect.w * 0.12}vw, 6rem)`
+  const subtitleFontSize = `clamp(0.7rem, ${rect.w * 0.025}vw, 1.8rem)`
+  const padding = `clamp(0.5rem, ${rect.w * 0.04}%, 2rem)`
 
   return (
     <article
@@ -244,11 +250,13 @@ function Tile({
       onClick={onClick}
       className="absolute rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
       style={{
-        left: `${rect.x}%`, // Convert to percentage positioning
+        left: `${rect.x}%`,
         top: `${rect.y}%`,
         width: `${rect.w}%`,
         height: `${rect.h}%`,
         border: `1px solid ${mode === "wire" ? "#525252" : "transparent"}`,
+        minWidth: "clamp(200px, 20vw, 600px)",
+        minHeight: "clamp(150px, 15vh, 400px)",
       }}
       onKeyDown={(e) => {
         if ((e.key === "Enter" || e.key === " ") && onClick) {
@@ -263,7 +271,7 @@ function Tile({
         <div
           style={{
             position: "absolute",
-            right: "-17.5%", // Convert to percentage
+            right: "-17.5%",
             top: "-14.4%",
             width: "69.9%",
             height: "116.1%",
@@ -330,7 +338,7 @@ function Tile({
           position: "absolute",
           left: 0,
           right: 0,
-          padding: `0 ${rect.w * 1.67 * 0.04}%`, // Convert to percentage
+          padding: `0 ${padding}`,
           margin: 0,
           bottom: isTall ? `${rect.h * 0.12}%` : `${rect.h * 0.18}%`,
         }}
@@ -340,11 +348,11 @@ function Tile({
       <div
         style={{
           position: "absolute",
-          right: `${rect.w * 0.04}%`,
+          right: padding,
           bottom: isTall ? `${rect.h * 0.04}%` : `${rect.h * 0.045}%`,
         }}
       >
-        <ChevronRightIcon color={arrowColor} size={`${rect.w * 0.02}vw`} />
+        <ChevronRightIcon color={arrowColor} size={`clamp(20px, ${rect.w * 0.025}vw, 60px)`} />
       </div>
     </article>
   )
