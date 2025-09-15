@@ -164,17 +164,7 @@ export default function AlliancesPage() {
           }}
         >
           {/* Row 1 */}
-          <div
-            onClick={() => setIsGoogleCloudModalOpen(true)}
-            className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
-          >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2OS68t36BSXJHWiXfYi3qukvDahOgB.png"
-              alt="Google Cloud"
-              className="object-contain w-full max-w-[200px] h-12 lg:h-16"
-            />
-          </div>
-
+          {/* AWS first in alphabetical order */}
           <div
             onClick={() => setIsAWSModalOpen(true)}
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
@@ -182,6 +172,17 @@ export default function AlliancesPage() {
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-rt3moV5MgNdtEuZT35XiPNpkgMzcWF.png"
               alt="Amazon Web Services"
+              className="object-contain w-full max-w-[200px] h-12 lg:h-16"
+            />
+          </div>
+
+          <div
+            onClick={() => setIsGoogleCloudModalOpen(true)}
+            className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
+          >
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2OS68t36BSXJHWiXfYi3qukvDahOgB.png"
+              alt="Google Cloud"
               className="object-contain w-full max-w-[200px] h-12 lg:h-16"
             />
           </div>
