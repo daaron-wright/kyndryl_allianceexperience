@@ -43,76 +43,76 @@ export default function AllianceLanding({
   }
 
   return (
-    <div className="responsive-container">
-      {/* Modal overlays */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-          <div className="bg-white rounded-lg overflow-hidden">
-            <FeatureModal onClose={() => setIsModalOpen(false)} />
-          </div>
-        </div>
-      )}
-
-      {isAllianceWelcomeModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-          <div className="bg-white rounded-lg overflow-hidden">
-            <AllianceWelcomeModal
-              onClose={() => setIsAllianceWelcomeModalOpen(false)}
-              onExploreStories={() => {
-                setIsAllianceWelcomeModalOpen(false)
-                setIsVideoLibraryOpen(true)
-              }}
-              allianceName={title}
-            />
-          </div>
-        </div>
-      )}
-
-      {isVideoLibraryOpen && (
-        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-          <div className="bg-white rounded-lg overflow-hidden">
-            <VideoLibraryModal
-              onClose={() => setIsVideoLibraryOpen(false)}
-              initialAlliance={getAllianceFilter(title)}
-            />
-          </div>
-        </div>
-      )}
-
-      {isCaseStudiesModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-          <div className="bg-white rounded-lg overflow-hidden">
-            <CaseStudiesModal onClose={() => setIsCaseStudiesModalOpen(false)} />
-          </div>
-        </div>
-      )}
-
-      {isDemosModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-          <div className="bg-white rounded-lg overflow-hidden">
-            <DemosModal
-              onClose={() => setIsDemosModalOpen(false)}
-              learnMoreUrl={title === "AWS" ? "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com" : undefined}
-            />
-          </div>
-        </div>
-      )}
-
-      {isDemoLoginModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-          <div className="bg-white rounded-lg overflow-hidden max-w-2xl w-full mx-4">
-            <DemoLoginModal
-              onClose={() => setIsDemoLoginModalOpen(false)}
-              onLogin={() => {
-                setIsDemoLoginModalOpen(false)
-                setIsDemosModalOpen(true)
-              }}
-            />
-          </div>
-        </div>
-      )}
-
+    <div className="w-full min-h-screen bg-white">
       <div className="w-full h-full" style={{ padding: "clamp(16px, 2vw, 32px)" }}>
+        {/* Modal overlays */}
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <FeatureModal onClose={() => setIsModalOpen(false)} />
+            </div>
+          </div>
+        )}
+
+        {isAllianceWelcomeModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <AllianceWelcomeModal
+                onClose={() => setIsAllianceWelcomeModalOpen(false)}
+                onExploreStories={() => {
+                  setIsAllianceWelcomeModalOpen(false)
+                  setIsVideoLibraryOpen(true)
+                }}
+                allianceName={title}
+              />
+            </div>
+          </div>
+        )}
+
+        {isVideoLibraryOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <VideoLibraryModal
+                onClose={() => setIsVideoLibraryOpen(false)}
+                initialAlliance={getAllianceFilter(title)}
+              />
+            </div>
+          </div>
+        )}
+
+        {isCaseStudiesModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <CaseStudiesModal onClose={() => setIsCaseStudiesModalOpen(false)} />
+            </div>
+          </div>
+        )}
+
+        {isDemosModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <DemosModal
+                onClose={() => setIsDemosModalOpen(false)}
+                learnMoreUrl={title === "AWS" ? "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com" : undefined}
+              />
+            </div>
+          </div>
+        )}
+
+        {isDemoLoginModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden max-w-2xl w-full mx-4">
+              <DemoLoginModal
+                onClose={() => setIsDemoLoginModalOpen(false)}
+                onLogin={() => {
+                  setIsDemoLoginModalOpen(false)
+                  setIsDemosModalOpen(true)
+                }}
+              />
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <header className="mb-8 flex items-center justify-between" style={{ marginBottom: "clamp(16px, 2vh, 32px)" }}>
           <img

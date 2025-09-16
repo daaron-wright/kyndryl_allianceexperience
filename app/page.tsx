@@ -16,13 +16,15 @@ export default function AllianceExperience() {
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
 
       {!showSplash && (
-        <AllianceHomeFixed
-          preset="original"
-          startWireframe={false}
-          industryImage="/modern-concrete-architecture-bridge.png"
-          marketsImage="/earth-from-space-with-city-lights.png"
-          fixedFrame={true}
-        />
+        <div className="min-h-screen w-full">
+          <AllianceHomeFixed
+            preset="original"
+            startWireframe={false}
+            industryImage="/modern-concrete-architecture-bridge.png"
+            marketsImage="/earth-from-space-with-city-lights.png"
+            fixedFrame={true}
+          />
+        </div>
       )}
     </>
   )

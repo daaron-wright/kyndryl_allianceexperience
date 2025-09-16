@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { ChevronRight, ChevronLeft } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import GoogleCloudFocusModal from "../../components/google-cloud-focus-modal"

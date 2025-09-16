@@ -60,7 +60,7 @@ export default function InfoCards({
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
-        padding: 24,
+        padding: "clamp(16px, 3vw, 24px)",
         boxSizing: "border-box",
       }}
     >
@@ -96,40 +96,42 @@ export default function InfoCards({
 
       {/* Grid */}
       <div
+        className="grid gap-4 md:gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl w-full"
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-          gap: 32,
-          maxWidth: 2360, // gives breathing room on large displays
+          gridTemplateRows: "repeat(2, minmax(300px, 1fr))",
         }}
       >
         {/* Alliances */}
-        <Card
-          title="Alliances"
-          subtitle="Explore our growing ecosystem of partners"
-          size="tall"
-          bgColor={imageryOn ? COLORS.bg : undefined}
-          titleColor={wireframe ? COLORS.neutral : COLORS.warmRed}
-          subtitleColor={wireframe ? COLORS.neutral : COLORS.ink}
-          arrowColor={wireframe ? COLORS.neutral : COLORS.warmRed}
-          icon={<AlliancesIcon color={wireframe ? COLORS.neutral : COLORS.ink} />}
-          showImagery={imageryOn}
-          wireframe={wireframe}
-        />
+        <div className="lg:row-span-2">
+          <Card
+            title="Alliances"
+            subtitle="Explore our growing ecosystem of partners"
+            size="tall"
+            bgColor={imageryOn ? COLORS.bg : undefined}
+            titleColor={wireframe ? COLORS.neutral : COLORS.warmRed}
+            subtitleColor={wireframe ? COLORS.neutral : COLORS.ink}
+            arrowColor={wireframe ? COLORS.neutral : COLORS.warmRed}
+            icon={<AlliancesIcon color={wireframe ? COLORS.neutral : COLORS.ink} />}
+            showImagery={imageryOn}
+            wireframe={wireframe}
+          />
+        </div>
 
         {/* Industries */}
-        <Card
-          title="Industries"
-          subtitle="Learn more about our industry expertice"
-          size="tall"
-          bgImage={imageryOn ? industryImage : undefined}
-          titleColor={wireframe ? COLORS.neutral : COLORS.warmRed}
-          subtitleColor={wireframe ? COLORS.neutral : COLORS.ink}
-          arrowColor={wireframe ? COLORS.neutral : COLORS.warmRed}
-          icon={<FactoryIcon color={wireframe ? COLORS.neutral : COLORS.ink} />}
-          showImagery={imageryOn}
-          wireframe={wireframe}
-        />
+        <div className="lg:row-span-2">
+          <Card
+            title="Industries"
+            subtitle="Learn more about our industry expertice"
+            size="tall"
+            bgImage={imageryOn ? industryImage : undefined}
+            titleColor={wireframe ? COLORS.neutral : COLORS.warmRed}
+            subtitleColor={wireframe ? COLORS.neutral : COLORS.ink}
+            arrowColor={wireframe ? COLORS.neutral : COLORS.warmRed}
+            icon={<FactoryIcon color={wireframe ? COLORS.neutral : COLORS.ink} />}
+            showImagery={imageryOn}
+            wireframe={wireframe}
+          />
+        </div>
 
         {/* Capabilities */}
         <Card
@@ -181,51 +183,38 @@ function Card({
   wireframe = false,
 }: CardProps) {
   const isTall = size === "tall"
-  const W = 560
-  const H = isTall ? 540 : 345
 
   return (
     <article
       role="button"
       aria-label={title}
       tabIndex={0}
+      className="relative w-full h-full min-h-[300px] rounded-lg overflow-hidden border border-transparent hover:shadow-lg transition-shadow outline-none"
       style={{
-        position: "relative",
-        width: W,
-        height: H,
-        borderRadius: 8,
-        overflow: "hidden",
         border: `1px solid ${wireframe ? "#525252" : "transparent"}`,
         boxShadow: "0 4px 16px rgba(0,0,0,0.15)",
-        outline: "none",
       }}
     >
       {/* Background */}
-      {bgColor && showImagery && <div style={{ position: "absolute", inset: 0, background: bgColor }} />}
+      {bgColor && showImagery && <div className="absolute inset-0" style={{ background: bgColor }} />}
       {bgImage && showImagery && (
         <div
+          className="absolute inset-0 bg-cover bg-center"
           style={{
-            position: "absolute",
-            inset: 0,
             backgroundImage: `url(${bgImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
         />
       )}
-      {overlay && showImagery && <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.45)" }} />}
+      {overlay && showImagery && <div className="absolute inset-0 bg-black/45" />}
 
       {/* Icon */}
       <div
+        className="absolute flex items-center justify-center"
         style={{
-          position: "absolute",
-          left: 24,
-          top: 24,
-          width: 90,
-          height: 90,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          left: "clamp(16px, 3vw, 24px)",
+          top: "clamp(16px, 3vw, 24px)",
+          width: "clamp(60px, 8vw, 90px)",
+          height: "clamp(60px, 8vw, 90px)",
         }}
         aria-hidden
       >
@@ -234,20 +223,18 @@ function Card({
 
       {/* Title */}
       <div
+        className="absolute left-0 right-0"
         style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          padding: "0 40px",
-          bottom: isTall ? 88 : 118,
+          padding: "0 clamp(24px, 4vw, 40px)",
+          bottom: isTall ? "clamp(60px, 8vh, 88px)" : "clamp(80px, 10vh, 118px)",
         }}
       >
         <h3
           style={{
             margin: 0,
             fontWeight: 300,
-            fontSize: 56,
-            lineHeight: "56px",
+            fontSize: "clamp(32px, 5vw, 56px)",
+            lineHeight: "1.1",
             letterSpacing: "-0.02em",
             color: titleColor,
           }}
@@ -259,14 +246,11 @@ function Card({
       {/* Subtitle */}
       {subtitle && (
         <p
+          className="absolute left-0 right-0 m-0"
           style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            padding: "0 40px",
-            margin: 0,
-            bottom: isTall ? 32 : 40,
-            fontSize: 18,
+            padding: "0 clamp(24px, 4vw, 40px)",
+            bottom: isTall ? "clamp(24px, 3vh, 32px)" : "clamp(32px, 4vh, 40px)",
+            fontSize: "clamp(14px, 2vw, 18px)",
             lineHeight: 1.6,
             letterSpacing: "0.02em",
             color: subtitleColor,
@@ -278,10 +262,10 @@ function Card({
 
       {/* Caret */}
       <div
+        className="absolute"
         style={{
-          position: "absolute",
-          right: 24,
-          bottom: isTall ? 32 : 28,
+          right: "clamp(16px, 3vw, 24px)",
+          bottom: isTall ? "clamp(24px, 3vh, 32px)" : "clamp(20px, 3vh, 28px)",
         }}
         aria-hidden
       >
@@ -295,7 +279,7 @@ function Card({
 
 function AlliancesIcon({ color = COLORS.ink }: { color?: string }) {
   return (
-    <svg viewBox="0 0 96 96" width={90} height={90} fill="none" stroke={color} strokeWidth={3.5}>
+    <svg viewBox="0 0 96 96" width="100%" height="100%" fill="none" stroke={color} strokeWidth={3.5}>
       <circle cx="24" cy="24" r="10" />
       <circle cx="72" cy="24" r="10" />
       <circle cx="24" cy="72" r="10" />
@@ -308,7 +292,7 @@ function AlliancesIcon({ color = COLORS.ink }: { color?: string }) {
 
 function FactoryIcon({ color = COLORS.ink }: { color?: string }) {
   return (
-    <svg viewBox="0 0 96 96" width={90} height={90} fill="none" stroke={color} strokeWidth={3.5}>
+    <svg viewBox="0 0 96 96" width="100%" height="100%" fill="none" stroke={color} strokeWidth={3.5}>
       <rect x="10" y="50" width="76" height="28" rx="2" />
       <path d="M10 50l24-16v16l24-16v16" />
       <rect x="20" y="58" width="10" height="10" />
@@ -320,7 +304,7 @@ function FactoryIcon({ color = COLORS.ink }: { color?: string }) {
 
 function CheckIcon({ color = COLORS.bg }: { color?: string }) {
   return (
-    <svg viewBox="0 0 96 96" width={90} height={90} fill="none" stroke={color} strokeWidth={3.5}>
+    <svg viewBox="0 0 96 96" width="100%" height="100%" fill="none" stroke={color} strokeWidth={3.5}>
       <circle cx="48" cy="48" r="32" />
       <path d="M32 50l12 12 22-26" />
     </svg>
@@ -329,7 +313,7 @@ function CheckIcon({ color = COLORS.bg }: { color?: string }) {
 
 function GlobeIcon({ color = COLORS.white }: { color?: string }) {
   return (
-    <svg viewBox="0 0 96 96" width={90} height={90} fill="none" stroke={color} strokeWidth={3.5}>
+    <svg viewBox="0 0 96 96" width="100%" height="100%" fill="none" stroke={color} strokeWidth={3.5}>
       <circle cx="48" cy="48" r="30" />
       <path d="M18 56c8-2 16 6 24 0s20-3 36 0M30 24c8 12 8 36 0 48M66 24c-8 12-8 36 0 48M18 40c16-4 22-2 30 0s14 2 30 0" />
     </svg>

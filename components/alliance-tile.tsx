@@ -24,15 +24,14 @@ export function AllianceTile({
   textColor = "#3D3C3C",
   iconOverlay = false,
   onClick,
-  width = "clamp(280px, 35vw, 712px)", // Made width responsive with clamp()
-  height = "clamp(200px, 25vh, 710px)", // Made height responsive with clamp()
+  width = "100%",
+  height = "clamp(180px, 20vh + 2vw, 450px)",
   variant = "alliance",
 }: AllianceTileProps) {
   const isImageTile = !!backgroundImage
 
   const titleColor = backgroundColor === "#FF462D" || backgroundImage ? "#FFFFFF" : "#FF462D"
   const descriptionColor = backgroundColor === "#FF462D" || backgroundImage ? "#FFFFFF" : "#3D3C3C"
-  const chevronColor = backgroundColor === "#FF462D" ? "#FFFFFF" : "#FF462D"
 
   const tileStyle = {
     width: typeof width === "string" ? width : `${width}px`,
@@ -44,53 +43,10 @@ export function AllianceTile({
     overflow: "hidden" as const,
   }
 
-  const responsivePadding = "clamp(20px, 3vw, 40px)"
-  const responsiveFontSizeTitle = "clamp(32px, 5vw, 60px)"
-  const responsiveFontSizeDescription = "clamp(16px, 2.5vw, 24px)"
-  const responsiveIconSize = "clamp(60px, 8vw, 90px)"
-
-  const titleStyle = {
-    fontFamily: "TWK Everett, sans-serif",
-    fontWeight: 300,
-    fontSize: responsiveFontSizeTitle, // Made font size responsive
-    lineHeight: "1.1",
-    color: titleColor,
-    margin: 0,
-    padding: `${responsivePadding} ${responsivePadding} clamp(10px, 1.5vw, 20px)`, // Made padding responsive
-  }
-
-  const descriptionStyle = {
-    fontFamily: "TWK Everett, sans-serif",
-    fontWeight: 400,
-    fontSize: responsiveFontSizeDescription, // Made font size responsive
-    lineHeight: "1.4",
-    letterSpacing: "0.5px",
-    color: descriptionColor,
-    margin: 0,
-    padding: `clamp(10px, 1.5vw, 20px) ${responsivePadding} clamp(30px, 4vw, 50px)`, // Made padding responsive
-  }
-
-  const iconContainerStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: responsivePadding, // Made padding responsive
-    width: `clamp(120px, 15vw, 170px)`, // Made width responsive
-    height: `clamp(120px, 15vh, 170px)`, // Made height responsive
-  }
-
-  const chevronContainerStyle = {
-    position: "absolute" as const,
-    right: responsivePadding, // Made positioning responsive
-    top: "50%",
-    transform: "translateY(-50%)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: responsivePadding, // Made padding responsive
-    width: `clamp(60px, 8vw, 101px)`, // Made width responsive
-    height: `clamp(80px, 10vh, 120px)`, // Made height responsive
-  }
+  const responsivePadding = "clamp(12px, 2.5vw + 0.5rem, 40px)"
+  const responsiveTitleSize = "clamp(18px, 3vw + 0.8rem, 52px)"
+  const responsiveDescriptionSize = "clamp(12px, 1.8vw + 0.4rem, 20px)"
+  const responsiveIconSize = "clamp(32px, 5vw + 1rem, 80px)"
 
   return (
     <div style={tileStyle} onClick={onClick} className="group hover:shadow-lg transition-shadow">
@@ -101,10 +57,10 @@ export function AllianceTile({
             <div
               style={{
                 position: "absolute",
-                top: responsivePadding, // Made positioning responsive
-                left: responsivePadding, // Made positioning responsive
-                width: responsiveIconSize, // Made icon size responsive
-                height: responsiveIconSize, // Made icon size responsive
+                top: responsivePadding,
+                left: responsivePadding,
+                width: responsiveIconSize,
+                height: responsiveIconSize,
                 zIndex: 10,
               }}
             >
@@ -116,9 +72,9 @@ export function AllianceTile({
           <div
             style={{
               position: "absolute",
-              bottom: responsivePadding, // Made positioning responsive
-              left: responsivePadding, // Made positioning responsive
-              right: `clamp(80px, 12vw, 100px)`, // Made spacing responsive for chevron
+              bottom: responsivePadding,
+              left: responsivePadding,
+              right: "clamp(40px, 6vw + 1rem, 90px)",
               zIndex: 10,
             }}
           >
@@ -126,10 +82,10 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 300,
-                fontSize: responsiveFontSizeTitle, // Made font size responsive
+                fontSize: responsiveTitleSize,
                 lineHeight: "1.1",
                 color: "#FF462D",
-                margin: `0 0 clamp(10px, 1.5vw, 20px) 0`, // Made margin responsive
+                margin: `0 0 clamp(6px, 1.2vw + 0.2rem, 18px) 0`,
               }}
             >
               {title}
@@ -138,7 +94,7 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 400,
-                fontSize: responsiveFontSizeDescription, // Made font size responsive
+                fontSize: responsiveDescriptionSize,
                 lineHeight: "1.4",
                 letterSpacing: "0.5px",
                 color: "#3D3C3C",
@@ -156,10 +112,10 @@ export function AllianceTile({
             <div
               style={{
                 position: "absolute",
-                top: responsivePadding, // Made positioning responsive
-                left: responsivePadding, // Made positioning responsive
-                width: responsiveIconSize, // Made icon size responsive
-                height: responsiveIconSize, // Made icon size responsive
+                top: responsivePadding,
+                left: responsivePadding,
+                width: responsiveIconSize,
+                height: responsiveIconSize,
                 zIndex: 10,
               }}
             >
@@ -171,10 +127,10 @@ export function AllianceTile({
           <div
             style={{
               position: "absolute",
-              left: responsivePadding, // Made positioning responsive
+              left: responsivePadding,
               top: "50%",
               transform: "translateY(-50%)",
-              width: "60%",
+              width: "clamp(55%, 60% - 2vw, 65%)",
               zIndex: 10,
             }}
           >
@@ -182,10 +138,10 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 300,
-                fontSize: responsiveFontSizeTitle, // Made font size responsive
+                fontSize: responsiveTitleSize,
                 lineHeight: "1.1",
                 color: "#FFFFFF",
-                margin: `0 0 clamp(10px, 1.5vw, 20px) 0`, // Made margin responsive
+                margin: `0 0 clamp(6px, 1.2vw + 0.2rem, 18px) 0`,
               }}
             >
               {title}
@@ -194,7 +150,7 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 400,
-                fontSize: responsiveFontSizeDescription, // Made font size responsive
+                fontSize: responsiveDescriptionSize,
                 lineHeight: "1.4",
                 letterSpacing: "0.5px",
                 color: "#FFFFFF",
@@ -227,7 +183,7 @@ export function AllianceTile({
                 position: "absolute",
                 top: 0,
                 right: 0,
-                width: "60%",
+                width: "clamp(55%, 60% - 1vw, 65%)",
                 height: "100%",
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: "cover",
@@ -242,10 +198,10 @@ export function AllianceTile({
             <div
               style={{
                 position: "absolute",
-                top: responsivePadding, // Made positioning responsive
-                left: responsivePadding, // Made positioning responsive
-                width: responsiveIconSize, // Made icon size responsive
-                height: responsiveIconSize, // Made icon size responsive
+                top: responsivePadding,
+                left: responsivePadding,
+                width: responsiveIconSize,
+                height: responsiveIconSize,
                 zIndex: 10,
               }}
             >
@@ -257,9 +213,9 @@ export function AllianceTile({
           <div
             style={{
               position: "absolute",
-              left: responsivePadding, // Made positioning responsive
-              bottom: responsivePadding, // Made positioning responsive
-              width: "60%",
+              left: responsivePadding,
+              bottom: responsivePadding,
+              width: "clamp(55%, 60% - 1vw, 65%)",
               zIndex: 10,
             }}
           >
@@ -267,10 +223,11 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 300,
-                fontSize: responsiveFontSizeTitle, // Made font size responsive
+                fontSize: responsiveTitleSize,
                 lineHeight: "1.1",
                 color: "#FFFFFF",
-                margin: `0 0 clamp(10px, 1.5vw, 20px) 0`, // Made margin responsive
+                margin: 0,
+                padding: `${responsivePadding} ${responsivePadding} clamp(6px, 1.2vw + 0.2rem, 18px)`,
               }}
             >
               {title}
@@ -279,11 +236,12 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 400,
-                fontSize: responsiveFontSizeDescription, // Made font size responsive
+                fontSize: responsiveDescriptionSize,
                 lineHeight: "1.4",
                 letterSpacing: "0.5px",
                 color: "#FFFFFF",
                 margin: 0,
+                padding: `clamp(6px, 1.2vw + 0.2rem, 18px) ${responsivePadding} clamp(16px, 2.5vw + 0.5rem, 45px)`,
               }}
             >
               {description}
@@ -314,10 +272,10 @@ export function AllianceTile({
             <div
               style={{
                 position: "absolute",
-                top: responsivePadding, // Made positioning responsive
-                left: responsivePadding, // Made positioning responsive
-                width: responsiveIconSize, // Made icon size responsive
-                height: responsiveIconSize, // Made icon size responsive
+                top: responsivePadding,
+                left: responsivePadding,
+                width: responsiveIconSize,
+                height: responsiveIconSize,
                 zIndex: 10,
               }}
             >
@@ -329,9 +287,9 @@ export function AllianceTile({
           <div
             style={{
               position: "absolute",
-              bottom: responsivePadding, // Made positioning responsive
-              left: responsivePadding, // Made positioning responsive
-              right: responsivePadding, // Made positioning responsive
+              bottom: responsivePadding,
+              left: responsivePadding,
+              right: responsivePadding,
               zIndex: 10,
             }}
           >
@@ -339,10 +297,11 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 300,
-                fontSize: responsiveFontSizeTitle, // Made font size responsive
+                fontSize: responsiveTitleSize,
                 lineHeight: "1.1",
                 color: "#FF462D",
-                margin: `0 0 clamp(10px, 1.5vw, 20px) 0`, // Made margin responsive
+                margin: 0,
+                padding: `${responsivePadding} ${responsivePadding} clamp(6px, 1.2vw + 0.2rem, 18px)`,
               }}
             >
               {title}
@@ -351,65 +310,32 @@ export function AllianceTile({
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontWeight: 400,
-                fontSize: responsiveFontSizeDescription, // Made font size responsive
+                fontSize: responsiveDescriptionSize,
                 lineHeight: "1.4",
                 letterSpacing: "0.5px",
                 color: "#3D3C3C",
                 margin: 0,
+                padding: `clamp(6px, 1.2vw + 0.2rem, 18px) ${responsivePadding} clamp(16px, 2.5vw + 0.5rem, 45px)`,
               }}
             >
               {description}
             </p>
           </div>
         </>
-      ) : isImageTile ? (
-        <>
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              borderRadius: "4px",
-            }}
-          />
-
-          {icon && (
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                ...iconContainerStyle,
-              }}
-            >
-              <div style={{ width: responsiveIconSize, height: responsiveIconSize }}>{icon}</div>{" "}
-              {/* Made icon size responsive */}
-            </div>
-          )}
-
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              right: 0,
-            }}
-          >
-            <h2 style={titleStyle}>{title}</h2>
-            <p style={descriptionStyle}>{description}</p>
-          </div>
-        </>
       ) : (
         <>
           {icon && (
-            <div style={iconContainerStyle}>
-              <div style={{ width: responsiveIconSize, height: responsiveIconSize }}>{icon}</div>{" "}
-              {/* Made icon size responsive */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: responsivePadding,
+                width: "clamp(70px, 10vw + 2rem, 130px)",
+                height: "clamp(70px, 10vh + 1rem, 130px)",
+              }}
+            >
+              <div style={{ width: responsiveIconSize, height: responsiveIconSize }}>{icon}</div>
             </div>
           )}
 
@@ -421,8 +347,33 @@ export function AllianceTile({
               right: 0,
             }}
           >
-            <h2 style={titleStyle}>{title}</h2>
-            <p style={descriptionStyle}>{description}</p>
+            <h2
+              style={{
+                fontFamily: "TWK Everett, sans-serif",
+                fontWeight: 300,
+                fontSize: responsiveTitleSize,
+                lineHeight: "1.1",
+                color: titleColor,
+                margin: 0,
+                padding: `${responsivePadding} ${responsivePadding} clamp(6px, 1.2vw + 0.2rem, 18px)`,
+              }}
+            >
+              {title}
+            </h2>
+            <p
+              style={{
+                fontFamily: "TWK Everett, sans-serif",
+                fontWeight: 400,
+                fontSize: responsiveDescriptionSize,
+                lineHeight: "1.4",
+                letterSpacing: "0.5px",
+                color: descriptionColor,
+                margin: 0,
+                padding: `clamp(6px, 1.2vw + 0.2rem, 18px) ${responsivePadding} clamp(16px, 2.5vw + 0.5rem, 45px)`,
+              }}
+            >
+              {description}
+            </p>
           </div>
         </>
       )}
