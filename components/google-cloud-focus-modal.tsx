@@ -5,9 +5,10 @@ import { X } from "lucide-react"
 interface GoogleCloudFocusModalProps {
   isOpen: boolean
   onClose: () => void
+  onOpenDemos?: () => void // Added onOpenDemos prop for healthcare demos
 }
 
-export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFocusModalProps) {
+export default function GoogleCloudFocusModal({ isOpen, onClose, onOpenDemos }: GoogleCloudFocusModalProps) {
   if (!isOpen) return null
 
   return (
@@ -124,8 +125,13 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
           >
             <button
               onClick={() => {
-                onClose()
-                window.location.href = "/google-cloud"
+                if (onOpenDemos) {
+                  onClose() // Close current modal first
+                  onOpenDemos() // Open healthcare demos modal
+                } else {
+                  onClose()
+                  window.location.href = "/google-cloud"
+                }
               }}
               style={{
                 backgroundColor: "#FF462D",

@@ -14,48 +14,28 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
 
   const demoCards = [
     {
-      title: "Content title",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      title: "Appointment Management - Book/Cancel/Reschedule/List",
+      description: "abilasha11 / Abi@lex11",
+      tags: ["Healthcare", "Scheduling", "Patient Care"],
     },
     {
-      title: "Content title",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      title: "Prescription Management - Get prescriptions details",
+      description: "aloksharma1 / Alok@12345",
+      tags: ["Pharmacy", "Medication", "Healthcare"],
     },
     {
-      title: "Content title",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      title: "Medication Refill Management - Check refill eligibility and Place Refill request",
+      description: "abilasha11 / Abi@lex11",
+      tags: ["Refills", "Pharmacy", "Automation"],
     },
     {
-      title: "Content title",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
-    },
-    {
-      title: "Content title utenim ad minim veniam, quis",
-      description: "",
-      tags: ["Meta tag", "Meta tag", "Meta tag"],
+      title: "General Query - Information from available knowledgebase of the documents",
+      description: "aloksharma1 / Alok@12345",
+      tags: ["AI Assistant", "Knowledge Base", "Support"],
     },
   ]
 
-  const itemsPerPage = 8
+  const itemsPerPage = 4 // Updated to match the 4 demo tiles
   const totalPages = 1 // Fixed to 1 page to match the design
   const startIndex = (currentPage - 1) * itemsPerPage
   const currentItems = demoCards.slice(startIndex, startIndex + itemsPerPage)
@@ -114,6 +94,16 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
                 >
                   {demo.title}
                 </h3>
+
+                {/* Description */}
+                {demo.description && (
+                  <div
+                    className="text-[#727175] text-sm font-mono mb-4 bg-gray-50 px-3 py-2 rounded border"
+                    style={{ fontFamily: "monospace" }}
+                  >
+                    Login: {demo.description}
+                  </div>
+                )}
 
                 {/* Learn More Link */}
                 <div
