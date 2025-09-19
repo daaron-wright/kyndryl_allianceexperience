@@ -304,7 +304,7 @@ export default function AllianceLanding({
                 }}
                 onClick={(e) => {
                   e.stopPropagation()
-                  window.location.href = "/google-cloud"
+                  setIsVideoLibraryOpen(true)
                 }}
               >
                 <span
