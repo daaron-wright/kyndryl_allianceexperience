@@ -5,9 +5,10 @@ import { X } from "lucide-react"
 interface AWSFocusModalProps {
   isOpen: boolean
   onClose: () => void
+  onOpenDemos?: () => void
 }
 
-export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
+export default function AWSFocusModal({ isOpen, onClose, onOpenDemos }: AWSFocusModalProps) {
   if (!isOpen) return null
 
   return (
@@ -123,7 +124,7 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
           >
             <button
               onClick={() => {
-                window.open("https://kyndryl-aws-demos.web.app/", "_blank")
+                window.location.href = "/aws"
               }}
               style={{
                 backgroundColor: "#FF462D",
@@ -144,7 +145,7 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
                 e.currentTarget.style.backgroundColor = "#FF462D"
               }}
             >
-              Explore AWS Demos
+              Explore AWS Customer Stories
             </button>
 
             <button
@@ -172,7 +173,7 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
                 e.currentTarget.style.color = "#3D3C3C"
               }}
             >
-              Customer Stories
+              Back to Alliances
             </button>
           </div>
         </div>

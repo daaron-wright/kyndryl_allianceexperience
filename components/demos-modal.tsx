@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { X, Search, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface DemosModalProps {
   onClose: () => void
@@ -8,31 +9,56 @@ interface DemosModalProps {
 }
 
 export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1) // Set to page 1 to match the design
   const [searchQuery, setSearchQuery] = useState("")
 
   const demoCards = [
     {
-      title: "Appointment Management - Book/Cancel/Reschedule/List",
+      title: "Content title",
       description: "",
-      tags: ["Healthcare"],
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
     },
     {
-      title: "Prescription Management - Get prescriptions details",
+      title: "Content title",
       description: "",
-      tags: ["AWS"],
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
     },
     {
-      title: "Medication Refill Management - Check refill eligibility and Place Refill request",
+      title: "Content title",
       description: "",
-      tags: ["Chabot"],
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
     },
     {
-      title: "General Query - Information from available knowledgebase of the documents",
+      title: "Content title",
       description: "",
-      tags: ["Knowledge Base"],
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
+    },
+    {
+      title: "Content title utenim ad minim veniam, quis",
+      description: "",
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
+    },
+    {
+      title: "Content title utenim ad minim veniam, quis",
+      description: "",
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
+    },
+    {
+      title: "Content title utenim ad minim veniam, quis",
+      description: "",
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
+    },
+    {
+      title: "Content title utenim ad minim veniam, quis",
+      description: "",
+      tags: ["Meta tag", "Meta tag", "Meta tag"],
     },
   ]
+
+  const itemsPerPage = 8
+  const totalPages = 1 // Fixed to 1 page to match the design
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const currentItems = demoCards.slice(startIndex, startIndex + itemsPerPage)
 
   const handleLearnMoreClick = () => {
     const targetUrl = learnMoreUrl || "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com"
@@ -40,93 +66,125 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
   }
 
   return (
-    <div className="w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
-      {/* Header */}
-      <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-white">
-        <h1 className="text-[32px] font-light text-[#FF462D]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-          Demos
-        </h1>
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-80 px-4 py-2 border border-gray-300 rounded-md text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
-              style={{ fontFamily: "TWK Everett, sans-serif" }}
-            />
-            <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
+    <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+      <div className="w-[1600px] h-[900px] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
+        {/* Header */}
+        <div className="flex items-center justify-between px-16 py-10 border-b border-gray-200 bg-white flex-shrink-0">
+          <h1 className="text-5xl font-light text-[#FF462D] m-0" style={{ fontFamily: "TWK Everett, sans-serif" }}>
+            Demos
+          </h1>
+          <div className="flex items-center gap-6">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-80 px-4 py-3 pl-12 border border-gray-300 rounded-md text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
+                style={{ fontFamily: "TWK Everett, sans-serif" }}
+              />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            </div>
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600 p-2">
+              <X className="w-6 h-6" />
             </button>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="flex-1 bg-[#F2F1EE] p-12 overflow-y-auto">
-        <div className="grid grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {demoCards.map((demo, index) => (
-            <div key={index} className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-              {/* Demo Label */}
+        {/* Main Content */}
+        <div className="flex-1 bg-[#F2F1EE] px-16 py-16 overflow-y-auto min-h-0">
+          <div className="grid grid-cols-4 gap-10 mb-16">
+            {currentItems.map((demo, index) => (
               <div
-                className="text-[#FF462D] text-sm font-medium mb-3"
-                style={{ fontFamily: "TWK Everett, sans-serif" }}
+                key={index}
+                className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
               >
-                Demo
-              </div>
-
-              {/* Title */}
-              <h3
-                className="text-[#3D3C3C] text-lg font-medium mb-4 leading-tight"
-                style={{ fontFamily: "TWK Everett, sans-serif" }}
-              >
-                {demo.title}
-              </h3>
-
-              {/* Learn More Link */}
-              <div
-                className="flex items-center text-[#3D3C3C] text-sm font-medium mb-4 cursor-pointer hover:text-[#FF462D]"
-                style={{ fontFamily: "TWK Everett, sans-serif" }}
-                onClick={handleLearnMoreClick}
-              >
-                Learn more
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="ml-1"
+                {/* Demo Label */}
+                <div
+                  className="text-[#FF462D] text-sm font-medium mb-4 uppercase"
+                  style={{ fontFamily: "TWK Everett, sans-serif" }}
                 >
-                  <polyline points="9,18 15,12 9,6" />
-                </svg>
-              </div>
+                  Demo
+                </div>
 
-              {/* Meta Tags */}
-              <div className="flex gap-2 flex-wrap">
-                {demo.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {tag}
-                  </span>
-                ))}
+                {/* Title */}
+                <h3
+                  className="text-[#3D3C3C] text-xl font-normal mb-4 leading-tight min-h-[3rem]"
+                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                >
+                  {demo.title}
+                </h3>
+
+                {/* Learn More Link */}
+                <div
+                  className="flex items-center text-[#727175] text-base font-medium mb-6 cursor-pointer hover:text-[#FF462D] transition-colors"
+                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                  onClick={handleLearnMoreClick}
+                >
+                  Learn more
+                  <ChevronRight className="ml-2 w-4 h-4" />
+                </div>
+
+                {/* Meta Tags */}
+                <div className="flex gap-2 flex-wrap">
+                  {demo.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-3 py-1 bg-[#F2F1EE] text-[#727175] text-xs rounded-full"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Pagination */}
+          <div className="flex justify-center items-center gap-4 mb-8">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-10 h-10 flex items-center justify-center text-lg font-medium transition-colors ${
+                  currentPage === page
+                    ? "text-[#FF462D] border-b-2 border-[#FF462D]"
+                    : "text-[#727175] hover:text-[#FF462D]"
+                }`}
+                style={{ fontFamily: "TWK Everett, sans-serif" }}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          {/* Previous/Next Navigation */}
+          <div className="flex justify-between items-center">
+            <button
+              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
+              className={`flex items-center gap-2 text-base font-medium transition-colors ${
+                currentPage === 1 ? "text-gray-400 cursor-not-allowed" : "text-[#727175] hover:text-[#FF462D]"
+              }`}
+              style={{ fontFamily: "TWK Everett, sans-serif" }}
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Previous
+            </button>
+
+            <button
+              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage === totalPages}
+              className={`flex items-center gap-2 text-base font-medium transition-colors ${
+                currentPage === totalPages ? "text-gray-400 cursor-not-allowed" : "text-[#727175] hover:text-[#FF462D]"
+              }`}
+              style={{ fontFamily: "TWK Everett, sans-serif" }}
+            >
+              Next
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

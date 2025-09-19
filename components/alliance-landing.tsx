@@ -16,6 +16,7 @@ import MicrosoftFocusModal from "./microsoft-focus-modal"
 import AWSScreenSaver from "./aws-screen-saver"
 import GoogleCloudScreenSaver from "./google-cloud-screen-saver"
 import MicrosoftScreenSaver from "./microsoft-screen-saver"
+import GoogleCloudDemosModal from "./google-cloud-demos-modal"
 
 interface AllianceLandingProps {
   logo?: string
@@ -37,7 +38,7 @@ export default function AllianceLanding({
   const [isGoogleCloudFocusModalOpen, setIsGoogleCloudFocusModalOpen] = useState(false)
   const [isAWSFocusModalOpen, setIsAWSFocusModalOpen] = useState(false)
   const [isMicrosoftFocusModalOpen, setIsMicrosoftFocusModalOpen] = useState(false)
-
+  const [isGoogleCloudDemosModalOpen, setIsGoogleCloudDemosModalOpen] = useState(false)
   const [isAWSScreenSaverOpen, setIsAWSScreenSaverOpen] = useState(false)
   const [isGoogleCloudScreenSaverOpen, setIsGoogleCloudScreenSaverOpen] = useState(false)
   const [isMicrosoftScreenSaverOpen, setIsMicrosoftScreenSaverOpen] = useState(false)
@@ -102,14 +103,10 @@ export default function AllianceLanding({
         )}
 
         {isDemosModalOpen && (
-          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-            <div className="bg-white rounded-lg overflow-hidden max-w-2xl w-full mx-4">
-              <DemosModal
-                onClose={() => setIsDemosModalOpen(false)}
-                learnMoreUrl={title === "AWS" ? "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com" : undefined}
-              />
-            </div>
-          </div>
+          <DemosModal
+            onClose={() => setIsDemosModalOpen(false)}
+            learnMoreUrl={title === "AWS" ? "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com" : undefined}
+          />
         )}
 
         {isDemoLoginModalOpen && (
@@ -201,6 +198,9 @@ export default function AllianceLanding({
             </div>
           </div>
         )}
+
+        {/* Google Cloud demos modal */}
+        {isGoogleCloudDemosModalOpen && <GoogleCloudDemosModal onClose={() => setIsGoogleCloudDemosModalOpen(false)} />}
 
         {/* Header */}
         <header className="mb-8 flex items-center justify-between" style={{ marginBottom: "clamp(16px, 2vh, 32px)" }}>
@@ -335,18 +335,19 @@ export default function AllianceLanding({
           <div
             className="relative w-full shadow-lg rounded-lg overflow-hidden cursor-pointer transition-colors bg-[rgba(4,35,21,1)]"
             onClick={() => {
-              switch (title) {
-                case "AWS":
-                  setIsAWSScreenSaverOpen(true)
-                  break
-                case "Google Cloud":
-                  setIsGoogleCloudScreenSaverOpen(true)
-                  break
-                case "Microsoft":
-                  setIsMicrosoftScreenSaverOpen(true)
-                  break
-                default:
-                  setIsDemoLoginModalOpen(true)
+              if (title === "AWS") {
+                setIsDemosModalOpen(true)
+              } else {
+                switch (title) {
+                  case "Google Cloud":
+                    setIsGoogleCloudDemosModalOpen(true)
+                    break
+                  case "Microsoft":
+                    setIsMicrosoftScreenSaverOpen(true)
+                    break
+                  default:
+                    setIsDemoLoginModalOpen(true)
+                }
               }
             }}
           >

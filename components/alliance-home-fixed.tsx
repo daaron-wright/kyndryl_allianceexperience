@@ -287,7 +287,7 @@ function Tile({
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url(${bgImage})`,
+            backgroundImage: `url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FA0sCvw6kul4FVr5THD13MrhLF4JNg.png)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

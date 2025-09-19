@@ -121,7 +121,8 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
           >
             <button
               onClick={() => {
-                window.open("https://kyndryl-microsoft-demos.web.app/", "_blank")
+                onClose()
+                window.location.href = "/microsoft"
               }}
               style={{
                 backgroundColor: "#FF462D",
@@ -142,12 +143,13 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
                 e.currentTarget.style.backgroundColor = "#FF462D"
               }}
             >
-              Explore Microsoft Demos
+              Explore Microsoft Customer Stories
             </button>
 
             <button
               onClick={() => {
-                window.location.href = "/microsoft"
+                onClose()
+                window.location.href = "/alliances"
               }}
               style={{
                 backgroundColor: "transparent",
@@ -170,7 +172,7 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
                 e.currentTarget.style.color = "#3D3C3C"
               }}
             >
-              Customer Stories
+              Back to Alliances
             </button>
           </div>
         </div>

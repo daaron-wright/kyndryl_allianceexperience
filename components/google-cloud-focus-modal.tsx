@@ -124,7 +124,8 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
           >
             <button
               onClick={() => {
-                window.open("https://kyndryl-gcp-demos.web.app/", "_blank")
+                onClose()
+                window.location.href = "/google-cloud"
               }}
               style={{
                 backgroundColor: "#FF462D",
@@ -145,12 +146,13 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
                 e.currentTarget.style.backgroundColor = "#FF462D"
               }}
             >
-              Explore Google Cloud Demos
+              Explore Google Cloud Customer Stories
             </button>
 
             <button
               onClick={() => {
-                window.location.href = "/google-cloud"
+                onClose()
+                window.location.href = "/alliances"
               }}
               style={{
                 backgroundColor: "transparent",
@@ -173,7 +175,7 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
                 e.currentTarget.style.color = "#3D3C3C"
               }}
             >
-              Customer Stories
+              Back to Alliances
             </button>
           </div>
         </div>
