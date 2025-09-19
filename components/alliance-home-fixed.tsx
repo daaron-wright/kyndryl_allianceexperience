@@ -132,11 +132,7 @@ export default function AllianceHomeFixed({
         titleColor={wireframe ? C.neutral : C.warmRed}
         subtitleColor={wireframe ? C.neutral : C.ink}
         arrowColor={wireframe ? C.neutral : C.warmRed}
-        bgImage={
-          showImagery
-            ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vpWBqQFMNWgr53Cu3cHHGIA5ppObCL.png"
-            : undefined
-        }
+        bgImage={showImagery ? "/industries-architecture.png" : undefined}
         titleImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-QHCuFpNfQtAnWcEI2UQ02SZFxAqtRZ.png"
         onClick={() => router.push("/industries")}
       />
