@@ -124,7 +124,10 @@ export default function AWSFocusModal({ isOpen, onClose, onOpenDemos }: AWSFocus
           >
             <button
               onClick={() => {
-                window.location.href = "/aws"
+                if (onOpenDemos) {
+                  onClose() // Close current modal first
+                  onOpenDemos() // Open demos modal
+                }
               }}
               style={{
                 backgroundColor: "#FF462D",
