@@ -82,7 +82,8 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
             textAlign: "center",
           }}
         >
-          <h2 className="text-left my-0 py-0 px-7 mx-[235px]"
+          <h2
+            className="text-left my-0 py-0 px-7 mx-[235px]"
             style={{
               fontSize: "2rem",
               fontFamily: "TWK Everett, sans-serif",
@@ -95,7 +96,8 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
             {"Our partnership\n"}
           </h2>
 
-          <p className="text-left"
+          <p
+            className="text-left"
             style={{
               fontSize: "1.125rem",
               fontFamily: "TWK Everett, sans-serif",
@@ -106,7 +108,10 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
               margin: "0 auto 2rem auto",
             }}
           >
-            Unlock the full potential of your enterprise by combining Kyndryl’s trusted expertise and operational excellence with Google Cloud’s cutting-edge agentic AI and generative AI capabilities and industry-defining innovation. This partnership empowers enterprises with future ready solutions that help drive modernization and innovation.
+            Unlock the full potential of your enterprise by combining Kyndryl’s trusted expertise and operational
+            excellence with Google Cloud’s cutting-edge agentic AI and generative AI capabilities and industry-defining
+            innovation. This partnership empowers enterprises with future ready solutions that help drive modernization
+            and innovation.
           </p>
 
           <div
@@ -119,7 +124,7 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
           >
             <button
               onClick={() => {
-                window.location.href = "/google-cloud"
+                window.open("https://kyndryl-gcp-demos.web.app/", "_blank")
               }}
               style={{
                 backgroundColor: "#FF462D",
@@ -140,11 +145,13 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
                 e.currentTarget.style.backgroundColor = "#FF462D"
               }}
             >
-              Explore Customer Stories
+              Explore Google Cloud Demos
             </button>
 
             <button
-              onClick={onClose}
+              onClick={() => {
+                window.location.href = "/google-cloud"
+              }}
               style={{
                 backgroundColor: "transparent",
                 color: "#3D3C3C",
@@ -166,7 +173,7 @@ export default function GoogleCloudFocusModal({ isOpen, onClose }: GoogleCloudFo
                 e.currentTarget.style.color = "#3D3C3C"
               }}
             >
-              Back to Alliances
+              Customer Stories
             </button>
           </div>
         </div>

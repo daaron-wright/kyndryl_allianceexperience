@@ -6,6 +6,10 @@ import { useState, useRef, useEffect } from "react"
 import GoogleCloudFocusModal from "../../components/google-cloud-focus-modal"
 import AWSFocusModal from "../../components/aws-focus-modal"
 import MicrosoftFocusModal from "../../components/microsoft-focus-modal"
+import DemoFocusModal from "../../components/demo-focus-modal"
+import AWSScreenSaver from "../../components/aws-screen-saver"
+import GoogleCloudScreenSaver from "../../components/google-cloud-screen-saver"
+import MicrosoftScreenSaver from "../../components/microsoft-screen-saver"
 
 export default function AlliancesPage() {
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -13,6 +17,10 @@ export default function AlliancesPage() {
   const [isGoogleCloudModalOpen, setIsGoogleCloudModalOpen] = useState(false)
   const [isAWSModalOpen, setIsAWSModalOpen] = useState(false)
   const [isMicrosoftModalOpen, setIsMicrosoftModalOpen] = useState(false)
+  const [isDemoFocusModalOpen, setIsDemoFocusModalOpen] = useState(false)
+  const [isAWSScreenSaverOpen, setIsAWSScreenSaverOpen] = useState(false)
+  const [isGoogleCloudScreenSaverOpen, setIsGoogleCloudScreenSaverOpen] = useState(false)
+  const [isMicrosoftScreenSaverOpen, setIsMicrosoftScreenSaverOpen] = useState(false)
   const gridRef = useRef<HTMLDivElement>(null)
   const progressBarRef = useRef<HTMLDivElement>(null)
 
@@ -165,29 +173,29 @@ export default function AlliancesPage() {
           {/* Row 1 */}
           {/* AWS first in alphabetical order */}
           <div
-            onClick={() => setIsAWSModalOpen(true)}
+            onClick={() => setIsAWSScreenSaverOpen(true)}
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-rt3moV5MgNdtEuZT35XiPNpkgMzcWF.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-L8jC0fTfpICOlmZbaal2vfVZnMmEqT.png"
               alt="Amazon Web Services"
               className="object-contain w-full max-w-[200px] h-12 lg:h-16"
             />
           </div>
 
           <div
-            onClick={() => setIsGoogleCloudModalOpen(true)}
+            onClick={() => setIsGoogleCloudScreenSaverOpen(true)}
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2OS68t36BSXJHWiXfYi3qukvDahOgB.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-zDGzSNGwS8rPtVqnwMKrXktnfy1Eb2.png"
               alt="Google Cloud"
               className="object-contain w-full max-w-[200px] h-12 lg:h-16"
             />
           </div>
 
           <div
-            onClick={() => setIsMicrosoftModalOpen(true)}
+            onClick={() => setIsMicrosoftScreenSaverOpen(true)}
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
           >
             <img
@@ -198,10 +206,14 @@ export default function AlliancesPage() {
           </div>
 
           <div
-            onClick={() => (window.location.href = "/ai-journey")}
+            onClick={() => setIsDemoFocusModalOpen(true)}
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center p-0 cursor-pointer transition-all duration-300 overflow-hidden hover:scale-105"
           >
-            <img src="/cross-platform-card.png" alt="Cross Platform" className="w-full h-full object-cover" />
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-8bFJTXuudy5hZbjVkl7TnGoDOGzqAf.png"
+              alt="Completion Status"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
@@ -214,18 +226,25 @@ export default function AlliancesPage() {
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="/logos/red-hat-logo.png"
-              alt="Red Hat"
+              src="/logos/dell-technologies-logo.png"
+              alt="Dell Technologies"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
             />
           </div>
 
-          {/* Row 2 */}
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="/logos/dell-technologies-logo.png"
-              alt="Dell Technologies"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-bnrKnw30dfd1h7hJjWs4gdYKgX5jRb.png"
+              alt="Dynatrace"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
+            />
+          </div>
+
+          <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
+            <img
+              src="/logos/hpe-logo.png"
+              alt="Hewlett Packard Enterprise"
+              className="object-contain grayscale max-w-[200px] h-10 w-[150%] lg:h-20"
             />
           </div>
 
@@ -247,23 +266,15 @@ export default function AlliancesPage() {
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="/logos/servicenow-logo.png"
-              alt="ServiceNow"
+              src="/logos/red-hat-logo.png"
+              alt="Red Hat"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
             />
           </div>
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-D4rQ5SECnsjdaceB5T8NFBuob06UrB.png"
-              alt="Dynatrace"
-              className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
-            />
-          </div>
-
-          <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4WqGHkanOarekDGRj8ai8zNb9500v7.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-qzwpmbREXb3zWDy0yxtdhYOfI8yF1b.png"
               alt="Rubrik"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
             />
@@ -271,8 +282,16 @@ export default function AlliancesPage() {
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-HTZfpGu6NzriY6I2FnKd4EDrg5zpDQ.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-8CJ0S1ytNLJTSVVPxFB71wjfj0s0ZZ.png"
               alt="SAP Global Partner"
+              className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
+            />
+          </div>
+
+          <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
+            <img
+              src="/logos/servicenow-logo.png"
+              alt="ServiceNow"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
             />
           </div>
@@ -329,7 +348,7 @@ export default function AlliancesPage() {
           {/* Left side - Kyndryl Alliance Experience logo */}
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MEGNnZWLbIFaozl7mPigQVLRmY1A2o.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-XBBrqd3OtOkYn9qXa1LtODY0kX9w1D.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />
@@ -337,7 +356,7 @@ export default function AlliancesPage() {
 
           {/* Right side - Breadcrumb */}
           <div className="flex items-center gap-2">
-            <a href="/" className="text-[#9E9287] no-underline text-sm lg:text-base font-light">
+            <a href="/alliance-home" className="text-[#9E9287] no-underline text-sm lg:text-base font-light">
               Home
             </a>
             <ChevronRight className="text-[#9E9287] w-4 h-4" />
@@ -346,14 +365,39 @@ export default function AlliancesPage() {
         </div>
       </footer>
 
-      {/* Google Cloud focus modal */}
+      {/* Screen Savers */}
+      <AWSScreenSaver
+        isOpen={isAWSScreenSaverOpen}
+        onClose={() => setIsAWSScreenSaverOpen(false)}
+        onProceed={() => {
+          setIsAWSScreenSaverOpen(false)
+          setIsAWSModalOpen(true)
+        }}
+      />
+
+      <GoogleCloudScreenSaver
+        isOpen={isGoogleCloudScreenSaverOpen}
+        onClose={() => setIsGoogleCloudScreenSaverOpen(false)}
+        onProceed={() => {
+          setIsGoogleCloudScreenSaverOpen(false)
+          setIsGoogleCloudModalOpen(true)
+        }}
+      />
+
+      <MicrosoftScreenSaver
+        isOpen={isMicrosoftScreenSaverOpen}
+        onClose={() => setIsMicrosoftScreenSaverOpen(false)}
+        onProceed={() => {
+          setIsMicrosoftScreenSaverOpen(false)
+          setIsMicrosoftModalOpen(true)
+        }}
+      />
+
+      {/* Focus Modals */}
       <GoogleCloudFocusModal isOpen={isGoogleCloudModalOpen} onClose={() => setIsGoogleCloudModalOpen(false)} />
-
-      {/* AWS focus modal */}
       <AWSFocusModal isOpen={isAWSModalOpen} onClose={() => setIsAWSModalOpen(false)} />
-
-      {/* Microsoft focus modal */}
       <MicrosoftFocusModal isOpen={isMicrosoftModalOpen} onClose={() => setIsMicrosoftModalOpen(false)} />
+      <DemoFocusModal isOpen={isDemoFocusModalOpen} onClose={() => setIsDemoFocusModalOpen(false)} />
     </div>
   )
 }

@@ -199,15 +199,18 @@ export default function DemoViewer({ onClose, demoTitle }: DemoViewerProps) {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <span
+          <a
+            href="/alliance-home"
             style={{
               fontFamily: "TWK Everett, sans-serif",
               fontSize: "16px",
               color: "#727175",
+              textDecoration: "none",
+              cursor: "pointer",
             }}
           >
             Home
-          </span>
+          </a>
           <span style={{ color: "#727175" }}>{">"}</span>
           <span
             style={{

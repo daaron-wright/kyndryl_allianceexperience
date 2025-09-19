@@ -10,6 +10,12 @@ import AllianceWelcomeModal from "./alliance-welcome-modal"
 import GoogleCloudTile from "./google-cloud-tile"
 import MicrosoftTile from "./microsoft-tile"
 import AWSTile from "./aws-tile"
+import GoogleCloudFocusModal from "./google-cloud-focus-modal"
+import AWSFocusModal from "./aws-focus-modal"
+import MicrosoftFocusModal from "./microsoft-focus-modal"
+import AWSScreenSaver from "./aws-screen-saver"
+import GoogleCloudScreenSaver from "./google-cloud-screen-saver"
+import MicrosoftScreenSaver from "./microsoft-screen-saver"
 
 interface AllianceLandingProps {
   logo?: string
@@ -28,6 +34,13 @@ export default function AllianceLanding({
   const [isAllianceWelcomeModalOpen, setIsAllianceWelcomeModalOpen] = useState(false)
   const [isDemosModalOpen, setIsDemosModalOpen] = useState(false)
   const [isDemoLoginModalOpen, setIsDemoLoginModalOpen] = useState(false)
+  const [isGoogleCloudFocusModalOpen, setIsGoogleCloudFocusModalOpen] = useState(false)
+  const [isAWSFocusModalOpen, setIsAWSFocusModalOpen] = useState(false)
+  const [isMicrosoftFocusModalOpen, setIsMicrosoftFocusModalOpen] = useState(false)
+
+  const [isAWSScreenSaverOpen, setIsAWSScreenSaverOpen] = useState(false)
+  const [isGoogleCloudScreenSaverOpen, setIsGoogleCloudScreenSaverOpen] = useState(false)
+  const [isMicrosoftScreenSaverOpen, setIsMicrosoftScreenSaverOpen] = useState(false)
 
   const getAllianceFilter = (allianceTitle: string) => {
     switch (allianceTitle) {
@@ -90,7 +103,7 @@ export default function AllianceLanding({
 
         {isDemosModalOpen && (
           <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-            <div className="bg-white rounded-lg overflow-hidden">
+            <div className="bg-white rounded-lg overflow-hidden max-w-2xl w-full mx-4">
               <DemosModal
                 onClose={() => setIsDemosModalOpen(false)}
                 learnMoreUrl={title === "AWS" ? "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com" : undefined}
@@ -107,6 +120,82 @@ export default function AllianceLanding({
                 onLogin={() => {
                   setIsDemoLoginModalOpen(false)
                   setIsDemosModalOpen(true)
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Alliance-specific focus modals */}
+        {isGoogleCloudFocusModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <GoogleCloudFocusModal
+                isOpen={isGoogleCloudFocusModalOpen}
+                onClose={() => setIsGoogleCloudFocusModalOpen(false)}
+              />
+            </div>
+          </div>
+        )}
+
+        {isAWSFocusModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <AWSFocusModal isOpen={isAWSFocusModalOpen} onClose={() => setIsAWSFocusModalOpen(false)} />
+            </div>
+          </div>
+        )}
+
+        {isMicrosoftFocusModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <MicrosoftFocusModal
+                isOpen={isMicrosoftFocusModalOpen}
+                onClose={() => setIsMicrosoftFocusModalOpen(false)}
+              />
+            </div>
+          </div>
+        )}
+
+        {isAWSScreenSaverOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <AWSScreenSaver
+                isOpen={isAWSScreenSaverOpen}
+                onClose={() => setIsAWSScreenSaverOpen(false)}
+                onProceed={() => {
+                  setIsAWSScreenSaverOpen(false)
+                  setIsAWSFocusModalOpen(true)
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        {isGoogleCloudScreenSaverOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <GoogleCloudScreenSaver
+                isOpen={isGoogleCloudScreenSaverOpen}
+                onClose={() => setIsGoogleCloudScreenSaverOpen(false)}
+                onProceed={() => {
+                  setIsGoogleCloudScreenSaverOpen(false)
+                  setIsGoogleCloudFocusModalOpen(true)
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        {isMicrosoftScreenSaverOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <MicrosoftScreenSaver
+                isOpen={isMicrosoftScreenSaverOpen}
+                onClose={() => setIsMicrosoftScreenSaverOpen(false)}
+                onProceed={() => {
+                  setIsMicrosoftScreenSaverOpen(false)
+                  setIsMicrosoftFocusModalOpen(true)
                 }}
               />
             </div>
@@ -245,10 +334,24 @@ export default function AllianceLanding({
 
           <div
             className="relative w-full shadow-lg rounded-lg overflow-hidden cursor-pointer transition-colors bg-[rgba(4,35,21,1)]"
-            onClick={() => setIsDemoLoginModalOpen(true)}
+            onClick={() => {
+              switch (title) {
+                case "AWS":
+                  setIsAWSScreenSaverOpen(true)
+                  break
+                case "Google Cloud":
+                  setIsGoogleCloudScreenSaverOpen(true)
+                  break
+                case "Microsoft":
+                  setIsMicrosoftScreenSaverOpen(true)
+                  break
+                default:
+                  setIsDemoLoginModalOpen(true)
+              }
+            }}
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wnldDrFOwtGggYEklLsbwV4cbvqcMM.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-Lngxw6s4Hv0agSmaMfYvl4gSoqBUKL.png"
               alt="Demos"
               className="object-cover size-full px-0 py-3.5 my-14 mx-8 ml-8 pl-0 w-[120] pb-8 pt-7"
             />
@@ -265,7 +368,7 @@ export default function AllianceLanding({
         >
           <div className="flex items-center" style={{ gap: "clamp(16px, 2vw, 32px)" }}>
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-djRnyWQrSo8Vh5UCgxBpA8uKqiZUJV.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-rn0qQHyBzNhLaMhK3hAhabPROskKtB.png"
               alt="Kyndryl Alliance Experience"
               style={{ height: "clamp(24px, 3vh, 32px)", width: "auto" }}
             />
@@ -273,7 +376,7 @@ export default function AllianceLanding({
           <nav className="text-neutral-600">
             <ul className="flex items-center" style={{ gap: "clamp(8px, 1vw, 16px)" }}>
               <li className="hover:text-black">
-                <a className="font-light" href="/">
+                <a className="font-light" href="/alliance-home">
                   Home
                 </a>
               </li>

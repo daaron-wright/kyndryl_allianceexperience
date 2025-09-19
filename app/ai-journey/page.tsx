@@ -127,14 +127,14 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MEGNnZWLbIFaozl7mPigQVLRmY1A2o.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-XBBrqd3OtOkYn9qXa1LtODY0kX9w1D.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />
           </div>
 
           <div className="flex items-center gap-2">
-            <a href="/" className="text-[#9E9287] no-underline text-sm lg:text-base font-light">
+            <a href="/alliance-home" className="text-[#9E9287] no-underline text-sm lg:text-base font-light">
               Home
             </a>
             <ChevronRight className="text-[#9E9287] w-4 h-4" />

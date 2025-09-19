@@ -16,8 +16,7 @@ export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps
         </svg>
       </button>
 
-      {/* User Icon */}
-      <div className="flex justify-center mb-8 mt-4 text-left ml-0 mr-[500px]">
+      <div className="flex mb-8 mt-4">
         <div className="w-20 h-20 bg-[#FF462D] rounded-full flex items-center justify-center">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -26,11 +25,10 @@ export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps
         </div>
       </div>
 
-      {/* Main Heading */}
-      <h1 className="text-4xl font-light text-[#FF462D] text-center mb-6">Welcome to AI Use Cases Explorer</h1>
+      <h1 className="text-4xl font-light text-[#FF462D] text-left mb-6">Welcome to AI Use Cases Explorer</h1>
 
       {/* Subtitle */}
-      <p className="text-xl text-gray-700 text-left mb-8 ml-6">
+      <p className="text-xl text-gray-700 text-left mb-8">
         Discover how AI transforms industries through interactive demonstrations
       </p>
 
@@ -51,24 +49,28 @@ export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps
         </div>
       </div>
 
-      {/* Login Button */}
-      <div className="flex justify-center mb-12">
-        <button
-          onClick={onLogin}
-          className="flex items-center gap-3 px-8 py-4 border-2 border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-lg font-medium text-gray-700 mr-[300px]"
-        >
-          Log in to explore demos
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF462D" strokeWidth="2">
-            <path d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
+      <div className="mb-12">
+        <div>
+          <a
+            href="https://kyndryl-demos.web.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-8 py-4 border-2 border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-lg font-medium text-gray-700 no-underline w-fit"
+          >
+            Log in to explore demos
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF462D" strokeWidth="2">
+              <path d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <p className="text-sm text-gray-600 mt-2">Username: &lt;email&gt; | Password: &lt;firstname.surname&gt;</p>
+        </div>
       </div>
 
       {/* Statistics */}
       <div className="flex justify-between items-end">
         <div>
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-e7BR5tLoRiB48hJfegG7O4gHYCR4IZ.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-GZbbB4iOLAzP3q4JcLSxDwiQk9BJOZ.png"
             alt="15+"
             className="mb-2 h-12 w-auto"
           />
@@ -80,7 +82,7 @@ export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps
         </div>
         <div>
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-8SswfbwAXQ7u8uscKDlfiriLj3Lj6q.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-oDURJPUQAvfJv7IGHbXkrabhTRE8dI.png"
             alt="8"
             className="mb-2 h-12 w-auto"
           />

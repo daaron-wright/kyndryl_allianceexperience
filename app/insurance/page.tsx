@@ -238,7 +238,7 @@ export default function Insurance() {
           onClick={() => setIsDemoLoginModalOpen(true)}
         >
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wnldDrFOwtGggYEklLsbwV4cbvqcMM.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-Lngxw6s4Hv0agSmaMfYvl4gSoqBUKL.png"
             alt="Demos"
             className="object-cover size-full px-0 py-3.5 my-14 mx-8"
           />

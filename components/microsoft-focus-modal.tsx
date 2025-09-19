@@ -62,7 +62,8 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
           <X size={20} color="#3D3C3C" />
         </button>
 
-        <div className="text-left"
+        <div
+          className="text-left"
           style={{
             width: "100%",
             height: "400px",
@@ -79,7 +80,8 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
             textAlign: "center",
           }}
         >
-          <h2 className="my-0 text-left mx-[265px]"
+          <h2
+            className="my-0 text-left mx-[265px]"
             style={{
               fontSize: "2rem",
               fontFamily: "TWK Everett, sans-serif",
@@ -92,7 +94,8 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
             Our partnership
           </h2>
 
-          <p className="my-0 mx-[84px] text-left"
+          <p
+            className="my-0 mx-[84px] text-left"
             style={{
               fontSize: "1.125rem",
               fontFamily: "TWK Everett, sans-serif",
@@ -103,7 +106,9 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
               margin: "0 auto 2rem auto",
             }}
           >
-            Kyndryl and Microsoft work together to empower people, processes and technology to do more with AI. Our collaboration can enhance your employee productivity and creativity with Microsoft 365 Copilot, and improve business processes and insights with Microsoft Fabric and Power BI with mainframe workloads on Azure.
+            Kyndryl and Microsoft work together to empower people, processes and technology to do more with AI. Our
+            collaboration can enhance your employee productivity and creativity with Microsoft 365 Copilot, and improve
+            business processes and insights with Microsoft Fabric and Power BI with mainframe workloads on Azure.
           </p>
 
           <div
@@ -116,7 +121,7 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
           >
             <button
               onClick={() => {
-                window.location.href = "/microsoft"
+                window.open("https://kyndryl-microsoft-demos.web.app/", "_blank")
               }}
               style={{
                 backgroundColor: "#FF462D",
@@ -137,11 +142,13 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
                 e.currentTarget.style.backgroundColor = "#FF462D"
               }}
             >
-              Explore Customer Stories
+              Explore Microsoft Demos
             </button>
 
             <button
-              onClick={onClose}
+              onClick={() => {
+                window.location.href = "/microsoft"
+              }}
               style={{
                 backgroundColor: "transparent",
                 color: "#3D3C3C",
@@ -163,7 +170,7 @@ export default function MicrosoftFocusModal({ isOpen, onClose }: MicrosoftFocusM
                 e.currentTarget.style.color = "#3D3C3C"
               }}
             >
-              Back to Alliances
+              Customer Stories
             </button>
           </div>
         </div>

@@ -82,7 +82,8 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
             textAlign: "center",
           }}
         >
-          <h2 className="text-left my-0 mx-[265px]"
+          <h2
+            className="text-left my-0 mx-[265px]"
             style={{
               fontSize: "2rem",
               fontFamily: "TWK Everett, sans-serif",
@@ -95,7 +96,8 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
             Our partnership
           </h2>
 
-          <p className="mx-[235px] text-left"
+          <p
+            className="mx-[235px] text-left"
             style={{
               fontSize: "1.125rem",
               fontFamily: "TWK Everett, sans-serif",
@@ -106,7 +108,9 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
               margin: "0 auto 2rem auto",
             }}
           >
-            {"As a key AWS Premier Tier Services Partner, Kyndryl collaborates with our joint customers to accomplish their objectives, merging AWS\'s cutting-edge cloud platform with Kyndryl\'s proficiency in managing critical systems within intricate environments.\n\nDiscover how the synergistic partnership between Kyndryl and AWS accelerates the adoption of cloud solutions, enabling customers to innovate more effectively."}
+            {
+              "As a key AWS Premier Tier Services Partner, Kyndryl collaborates with our joint customers to accomplish their objectives, merging AWS's cutting-edge cloud platform with Kyndryl's proficiency in managing critical systems within intricate environments.\n\nDiscover how the synergistic partnership between Kyndryl and AWS accelerates the adoption of cloud solutions, enabling customers to innovate more effectively."
+            }
           </p>
 
           <div
@@ -119,7 +123,7 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
           >
             <button
               onClick={() => {
-                window.location.href = "/aws"
+                window.open("https://kyndryl-aws-demos.web.app/", "_blank")
               }}
               style={{
                 backgroundColor: "#FF462D",
@@ -140,11 +144,13 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
                 e.currentTarget.style.backgroundColor = "#FF462D"
               }}
             >
-              Explore Customer Stories
+              Explore AWS Demos
             </button>
 
             <button
-              onClick={onClose}
+              onClick={() => {
+                window.location.href = "/aws"
+              }}
               style={{
                 backgroundColor: "transparent",
                 color: "#3D3C3C",
@@ -166,7 +172,7 @@ export default function AWSFocusModal({ isOpen, onClose }: AWSFocusModalProps) {
                 e.currentTarget.style.color = "#3D3C3C"
               }}
             >
-              Back to Alliances
+              Customer Stories
             </button>
           </div>
         </div>
