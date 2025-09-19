@@ -267,7 +267,7 @@ export default function AllianceLanding({
 
           <div
             className="relative w-full bg-[#FF462D] shadow-lg rounded-[4px] overflow-hidden cursor-pointer hover:bg-[#E63E32] transition-colors"
-            onClick={() => setIsAllianceWelcomeModalOpen(true)}
+            onClick={() => setIsVideoLibraryOpen(true)} // Updated to open VideoLibrary Modal instead of AllianceWelcome Modal
           >
             <div style={{ padding: "clamp(20px, 3vw, 40px)" }}>
               <h2
@@ -304,7 +304,7 @@ export default function AllianceLanding({
                 }}
                 onClick={(e) => {
                   e.stopPropagation()
-                  setIsVideoLibraryOpen(true)
+                  window.location.href = "/google-cloud"
                 }}
               >
                 <span
