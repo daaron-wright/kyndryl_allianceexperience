@@ -150,7 +150,8 @@ export default function AWSFocusModal({ isOpen, onClose, onOpenDemos }: AWSFocus
 
             <button
               onClick={() => {
-                window.location.href = "/aws"
+                onClose()
+                window.location.href = "/alliances"
               }}
               style={{
                 backgroundColor: "transparent",
