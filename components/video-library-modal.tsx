@@ -449,7 +449,7 @@ export default function VideoLibraryModal({
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-white">
         <h1 className="text-[32px] font-light text-[#FF462D]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-          Customer Stories - Videos
+          Customer Stories
         </h1>
         <div className="flex items-center gap-4">
           <div className="relative">

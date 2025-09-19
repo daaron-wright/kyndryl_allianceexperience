@@ -13,8 +13,12 @@ export default function AIJourneyPage() {
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedStory, setSelectedStory] = useState(null)
   const [searchTerm, setSearchTerm] = useState("")
-  const [currentPage, setCurrentPage] = useState(1) // Start with page 1
+  const [currentPage, setCurrentPage] = useState(1)
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
+  const [selectedIndustries, setSelectedIndustries] = useState([])
+  const [selectedAIFeatures, setSelectedAIFeatures] = useState([])
+  const [selectedAlliances, setSelectedAlliances] = useState([])
+  const [isFiltersExpanded, setIsFiltersExpanded] = useState(true)
 
   const customerStories = [
     {
@@ -23,17 +27,21 @@ export default function AIJourneyPage() {
       description:
         "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
       image: "/grocery-shopping-scene.png",
-      alliance: "Alliance / customer name",
+      alliance: "Industry / Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
+      alliancePartner: "AWS",
+      aiFeature: "AI & Machine Learning",
     },
     {
       id: 2,
       title: "Agentic Media Monitor",
       description:
         "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Sy4wzm6gVgKcfOGuuDTbl6rAcERiqU.png", // replaced with AeroBot Media Monitor dashboard image
-      alliance: "Alliance / customer name",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Sy4wzm6gVgKcfOGuuDTbl6rAcERiqU.png",
+      alliance: "Industry / Communications & Media",
       tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
+      alliancePartner: "Google Cloud",
+      aiFeature: "Data Analytics",
     },
     {
       id: 3,
@@ -41,8 +49,10 @@ export default function AIJourneyPage() {
       description:
         "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
       image: "/sheep-livestock.png",
-      alliance: "Alliance / customer name",
+      alliance: "Industry / Retail",
       tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "Automation",
     },
     {
       id: 4,
@@ -50,8 +60,10 @@ export default function AIJourneyPage() {
       description:
         "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
       image: "/dining-food-scene.png",
-      alliance: "Alliance / customer name",
+      alliance: "Industry / Government",
       tags: ["Legal Tech", "Document Automation", "Compliance"],
+      alliancePartner: "AWS",
+      aiFeature: "Digital Transformation",
     },
     {
       id: 5,
@@ -59,8 +71,10 @@ export default function AIJourneyPage() {
       description:
         "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
       image: "/construction-site-overview.png",
-      alliance: "Alliance / customer name",
+      alliance: "Industry / Financial Services",
       tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
     },
     {
       id: 6,
@@ -68,8 +82,10 @@ export default function AIJourneyPage() {
       description:
         "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
       image: "/grocery-shopping-scene.png",
-      alliance: "Alliance / customer name",
+      alliance: "Industry / Telecommunications",
       tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
+      alliancePartner: "Cross",
+      aiFeature: "Automation",
     },
     {
       id: 7,
@@ -77,19 +93,85 @@ export default function AIJourneyPage() {
       description:
         "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
       image: "/shipping-port-containers.png",
-      alliance: "Alliance / customer name",
+      alliance: "Industry / Healthcare",
       tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
     },
   ]
 
+  const industryOptions = [
+    "Automotive",
+    "Banking",
+    "Communications & Media",
+    "Financial Services",
+    "Healthcare",
+    "Manufacturing",
+    "Government",
+    "Telecommunications",
+    "Retail",
+    "Energy & Utilities",
+  ]
+  const aiFeatureOptions = [
+    "AI & Machine Learning",
+    "Data Analytics",
+    "Automation",
+    "Cybersecurity",
+    "Cloud Services",
+    "Infrastructure Modernization",
+    "Digital Transformation",
+    "Managed Services",
+  ]
+  const allianceOptions = ["AWS", "Google Cloud", "Microsoft Azure", "Cross"]
+
+  const filteredStories = customerStories.filter((story) => {
+    const matchesSearch =
+      story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      story.description.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const matchesIndustry =
+      selectedIndustries.length === 0 || selectedIndustries.some((industry) => story.alliance.includes(industry))
+
+    const matchesAIFeature = selectedAIFeatures.length === 0 || selectedAIFeatures.includes(story.aiFeature)
+
+    const matchesAlliance = selectedAlliances.length === 0 || selectedAlliances.includes(story.alliancePartner)
+
+    return matchesSearch && matchesIndustry && matchesAIFeature && matchesAlliance
+  })
+
   const itemsPerPage = 4
-  const totalPages = Math.ceil(customerStories.length / itemsPerPage)
+  const totalPages = Math.ceil(filteredStories.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
-  const currentItems = customerStories.slice(startIndex, startIndex + itemsPerPage)
+  const currentItems = filteredStories.slice(startIndex, startIndex + itemsPerPage)
 
   const handleCardClick = (story) => {
     setSelectedStory(story)
     setIsFeatureModalOpen(true)
+  }
+
+  const toggleIndustryFilter = (industry) => {
+    setSelectedIndustries((prev) =>
+      prev.includes(industry) ? prev.filter((i) => i !== industry) : [...prev, industry],
+    )
+    setCurrentPage(1)
+  }
+
+  const toggleAIFeatureFilter = (feature) => {
+    setSelectedAIFeatures((prev) => (prev.includes(feature) ? prev.filter((f) => f !== feature) : [...prev, feature]))
+    setCurrentPage(1)
+  }
+
+  const toggleAllianceFilter = (alliance) => {
+    setSelectedAlliances((prev) => (prev.includes(alliance) ? prev.filter((a) => a !== alliance) : [...prev, alliance]))
+    setCurrentPage(1)
+  }
+
+  const clearAllFilters = () => {
+    setSelectedIndustries([])
+    setSelectedAIFeatures([])
+    setSelectedAlliances([])
+    setSearchTerm("")
+    setCurrentPage(1)
   }
 
   return (
@@ -138,6 +220,11 @@ export default function AIJourneyPage() {
                 className="outline-none placeholder:text-neutral-400"
                 placeholder="Search"
                 style={{ width: "clamp(120px, 15vw, 180px)" }}
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value)
+                  setCurrentPage(1)
+                }}
               />
             </div>
           </nav>
@@ -175,15 +262,19 @@ export default function AIJourneyPage() {
       <section id="customer-stories-section" className="bg-[#F2F1EE] min-h-screen">
         {/* Customer Stories Header */}
         <div className="bg-white px-4 sm:px-8 lg:px-16 py-8 border-b border-gray-200">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-6">
             <h1 className="text-[32px] font-light text-[#FF462D]">Case Studies</h1>
+
             <div className="flex items-center gap-4">
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Search"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value)
+                    setCurrentPage(1)
+                  }}
                   className="w-80 px-4 py-2 border border-gray-300 rounded-md text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
                 />
                 <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -193,12 +284,130 @@ export default function AIJourneyPage() {
                   </svg>
                 </button>
               </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
+
+              <div className="relative">
+                <button
+                  onClick={() => setIsFiltersExpanded(!isFiltersExpanded)}
+                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  <span>Filters</span>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className={`transition-transform ${isFiltersExpanded ? "rotate-180" : ""}`}
+                  >
+                    <polyline points="6,9 12,15 18,9" />
+                  </svg>
+                </button>
+
+                {isFiltersExpanded && (
+                  <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg p-6 w-[600px] z-10">
+                    {/* Industry Filter */}
+                    <div className="mb-6">
+                      <h3 className="text-lg font-medium text-gray-900 mb-3">Industry</h3>
+                      <div className="flex flex-wrap gap-2">
+                        <button
+                          onClick={() => setSelectedIndustries([])}
+                          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                            selectedIndustries.length === 0
+                              ? "border-2 border-[#FF462D] text-[#FF462D] bg-white"
+                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                          }`}
+                        >
+                          All
+                        </button>
+                        {industryOptions.map((industry) => (
+                          <button
+                            key={industry}
+                            onClick={() => toggleIndustryFilter(industry)}
+                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                              selectedIndustries.includes(industry)
+                                ? "bg-[#FF462D] text-white"
+                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            }`}
+                          >
+                            {industry}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* AI Feature Filter */}
+                    <div className="mb-6">
+                      <h3 className="text-lg font-medium text-gray-900 mb-3">AI Feature</h3>
+                      <div className="flex flex-wrap gap-2">
+                        <button
+                          onClick={() => setSelectedAIFeatures([])}
+                          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                            selectedAIFeatures.length === 0
+                              ? "border-2 border-[#FF462D] text-[#FF462D] bg-white"
+                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                          }`}
+                        >
+                          All
+                        </button>
+                        {aiFeatureOptions.map((feature) => (
+                          <button
+                            key={feature}
+                            onClick={() => toggleAIFeatureFilter(feature)}
+                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                              selectedAIFeatures.includes(feature)
+                                ? "bg-[#FF462D] text-white"
+                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            }`}
+                          >
+                            {feature}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Alliance Filter */}
+                    <div className="mb-4">
+                      <h3 className="text-lg font-medium text-gray-900 mb-3">Alliance</h3>
+                      <div className="flex flex-wrap gap-2">
+                        <button
+                          onClick={() => setSelectedAlliances([])}
+                          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                            selectedAlliances.length === 0
+                              ? "border-2 border-[#FF462D] text-[#FF462D] bg-white"
+                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                          }`}
+                        >
+                          All
+                        </button>
+                        {allianceOptions.map((alliance) => (
+                          <button
+                            key={alliance}
+                            onClick={() => toggleAllianceFilter(alliance)}
+                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                              selectedAlliances.includes(alliance)
+                                ? "bg-[#FF462D] text-white"
+                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            }`}
+                          >
+                            {alliance}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Clear Filters */}
+                    <div className="flex justify-end pt-4 border-t border-gray-200">
+                      <button
+                        onClick={clearAllFilters}
+                        className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                      >
+                        Clear all filters
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -250,68 +459,72 @@ export default function AIJourneyPage() {
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-center mt-12 mb-8">
-            <div className="flex items-center gap-8">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`text-lg ${
-                    currentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
-                  }`}
-                >
-                  {page}
-                  {currentPage === page && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
-                  )}
-                </button>
-              ))}
+          {totalPages > 1 && (
+            <div className="flex justify-center mt-12 mb-8">
+              <div className="flex items-center gap-8">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`text-lg ${
+                      currentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
+                    }`}
+                  >
+                    {page}
+                    {currentPage === page && (
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Footer Navigation */}
-          <div className="flex items-center justify-between mt-8">
-            <button
-              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-              disabled={currentPage === 1}
-              className={`flex items-center text-sm font-medium ${
-                currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
-              }`}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="mr-2"
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between mt-8">
+              <button
+                onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                disabled={currentPage === 1}
+                className={`flex items-center text-sm font-medium ${
+                  currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                }`}
               >
-                <polyline points="15,18 9,12 15,6" />
-              </svg>
-              Previous
-            </button>
-            <button
-              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-              disabled={currentPage === totalPages}
-              className={`flex items-center text-sm font-medium ${
-                currentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
-              }`}
-            >
-              Next
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="ml-2"
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="mr-2"
+                >
+                  <polyline points="15,18 9,12 15,6" />
+                </svg>
+                Previous
+              </button>
+              <button
+                onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                disabled={currentPage === totalPages}
+                className={`flex items-center text-sm font-medium ${
+                  currentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                }`}
               >
-                <polyline points="9,18 15,12 9,6" />
-              </svg>
-            </button>
-          </div>
+                Next
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="ml-2"
+                >
+                  <polyline points="9,18 15,12 9,6" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -350,7 +563,7 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-XBBrqd3OtOkYn9qXa1LtODY0kX9w1D.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-xRBmnINgs5oa0oj3sfZtuSvTIovaQZ.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />
