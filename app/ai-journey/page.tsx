@@ -17,7 +17,6 @@ export default function AIJourneyPage() {
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
   const [selectedIndustries, setSelectedIndustries] = useState([])
   const [selectedAIFeatures, setSelectedAIFeatures] = useState([])
-  const [selectedAlliances, setSelectedAlliances] = useState([])
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(true)
 
   const customerStories = [
@@ -122,7 +121,6 @@ export default function AIJourneyPage() {
     "Digital Transformation",
     "Managed Services",
   ]
-  const allianceOptions = ["AWS", "Google Cloud", "Microsoft Azure", "Cross"]
 
   const filteredStories = customerStories.filter((story) => {
     const matchesSearch =
@@ -134,9 +132,7 @@ export default function AIJourneyPage() {
 
     const matchesAIFeature = selectedAIFeatures.length === 0 || selectedAIFeatures.includes(story.aiFeature)
 
-    const matchesAlliance = selectedAlliances.length === 0 || selectedAlliances.includes(story.alliancePartner)
-
-    return matchesSearch && matchesIndustry && matchesAIFeature && matchesAlliance
+    return matchesSearch && matchesIndustry && matchesAIFeature
   })
 
   const itemsPerPage = 4
@@ -161,15 +157,9 @@ export default function AIJourneyPage() {
     setCurrentPage(1)
   }
 
-  const toggleAllianceFilter = (alliance) => {
-    setSelectedAlliances((prev) => (prev.includes(alliance) ? prev.filter((a) => a !== alliance) : [...prev, alliance]))
-    setCurrentPage(1)
-  }
-
   const clearAllFilters = () => {
     setSelectedIndustries([])
     setSelectedAIFeatures([])
-    setSelectedAlliances([])
     setSearchTerm("")
     setCurrentPage(1)
   }
@@ -239,7 +229,7 @@ export default function AIJourneyPage() {
           <div className="flex flex-wrap gap-4">
             <button
               onClick={() => setIsDemoLoginOpen(true)}
-              className="bg-white text-[#FF462D] px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
+              className="bg-[#FF462D] text-white border border-[#F2F1EE] px-6 py-3 rounded-md font-medium hover:bg-[#F2F1EE] hover:text-[#FF462D] transition-colors"
             >
               Explore Demos
             </button>
@@ -337,7 +327,7 @@ export default function AIJourneyPage() {
                     </div>
 
                     {/* AI Feature Filter */}
-                    <div className="mb-6">
+                    <div className="mb-4">
                       <h3 className="text-lg font-medium text-gray-900 mb-3">AI Feature</h3>
                       <div className="flex flex-wrap gap-2">
                         <button
@@ -361,36 +351,6 @@ export default function AIJourneyPage() {
                             }`}
                           >
                             {feature}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Alliance Filter */}
-                    <div className="mb-4">
-                      <h3 className="text-lg font-medium text-gray-900 mb-3">Alliance</h3>
-                      <div className="flex flex-wrap gap-2">
-                        <button
-                          onClick={() => setSelectedAlliances([])}
-                          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                            selectedAlliances.length === 0
-                              ? "border-2 border-[#FF462D] text-[#FF462D] bg-white"
-                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                          }`}
-                        >
-                          All
-                        </button>
-                        {allianceOptions.map((alliance) => (
-                          <button
-                            key={alliance}
-                            onClick={() => toggleAllianceFilter(alliance)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                              selectedAlliances.includes(alliance)
-                                ? "bg-[#FF462D] text-white"
-                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                            }`}
-                          >
-                            {alliance}
                           </button>
                         ))}
                       </div>
@@ -538,7 +498,7 @@ export default function AIJourneyPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setIsDemoLoginOpen(true)}
-              className="bg-[#FF462D] text-white px-8 py-3 rounded-md font-medium hover:bg-[#E63E32] transition-colors"
+              className="bg-[#FF462D] text-white border border-[#F2F1EE] px-8 py-3 rounded-md font-medium hover:bg-[#F2F1EE] hover:text-[#FF462D] transition-colors"
             >
               Explore Demos
             </button>
