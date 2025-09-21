@@ -290,7 +290,7 @@ export default function Healthcare() {
           onClick={() => setIsDemoLoginModalOpen(true)}
         >
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-zNAgdVelupuFaig3XEh1O5ylnao08n.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-36RWsLYVwLCHUWkCzYldRhXRBlvE06.png"
             alt="Demos"
             className="w-full h-full object-cover"
           />
