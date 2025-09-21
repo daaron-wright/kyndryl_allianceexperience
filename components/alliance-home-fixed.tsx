@@ -308,6 +308,7 @@ function Tile({
             backgroundImage: `url(${bgImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            pointerEvents: "none",
           }}
         />
       )}
