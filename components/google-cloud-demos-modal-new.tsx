@@ -24,31 +24,6 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
 
   const demos: Demo[] = [
     {
-      title: "Healthcare Data Analytics Platform",
-      description: "demo@healthcare.com / password123",
-      tags: ["Healthcare", "Data Analytics", "Google Cloud", "BigQuery"],
-    },
-    {
-      title: "Patient Management System",
-      description: "admin@patient.com / admin2024",
-      tags: ["Healthcare", "Patient Care", "Cloud SQL", "AI/ML"],
-    },
-    {
-      title: "Medical Imaging AI",
-      description: "imaging@medical.com / secure456",
-      tags: ["Healthcare", "AI/ML", "Computer Vision", "Vertex AI"],
-    },
-    {
-      title: "Telemedicine Platform",
-      description: "telehealth@demo.com / health789",
-      tags: ["Healthcare", "Telemedicine", "Cloud Run", "Firebase"],
-    },
-    {
-      title: "Drug Discovery Analytics",
-      description: "research@pharma.com / discovery2024",
-      tags: ["Healthcare", "Research", "BigQuery", "AI Platform"],
-    },
-    {
       title: "Kyndryl Post, Trusted mail service",
       description: "demo@kyndryl.com / kyndryl123",
       tags: ["Email", "Security", "Cloud Services", "Enterprise"],
