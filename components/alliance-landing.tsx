@@ -338,17 +338,20 @@ export default function AllianceLanding({
           </div>
 
           <div
-            className="relative shadow-lg rounded-lg overflow-hidden cursor-pointer transition-colors bg-[rgba(4,35,21,1)] h-auto w-auto py-0 mx-0 my-0"
+            className={`relative shadow-lg rounded-lg overflow-hidden transition-colors bg-[rgba(4,35,21,1)] h-auto w-auto py-0 mx-0 my-0 ${
+              title === "Microsoft" ? "opacity-50 grayscale cursor-not-allowed" : "cursor-pointer"
+            }`}
             onClick={() => {
+              if (title === "Microsoft") {
+                return // Do nothing for Microsoft
+              }
+
               if (title === "AWS") {
                 setIsDemosModalOpen(true)
               } else {
                 switch (title) {
                   case "Google Cloud":
                     setIsGoogleCloudDemosModalOpen(true)
-                    break
-                  case "Microsoft":
-                    setIsMicrosoftScreenSaverOpen(true)
                     break
                   default:
                     setIsDemoLoginModalOpen(true)
