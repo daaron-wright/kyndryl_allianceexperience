@@ -16,7 +16,7 @@ import MicrosoftFocusModal from "./microsoft-focus-modal"
 import AWSScreenSaver from "./aws-screen-saver"
 import GoogleCloudScreenSaver from "./google-cloud-screen-saver"
 import MicrosoftScreenSaver from "./microsoft-screen-saver"
-import GoogleCloudDemosModal from "./google-cloud-demos-modal"
+import GoogleCloudDemosModal from "./google-cloud-demos-modal-new"
 
 interface AllianceLandingProps {
   logo?: string
@@ -200,7 +200,12 @@ export default function AllianceLanding({
         )}
 
         {/* Google Cloud demos modal */}
-        {isGoogleCloudDemosModalOpen && <GoogleCloudDemosModal onClose={() => setIsGoogleCloudDemosModalOpen(false)} />}
+        {isGoogleCloudDemosModalOpen && (
+          <GoogleCloudDemosModal
+            isOpen={isGoogleCloudDemosModalOpen}
+            onClose={() => setIsGoogleCloudDemosModalOpen(false)}
+          />
+        )}
 
         {/* Header */}
         <header className="mb-8 flex items-center justify-between" style={{ marginBottom: "clamp(16px, 2vh, 32px)" }}>
