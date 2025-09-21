@@ -26,6 +26,7 @@ export default function AllianceWelcomeModal({
         alignItems: "center",
         zIndex: 1000,
       }}
+      onClick={onClose}
     >
       <div
         style={{
@@ -37,6 +38,7 @@ export default function AllianceWelcomeModal({
           overflow: "hidden",
           display: "flex",
         }}
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button

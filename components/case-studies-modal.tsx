@@ -72,6 +72,7 @@ export default function CaseStudiesModal({ onClose }: CaseStudiesModalProps) {
         alignItems: "center",
         justifyContent: "center",
       }}
+      onClick={onClose}
     >
       <div
         style={{
@@ -84,6 +85,7 @@ export default function CaseStudiesModal({ onClose }: CaseStudiesModalProps) {
           display: "flex",
           flexDirection: "column",
         }}
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <header style={{ padding: "32px 48px", borderBottom: "1px solid #E5E5E5", backgroundColor: "#FFFFFF" }}>

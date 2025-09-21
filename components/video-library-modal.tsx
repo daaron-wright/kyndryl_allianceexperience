@@ -445,420 +445,439 @@ export default function VideoLibraryModal({
   }
 
   return (
-    <div className="w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
-      {/* Header */}
-      <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-white">
-        <h1 className="text-[32px] font-light text-[#FF462D]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-          Customer Stories
-        </h1>
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-80 px-4 py-2 border border-gray-300 rounded-md text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
-              style={{ fontFamily: "TWK Everett, sans-serif" }}
-            />
-            <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
+    <div
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-white">
+          <h1 className="text-[32px] font-light text-[#FF462D]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
+            Customer Stories
+          </h1>
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-80 px-4 py-2 border border-gray-300 rounded-md text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
+                style={{ fontFamily: "TWK Everett, sans-serif" }}
+              />
+              <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+              </button>
+            </div>
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
+        </div>
+
+        {/* Collapsible Filter Section */}
+        <div className="bg-white border-b border-gray-200">
+          <button
+            onClick={() => setIsFilterCollapsed(!isFilterCollapsed)}
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
+          >
+            <span className="text-lg font-medium text-gray-900 mb-3" style={{ fontFamily: "TWK Everett, sans-serif" }}>
+              Filters
+            </span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className={`transform transition-transform duration-200 ${isFilterCollapsed ? "rotate-0" : "rotate-90"}`}
+            >
+              <polyline points="9,18 15,12 9,6" />
+            </svg>
+          </button>
+
+          {!isFilterCollapsed && (
+            <div className="p-6 space-y-6 border-t border-gray-100">
+              {/* Industry Filter */}
+              <div>
+                <h3
+                  className="text-lg font-medium text-gray-900 mb-3"
+                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                >
+                  Industry
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {industries.map((industry) => (
+                    <button
+                      key={industry}
+                      onClick={() => {
+                        setSelectedIndustry(industry)
+                        setCurrentPage(1)
+                      }}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        selectedIndustry === industry
+                          ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {industry}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* AI Feature Filter */}
+              <div>
+                <h3
+                  className="text-lg font-medium text-gray-900 mb-3"
+                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                >
+                  AI Feature
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {aiFeatures.map((feature) => (
+                    <button
+                      key={feature}
+                      onClick={() => {
+                        setSelectedAIFeature(feature)
+                        setCurrentPage(1)
+                      }}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        selectedAIFeature === feature
+                          ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {feature}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Alliance Filter */}
+              <div>
+                <h3
+                  className="text-lg font-medium text-gray-900 mb-3"
+                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                >
+                  Alliance
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {alliances.map((alliance) => (
+                    <button
+                      key={alliance}
+                      onClick={() => {
+                        setSelectedAlliance(alliance)
+                        setCurrentPage(1)
+                      }}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        selectedAlliance === alliance
+                          ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {alliance}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 bg-[#F5F5F5] p-8 overflow-y-auto">
+          <div className="grid grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {currentItems.map((item, index) => {
+              const globalIndex = startIndex + index
+              const isPlaying = playingVideoIndex === globalIndex
+
+              return (
+                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm">
+                  <div className="relative">
+                    <div className="w-full h-48 bg-gray-100 flex items-center justify-center relative">
+                      {/* Video Thumbnail with Duration Overlay */}
+                      {item.type === "video" && item.url.startsWith("http") ? (
+                        <div className="w-full h-full relative">
+                          {isPlaying ? (
+                            <iframe
+                              src={`${item.url}?autoplay=1&controls=1`}
+                              className="w-full h-full"
+                              frameBorder="0"
+                              allowFullScreen
+                              title={item.title}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            />
+                          ) : (
+                            <div className="w-full h-full relative">
+                              {item.url.includes("scene7.com") ? (
+                                <img
+                                  src={`${item.url}&fmt=jpeg&wid=640&hei=360&fit=crop&crop=1,1,1,1&qlt=95&op_sharpen=0&resMode=sharp2&op_usm=1,1,6,0&iccEmbed=0&printRes=150`}
+                                  alt={item.title}
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
+                              )}
+
+                              {/* Play button overlay */}
+                              <div
+                                className="absolute inset-0 flex items-center justify-center cursor-pointer group bg-black bg-opacity-30 hover:bg-opacity-40 transition-all"
+                                onClick={() => handleVideoClick(globalIndex)}
+                              >
+                                <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all shadow-lg">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF462D" className="ml-1">
+                                    <polygon points="5,3 19,12 5,21" />
+                                  </svg>
+                                </div>
+                              </div>
+
+                              {/* Duration Overlay */}
+                              <div className="absolute bottom-3 right-3 bg-black bg-opacity-70 text-white px-2 py-1 text-xs rounded">
+                                {item.duration}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : item.type === "video" && !item.url.startsWith("http") ? (
+                        <div className="w-full h-full relative">
+                          {isPlaying ? (
+                            <video
+                              controls
+                              autoPlay
+                              className="w-full h-full object-cover"
+                              poster={`/video-thumbnails/${item.url.replace(".mp4", "-keyframe.jpg")}`}
+                            >
+                              <source src={`/videos/${item.url}`} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          ) : (
+                            <div className="w-full h-full relative">
+                              <img
+                                src={`/video-thumbnails/${item.url.replace(".mp4", "-keyframe.jpg")}`}
+                                alt={item.title}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  // Fallback to gradient if keyframe image doesn't exist
+                                  e.currentTarget.style.display = "none"
+                                  e.currentTarget.nextElementSibling.style.display = "block"
+                                }}
+                              />
+                              <div
+                                className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900"
+                                style={{ display: "none" }}
+                              />
+
+                              {/* Play button overlay */}
+                              <div
+                                className="absolute inset-0 flex items-center justify-center cursor-pointer group bg-black bg-opacity-30 hover:bg-opacity-40 transition-all"
+                                onClick={() => handleVideoClick(globalIndex)}
+                              >
+                                <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all shadow-lg">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF462D" className="ml-1">
+                                    <polygon points="5,3 19,12 5,21" />
+                                  </svg>
+                                </div>
+                              </div>
+
+                              {/* Duration Overlay */}
+                              <div className="absolute bottom-3 right-3 bg-black bg-opacity-70 text-white px-2 py-1 text-xs rounded">
+                                {item.duration}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div
+                          className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer group relative"
+                          onClick={() => handleVideoClick(globalIndex)}
+                        >
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2 group-hover:bg-opacity-30 transition-all">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5,3 19,12 5,21" />
+                              </svg>
+                            </div>
+                          </div>
+                          {/* Duration Overlay */}
+                          <div className="absolute bottom-3 right-3 bg-black bg-opacity-70 text-white px-2 py-1 text-xs rounded">
+                            {item.duration}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Featured Badge */}
+                      {item.featured && (
+                        <div className="absolute top-3 left-3 bg-[#FF462D] text-white px-3 py-1 text-xs font-medium rounded">
+                          Featured
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="p-6">
+                    <div
+                      className="text-[#FF462D] text-sm font-medium mb-2"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {item.alliance} / {item.customerName || "customer name"}
+                    </div>
+                    <h3
+                      className="text-[#3D3C3C] text-lg font-medium mb-3 leading-tight"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className="text-gray-600 text-sm mb-4 leading-relaxed"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {item.description || "Content title utenim ad minim veniam, quis nostrud exercitation"}
+                    </p>
+                    <div
+                      className="flex items-center text-[#3D3C3C] text-sm font-medium mb-4 cursor-pointer hover:text-[#FF462D]"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      Learn more
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className="ml-1"
+                      >
+                        <polyline points="9,18 15,12 9,6" />
+                      </svg>
+                    </div>
+
+                    <div className="flex gap-2 flex-wrap">
+                      {item.tags && item.tags.length > 0 ? (
+                        item.tags.slice(0, 3).map((tag: string, tagIndex: number) => (
+                          <span
+                            key={tagIndex}
+                            className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
+                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                          >
+                            {tag}
+                          </span>
+                        ))
+                      ) : (
+                        <>
+                          <span
+                            className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
+                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                          >
+                            {item.industry}
+                          </span>
+                          <span
+                            className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
+                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                          >
+                            {item.aiFeature}
+                          </span>
+                          <span
+                            className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
+                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                          >
+                            {item.alliance}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex justify-center mt-12 mb-8">
+              <div className="flex items-center gap-8">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    disabled={currentPage === page}
+                    className={`text-lg ${
+                      currentPage === page
+                        ? "text-[#FF462D] font-medium relative"
+                        : "text-[#3D3C3C] hover:text-[#FF462D]"
+                    }`}
+                    style={{ fontFamily: "TWK Everett, sans-serif" }}
+                  >
+                    {page}
+                    {currentPage === page && (
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Footer Navigation */}
+        <div className="flex items-center justify-between p-6 bg-white border-t border-gray-200">
+          <button
+            onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+            disabled={currentPage === 1}
+            className={`flex items-center text-sm font-medium ${
+              currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+            }`}
+            style={{ fontFamily: "TWK Everett, sans-serif" }}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="mr-2"
+            >
+              <polyline points="15,18 9,12 15,6" />
+            </svg>
+            Previous
+          </button>
+          <button
+            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+            disabled={currentPage === totalPages}
+            className={`flex items-center text-sm font-medium ${
+              currentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+            }`}
+            style={{ fontFamily: "TWK Everett, sans-serif" }}
+          >
+            Next
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="ml-2"
+            >
+              <polyline points="9,18 15,12 9,6" />
             </svg>
           </button>
         </div>
-      </div>
-
-      {/* Collapsible Filter Section */}
-      <div className="bg-white border-b border-gray-200">
-        <button
-          onClick={() => setIsFilterCollapsed(!isFilterCollapsed)}
-          className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
-        >
-          <span className="text-lg font-medium text-gray-900 mb-3" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-            Filters
-          </span>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className={`transform transition-transform duration-200 ${isFilterCollapsed ? "rotate-0" : "rotate-90"}`}
-          >
-            <polyline points="9,18 15,12 9,6" />
-          </svg>
-        </button>
-
-        {!isFilterCollapsed && (
-          <div className="p-6 space-y-6 border-t border-gray-100">
-            {/* Industry Filter */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-                Industry
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {industries.map((industry) => (
-                  <button
-                    key={industry}
-                    onClick={() => {
-                      setSelectedIndustry(industry)
-                      setCurrentPage(1)
-                    }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                      selectedIndustry === industry
-                        ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {industry}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* AI Feature Filter */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-                AI Feature
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {aiFeatures.map((feature) => (
-                  <button
-                    key={feature}
-                    onClick={() => {
-                      setSelectedAIFeature(feature)
-                      setCurrentPage(1)
-                    }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                      selectedAIFeature === feature
-                        ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {feature}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Alliance Filter */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-                Alliance
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {alliances.map((alliance) => (
-                  <button
-                    key={alliance}
-                    onClick={() => {
-                      setSelectedAlliance(alliance)
-                      setCurrentPage(1)
-                    }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                      selectedAlliance === alliance
-                        ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {alliance}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 bg-[#F5F5F5] p-8 overflow-y-auto">
-        <div className="grid grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {currentItems.map((item, index) => {
-            const globalIndex = startIndex + index
-            const isPlaying = playingVideoIndex === globalIndex
-
-            return (
-              <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm">
-                <div className="relative">
-                  <div className="w-full h-48 bg-gray-100 flex items-center justify-center relative">
-                    {/* Video Thumbnail with Duration Overlay */}
-                    {item.type === "video" && item.url.startsWith("http") ? (
-                      <div className="w-full h-full relative">
-                        {isPlaying ? (
-                          <iframe
-                            src={`${item.url}?autoplay=1&controls=1`}
-                            className="w-full h-full"
-                            frameBorder="0"
-                            allowFullScreen
-                            title={item.title}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          />
-                        ) : (
-                          <div className="w-full h-full relative">
-                            {item.url.includes("scene7.com") ? (
-                              <img
-                                src={`${item.url}&fmt=jpeg&wid=640&hei=360&fit=crop&crop=1,1,1,1&qlt=95&op_sharpen=0&resMode=sharp2&op_usm=1,1,6,0&iccEmbed=0&printRes=150`}
-                                alt={item.title}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
-                            )}
-
-                            {/* Play button overlay */}
-                            <div
-                              className="absolute inset-0 flex items-center justify-center cursor-pointer group bg-black bg-opacity-30 hover:bg-opacity-40 transition-all"
-                              onClick={() => handleVideoClick(globalIndex)}
-                            >
-                              <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all shadow-lg">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF462D" className="ml-1">
-                                  <polygon points="5,3 19,12 5,21" />
-                                </svg>
-                              </div>
-                            </div>
-
-                            {/* Duration Overlay */}
-                            <div className="absolute bottom-3 right-3 bg-black bg-opacity-70 text-white px-2 py-1 text-xs rounded">
-                              {item.duration}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ) : item.type === "video" && !item.url.startsWith("http") ? (
-                      <div className="w-full h-full relative">
-                        {isPlaying ? (
-                          <video
-                            controls
-                            autoPlay
-                            className="w-full h-full object-cover"
-                            poster={`/video-thumbnails/${item.url.replace(".mp4", "-keyframe.jpg")}`}
-                          >
-                            <source src={`/videos/${item.url}`} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
-                        ) : (
-                          <div className="w-full h-full relative">
-                            <img
-                              src={`/video-thumbnails/${item.url.replace(".mp4", "-keyframe.jpg")}`}
-                              alt={item.title}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                // Fallback to gradient if keyframe image doesn't exist
-                                e.currentTarget.style.display = "none"
-                                e.currentTarget.nextElementSibling.style.display = "block"
-                              }}
-                            />
-                            <div
-                              className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900"
-                              style={{ display: "none" }}
-                            />
-
-                            {/* Play button overlay */}
-                            <div
-                              className="absolute inset-0 flex items-center justify-center cursor-pointer group bg-black bg-opacity-30 hover:bg-opacity-40 transition-all"
-                              onClick={() => handleVideoClick(globalIndex)}
-                            >
-                              <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all shadow-lg">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF462D" className="ml-1">
-                                  <polygon points="5,3 19,12 5,21" />
-                                </svg>
-                              </div>
-                            </div>
-
-                            {/* Duration Overlay */}
-                            <div className="absolute bottom-3 right-3 bg-black bg-opacity-70 text-white px-2 py-1 text-xs rounded">
-                              {item.duration}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <div
-                        className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer group relative"
-                        onClick={() => handleVideoClick(globalIndex)}
-                      >
-                        <div className="text-center">
-                          <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2 group-hover:bg-opacity-30 transition-all">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                              <polygon points="5,3 19,12 5,21" />
-                            </svg>
-                          </div>
-                        </div>
-                        {/* Duration Overlay */}
-                        <div className="absolute bottom-3 right-3 bg-black bg-opacity-70 text-white px-2 py-1 text-xs rounded">
-                          {item.duration}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Featured Badge */}
-                    {item.featured && (
-                      <div className="absolute top-3 left-3 bg-[#FF462D] text-white px-3 py-1 text-xs font-medium rounded">
-                        Featured
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-6">
-                  <div
-                    className="text-[#FF462D] text-sm font-medium mb-2"
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {item.alliance} / {item.customerName || "customer name"}
-                  </div>
-                  <h3
-                    className="text-[#3D3C3C] text-lg font-medium mb-3 leading-tight"
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    className="text-gray-600 text-sm mb-4 leading-relaxed"
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {item.description || "Content title utenim ad minim veniam, quis nostrud exercitation"}
-                  </p>
-                  <div
-                    className="flex items-center text-[#3D3C3C] text-sm font-medium mb-4 cursor-pointer hover:text-[#FF462D]"
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    Learn more
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="ml-1"
-                    >
-                      <polyline points="9,18 15,12 9,6" />
-                    </svg>
-                  </div>
-
-                  <div className="flex gap-2 flex-wrap">
-                    {item.tags && item.tags.length > 0 ? (
-                      item.tags.slice(0, 3).map((tag: string, tagIndex: number) => (
-                        <span
-                          key={tagIndex}
-                          className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                          style={{ fontFamily: "TWK Everett, sans-serif" }}
-                        >
-                          {tag}
-                        </span>
-                      ))
-                    ) : (
-                      <>
-                        <span
-                          className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                          style={{ fontFamily: "TWK Everett, sans-serif" }}
-                        >
-                          {item.industry}
-                        </span>
-                        <span
-                          className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                          style={{ fontFamily: "TWK Everett, sans-serif" }}
-                        >
-                          {item.aiFeature}
-                        </span>
-                        <span
-                          className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                          style={{ fontFamily: "TWK Everett, sans-serif" }}
-                        >
-                          {item.alliance}
-                        </span>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-12 mb-8">
-            <div className="flex items-center gap-8">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  disabled={currentPage === page}
-                  className={`text-lg ${
-                    currentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#3D3C3C] hover:text-[#FF462D]"
-                  }`}
-                  style={{ fontFamily: "TWK Everett, sans-serif" }}
-                >
-                  {page}
-                  {currentPage === page && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Footer Navigation */}
-      <div className="flex items-center justify-between p-6 bg-white border-t border-gray-200">
-        <button
-          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-          disabled={currentPage === 1}
-          className={`flex items-center text-sm font-medium ${
-            currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
-          }`}
-          style={{ fontFamily: "TWK Everett, sans-serif" }}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="mr-2"
-          >
-            <polyline points="15,18 9,12 15,6" />
-          </svg>
-          Previous
-        </button>
-        <button
-          onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-          disabled={currentPage === totalPages}
-          className={`flex items-center text-sm font-medium ${
-            currentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
-          }`}
-          style={{ fontFamily: "TWK Everett, sans-serif" }}
-        >
-          Next
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="ml-2"
-          >
-            <polyline points="9,18 15,12 9,6" />
-          </svg>
-        </button>
       </div>
     </div>
   )

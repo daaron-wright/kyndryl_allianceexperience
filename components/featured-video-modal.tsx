@@ -58,8 +58,14 @@ interface FeaturedVideoModalProps {
 
 export default function FeaturedVideoModal({ onClose }: FeaturedVideoModalProps) {
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-[1400px] h-[800px] bg-white font-sans shadow-2xl overflow-hidden">
+    <div
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-[1400px] h-[800px] bg-white font-sans shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
         <header className="flex items-center justify-between px-12 py-6 h-[90px] border-b border-gray-200">
           <h1 className="text-[30px] font-light text-[#FF462D] tracking-[0.16px]">Feature</h1>
 
