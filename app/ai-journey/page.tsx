@@ -249,6 +249,103 @@ export default function AIJourneyPage() {
         </div>
       </section>
 
+      {/* Demos Section */}
+      <section className="bg-[#3D3C3C] px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-6">Interactive AI Demos</h2>
+            <p className="text-lg text-white/80 mb-8">
+              Experience our AI solutions firsthand with these interactive demonstrations
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Demo Tile 1 */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all cursor-pointer">
+              <div className="text-white mb-4">
+                <div className="w-12 h-12 bg-[#FF462D] rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 12l2 2 4-4" />
+                    <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" />
+                    <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" />
+                    <path d="M3 12h6m6 0h6" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-2">Healthcare AI Assistant</h3>
+                <p className="text-white/70 text-sm mb-4">
+                  AI-powered diagnostic support and patient care optimization
+                </p>
+                <div className="text-xs text-white/60 mb-4">Login: abilasha11 / Abi@lex11</div>
+                <div className="flex flex-wrap gap-1">
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Medical AI</span>
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Healthcare</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Demo Tile 2 */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all cursor-pointer">
+              <div className="text-white mb-4">
+                <div className="w-12 h-12 bg-[#FF462D] rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <polyline points="21,15 16,10 5,21" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-2">Medical Imaging Analysis</h3>
+                <p className="text-white/70 text-sm mb-4">Advanced X-ray and MRI analysis with AI-powered insights</p>
+                <div className="text-xs text-white/60 mb-4">Login: aloksharma1 / Alok@12345</div>
+                <div className="flex flex-wrap gap-1">
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Image Analysis</span>
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Diagnostics</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Demo Tile 3 */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all cursor-pointer">
+              <div className="text-white mb-4">
+                <div className="w-12 h-12 bg-[#FF462D] rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M14 9V5a3 3 0 0 0-6 0v4" />
+                    <rect x="2" y="9" width="20" height="12" rx="2" ry="2" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-2">Patient Data Security</h3>
+                <p className="text-white/70 text-sm mb-4">HIPAA-compliant data protection and privacy management</p>
+                <div className="text-xs text-white/60 mb-4">Login: abilasha11 / Abi@lex11</div>
+                <div className="flex flex-wrap gap-1">
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Security</span>
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Compliance</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Demo Tile 4 */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all cursor-pointer">
+              <div className="text-white mb-4">
+                <div className="w-12 h-12 bg-[#FF462D] rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="20" x2="18" y2="10" />
+                    <line x1="12" y1="20" x2="12" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="14" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-2">Treatment Analytics</h3>
+                <p className="text-white/70 text-sm mb-4">Real-time treatment effectiveness and outcome prediction</p>
+                <div className="text-xs text-white/60 mb-4">Login: aloksharma1 / Alok@12345</div>
+                <div className="flex flex-wrap gap-1">
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Analytics</span>
+                  <span className="px-2 py-1 bg-white/20 text-white text-xs rounded">Outcomes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Stories Section */}
       <section id="customer-stories-section" className="bg-[#F2F1EE] min-h-screen">
         {/* Customer Stories Header */}
         <div className="bg-white px-4 sm:px-8 lg:px-16 py-8 border-b border-gray-200">
