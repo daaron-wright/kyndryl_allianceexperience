@@ -350,13 +350,13 @@ export default function AllianceLanding({
                 }
               }
             }}
-          >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-iEjoBADm9LuY3WyR8uDNFiXNnr3enW.png"
-              alt="Demos"
-              className="object-cover size-full px-0 py-3.5 my-14 mx-8 ml-8 pl-0 w-[120] pb-8 pt-7"
-            />
-          </div>
+            style={{
+              backgroundImage: `url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-09-21%20at%2012.35.48%E2%80%AFPM-ETTaHSyPBCPr6WmYfQCvE0v0j9doqf.png)`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
         </main>
 
         {/* Footer */}
