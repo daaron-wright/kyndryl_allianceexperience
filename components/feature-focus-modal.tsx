@@ -3,56 +3,79 @@
 import { X, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
 
+interface TabContent {
+  title: string
+  subtitle: string
+  description: string
+  image: string
+}
+
+interface CaseStudyData {
+  opportunity: TabContent
+  challenge: TabContent
+  solution: TabContent
+  outcome: TabContent
+}
+
 interface FeatureFocusModalProps {
   isOpen: boolean
   onClose: () => void
-  featureData?: {
-    title: string
-    description: string
-    image: string
-  }
+  caseStudyData?: CaseStudyData
 }
 
-export default function FeatureFocusModal({ isOpen, onClose, featureData }: FeatureFocusModalProps) {
+export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: FeatureFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
-  const [activeTab, setActiveTab] = useState("Challenge")
+  const [activeTab, setActiveTab] = useState("Solution")
 
   if (!isOpen) return null
 
   const tabs = ["Opportunity", "Challenge", "Solution", "Outcome"]
 
-  const tabContent = {
-    Opportunity: {
+  const defaultCaseStudyData: CaseStudyData = {
+    opportunity: {
       title: "Market Opportunity Analysis",
+      subtitle: "Business Growth",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      additionalText:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "The aviation industry faces increasing pressure to enhance passenger experience while managing operational efficiency. Social media has become a critical touchpoint where passenger sentiment directly impacts brand reputation and business outcomes. Airlines and airports need real-time insights to proactively address concerns and capitalize on positive feedback.",
+      image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
     },
-    Challenge: {
+    challenge: {
+      title: "Operational Challenges",
+      subtitle: "Current State Analysis",
+      description:
+        "Traditional customer service approaches struggle to keep pace with the volume and velocity of social media interactions. Manual monitoring leads to delayed responses, missed opportunities, and escalated customer dissatisfaction. Without automated sentiment analysis, organizations cannot prioritize critical issues or measure the effectiveness of their response strategies.",
+      image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+    },
+    solution: {
       title: "Agentic Media Monitor",
+      subtitle: "Sentiment Analysis",
       description:
         "Our smart dashboard empowers airport teams to seamlessly monitor social media feedback in real time, ensuring passenger concerns are never overlooked. The agentic bot automatically analyzes incoming feedback and sends immediate, personalized responses to users, while the airport team is simultaneously notified of the interaction. The platform also offers multiple options to categorize issues—whether related to services, facilities, or experiences—making it easier to prioritize and resolve them efficiently. By combining intelligent monitoring, automated assistance, and structured issue management, the system helps airports maintain higher service standards and build stronger trust with travelers.",
-      additionalText:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7DC7HVpKT5Jx37aHVCYIgPgdbIZM9H.png",
     },
-    Solution: {
-      title: "AI-Powered Solution Implementation",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      additionalText:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    Outcome: {
+    outcome: {
       title: "Measurable Business Results",
+      subtitle: "Performance Metrics",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      additionalText:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Implementation of the Agentic Media Monitor resulted in 85% faster response times, 40% improvement in customer satisfaction scores, and 60% reduction in escalated complaints. The automated sentiment analysis enabled proactive issue resolution, leading to increased passenger loyalty and positive brand perception across social media platforms.",
+      image: "/business-results-dashboard-with-kpi-metrics-and-su.jpg",
     },
   }
 
-  const currentContent = tabContent[activeTab as keyof typeof tabContent]
+  const currentCaseStudy = caseStudyData || defaultCaseStudyData
+  const currentContent = currentCaseStudy[activeTab.toLowerCase() as keyof CaseStudyData]
+
+  const handlePreviousTab = () => {
+    const currentIndex = tabs.indexOf(activeTab)
+    const previousIndex = currentIndex === 0 ? tabs.length - 1 : currentIndex - 1
+    setActiveTab(tabs[previousIndex])
+  }
+
+  const handleNextTab = () => {
+    const currentIndex = tabs.indexOf(activeTab)
+    const nextIndex = currentIndex === tabs.length - 1 ? 0 : currentIndex + 1
+    setActiveTab(tabs[nextIndex])
+  }
 
   return (
     <div
@@ -94,7 +117,7 @@ export default function FeatureFocusModal({ isOpen, onClose, featureData }: Feat
               margin: 0,
             }}
           >
-            Solution
+            {activeTab}
           </h1>
 
           <div className="flex items-center gap-4">
@@ -121,61 +144,61 @@ export default function FeatureFocusModal({ isOpen, onClose, featureData }: Feat
         </div>
 
         {/* Main Content */}
-        <div className="px-6 h-full">
-          <div className="grid grid-cols-2 gap-8 h-full items-center -mt-4">
-            {/* Left Content */}
-            <div className="flex flex-col justify-center pr-8">
-              <h2
-                className="text-[#3D3C3C] mb-6 leading-tight"
+        <div className="flex h-full" style={{ height: "calc(100% - 180px)" }}>
+          {/* Left Content Section */}
+          <div className="flex-1 flex flex-col justify-center px-12 py-8 bg-[#F2F1EE]">
+            <h2
+              className="text-[#3D3C3C] mb-4 leading-tight"
+              style={{
+                fontSize: "3rem",
+                fontFamily: "TWK Everett, sans-serif",
+                fontWeight: 300,
+                lineHeight: "1.1",
+              }}
+            >
+              {currentContent.title}
+            </h2>
+
+            {currentContent.subtitle && (
+              <h3
+                className="text-[#3D3C3C] mb-8"
                 style={{
-                  fontSize: "2.5rem",
+                  fontSize: "1.5rem",
                   fontFamily: "TWK Everett, sans-serif",
-                  fontWeight: 300,
-                  lineHeight: "1.2",
+                  fontWeight: 400,
                 }}
               >
-                {currentContent.title}
-              </h2>
+                {currentContent.subtitle}
+              </h3>
+            )}
 
-              <p
-                className="text-[#727175] mb-6 leading-relaxed"
-                style={{
-                  fontSize: "1.1rem",
-                  fontFamily: "TWK Everett, sans-serif",
-                  lineHeight: "1.6",
-                }}
-              >
-                {currentContent.description}
-              </p>
+            <p
+              className="text-[#3D3C3C] leading-relaxed"
+              style={{
+                fontSize: "1.1rem",
+                fontFamily: "TWK Everett, sans-serif",
+                lineHeight: "1.6",
+              }}
+            >
+              {currentContent.description}
+            </p>
+          </div>
 
-              <p
-                className="text-[#727175] leading-relaxed"
-                style={{
-                  fontSize: "1.1rem",
-                  fontFamily: "TWK Everett, sans-serif",
-                  lineHeight: "1.6",
-                }}
-              >
-                {currentContent.additionalText}
-              </p>
-            </div>
-
-            {/* Right Image */}
-            <div className="flex items-center justify-center">
-              <div
-                className="w-full h-96 bg-cover bg-center rounded-lg"
-                style={{
-                  backgroundImage: `url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-06cw4thx3F0tHlMOYNofDadruRUQOA.png)`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              />
-            </div>
+          {/* Right Image Section */}
+          <div
+            className="flex-1 flex items-center justify-center"
+            style={{
+              backgroundImage: `url(${currentContent.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Image is now the background of this div */}
           </div>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="absolute bottom-20 left-0 right-0 flex items-center justify-center">
+        <div className="absolute bottom-16 left-0 right-0 flex items-center justify-center">
           <div className="flex items-center gap-8 relative">
             {tabs.map((tab) => (
               <button
@@ -195,12 +218,10 @@ export default function FeatureFocusModal({ isOpen, onClose, featureData }: Feat
           </div>
         </div>
 
-        {/* Next Button */}
-        <div className="absolute bottom-20 right-6"></div>
-
         {/* Bottom Navigation */}
         <div className="absolute bottom-6 left-0 right-0 flex items-center justify-between px-6">
           <button
+            onClick={handlePreviousTab}
             className="flex items-center gap-2 text-[#727175] hover:text-[#3D3C3C] transition-colors"
             style={{
               fontFamily: "TWK Everett, sans-serif",
@@ -211,6 +232,7 @@ export default function FeatureFocusModal({ isOpen, onClose, featureData }: Feat
           </button>
 
           <button
+            onClick={handleNextTab}
             className="flex items-center gap-2 text-[#727175] hover:text-[#3D3C3C] transition-colors"
             style={{
               fontFamily: "TWK Everett, sans-serif",
