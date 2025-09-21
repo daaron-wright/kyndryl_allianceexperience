@@ -2,10 +2,13 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import IndustryFocusModal from "@/components/industry-focus-modal"
 
 export default function Industries() {
   const router = useRouter()
   const [showAutomotiveModal, setShowAutomotiveModal] = useState(false)
+  const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null)
+  const [isIndustryModalOpen, setIsIndustryModalOpen] = useState(false)
 
   const industries = [
     "Automotive",
@@ -36,7 +39,8 @@ export default function Industries() {
       return
     }
 
-    router.push("/ai-journey")
+    setSelectedIndustry(industry)
+    setIsIndustryModalOpen(true)
   }
 
   return (
@@ -299,6 +303,17 @@ export default function Industries() {
           </div>
         </div>
       </footer>
+
+      {/* Industry Focus Modal */}
+      {isIndustryModalOpen && selectedIndustry && (
+        <IndustryFocusModal
+          industry={selectedIndustry}
+          onClose={() => {
+            setIsIndustryModalOpen(false)
+            setSelectedIndustry(null)
+          }}
+        />
+      )}
     </div>
   )
 }
