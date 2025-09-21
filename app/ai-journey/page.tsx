@@ -620,7 +620,7 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-xRBmnINgs5oa0oj3sfZtuSvTIovaQZ.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-F7k2mHFU4KfPxCrLoKXwHBtqKjC4nq.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />

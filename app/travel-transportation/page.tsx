@@ -237,7 +237,7 @@ export default function TravelTransportation() {
           onClick={() => setIsDemoLoginModalOpen(true)}
         >
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-iEjoBADm9LuY3WyR8uDNFiXNnr3enW.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-zNAgdVelupuFaig3XEh1O5ylnao08n.png"
             alt="Demos"
             className="object-cover size-full px-0 py-3.5 my-14 mx-8"
           />

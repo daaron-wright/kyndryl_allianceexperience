@@ -333,7 +333,7 @@ export default function AllianceLanding({
           </div>
 
           <div
-            className="relative w-full shadow-lg rounded-lg overflow-hidden cursor-pointer transition-colors bg-[rgba(4,35,21,1)]"
+            className="relative shadow-lg rounded-lg overflow-hidden cursor-pointer transition-colors bg-[rgba(4,35,21,1)] h-auto w-auto py-0 my-9 mx-0"
             onClick={() => {
               if (title === "AWS") {
                 setIsDemosModalOpen(true)
@@ -369,7 +369,7 @@ export default function AllianceLanding({
         >
           <div className="flex items-center" style={{ gap: "clamp(16px, 2vw, 32px)" }}>
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-kw80ppQzJUb0vjqgrPh3wntR0WUUFt.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29-velQmfhnBX8tFkdF6xJuDUBk0qI5BL.png"
               alt="Kyndryl Alliance Experience"
               style={{ height: "clamp(24px, 3vh, 32px)", width: "auto" }}
             />
