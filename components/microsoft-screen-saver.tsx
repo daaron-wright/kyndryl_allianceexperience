@@ -36,7 +36,7 @@ export default function MicrosoftScreenSaver({ isOpen, onClose, onProceed }: Mic
         }}
       >
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Kyndryl-Microsoft-alliance-logo-lock-up%281%29%281%29-rnAh0fawQ7kCBoGsNoQugwoPQ7SKkY.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Kyndryl-Microsoft-alliance-logo-lock-up%281%29%281%29-QQ6lRbMlhpr6FpQkHtexpajHQ20Clc.png"
           alt="Kyndryl Microsoft Alliance"
           style={{
             maxWidth: "600px",

@@ -61,7 +61,7 @@ export default function AllianceHomeFixed({
 
       <img
         className="my-3"
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-In1e13q3IiSq0i7xxGJ2leWtlc4QlN.png"
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-jcg6diXaq6bWKAWwf81CHuawO1E2nF.png"
         alt="Alliance Experience"
         style={{
           position: "absolute",
@@ -186,7 +186,7 @@ export default function AllianceHomeFixed({
         }}
       >
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-8E9pRctzusTB8rahwm9TjwYLMWJyKB.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-YgjZbDOaJ60rfQn1NQ72s2jDwzT6vn.png"
           alt="Kyndryl"
           style={{
             width: "100%",

@@ -70,7 +70,7 @@ export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps
       <div className="flex justify-between items-end">
         <div>
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-QtotLx2AbBOxhr435lh9CuWWczUf7s.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-FhrzufrTHNhCpt4XDnvEXrBMDIbazk.png"
             alt="15+"
             className="mb-2 h-12 w-auto"
           />
@@ -82,7 +82,7 @@ export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps
         </div>
         <div>
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-Xxj195umAh1MZxfYeat46iru8XTFfW.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-Gk6njrP1GljiLGmIyV5umQvnX4F1MH.png"
             alt="8"
             className="mb-2 h-12 w-auto"
           />
