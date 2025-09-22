@@ -546,7 +546,10 @@ export default function AIJourneyPage() {
 
       {/* Demo Login Modal */}
       {isDemoLoginOpen && (
-        <div className="fixed inset-0 backdrop-blur-md bg-white/20 z-50 flex items-center justify-center p-4">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+        >
           <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
             <DemoLoginModal
               onClose={() => setIsDemoLoginOpen(false)}

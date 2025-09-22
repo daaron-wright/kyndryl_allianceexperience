@@ -215,7 +215,7 @@ export default function CustomerStoriesModal({ onClose }: { onClose: () => void 
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 backdrop-blur-md bg-white/20 z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -301,7 +301,7 @@ export default function CustomerStoriesModal({ onClose }: { onClose: () => void 
                             className="mx-auto mb-2"
                           >
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="8" y1="21" x2="16" y2="18" />
                             <line x1="12" y1="17" x2="12" y2="21" />
                           </svg>
                           <p className="text-sm text-gray-600" style={{ fontFamily: "TWK Everett, sans-serif" }}>

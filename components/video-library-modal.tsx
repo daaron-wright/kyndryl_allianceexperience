@@ -446,7 +446,8 @@ export default function VideoLibraryModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -686,8 +687,8 @@ export default function VideoLibraryModal({
                                 className="absolute inset-0 flex items-center justify-center cursor-pointer group bg-black bg-opacity-30 hover:bg-opacity-40 transition-all"
                                 onClick={() => handleVideoClick(globalIndex)}
                               >
-                                <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all shadow-lg">
-                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF462D" className="ml-1">
+                                <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center mb-2 group-hover:bg-opacity-100 transition-all">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5,3 19,12 5,21" />
                                   </svg>
                                 </div>
