@@ -138,6 +138,40 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           },
         }
 
+      case 2: // Agentic Media Monitor case study
+        return {
+          opportunity: {
+            title: "Social Media Monitoring Transformation",
+            subtitle: "Real-time Sentiment Analysis",
+            description:
+              "The aviation industry faces increasing pressure to monitor and respond to social media feedback in real-time. Airlines and airports need intelligent systems to analyze passenger sentiment, track brand reputation, and proactively address customer concerns across multiple social platforms.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+          challenge: {
+            title: "Social Media Complexity",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional social media monitoring relies on manual processes and delayed responses. Organizations struggle to track sentiment across multiple platforms, prioritize critical issues, and measure the effectiveness of their engagement strategies in real-time.",
+            image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+          },
+          solution: [
+            {
+              title: "Agentic Media Monitor",
+              subtitle: "Sentiment Analysis",
+              description:
+                "Our smart dashboard empowers airport teams to seamlessly monitor social media feedback in real time, ensuring passenger concerns are never overlooked. The agentic bot automatically analyzes incoming feedback and sends immediate, personalized responses to users, while the airport team is simultaneously notified of the interaction. The platform also offers multiple options to categorize issues—whether related to services, facilities, or experiences—making it easier to prioritize and resolve them efficiently. By combining intelligent monitoring, automated assistance, and structured issue management, the system helps airports maintain higher service standards and build stronger trust with travelers.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pL6nEqXma8ArGKflm4ZO0DZSj6Oour.png",
+            },
+          ],
+          outcome: {
+            title: "Enhanced Customer Engagement",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation of the Agentic Media Monitor resulted in 85% faster response times, 40% improvement in customer satisfaction scores, and 60% reduction in escalated complaints. The automated sentiment analysis enabled proactive issue resolution, leading to increased passenger loyalty and positive brand perception across social media platforms.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+        }
+
       case 3: // Agentic Sales Assistant (keep existing data)
         return {
           opportunity: {
@@ -160,21 +194,21 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               subtitle: "Mobile Intelligent Bot",
               description:
                 "When a customer comes in to purchase a new iPhone and trade in their old device, the Mobile Intelligent Bot (MIB) ensures the entire process is completed in just 8 minutes. By automating checks, validations, and trade-in calculations, MIB delivers a seamless, fast, and hassle-free experience, minimizing waiting time and maximizing customer satisfaction.",
-              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-SXlUa.png",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-C6UfyHLe4P5aeYaC0feLcUuu9oDTYU.png",
             },
             {
               title: "Agentic Sales Assistant",
               subtitle: "Helpdesk Only",
               description:
                 "If the process is handled solely through the helpdesk, it typically takes around 45 minutes. This is because each step—from verifying the old device to completing the trade-in and purchase—relies on manual intervention. While the helpdesk ensures accuracy and human interaction, the longer time frame can lead to delays during peak hours.",
-              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9bA54.png",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-e3MBOLpIeUbcPnOt8S1LTfxSuQ9jJh.png",
             },
             {
               title: "Agentic Sales Assistant",
               subtitle: "Helpdesk + Mobile Intelligent Bot",
               description:
                 "In scenarios where both the helpdesk and MIB work together, the process is completed in about 35 minutes. This hybrid model combines the speed and efficiency of automation with the reassurance of human support for more complex queries, creating a balance between convenience and personalized service.",
-              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-G18iB.png",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Qx04oQNMRL3DlblAxX1F6ySE0RK10O.png",
             },
           ],
           outcome: {
@@ -183,6 +217,74 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
             description:
               "Implementation of the Agentic Sales Assistant resulted in 82% reduction in service time, 95% customer satisfaction improvement, and 60% increase in successful trade-in completions. The hybrid approach optimized both speed and service quality.",
             image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VRsisTvtopmnPmmkhPMpLZ0Ht25fbV.png",
+          },
+        }
+
+      case 4: // Legal Documents Generator
+        return {
+          opportunity: {
+            title: "Legal Document Management Transformation",
+            subtitle: "Smart Legal Operations",
+            description:
+              "Legal departments face increasing pressure to manage complex document workflows, ensure compliance, and reduce manual processing time. Organizations need intelligent systems to automate document generation, track expiration dates, and maintain centralized legal document repositories.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+          challenge: {
+            title: "Legal Process Complexity",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional legal document management relies on manual processes, scattered file systems, and reactive compliance monitoring. This leads to missed deadlines, inconsistent document formats, and difficulty tracking document status across multiple legal matters.",
+            image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+          },
+          solution: [
+            {
+              title: "Legal Documents Generator",
+              subtitle: "Smart legal",
+              description:
+                "Powered by SmartGen, the Effortless Legal Documents Generator provides you with a smart legal dashboard designed for clarity and simplicity. With centralized access, all your legal documents are stored in one secure and intuitive platform, eliminating the hassle of searching through scattered files. Automated reminders ensure you never miss a deadline by notifying you of renewal dates, expiring agreements, and important follow-ups. Additionally, the tracking feature keeps you updated on the status of your agreements—whether they are pending, signed, or archived—so you always have a clear overview at a glance.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EuaqajmmyUg4OFz4bCWuclsnCapgtQ.png",
+            },
+          ],
+          outcome: {
+            title: "Legal Operations Excellence",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation of the Legal Documents Generator resulted in 70% reduction in document processing time, 95% improvement in compliance tracking, and 85% decrease in missed deadlines. The automated system enabled proactive legal management, leading to better risk mitigation and streamlined legal operations.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+        }
+
+      case 5: // Adding Pricing Model case study
+        return {
+          opportunity: {
+            title: "Insurance Analytics Transformation",
+            subtitle: "Comprehensive Risk Assessment",
+            description:
+              "The insurance industry faces increasing pressure to optimize pricing models, enhance risk assessment accuracy, and improve customer retention. Organizations need intelligent analytics systems to process complex data patterns, predict market trends, and deliver personalized insurance solutions that balance profitability with competitive pricing.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+          challenge: {
+            title: "Pricing Complexity",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional insurance pricing relies on static models and historical data, leading to suboptimal risk assessment and pricing inefficiencies. Manual processes struggle to incorporate real-time market dynamics, customer behavior patterns, and emerging risk factors into pricing decisions.",
+            image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+          },
+          solution: [
+            {
+              title: "Pricing Model",
+              subtitle: "Acturance",
+              description:
+                "Acturance Comprehensive Insurance offers complete protection for every aspect of life—your home, health, business, and travel—consolidated under one trusted provider. More than just a policy, it delivers peace of mind by safeguarding your family's future and securing your valuable assets. With streamlined onboarding and tailored coverage, Acturance ensures reliable protection at every stage, allowing you to focus on what matters most while we manage the risks.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-5P1bGM2lMEjvWL62yT3qdNusAERKlv.png",
+            },
+          ],
+          outcome: {
+            title: "Enhanced Insurance Performance",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation of the Acturance Pricing Model resulted in 94.2% completion rate, 89.3% policy retention rate, and 7.1% increase in customer acquisition. The advanced analytics platform enabled data-driven pricing decisions, leading to improved profitability and competitive market positioning.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
           },
         }
 
