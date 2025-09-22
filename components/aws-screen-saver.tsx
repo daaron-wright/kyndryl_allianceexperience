@@ -36,7 +36,7 @@ export default function AWSScreenSaver({ isOpen, onClose, onProceed }: AWSScreen
         }}
       >
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/%5BUse%20this%5D%20Kyndryl%20and%20AWS%20850%20alliance%20logo%20lock-up-RGB-c%281%29%281%29%281%29%281%29-YHBmnoGjkWUtOuIWbbOjyx1Gzq5Uzo.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/%5BUse%20this%5D%20Kyndryl%20and%20AWS%20850%20alliance%20logo%20lock-up-RGB-c%281%29%281%29%281%29%281%29-CdM9SiCyr7LTG9YYcaq5VzkgpRPokd.png"
           alt="Kyndryl AWS Alliance"
           style={{
             maxWidth: "600px",

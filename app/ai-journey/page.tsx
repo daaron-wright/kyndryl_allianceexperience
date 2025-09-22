@@ -25,7 +25,7 @@ export default function AIJourneyPage() {
       title: "Agentic Airport AI Experience",
       description:
         "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qroohISaYhm8KYJElbQm8a23m4BfTS.png",
+      image: "/airport-operations-ai-dashboard.jpg",
       alliance: "Industry / Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
       alliancePartner: "AWS",
@@ -36,7 +36,7 @@ export default function AIJourneyPage() {
       title: "Agentic Media Monitor",
       description:
         "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Sy4wzm6gVgKcfOGuuDTbl6rAcERiqU.png",
+      image: "/media-monitoring-analytics-dashboard.jpg",
       alliance: "Industry / Communications & Media",
       tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
       alliancePartner: "Google Cloud",
@@ -47,7 +47,7 @@ export default function AIJourneyPage() {
       title: "Agentic Sales Assistant",
       description:
         "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-f6TnhtLVhN2R61D4uFXJeWwESMIIUX.png",
+      image: "/ai-sales-assistant-crm-interface.jpg",
       alliance: "Industry / Retail",
       tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
       alliancePartner: "Microsoft Azure",
@@ -58,7 +58,7 @@ export default function AIJourneyPage() {
       title: "Legal Documents Generator",
       description:
         "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b0n0EkAs8X3AIYSCEsnbv9jcQCM0uu.png",
+      image: "/legal-document-generator-ai-interface.jpg",
       alliance: "Industry / Government",
       tags: ["Legal Tech", "Document Automation", "Compliance"],
       alliancePartner: "AWS",
@@ -69,7 +69,7 @@ export default function AIJourneyPage() {
       title: "Pricing Model",
       description:
         "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-uHHQHGynhkNlFlfxEZurCDiC4w3Q3Y.png",
+      image: "/dynamic-pricing-optimization-dashboard.jpg",
       alliance: "Industry / Financial Services",
       tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
       alliancePartner: "Google Cloud",
@@ -80,7 +80,7 @@ export default function AIJourneyPage() {
       title: "Marketing Automation",
       description:
         "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-fb8JMXp7TYYhk9UxbXaDevwHb789Mc.png",
+      image: "/hand-phone-scanning-nfc-mobile-pos-desktop-background.jpg",
       alliance: "Industry / Telecommunications",
       tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
       alliancePartner: "Cross",
@@ -91,10 +91,21 @@ export default function AIJourneyPage() {
       title: "X-Ray Image Analysis",
       description:
         "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-uHzv2cEOpcLXANAExTkfVcQIymROBy.png",
+      image: "/medical-xray-ai-analysis-interface.jpg",
       alliance: "Industry / Healthcare",
       tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
       alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 8,
+      title: "Smart Baggage Claim",
+      description:
+        "Intelligent baggage tracking and claim system using AI-powered computer vision and RFID technology to streamline airport baggage operations and enhance passenger experience.",
+      image: "/smart-baggage-claim-system-with-ai-tracking.jpg",
+      alliance: "Industry / Transportation",
+      tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
+      alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
     },
   ]
@@ -526,7 +537,7 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-JZhauvjFA350hAEksCrQUzNJgrdzfB.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-JxKkHjfVEvoM4SfSIjEx7lctWu3fRU.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />

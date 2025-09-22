@@ -80,6 +80,17 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       aiFeature: "Automation",
     },
     {
+      id: 10,
+      title: "Smart Baggage Claim",
+      description:
+        "Intelligent baggage claim system using AI-powered computer vision and RFID tracking to streamline passenger baggage retrieval, reduce wait times, and enhance airport customer experience.",
+      image: "/smart-baggage-claim-system-with-ai-tracking.jpg",
+      alliance: "Industry / Travel and Transportation",
+      tags: ["Baggage Claim", "Computer Vision", "RFID Tracking", "Customer Experience"],
+      alliancePartner: "AWS",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
       id: 7,
       title: "Personalized Retail Experience Platform",
       description:

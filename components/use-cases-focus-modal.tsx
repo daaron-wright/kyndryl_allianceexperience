@@ -11,7 +11,7 @@ interface UseCasesFocusModalProps {
 
 export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(2) // Set to page 2 as shown in image
+  const [currentPage, setCurrentPage] = useState(1) // Set current page to 1 since we only have one page now
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedFeature, setSelectedFeature] = useState<any>(null)
 
@@ -20,59 +20,75 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
   const caseStudies = [
     {
       id: 1,
-      image: "/grocery-shopping-scene.png",
-      alliance: "Alliance / customer name",
+      image: "/airport-operations-ai-dashboard.jpg",
+      alliance: "Industry / Transportation",
       title: "Agentic Airport AI Experience",
-      description: "Advanced AI-powered airport operations and passenger experience management system",
-      tags: ["AI", "Airport", "Experience"],
+      description:
+        "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
+      tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
     },
     {
       id: 2,
-      image: "/shipping-port-containers.png",
-      alliance: "Alliance / customer name",
+      image: "/media-monitoring-analytics-dashboard.jpg",
+      alliance: "Industry / Communications & Media",
       title: "Agentic Media Monitor",
-      description: "Intelligent media monitoring and analysis platform for real-time insights",
-      tags: ["Media", "Monitor", "Analytics"],
+      description:
+        "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
+      tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
     },
     {
       id: 3,
-      image: "/sheep-livestock.png",
-      alliance: "Alliance / customer name",
+      image: "/ai-sales-assistant-crm-interface.jpg",
+      alliance: "Industry / Retail",
       title: "Agentic Sales Assistant",
-      description: "AI-powered sales automation and customer engagement platform",
-      tags: ["Sales", "AI", "Assistant"],
+      description:
+        "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
+      tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
     },
     {
       id: 4,
-      image: "/dining-food-scene.png",
-      alliance: "Alliance / customer name",
+      image: "/legal-document-generator-ai-interface.jpg",
+      alliance: "Industry / Government",
       title: "Legal Documents Generator",
-      description: "Automated legal document creation and compliance management system",
-      tags: ["Legal", "Documents", "Generator"],
+      description:
+        "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
+      tags: ["Legal Tech", "Document Automation", "Compliance"],
     },
     {
       id: 5,
-      image: "/grocery-shopping-scene.png",
-      alliance: "Alliance / customer name",
+      image: "/dynamic-pricing-optimization-dashboard.jpg",
+      alliance: "Industry / Financial Services",
       title: "Pricing Model",
-      description: "Dynamic pricing optimization and market analysis platform",
-      tags: ["Pricing", "Model", "Analytics"],
+      description:
+        "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
+      tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
     },
     {
       id: 6,
-      image: "/shipping-port-containers.png",
-      alliance: "Alliance / customer name",
+      image: "/hand-phone-scanning-nfc-mobile-pos-desktop-background.jpg",
+      alliance: "Industry / Telecommunications",
       title: "Marketing Automation",
-      description: "Comprehensive marketing automation and campaign management solution",
-      tags: ["Marketing", "Automation", "Campaigns"],
+      description:
+        "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
+      tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
     },
     {
       id: 7,
-      image: "/sheep-livestock.png",
-      alliance: "Alliance / customer name",
+      image: "/medical-xray-ai-analysis-interface.jpg",
+      alliance: "Industry / Healthcare",
       title: "X-Ray Image Analysis",
-      description: "AI-powered medical imaging analysis and diagnostic assistance platform",
-      tags: ["X-Ray", "Medical", "Analysis"],
+      description:
+        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
+      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
+    },
+    {
+      id: 8,
+      image: "/smart-baggage-claim-system-with-ai-tracking.jpg",
+      alliance: "Industry / Transportation",
+      title: "Smart Baggage Claim",
+      description:
+        "Intelligent baggage tracking and claim system using AI-powered computer vision and RFID technology to streamline airport baggage operations and enhance passenger experience.",
+      tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
     },
   ]
 
@@ -237,7 +253,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
               </button>
 
               <div className="flex items-center gap-6 relative">
-                {[1, 2, 3, 4, 5, 6].map((page) => (
+                {[1].map((page) => (
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}

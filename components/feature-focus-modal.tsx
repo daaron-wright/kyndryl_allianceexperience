@@ -288,6 +288,74 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           },
         }
 
+      case 6: // Adding Marketing Automation case study
+        return {
+          opportunity: {
+            title: "Marketing Automation Transformation",
+            subtitle: "Customer Engagement Enhancement",
+            description:
+              "The retail industry faces increasing pressure to deliver personalized marketing campaigns, optimize customer engagement, and maximize return on marketing investment. Organizations need intelligent automation systems to manage multi-channel campaigns, track customer behavior, and deliver targeted messaging that drives conversions and customer loyalty.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+          challenge: {
+            title: "Marketing Complexity",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional marketing approaches rely on manual campaign management, generic messaging, and limited customer insights. This leads to poor engagement rates, inefficient resource allocation, and difficulty measuring campaign effectiveness across multiple touchpoints and customer segments.",
+            image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+          },
+          solution: [
+            {
+              title: "Marketing Automation",
+              subtitle: "EPOS",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TPBnIgxdeYffTp5yRiF6aNkKUJWOlY.png",
+            },
+          ],
+          outcome: {
+            title: "Enhanced Marketing Performance",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation of the Marketing Automation system resulted in 18.9% engagement rate improvement, 45.2K total reach expansion, and 1.5h average response time optimization. The automated platform enabled data-driven marketing decisions, leading to improved customer acquisition and retention rates.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+        }
+
+      case 7: // Adding X-Ray Image Analysis case study
+        return {
+          opportunity: {
+            title: "Medical Imaging Analysis Transformation",
+            subtitle: "AI-Powered Diagnostics",
+            description:
+              "The healthcare industry faces increasing pressure to improve diagnostic accuracy, reduce analysis time, and enhance patient outcomes through advanced medical imaging. Healthcare providers need intelligent systems to analyze X-ray images, detect anomalies, and provide rapid, accurate diagnostic insights that support clinical decision-making.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+          challenge: {
+            title: "Diagnostic Complexity",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional X-ray analysis relies on manual interpretation, leading to potential human error, extended diagnosis times, and inconsistent results across different radiologists. The growing volume of medical imaging data requires automated solutions to maintain quality while improving efficiency.",
+            image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+          },
+          solution: [
+            {
+              title: "X-Ray Image Analysis",
+              subtitle: "X-Ray Scanner",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BL8Mq810eoqqoSaJjLfurJyTnewTll.png",
+            },
+          ],
+          outcome: {
+            title: "Enhanced Diagnostic Performance",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation of the X-Ray Image Analysis system resulted in 95% diagnostic accuracy improvement, 75% reduction in analysis time, and 90% consistency in diagnostic results. The AI-powered platform enabled faster, more reliable medical imaging analysis, leading to improved patient care and clinical outcomes.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+        }
+
       default:
         // Return default case study data for other stories
         return defaultCaseStudyData
@@ -407,9 +475,9 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           </div>
 
           {/* Main Content */}
-          <div className="flex h-full" style={{ height: "calc(100% - 180px)" }}>
+          <div className="flex h-full bg-[rgba(242,241,238,1)]" style={{ height: "calc(100% - 180px)" }}>
             {/* Left Content Section */}
-            <div className="flex-1 flex flex-col justify-center px-12 py-8 bg-white">
+            <div className="flex-1 flex flex-col justify-center px-12 py-8 bg-[rgba(242,241,238,1)]">
               <h2
                 className="text-[#3D3C3C] mb-4 leading-tight"
                 style={{
@@ -498,7 +566,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2 text-lg font-medium transition-colors relative ${
+                  className={`text-lg font-medium transition-colors relative py-[-10px] px-4 py-0 pt-0 my-0 ${
                     activeTab === tab ? "text-[#3D3C3C]" : "text-[#727175] hover:text-[#3D3C3C]"
                   }`}
                   style={{

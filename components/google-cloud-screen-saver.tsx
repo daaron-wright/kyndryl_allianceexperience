@@ -36,7 +36,7 @@ export default function GoogleCloudScreenSaver({ isOpen, onClose, onProceed }: G
         }}
       >
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Kyndryl-GoogleCloud-alliance-logo-lock-up%281%29%281%29%281%29%281%29-Rvmg67ODRNlbtgqYxD6UmQ7iEdwudF.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Kyndryl-GoogleCloud-alliance-logo-lock-up%281%29%281%29%281%29%281%29-E18cP0k8nVmV8AREEauCEr8JiWRpIX.png"
           alt="Kyndryl Google Cloud Alliance"
           style={{
             maxWidth: "600px",
