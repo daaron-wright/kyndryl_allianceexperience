@@ -10,10 +10,17 @@ interface TabContent {
   image: string
 }
 
+interface SolutionScreen {
+  title: string
+  subtitle: string
+  description: string
+  image: string
+}
+
 interface CaseStudyData {
   opportunity: TabContent
   challenge: TabContent
-  solution: TabContent
+  solution: SolutionScreen[] // Changed to array of solution screens
   outcome: TabContent
 }
 
@@ -21,12 +28,14 @@ interface FeatureFocusModalProps {
   isOpen: boolean
   onClose: () => void
   caseStudyData?: CaseStudyData
+  story?: any
 }
 
-export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: FeatureFocusModalProps) {
+export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, story }: FeatureFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("Solution")
   const [isIframeOpen, setIsIframeOpen] = useState(false)
+  const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0) // Added state for solution screen index
 
   if (!isOpen) return null
 
@@ -47,13 +56,29 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
         "Traditional customer service approaches struggle to keep pace with the volume and velocity of social media interactions. Manual monitoring leads to delayed responses, missed opportunities, and escalated customer dissatisfaction. Without automated sentiment analysis, organizations cannot prioritize critical issues or measure the effectiveness of their response strategies.",
       image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
     },
-    solution: {
-      title: "Legal Documents Generator",
-      subtitle: "Smart legal",
-      description:
-        "Powered by SmartGen, the Effortless Legal Documents Generator provides you with a smart legal dashboard designed for clarity and simplicity. With centralized access, all your legal documents are stored in one secure and intuitive platform, eliminating the hassle of searching through scattered files. Automated reminders ensure you never miss a deadline by notifying you of renewal dates, expiring agreements, and important follow-ups. Additionally, the tracking feature keeps you updated on the status of your agreements—whether they are pending, signed, or archived—so you always have a clear overview at a glance.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-R40IwBNCV0Uwulsa6sdfvaThv8Na90.png",
-    },
+    solution: [
+      {
+        title: "Agentic Sales Assistant",
+        subtitle: "Mobile Intelligent Bot",
+        description:
+          "When a customer comes in to purchase a new iPhone and trade in their old device, the Mobile Intelligent Bot (MIB) ensures the entire process is completed in just 8 minutes. By automating checks, validations, and trade-in calculations, MIB delivers a seamless, fast, and hassle-free experience, minimizing waiting time and maximizing customer satisfaction.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-C6UfyHLe4P5aeYaC0feLcUuu9oDTYU.png",
+      },
+      {
+        title: "Agentic Sales Assistant",
+        subtitle: "Helpdesk Only",
+        description:
+          "If the process is handled solely through the helpdesk, it typically takes around 45 minutes. This is because each step—from verifying the old device to completing the trade-in and purchase—relies on manual intervention. While the helpdesk ensures accuracy and human interaction, the longer time frame can lead to delays during peak hours.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-e3MBOLpIeUbcPnOt8S1LTfxSuQ9jJh.png",
+      },
+      {
+        title: "Agentic Sales Assistant",
+        subtitle: "Helpdesk + Mobile Intelligent Bot",
+        description:
+          "In scenarios where both the helpdesk and MIB work together, the process is completed in about 35 minutes. This hybrid model combines the speed and efficiency of automation with the reassurance of human support for more complex queries, creating a balance between convenience and personalized service.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Qx04oQNMRL3DlblAxX1F6ySE0RK10O.png",
+      },
+    ],
     outcome: {
       title: "Measurable Business Results",
       subtitle: "Performance Metrics",
@@ -63,19 +88,140 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
     },
   }
 
-  const currentCaseStudy = caseStudyData || defaultCaseStudyData
-  const currentContent = currentCaseStudy[activeTab.toLowerCase() as keyof CaseStudyData]
+  const getCaseStudyDataForStory = (storyId: number): CaseStudyData => {
+    switch (storyId) {
+      case 1: // Agentic Airport AI Experience
+        return {
+          opportunity: {
+            title: "Airport Operations Transformation",
+            subtitle: "Passenger Experience Enhancement",
+            description:
+              "The aviation industry faces increasing pressure to enhance passenger experience while managing operational efficiency. Airports need intelligent systems to handle complex logistics, reduce wait times, and provide seamless passenger journeys from check-in to boarding.",
+            image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qroohISaYhm8KYJElbQm8a23m4BfTS.png",
+          },
+          challenge: {
+            title: "Operational Complexity",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional airport operations struggle with manual processes, disconnected systems, and reactive problem-solving. This leads to passenger delays, inefficient resource allocation, and poor visibility into operational performance across terminals and gates.",
+            image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qroohISaYhm8KYJElbQm8a23m4BfTS.png",
+          },
+          solution: [
+            {
+              title: "Agentic Airport AI Experience",
+              subtitle: "Redefining Travel Experience",
+              description:
+                "John is a frequent flyer, travelling with his wife Kathy, and 11-year-old daughter Helen. He wants to check the best rates to fly Amsterdam. Create a travel itinerary from his doorstep to the Amsterdam airport Schiphol",
+              image:
+                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25KYN_Alliance_Experience-UdZ7Tfwql1ZpK0rOj1YNUjlWos8Et4.png",
+            },
+            {
+              title: "Agentic Airport AI Experience",
+              subtitle: "Redefining Technical Support",
+              description:
+                "Frank leverages advanced technology to keep aircraft operating safely and efficiently. With a flexible, resource-focused approach, he ensures maintenance stays on track, even in dynamic conditions. Frank uses live visual collaboration with a retired engineer to perform on-demand maintenance during flight changes. This approach accelerates service, prioritizes tasks, and ensures flights remain safe, reliable, and on schedule for passengers and crew.",
+              image:
+                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25KYN_Alliance_Experience-1KBg8ydli5QMbOC2Xy87O2UxB8vCRs.png",
+            },
+            {
+              title: "Agentic Airport AI Experience",
+              subtitle: "Redefining Pilot Allocation",
+              description:
+                "The pilot is a highly trained professional responsible for the safety and operation of the aircraft. In this scenario, the pilot collaborates with ground maintenance and agentic AI systems to report in-flight observations, confirm system statuses, and support faster, more coordinated troubleshooting. Their expertise is crucial for making real-time decisions and ensuring passenger safety.",
+              image:
+                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25KYN_Alliance_Experience-8JqetW7EVXMFLDBvFxsNLcgwPTKsb0.png",
+            },
+          ],
+          outcome: {
+            title: "Operational Excellence",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation resulted in 95% gate availability, 98% system health monitoring, and proactive alert management. The AI system reduced operational delays by 40% and improved passenger satisfaction through better resource allocation and predictive maintenance.",
+            image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qroohISaYhm8KYJElbQm8a23m4BfTS.png",
+          },
+        }
+
+      case 3: // Agentic Sales Assistant (keep existing data)
+        return {
+          opportunity: {
+            title: "Sales Process Optimization",
+            subtitle: "Customer Experience Enhancement",
+            description:
+              "Retail environments face increasing pressure to provide fast, efficient service while maintaining high customer satisfaction. Mobile device sales and trade-ins require complex validation processes that can significantly impact customer wait times and overall experience.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+          challenge: {
+            title: "Service Delivery Challenges",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional sales processes rely heavily on manual intervention, leading to extended wait times and inconsistent service quality. Complex trade-in evaluations and device validations create bottlenecks that frustrate customers and reduce sales efficiency.",
+            image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+          },
+          solution: [
+            {
+              title: "Agentic Sales Assistant",
+              subtitle: "Mobile Intelligent Bot",
+              description:
+                "When a customer comes in to purchase a new iPhone and trade in their old device, the Mobile Intelligent Bot (MIB) ensures the entire process is completed in just 8 minutes. By automating checks, validations, and trade-in calculations, MIB delivers a seamless, fast, and hassle-free experience, minimizing waiting time and maximizing customer satisfaction.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-SXlUa.png",
+            },
+            {
+              title: "Agentic Sales Assistant",
+              subtitle: "Helpdesk Only",
+              description:
+                "If the process is handled solely through the helpdesk, it typically takes around 45 minutes. This is because each step—from verifying the old device to completing the trade-in and purchase—relies on manual intervention. While the helpdesk ensures accuracy and human interaction, the longer time frame can lead to delays during peak hours.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9bA54.png",
+            },
+            {
+              title: "Agentic Sales Assistant",
+              subtitle: "Helpdesk + Mobile Intelligent Bot",
+              description:
+                "In scenarios where both the helpdesk and MIB work together, the process is completed in about 35 minutes. This hybrid model combines the speed and efficiency of automation with the reassurance of human support for more complex queries, creating a balance between convenience and personalized service.",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-G18iB.png",
+            },
+          ],
+          outcome: {
+            title: "Enhanced Customer Experience",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation of the Agentic Sales Assistant resulted in 82% reduction in service time, 95% customer satisfaction improvement, and 60% increase in successful trade-in completions. The hybrid approach optimized both speed and service quality.",
+            image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VRsisTvtopmnPmmkhPMpLZ0Ht25fbV.png",
+          },
+        }
+
+      default:
+        // Return default case study data for other stories
+        return defaultCaseStudyData
+    }
+  }
+
+  const currentCaseStudy = caseStudyData || (story ? getCaseStudyDataForStory(story.id) : defaultCaseStudyData)
+
+  const currentContent =
+    activeTab === "Solution"
+      ? currentCaseStudy.solution[currentSolutionIndex]
+      : currentCaseStudy[activeTab.toLowerCase() as keyof Omit<CaseStudyData, "solution">]
 
   const handlePreviousTab = () => {
     const currentIndex = tabs.indexOf(activeTab)
     const previousIndex = currentIndex === 0 ? tabs.length - 1 : currentIndex - 1
     setActiveTab(tabs[previousIndex])
+    setCurrentSolutionIndex(0) // Reset solution index when changing tabs
   }
 
   const handleNextTab = () => {
     const currentIndex = tabs.indexOf(activeTab)
     const nextIndex = currentIndex === tabs.length - 1 ? 0 : currentIndex + 1
     setActiveTab(tabs[nextIndex])
+    setCurrentSolutionIndex(0) // Reset solution index when changing tabs
+  }
+
+  const handlePreviousSolution = () => {
+    setCurrentSolutionIndex((prev) => (prev === 0 ? currentCaseStudy.solution.length - 1 : prev - 1))
+  }
+
+  const handleNextSolution = () => {
+    setCurrentSolutionIndex((prev) => (prev === currentCaseStudy.solution.length - 1 ? 0 : prev + 1))
   }
 
   return (
@@ -110,17 +256,33 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
         >
           {/* Header */}
           <div className="flex items-center justify-between p-6 pb-4 bg-background">
-            <h1
-              style={{
-                fontSize: "2rem",
-                fontFamily: "TWK Everett, sans-serif",
-                fontWeight: 300,
-                color: "#FF462D",
-                margin: 0,
-              }}
-            >
-              {activeTab}
-            </h1>
+            <div className="flex items-center gap-4">
+              <h1
+                style={{
+                  fontSize: "2rem",
+                  fontFamily: "TWK Everett, sans-serif",
+                  fontWeight: 300,
+                  color: "#FF462D",
+                  margin: 0,
+                }}
+              >
+                {activeTab}
+              </h1>
+
+              {activeTab === "Solution" && (
+                <div className="flex items-center gap-2 ml-4">
+                  {currentCaseStudy.solution.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSolutionIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        index === currentSolutionIndex ? "bg-[#FF462D]" : "bg-gray-300"
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
 
             <div className="flex items-center gap-4">
               {/* Search Bar */}
@@ -184,6 +346,36 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
               >
                 {currentContent.description}
               </p>
+
+              {activeTab === "Solution" && currentCaseStudy.solution.length > 1 && (
+                <div className="flex items-center gap-4 mt-8">
+                  <button
+                    onClick={handlePreviousSolution}
+                    className="flex items-center gap-2 px-4 py-2 text-[#727175] hover:text-[#3D3C3C] transition-colors border border-gray-300 rounded-md hover:border-[#FF462D]"
+                    style={{
+                      fontFamily: "TWK Everett, sans-serif",
+                    }}
+                  >
+                    <ChevronLeft size={16} />
+                    Previous
+                  </button>
+
+                  <span className="text-[#727175]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
+                    {currentSolutionIndex + 1} of {currentCaseStudy.solution.length}
+                  </span>
+
+                  <button
+                    onClick={handleNextSolution}
+                    className="flex items-center gap-2 px-4 py-2 text-[#727175] hover:text-[#3D3C3C] transition-colors border border-gray-300 rounded-md hover:border-[#FF462D]"
+                    style={{
+                      fontFamily: "TWK Everett, sans-serif",
+                    }}
+                  >
+                    Next
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Right Image Section */}
