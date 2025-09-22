@@ -26,7 +26,6 @@ interface FeatureFocusModalProps {
 export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: FeatureFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("Solution")
-  const [isIframeOpen, setIsIframeOpen] = useState(false)
 
   if (!isOpen) return null
 
@@ -188,20 +187,14 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
 
             {/* Right Image Section */}
             <div
-              className="flex-1 flex items-center justify-center px-7 my-9 mx-8 py-0 cursor-pointer hover:opacity-90 transition-opacity"
+              className="flex-1 flex items-center justify-center px-7 my-9 mx-8 py-0"
               style={{
                 backgroundImage: `url(${currentContent.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
-              onClick={() => setIsIframeOpen(true)}
             >
-              {/* Overlay with play button indicator */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity">
-                <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
-                  <div className="w-0 h-0 border-l-[12px] border-l-[#FF462D] border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
-                </div>
-              </div>
+              {/* Static image without play button overlay */}
             </div>
           </div>
 
@@ -252,51 +245,6 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
           </div>
         </div>
       </div>
-
-      {/* Fullscreen iframe modal */}
-      {isIframeOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1002,
-          }}
-          onClick={() => setIsIframeOpen(false)}
-        >
-          <div
-            style={{
-              width: "95vw",
-              height: "95vh",
-              position: "relative",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setIsIframeOpen(false)}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
-            >
-              <X size={32} />
-            </button>
-            <iframe
-              src="https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=&node-id=1088-1212&t=KshpyxPJ3DWRbH4O-1&scaling=min-zoom&content-scaling=fixed"
-              style={{
-                width: "100%",
-                height: "100%",
-                border: "none",
-                borderRadius: "8px",
-              }}
-              allowFullScreen
-            />
-          </div>
-        </div>
-      )}
     </>
   )
 }

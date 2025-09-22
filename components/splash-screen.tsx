@@ -79,7 +79,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
         {!videoLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-[#FF462D] z-10">
-            <div className="text-white font-sans font-medium" style={{ fontSize: "clamp(1rem, 3vw, 2rem)" }}>
+            <div className="text-white font-sans font-thin" style={{ fontSize: "clamp(1rem, 3vw, 2rem)" }}>
               Loading...
             </div>
           </div>
