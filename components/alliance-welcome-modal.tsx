@@ -30,13 +30,16 @@ export default function AllianceWelcomeModal({
     >
       <div
         style={{
-          width: "900px",
-          height: "600px",
+          width: "clamp(320px, 90vw, 1200px)",
+          height: "clamp(400px, 80vh, 700px)",
+          maxWidth: "90vw",
+          maxHeight: "90vh",
           backgroundColor: "#FFFFFF",
           borderRadius: "8px",
           position: "relative",
           overflow: "hidden",
           display: "flex",
+          flexDirection: window.innerWidth <= 768 ? "column" : "row",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -45,17 +48,17 @@ export default function AllianceWelcomeModal({
           onClick={onClose}
           style={{
             position: "absolute",
-            top: "20px",
-            right: "20px",
+            top: "clamp(12px, 2vw, 20px)",
+            right: "clamp(12px, 2vw, 20px)",
             background: "rgba(255, 255, 255, 0.9)",
             border: "none",
             cursor: "pointer",
-            padding: "8px",
+            padding: "clamp(6px, 1vw, 8px)",
             borderRadius: "50%",
             zIndex: 10,
           }}
         >
-          <X style={{ width: "24px", height: "24px", color: "#3D3C3C" }} />
+          <X style={{ width: "clamp(20px, 3vw, 24px)", height: "clamp(20px, 3vw, 24px)", color: "#3D3C3C" }} />
         </button>
 
         {/* Hero image section */}
@@ -66,6 +69,7 @@ export default function AllianceWelcomeModal({
             backgroundSize: "cover",
             backgroundPosition: "center",
             position: "relative",
+            minHeight: "clamp(200px, 40vh, 400px)",
           }}
         >
           {/* Overlay for better text readability */}
@@ -84,16 +88,16 @@ export default function AllianceWelcomeModal({
           <div
             style={{
               position: "absolute",
-              bottom: "40px",
-              left: "40px",
-              right: "40px",
+              bottom: "clamp(20px, 4vw, 40px)",
+              left: "clamp(20px, 4vw, 40px)",
+              right: "clamp(20px, 4vw, 40px)",
               zIndex: 2,
             }}
           >
             <h1
               style={{
                 fontFamily: "TWK Everett, sans-serif",
-                fontSize: "42px",
+                fontSize: "clamp(24px, 5vw, 42px)",
                 fontWeight: "400",
                 color: "#FFFFFF",
                 lineHeight: "1.2",
@@ -106,7 +110,7 @@ export default function AllianceWelcomeModal({
             <p
               style={{
                 fontFamily: "TWK Everett, sans-serif",
-                fontSize: "20px",
+                fontSize: "clamp(14px, 2.5vw, 20px)",
                 color: "#FFFFFF",
                 lineHeight: "1.4",
                 marginBottom: "32px",
@@ -121,8 +125,8 @@ export default function AllianceWelcomeModal({
         {/* Content panel */}
         <div
           style={{
-            width: "400px",
-            padding: "60px 40px",
+            width: "clamp(300px, 40vw, 400px)",
+            padding: "clamp(30px, 6vw, 60px) clamp(20px, 4vw, 40px)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -134,8 +138,8 @@ export default function AllianceWelcomeModal({
             {/* Alliance icon */}
             <div
               style={{
-                width: "60px",
-                height: "60px",
+                width: "clamp(50px, 8vw, 60px)",
+                height: "clamp(50px, 8vw, 60px)",
                 backgroundColor: "#FF462D",
                 borderRadius: "50%",
                 display: "flex",
@@ -144,7 +148,7 @@ export default function AllianceWelcomeModal({
                 marginBottom: "32px",
               }}
             >
-              <Users style={{ width: "30px", height: "30px", color: "#FFFFFF" }} />
+              <Users style={{ width: "clamp(24px, 4vw, 30px)", height: "clamp(24px, 4vw, 30px)", color: "#FFFFFF" }} />
             </div>
 
             {/* Info section */}
@@ -166,7 +170,7 @@ export default function AllianceWelcomeModal({
                 <h2
                   style={{
                     fontFamily: "TWK Everett, sans-serif",
-                    fontSize: "24px",
+                    fontSize: "clamp(18px, 3vw, 24px)",
                     fontWeight: "400",
                     color: "#3D3C3C",
                     margin: 0,
@@ -179,7 +183,7 @@ export default function AllianceWelcomeModal({
               <p
                 style={{
                   fontFamily: "TWK Everett, sans-serif",
-                  fontSize: "16px",
+                  fontSize: "clamp(14px, 2vw, 16px)",
                   color: "#727175",
                   lineHeight: "1.5",
                   marginBottom: "32px",
@@ -195,9 +199,9 @@ export default function AllianceWelcomeModal({
                   backgroundColor: "#FF462D",
                   border: "none",
                   borderRadius: "4px",
-                  padding: "16px 24px",
+                  padding: "clamp(12px, 2vw, 16px) clamp(18px, 3vw, 24px)",
                   fontFamily: "TWK Everett, sans-serif",
-                  fontSize: "16px",
+                  fontSize: "clamp(14px, 2vw, 16px)",
                   fontWeight: "500",
                   color: "#FFFFFF",
                   cursor: "pointer",
@@ -209,7 +213,9 @@ export default function AllianceWelcomeModal({
                 }}
               >
                 Explore Stories
-                <ChevronRight style={{ width: "18px", height: "18px", color: "#FFFFFF" }} />
+                <ChevronRight
+                  style={{ width: "clamp(16px, 2.5vw, 18px)", height: "clamp(16px, 2.5vw, 18px)", color: "#FFFFFF" }}
+                />
               </button>
             </div>
           </div>
@@ -222,7 +228,7 @@ export default function AllianceWelcomeModal({
                 <div
                   style={{
                     fontFamily: "TWK Everett, sans-serif",
-                    fontSize: "36px",
+                    fontSize: "clamp(28px, 5vw, 36px)",
                     fontWeight: "300",
                     color: "#FF462D",
                     lineHeight: "1",
@@ -234,7 +240,7 @@ export default function AllianceWelcomeModal({
                 <div
                   style={{
                     fontFamily: "TWK Everett, sans-serif",
-                    fontSize: "14px",
+                    fontSize: "clamp(12px, 1.8vw, 14px)",
                     color: "#3D3C3C",
                     lineHeight: "1.2",
                   }}
@@ -248,7 +254,7 @@ export default function AllianceWelcomeModal({
                 <div
                   style={{
                     fontFamily: "TWK Everett, sans-serif",
-                    fontSize: "36px",
+                    fontSize: "clamp(28px, 5vw, 36px)",
                     fontWeight: "300",
                     color: "#FF462D",
                     lineHeight: "1",
@@ -260,7 +266,7 @@ export default function AllianceWelcomeModal({
                 <div
                   style={{
                     fontFamily: "TWK Everett, sans-serif",
-                    fontSize: "14px",
+                    fontSize: "clamp(12px, 1.8vw, 14px)",
                     color: "#3D3C3C",
                     lineHeight: "1.2",
                   }}
@@ -283,13 +289,15 @@ export default function AllianceWelcomeModal({
                 alignItems: "center",
                 gap: "8px",
                 fontFamily: "TWK Everett, sans-serif",
-                fontSize: "14px",
+                fontSize: "clamp(12px, 1.8vw, 14px)",
                 color: "#727175",
                 padding: 0,
               }}
             >
               Back to alliance page
-              <ChevronRight style={{ width: "14px", height: "14px", color: "#727175" }} />
+              <ChevronRight
+                style={{ width: "clamp(12px, 1.8vw, 14px)", height: "clamp(12px, 1.8vw, 14px)", color: "#727175" }}
+              />
             </button>
           </div>
         </div>
