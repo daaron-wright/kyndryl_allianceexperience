@@ -17,7 +17,7 @@ export default function AIJourneyPage() {
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
   const [selectedIndustries, setSelectedIndustries] = useState([])
   const [selectedAIFeatures, setSelectedAIFeatures] = useState([])
-  const [isFiltersExpanded, setIsFiltersExpanded] = useState(true)
+  const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
 
   const customerStories = [
     {
@@ -250,7 +250,6 @@ export default function AIJourneyPage() {
       </section>
 
       {/* Demos Section */}
-      
 
       {/* Customer Stories Section */}
       <section id="customer-stories-section" className="bg-[#F2F1EE] min-h-screen">
