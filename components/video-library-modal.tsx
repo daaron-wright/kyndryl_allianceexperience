@@ -599,7 +599,7 @@ export default function VideoLibraryModal({
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 bg-[#F5F5F5] p-8 overflow-y-auto">
+        <div className="flex-1 bg-white p-8 overflow-y-auto">
           <div className="grid grid-cols-2 gap-6 max-w-6xl mx-auto">
             {currentItems.map((item, index) => {
               const globalIndex = startIndex + index

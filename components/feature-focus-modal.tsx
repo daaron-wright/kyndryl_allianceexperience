@@ -98,7 +98,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
       >
         <div
           style={{
-            backgroundColor: "#F2F1EE",
+            backgroundColor: "white",
             borderRadius: "8px",
             width: "1422px",
             height: "800px",
@@ -148,7 +148,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
           {/* Main Content */}
           <div className="flex h-full" style={{ height: "calc(100% - 180px)" }}>
             {/* Left Content Section */}
-            <div className="flex-1 flex flex-col justify-center px-12 py-8 bg-[#F2F1EE]">
+            <div className="flex-1 flex flex-col justify-center px-12 py-8 bg-white">
               <h2
                 className="text-[#3D3C3C] mb-4 leading-tight"
                 style={{

@@ -101,7 +101,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
       >
         <div
           style={{
-            backgroundColor: "#F2F1EE",
+            backgroundColor: "white",
             borderRadius: "8px",
             width: "1422px",
             height: "800px",
