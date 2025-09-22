@@ -47,7 +47,7 @@ export default function AIJourneyPage() {
       title: "Agentic Sales Assistant",
       description:
         "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
-      image: "/sheep-livestock.png",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-f6TnhtLVhN2R61D4uFXJeWwESMIIUX.png",
       alliance: "Industry / Retail",
       tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
       alliancePartner: "Microsoft Azure",
@@ -91,7 +91,7 @@ export default function AIJourneyPage() {
       title: "X-Ray Image Analysis",
       description:
         "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
-      image: "/shipping-port-containers.png",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-uHzv2cEOpcLXANAExTkfVcQIymROBy.png",
       alliance: "Industry / Healthcare",
       tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
       alliancePartner: "Microsoft Azure",
