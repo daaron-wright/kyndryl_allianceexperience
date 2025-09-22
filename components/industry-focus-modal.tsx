@@ -30,7 +30,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       description:
         "Advanced AI system for real-time credit risk assessment and fraud detection, enabling faster loan approvals and enhanced security measures.",
       image: "/dining-food-scene.png",
-      alliance: "Industry / Financial Services",
+      alliance: "Industry / Banking and Financial Markets",
       tags: ["Risk Assessment", "Fraud Detection", "Credit Analysis"],
       alliancePartner: "Google Cloud",
       aiFeature: "AI & Machine Learning",
@@ -41,7 +41,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       description:
         "Automated insurance claims processing using AI to analyze documents, assess damages, and expedite claim settlements with improved accuracy.",
       image: "/sheep-livestock.png",
-      alliance: "Industry / Financial Services",
+      alliance: "Industry / Insurance",
       tags: ["Claims Processing", "Document Analysis", "Automation"],
       alliancePartner: "Microsoft Azure",
       aiFeature: "Automation",
@@ -63,7 +63,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       description:
         "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
       image: "/shipping-port-containers.png",
-      alliance: "Industry / Transportation",
+      alliance: "Industry / Travel and Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
       alliancePartner: "Google Cloud",
       aiFeature: "AI & Machine Learning",
@@ -74,7 +74,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       description:
         "AI-driven baggage tracking and handling system that reduces lost luggage incidents and improves airport operational efficiency.",
       image: "/placeholder-98f8c.png",
-      alliance: "Industry / Transportation",
+      alliance: "Industry / Travel and Transportation",
       tags: ["Baggage Tracking", "Airport Operations", "Efficiency Optimization"],
       alliancePartner: "Microsoft Azure",
       aiFeature: "Automation",
@@ -85,7 +85,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       description:
         "AI-powered personalization engine that delivers customized shopping experiences, product recommendations, and dynamic pricing strategies.",
       image: "/dining-food-scene.png",
-      alliance: "Industry / Retail",
+      alliance: "Industry / Consumer and Retail",
       tags: ["Personalization", "Product Recommendations", "Dynamic Pricing"],
       alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
@@ -96,7 +96,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       description:
         "Smart inventory optimization system using AI to predict demand, manage stock levels, and reduce waste in retail operations.",
       image: "/grocery-shopping-scene.png",
-      alliance: "Industry / Retail",
+      alliance: "Industry / Consumer and Retail",
       tags: ["Inventory Management", "Demand Forecasting", "Waste Reduction"],
       alliancePartner: "Google Cloud",
       aiFeature: "Data Analytics",
@@ -116,12 +116,12 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
 
   const industryMapping = {
     Automotive: "Automotive",
-    "Banking and Financial Markets": "Financial Services",
-    "Consumer and Retail": "Retail",
+    "Banking and Financial Markets": "Banking and Financial Markets",
+    "Consumer and Retail": "Consumer and Retail",
     Healthcare: "Healthcare",
-    Insurance: "Financial Services",
+    Insurance: "Insurance",
     Manufacturing: "Manufacturing",
-    "Travel and Transportation": "Transportation",
+    "Travel and Transportation": "Travel and Transportation",
     Government: "Government",
     "Tech, Media and Telecom": "Communications & Media",
     "Chemical, Oil and Gas": "Energy & Utilities",
