@@ -26,6 +26,7 @@ interface FeatureFocusModalProps {
 export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: FeatureFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("Solution")
+  const [isIframeOpen, setIsIframeOpen] = useState(false)
 
   if (!isOpen) return null
 
@@ -187,14 +188,15 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
 
             {/* Right Image Section */}
             <div
-              className="flex-1 flex items-center justify-center px-7 my-9 mx-8 py-0"
+              className="flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8 cursor-pointer"
               style={{
                 backgroundImage: `url(${currentContent.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
+              onClick={() => setIsIframeOpen(true)}
             >
-              {/* Static image without play button overlay */}
+              {/* Static image with click functionality */}
             </div>
           </div>
 
@@ -245,6 +247,68 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
           </div>
         </div>
       </div>
+
+      {isIframeOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.9)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1002,
+            padding: "2rem",
+          }}
+          onClick={() => setIsIframeOpen(false)}
+        >
+          <div
+            style={{
+              width: "711px",
+              height: "400px",
+              position: "relative",
+              backgroundColor: "white",
+              borderRadius: "8px",
+              overflow: "hidden",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsIframeOpen(false)}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                zIndex: 1003,
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                color: "white",
+                border: "none",
+                borderRadius: "50%",
+                width: "30px",
+                height: "30px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+              }}
+            >
+              <X size={16} />
+            </button>
+            <iframe
+              src="https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=&node-id=1088-1212&scaling=min-zoom&content-scaling=fixed&embed-host=share"
+              style={{
+                width: "100%",
+                height: "100%",
+                border: "1px solid rgba(0, 0, 0, 0.1)",
+              }}
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </>
   )
 }
