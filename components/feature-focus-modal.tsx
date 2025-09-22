@@ -112,24 +112,21 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               subtitle: "Redefining Travel Experience",
               description:
                 "John is a frequent flyer, travelling with his wife Kathy, and 11-year-old daughter Helen. He wants to check the best rates to fly Amsterdam. Create a travel itinerary from his doorstep to the Amsterdam airport Schiphol",
-              image:
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25KYN_Alliance_Experience-UdZ7Tfwql1ZpK0rOj1YNUjlWos8Et4.png",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bqXG9Sk6fCNFEaRIKFvNq1p5IUTSsJ.png",
             },
             {
               title: "Agentic Airport AI Experience",
               subtitle: "Redefining Technical Support",
               description:
                 "Frank leverages advanced technology to keep aircraft operating safely and efficiently. With a flexible, resource-focused approach, he ensures maintenance stays on track, even in dynamic conditions. Frank uses live visual collaboration with a retired engineer to perform on-demand maintenance during flight changes. This approach accelerates service, prioritizes tasks, and ensures flights remain safe, reliable, and on schedule for passengers and crew.",
-              image:
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25KYN_Alliance_Experience-1KBg8ydli5QMbOC2Xy87O2UxB8vCRs.png",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ooV69PYAQNj3xgnqY0DgMF7MGpctWL.png",
             },
             {
               title: "Agentic Airport AI Experience",
               subtitle: "Redefining Pilot Allocation",
               description:
                 "The pilot is a highly trained professional responsible for the safety and operation of the aircraft. In this scenario, the pilot collaborates with ground maintenance and agentic AI systems to report in-flight observations, confirm system statuses, and support faster, more coordinated troubleshooting. Their expertise is crucial for making real-time decisions and ensuring passenger safety.",
-              image:
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25KYN_Alliance_Experience-8JqetW7EVXMFLDBvFxsNLcgwPTKsb0.png",
+              image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eRSZ51esE6vlv6U09EwJp5kLazYYR2.png",
             },
           ],
           outcome: {
