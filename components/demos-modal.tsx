@@ -46,7 +46,10 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+    >
       <div className="w-[1600px] h-[900px] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-16 py-10 border-b border-gray-200 bg-white flex-shrink-0">

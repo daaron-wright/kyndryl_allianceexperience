@@ -10,7 +10,10 @@ export default function MicrosoftVideoModal({ onClose }: MicrosoftVideoModalProp
   const [activeTab, setActiveTab] = useState("Opportunity")
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+    >
       <div className="bg-white rounded-lg w-full max-w-[1200px] h-[850px] flex flex-col overflow-hidden">
         {/* Header */}
         <header className="h-[140px] flex items-center justify-between px-[60px] border-b border-gray-200">

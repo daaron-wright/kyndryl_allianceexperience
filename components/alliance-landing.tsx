@@ -200,7 +200,6 @@ export default function AllianceLanding({
           </div>
         )}
 
-        {/* Google Cloud demos modal */}
         {isGoogleCloudDemosModalOpen && (
           <GoogleCloudDemosModal
             isOpen={isGoogleCloudDemosModalOpen}
@@ -210,7 +209,10 @@ export default function AllianceLanding({
 
         {/* Microsoft no demo modal */}
         {isMicrosoftNoDemoModalOpen && (
-          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center"
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+          >
             <div className="bg-white rounded-lg overflow-hidden max-w-md w-full mx-4 p-8 text-center">
               <div className="mb-6">
                 <img
