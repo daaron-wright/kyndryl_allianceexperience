@@ -47,7 +47,7 @@ export default function KyndrylBrandedScreen({ onComplete }: KyndrylBrandedScree
       <div className="flex items-center justify-center w-full h-full p-4 sm:p-6 md:p-8 lg:p-12">
         <div className="relative w-full h-full max-w-6xl max-h-[80vh] flex items-center justify-center">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/25KYN_Alliance_Experience%281%29%281%29-eUMlODGThk7lFH9EvHjSN6RXTl1wRc.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/25KYN_Alliance_Experience%281%29%281%29%281%29%281%29-Nbmxk7lBypHBB3qDZSVhnV5jSWIKIM.png"
             alt="Kyndryl"
             className="max-w-full max-h-full object-contain"
             style={{

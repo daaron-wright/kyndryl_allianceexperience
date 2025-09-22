@@ -42,6 +42,7 @@ export default function AllianceLanding({
   const [isAWSScreenSaverOpen, setIsAWSScreenSaverOpen] = useState(false)
   const [isGoogleCloudScreenSaverOpen, setIsGoogleCloudScreenSaverOpen] = useState(false)
   const [isMicrosoftScreenSaverOpen, setIsMicrosoftScreenSaverOpen] = useState(false)
+  const [isMicrosoftNoDemoModalOpen, setIsMicrosoftNoDemoModalOpen] = useState(false)
 
   const getAllianceFilter = (allianceTitle: string) => {
     switch (allianceTitle) {
@@ -207,6 +208,29 @@ export default function AllianceLanding({
           />
         )}
 
+        {/* Microsoft no demo modal */}
+        {isMicrosoftNoDemoModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white rounded-lg overflow-hidden max-w-md w-full mx-4 p-8 text-center">
+              <div className="mb-6">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%283%29-lcplus8glL5REqFdhacQhLKGprcpNw.png"
+                  alt="Demo not available"
+                  className="mx-auto h-16 w-16"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Demos Unavailable</h3>
+              <p className="text-gray-600 mb-6">No Interactive Demos found for Microsoft</p>
+              <button
+                onClick={() => setIsMicrosoftNoDemoModalOpen(false)}
+                className="bg-[#FF462D] text-white px-6 py-2 rounded hover:bg-[#E63E32] transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <header className="mb-8 flex items-center justify-between" style={{ marginBottom: "clamp(16px, 2vh, 32px)" }}>
           <img
@@ -338,16 +362,12 @@ export default function AllianceLanding({
           </div>
 
           <div
-            className={`relative shadow-lg rounded-lg overflow-hidden transition-colors bg-[rgba(4,35,21,1)] h-auto w-auto py-0 mx-0 my-0 ${
-              title === "Microsoft" ? "opacity-50 grayscale cursor-not-allowed" : "cursor-pointer"
-            }`}
+            className={`relative shadow-lg rounded-lg overflow-hidden transition-colors bg-[rgba(4,35,21,1)] h-auto w-auto py-0 mx-0 my-0`}
             onClick={() => {
-              if (title === "Microsoft") {
-                return // Do nothing for Microsoft
-              }
-
               if (title === "AWS") {
                 setIsDemosModalOpen(true)
+              } else if (title === "Microsoft") {
+                setIsMicrosoftNoDemoModalOpen(true)
               } else {
                 switch (title) {
                   case "Google Cloud":
@@ -377,7 +397,7 @@ export default function AllianceLanding({
         >
           <div className="flex items-center" style={{ gap: "clamp(16px, 2vw, 32px)" }}>
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-h0r5QA8Rz1wgci6KyYkN1WjFrIni7S.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-d2eyS4Gd9ONp6RxfMLSHPgEB4lSDQw.png"
               alt="Kyndryl Alliance Experience"
               style={{ height: "clamp(24px, 3vh, 32px)", width: "auto" }}
             />

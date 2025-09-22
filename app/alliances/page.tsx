@@ -177,7 +177,7 @@ export default function AlliancesPage() {
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-t4WihS2B4IbyzBpAeaofFXYh0ct2Ho.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-ijuO2p4bXg6KlIVMJzvKjBLF13vTyz.png"
               alt="Amazon Web Services"
               className="object-contain w-full max-w-[200px] h-12 lg:h-16"
             />
@@ -188,7 +188,7 @@ export default function AlliancesPage() {
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center cursor-pointer transition-all duration-300 grayscale hover:grayscale-0 hover:scale-105 p-6"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-JVpc4JtE5VcNLJqzysWFAph81gmIks.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-gszJqo7CC8J0bi2k9sZag9KVd8WlWM.png"
               alt="Google Cloud"
               className="object-contain w-full max-w-[200px] h-12 lg:h-16"
             />
@@ -210,7 +210,7 @@ export default function AlliancesPage() {
             className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center p-0 cursor-pointer transition-all duration-300 overflow-hidden hover:scale-105"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-3DfU69SVgqTPiv3ukmBqgirRCqz7Pn.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-ODKMibcmuXQiAYWUdIZJjtpUpRjOHc.png"
               alt="Completion Status"
               className="w-full h-full object-cover"
             />
@@ -234,7 +234,7 @@ export default function AlliancesPage() {
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-J2uS6jfrfp8EXzI9EeiegawZrBMnJR.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-jCczQZmiKCstWOVqu7k7iCjMgmLiQ8.png"
               alt="Dynatrace"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
             />
@@ -274,7 +274,7 @@ export default function AlliancesPage() {
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-AKZzTOiWeXPAomo85sAsUcEykvorkC.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-b6hmoQIWgz1PycGIxuEmj3dU6PZvrD.png"
               alt="Rubrik"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
             />
@@ -282,7 +282,7 @@ export default function AlliancesPage() {
 
           <div className="bg-white border-2 border-[#F2F1EE] rounded-lg flex flex-col justify-center items-center opacity-40 cursor-not-allowed p-6">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-y8G6KrfkXEVwxZ5C4lRkwJfwWjLY9a.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-UohpbQRSSMikXHP8BNkkHb3acZQcyw.png"
               alt="SAP Global Partner"
               className="object-contain grayscale w-full max-w-[200px] h-10 lg:h-12"
             />
@@ -348,7 +348,7 @@ export default function AlliancesPage() {
           {/* Left side - Kyndryl Alliance Experience logo */}
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29-r99cIr8ANnRcvIc8FjT5TcsCb4MnoJ.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29-JZhauvjFA350hAEksCrQUzNJgrdzfB.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />
