@@ -48,18 +48,18 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
       image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
     },
     solution: {
-      title: "Agentic Media Monitor",
-      subtitle: "Sentiment Analysis",
+      title: "Legal Documents Generator",
+      subtitle: "Smart legal",
       description:
-        "Our smart dashboard empowers airport teams to seamlessly monitor social media feedback in real time, ensuring passenger concerns are never overlooked. The agentic bot automatically analyzes incoming feedback and sends immediate, personalized responses to users, while the airport team is simultaneously notified of the interaction. The platform also offers multiple options to categorize issues—whether related to services, facilities, or experiences—making it easier to prioritize and resolve them efficiently. By combining intelligent monitoring, automated assistance, and structured issue management, the system helps airports maintain higher service standards and build stronger trust with travelers.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7DC7HVpKT5Jx37aHVCYIgPgdbIZM9H.png",
+        "Powered by SmartGen, the Effortless Legal Documents Generator provides you with a smart legal dashboard designed for clarity and simplicity. With centralized access, all your legal documents are stored in one secure and intuitive platform, eliminating the hassle of searching through scattered files. Automated reminders ensure you never miss a deadline by notifying you of renewal dates, expiring agreements, and important follow-ups. Additionally, the tracking feature keeps you updated on the status of your agreements—whether they are pending, signed, or archived—so you always have a clear overview at a glance.",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-R40IwBNCV0Uwulsa6sdfvaThv8Na90.png",
     },
     outcome: {
       title: "Measurable Business Results",
       subtitle: "Performance Metrics",
       description:
         "Implementation of the Agentic Media Monitor resulted in 85% faster response times, 40% improvement in customer satisfaction scores, and 60% reduction in escalated complaints. The automated sentiment analysis enabled proactive issue resolution, leading to increased passenger loyalty and positive brand perception across social media platforms.",
-      image: "/business-results-dashboard-with-kpi-metrics-and-su.jpg",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VRsisTvtopmnPmmkhPMpLZ0Ht25fbV.png",
     },
   }
 
@@ -298,7 +298,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData }: Fe
               <X size={16} />
             </button>
             <iframe
-              src="https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=&node-id=1088-1212&scaling=min-zoom&content-scaling=fixed&embed-host=share"
+              src="https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=5%3A3&node-id=86-7599&scaling=scale-down&content-scaling=fixed&starting-point-node-id=86%3A7635&embed-host=share"
               style={{
                 width: "100%",
                 height: "100%",

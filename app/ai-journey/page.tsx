@@ -25,7 +25,7 @@ export default function AIJourneyPage() {
       title: "Agentic Airport AI Experience",
       description:
         "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
-      image: "/grocery-shopping-scene.png",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qroohISaYhm8KYJElbQm8a23m4BfTS.png",
       alliance: "Industry / Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
       alliancePartner: "AWS",
@@ -58,7 +58,7 @@ export default function AIJourneyPage() {
       title: "Legal Documents Generator",
       description:
         "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
-      image: "/dining-food-scene.png",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b0n0EkAs8X3AIYSCEsnbv9jcQCM0uu.png",
       alliance: "Industry / Government",
       tags: ["Legal Tech", "Document Automation", "Compliance"],
       alliancePartner: "AWS",
@@ -69,7 +69,7 @@ export default function AIJourneyPage() {
       title: "Pricing Model",
       description:
         "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
-      image: "/construction-site-overview.png",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-uHHQHGynhkNlFlfxEZurCDiC4w3Q3Y.png",
       alliance: "Industry / Financial Services",
       tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
       alliancePartner: "Google Cloud",
@@ -80,7 +80,7 @@ export default function AIJourneyPage() {
       title: "Marketing Automation",
       description:
         "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
-      image: "/grocery-shopping-scene.png",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-fb8JMXp7TYYhk9UxbXaDevwHb789Mc.png",
       alliance: "Industry / Telecommunications",
       tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
       alliancePartner: "Cross",
