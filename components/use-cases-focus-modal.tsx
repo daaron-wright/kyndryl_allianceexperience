@@ -151,7 +151,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
           {/* Case Studies Grid */}
           <div className="px-6 py-4">
             <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
-              {caseStudies.slice(0, 8).map((study) => (
+              {caseStudies.slice((currentPage - 1) * 8, currentPage * 8).map((study) => (
                 <div
                   key={study.id}
                   className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-shadow"
@@ -230,36 +230,29 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                 style={{
                   fontFamily: "TWK Everett, sans-serif",
                 }}
+                onClick={() => setCurrentPage(currentPage > 1 ? currentPage - 1 : currentPage)}
               >
                 <ChevronLeft size={20} />
                 Previous
               </button>
 
-              <div className="flex items-center gap-4">
-                {[1, 2, 3, 4].map((page) => (
+              <div className="flex items-center gap-6 relative">
+                {[1, 2, 3, 4, 5, 6].map((page) => (
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
-                      currentPage === page ? "bg-[#FF462D] text-white" : "text-[#727175] hover:text-[#3D3C3C]"
+                    className={`px-1 py-2 text-sm font-medium transition-colors relative ${
+                      currentPage === page ? "text-[#FF462D]" : "text-[#727175] hover:text-[#3D3C3C]"
                     }`}
                     style={{
                       fontFamily: "TWK Everett, sans-serif",
                     }}
                   >
                     {page}
+                    {/* Active page underline indicator */}
+                    {currentPage === page && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF462D]" />}
                   </button>
                 ))}
-                {/* Active page indicator line */}
-                <div className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2">
-                  <div
-                    className="h-0.5 bg-[#FF462D] transition-all duration-300"
-                    style={{
-                      width: "32px",
-                      transform: `translateX(${(currentPage - 2.5) * 48}px)`,
-                    }}
-                  />
-                </div>
               </div>
 
               <button
@@ -267,6 +260,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                 style={{
                   fontFamily: "TWK Everett, sans-serif",
                 }}
+                onClick={() => setCurrentPage(currentPage < 6 ? currentPage + 1 : currentPage)}
               >
                 Next
                 <ChevronRight size={20} />
