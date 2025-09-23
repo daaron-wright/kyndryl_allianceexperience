@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react"
+import FeatureFocusModal from "./feature-focus-modal"
 
 interface IndustryFocusModalProps {
   industry: string
@@ -11,6 +12,13 @@ interface IndustryFocusModalProps {
 export default function IndustryFocusModal({ industry, onClose }: IndustryFocusModalProps) {
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
+  const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
+  const [selectedStory, setSelectedStory] = useState(null)
+
+  const handleCardClick = (story) => {
+    setSelectedStory(story)
+    setIsFeatureModalOpen(true)
+  }
 
   const allCustomerStories = [
     {
@@ -124,7 +132,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Actuary Demo",
       description:
         "Actuarial analysis and risk assessment platform powered by AI for insurance and financial planning.",
-      image: "/actuary-professional-analyzing-data-warm-office.jpg",
+      image: "/pricing-actuary-professionals.png",
       alliance: "Industry / Financial Services",
       tags: ["Risk Assessment", "Actuarial Analysis", "Financial Planning"],
       type: "Interactive Demo",
@@ -500,6 +508,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                   e.currentTarget.style.transform = "translateY(0)"
                   e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)"
                 }}
+                onClick={() => handleCardClick(story)}
               >
                 <div style={{ position: "relative", height: "200px", overflow: "hidden" }}>
                   <img
@@ -569,31 +578,83 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                   >
                     {story.description}
                   </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    <a
-                      href="#"
+                  {[8, 9, 10, 11, 12, 20, 24].includes(story.id) ? (
+                    <div
                       style={{
-                        fontFamily: "TWK Everett, sans-serif",
-                        fontSize: "14px",
-                        color: "#3D3C3C",
-                        textDecoration: "none",
                         display: "flex",
-                        alignItems: "center",
-                        gap: "4px",
-                        fontWeight: "500",
+                        flexDirection: "column",
+                        gap: "12px",
+                        marginBottom: "16px",
                       }}
                     >
-                      Learn more
-                      <ChevronRight style={{ width: "14px", height: "14px" }} />
-                    </a>
-                  </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          window.open("https://kyndryl-demos.web.app/dashboard", "_blank")
+                        }}
+                        style={{
+                          backgroundColor: "#FFFFFF",
+                          border: "2px solid #E5E5E5",
+                          borderRadius: "8px",
+                          padding: "12px 16px",
+                          fontFamily: "TWK Everett, sans-serif",
+                          fontSize: "16px",
+                          color: "#3D3C3C",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          transition: "all 0.2s ease",
+                          width: "100%",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = "#FF462D"
+                          e.currentTarget.style.color = "#FF462D"
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = "#E5E5E5"
+                          e.currentTarget.style.color = "#3D3C3C"
+                        }}
+                      >
+                        Log in to explore demos
+                        <ChevronRight style={{ width: "16px", height: "16px" }} />
+                      </button>
+                      <p
+                        style={{
+                          fontFamily: "TWK Everett, sans-serif",
+                          fontSize: "12px",
+                          color: "#727175",
+                          margin: "0",
+                          lineHeight: "1.4",
+                        }}
+                      >
+                        Username: &lt;email&gt; | Password: &lt;firstname.surname&gt;
+                      </p>
+                    </div>
+                  ) : (
+                    <div style={{ marginBottom: "16px" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          color: "#3D3C3C",
+                          fontSize: "14px",
+                          fontWeight: "500",
+                          cursor: "pointer",
+                          transition: "color 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#FF462D"
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#3D3C3C"
+                        }}
+                      >
+                        <span style={{ fontFamily: "TWK Everett, sans-serif" }}>Learn more</span>
+                        <ChevronRight style={{ width: "16px", height: "16px", marginLeft: "4px" }} />
+                      </div>
+                    </div>
+                  )}
                   <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                     {story.tags.map((tag, index) => (
                       <span
@@ -731,6 +792,18 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
           </div>
         )}
       </div>
+
+      {/* FeatureFocusModal for case study details */}
+      {isFeatureModalOpen && selectedStory && (
+        <FeatureFocusModal
+          isOpen={isFeatureModalOpen}
+          onClose={() => {
+            setIsFeatureModalOpen(false)
+            setSelectedStory(null)
+          }}
+          story={selectedStory}
+        />
+      )}
     </div>
   )
 }

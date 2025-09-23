@@ -250,25 +250,94 @@ export default function AIJourneyPage() {
             >
               Customer Stories
             </button>
-            <button
-              onClick={() => {
-                const section = document.getElementById("customer-stories-section")
-                if (section) {
-                  section.scrollIntoView({ behavior: "smooth" })
-                }
-              }}
-              className="border border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-[#FF462D] transition-colors"
-            >
-              Case Studies
-            </button>
           </div>
         </div>
       </section>
 
-      {/* Demos Section */}
+      {/* Introduction + Video Section */}
+      <section id="introduction-section" className="bg-white px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Introduction */}
+            <div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D3C3C] mb-6">
+                Transforming Business with AI Innovation
+              </h2>
+              <p className="text-lg text-[#9E9287] mb-6 leading-relaxed">
+                Discover how Kyndryl is pioneering the future of artificial intelligence across industries. Our
+                comprehensive AI solutions help organizations unlock new possibilities, streamline operations, and drive
+                meaningful business outcomes.
+              </p>
+              <p className="text-lg text-[#9E9287] mb-8 leading-relaxed">
+                From intelligent automation to advanced analytics, explore real-world implementations that are reshaping
+                how businesses operate and compete in the digital age.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => {
+                    const section = document.getElementById("introduction-section")
+                    if (section) {
+                      section.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
+                  className="border border-[#FF462D] text-[#FF462D] px-6 py-3 rounded-md font-medium hover:bg-[#FF462D] hover:text-white transition-colors"
+                >
+                  View Case Studies
+                </button>
+              </div>
+            </div>
+
+            {/* Right side - Video */}
+            <div className="relative">
+              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+                <video
+                  tabIndex={-1}
+                  width="2005"
+                  height="1128"
+                  preload="auto"
+                  className="s7videoelement cmp-video--container__video-player inlinePlayer reloadPlayer w-full h-full object-cover"
+                  poster="https://s7d1.scene7.com/is/image/kyndryl/kyndryl-agentic-ai-framework-video-cover-16x9?fit=constrain"
+                  style={{
+                    position: "absolute",
+                    width: "1002.666667px",
+                    height: "564px",
+                    left: "0.166667px",
+                    top: "0px",
+                    pointerEvents: "auto",
+                  }}
+                >
+                  <meta itemProp="name" content="Kyndryl Agentic AI Framework" />
+                  <meta
+                    itemProp="description"
+                    content="Kyndryl launches its Agentic AI Framework to deploy adaptive, self-learning AI agents that enhance business performance with security and human oversight."
+                  />
+                  <meta itemProp="duration" content="T1M5S" />
+                  <meta itemProp="uploadDate" content="2025-07-17T12:08:16.437Z" />
+                  <meta
+                    itemProp="thumbnailUrl"
+                    content="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
+                  />
+                  <meta
+                    itemProp="contentURL"
+                    content="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
+                  />
+                </video>
+              </div>
+              {/* Play button overlay for better UX */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="bg-white/20 backdrop-blur-sm rounded-full p-4">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white">
+                    <polygon points="5,3 19,12 5,21" fill="currentColor" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Customer Stories Section */}
-      <section id="customer-stories-section" className="bg-[#F2F1EE] min-h-screen">
+      <section id="customer-stories-section" className="bg-[#F2F1EE]">
         {/* Customer Stories Header */}
         <div className="bg-white px-4 sm:px-8 lg:px-16 py-8 border-b border-gray-200">
           <div className="flex items-center justify-between mb-6">
@@ -547,7 +616,7 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29-mOMxc9lsOO6byPWSbV89tfDnIW91to.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-xSaA10EDLaeXw1IM0kmRa89Z2EG3YK.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />

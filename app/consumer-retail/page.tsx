@@ -219,7 +219,7 @@ export default function ConsumerRetail() {
           onClick={() => setIsDemoLoginModalOpen(true)}
         >
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29-0oZTjQRPggaWlX3xFKsi6bXUeAfs6P.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-6m7IS87Is1RbrdJe1wPDa0Tar4p73f.png"
             alt="Demos"
             className="object-cover size-full px-0 py-3.5 my-14 mx-8"
           />

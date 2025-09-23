@@ -378,14 +378,14 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               subtitle: "Traveller",
               description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-              image: "/baggage-claim-traveller.png",
+              image: "/baggage-claim-mobile-app.png",
             },
             {
               title: "Baggage Claim",
               subtitle: "Admin",
               description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-              image: "/baggage-claim-admin.png",
+              image: "/baggage-claim-admin-dashboard.png",
             },
           ],
           outcome: {
@@ -518,7 +518,9 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           {/* Main Content */}
           <div className="flex h-full bg-[rgba(242,241,238,1)]" style={{ height: "calc(100% - 180px)" }}>
             {/* Left Content Section */}
-            <div className="flex-1 flex flex-col justify-center px-12 py-8 bg-[rgba(242,241,238,1)]">
+            <div
+              className={`${activeTab === "Solution" ? "flex-1" : "w-full"} flex flex-col justify-center px-12 py-8 bg-[rgba(242,241,238,1)]`}
+            >
               <h2
                 className="text-[#3D3C3C] mb-4 leading-tight"
                 style={{
@@ -586,18 +588,20 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               )}
             </div>
 
-            {/* Right Image Section */}
-            <div
-              className="flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8 cursor-pointer"
-              style={{
-                backgroundImage: `url(${currentContent.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              onClick={() => setIsIframeOpen(true)}
-            >
-              {/* Static image with click functionality */}
-            </div>
+            {/* Right Image Section - Only show for Solution tab */}
+            {activeTab === "Solution" && (
+              <div
+                className="flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8 cursor-pointer"
+                style={{
+                  backgroundImage: `url(${currentContent.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                onClick={() => setIsIframeOpen(true)}
+              >
+                {/* Static image with click functionality */}
+              </div>
+            )}
           </div>
 
           {/* Navigation Tabs */}
