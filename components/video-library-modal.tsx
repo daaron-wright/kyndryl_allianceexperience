@@ -600,7 +600,7 @@ export default function VideoLibraryModal({
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 bg-white p-8 overflow-y-auto">
+        <div className="flex-1 p-8 overflow-y-auto bg-[rgba(242,241,238,1)]">
           <div className="grid grid-cols-2 gap-6 max-w-6xl mx-auto">
             {currentItems.map((item, index) => {
               const globalIndex = startIndex + index
@@ -656,15 +656,14 @@ export default function VideoLibraryModal({
                       ) : item.type === "video" && !item.url.startsWith("http") ? (
                         <div className="w-full h-full relative">
                           {isPlaying ? (
-                            <video
-                              controls
-                              autoPlay
-                              className="w-full h-full object-cover"
-                              poster={`/video-thumbnails/${item.url.replace(".mp4", "-keyframe.jpg")}`}
-                            >
-                              <source src={`/videos/${item.url}`} type="video/mp4" />
-                              Your browser does not support the video tag.
-                            </video>
+                            <iframe
+                              src="https://kyndryl.sharepoint.com/sites/ADAI-Data-and-AI/_layouts/15/embed.aspx?UniqueId=90a24f3d-c0cd-473e-9b45-5dee61933b6820c177c481e87684af1729ec3a6fbc1869ac310&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
+                              className="w-full h-full"
+                              frameBorder="0"
+                              scrolling="no"
+                              allowFullScreen
+                              title="Fire Fighter Safety Solution-demo-v4-3.mp4"
+                            />
                           ) : (
                             <div className="w-full h-full relative">
                               <img
@@ -752,6 +751,12 @@ export default function VideoLibraryModal({
                     <div
                       className="flex items-center text-[#3D3C3C] text-sm font-medium mb-4 cursor-pointer hover:text-[#FF462D]"
                       style={{ fontFamily: "TWK Everett, sans-serif" }}
+                      onClick={() =>
+                        window.open(
+                          "https://kyndryl.sharepoint.com/:v:/s/ADAI-Data-and-AI/ET1PopDNwD5Hm0Vd7mGTO1IBQOkLmQFAwuqKiSb3anjxWw?e=G3e1WY&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZ19MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
+                          "_blank",
+                        )
+                      }
                     >
                       Learn more
                       <svg
