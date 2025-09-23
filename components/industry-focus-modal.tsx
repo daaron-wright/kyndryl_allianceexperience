@@ -18,7 +18,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Agentic Airport AI Experience",
       description:
         "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
-      image: "/shipping-port-containers.png",
+      image: "/professional-airport-operations-team-warm-lighting.jpg",
       alliance: "Industry / Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
       type: "Case Study",
@@ -30,7 +30,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Smart Baggage Claim",
       description:
         "Intelligent baggage tracking and claim system using AI-powered computer vision and RFID technology to streamline airport baggage operations and enhance passenger experience.",
-      image: "/shipping-port-containers.png",
+      image: "/modern-baggage-handling-professionals-natural-light.jpg",
       alliance: "Industry / Transportation",
       tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
       type: "Case Study",
@@ -42,7 +42,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "TAP AIRPORTUGAL, FlyTAP AI Agent",
       description:
         "AI-powered customer service agent for aviation industry providing personalized travel assistance and support.",
-      image: "/shipping-port-containers.png",
+      image: "/airline-customer-service-professional-warm-office.jpg",
       alliance: "Industry / Transportation",
       tags: ["Aviation", "AI Agent", "Customer Service", "Travel"],
       type: "Hyperscalar Demo",
@@ -53,10 +53,10 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       id: 4,
       title: "X-Ray Image Analysis",
       description:
-        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
-      image: "/placeholder-98f8c.png",
-      alliance: "Industry / Healthcare",
-      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
+        "Advanced security screening analysis using AI to assist transportation security professionals in threat detection and passenger safety at airports and transit hubs.",
+      image: "/airport-security-professional-analyzing-screens.jpg",
+      alliance: "Industry / Transportation",
+      tags: ["Security Screening", "Threat Detection", "Airport Security", "AI Analysis"],
       type: "Case Study",
       alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
@@ -66,7 +66,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Virtual Healthcare Assistant",
       description:
         "AI-powered virtual assistant for healthcare providing patient support, appointment management, and medical guidance.",
-      image: "/placeholder-98f8c.png",
+      image: "/healthcare-professional-using-digital-interface.jpg",
       alliance: "Industry / Healthcare",
       tags: [
         "Patient",
@@ -86,7 +86,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Pricing Model",
       description:
         "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
-      image: "/dining-food-scene.png",
+      image: "/financial-analyst-warm-office-multiple-screens.jpg",
       alliance: "Industry / Financial Services",
       tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
       type: "Case Study",
@@ -98,7 +98,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Conversational AI",
       description:
         "Advanced conversational AI system for banking and financial services providing customer support and account management.",
-      image: "/dining-food-scene.png",
+      image: "/banking-customer-service-professional-headset.jpg",
       alliance: "Industry / Financial Services",
       tags: [
         "Banking Customer",
@@ -124,7 +124,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Actuary Demo",
       description:
         "Actuarial analysis and risk assessment platform powered by AI for insurance and financial planning.",
-      image: "/dining-food-scene.png",
+      image: "/actuary-professional-analyzing-data-warm-office.jpg",
       alliance: "Industry / Financial Services",
       tags: ["Risk Assessment", "Actuarial Analysis", "Financial Planning"],
       type: "Interactive Demo",
@@ -135,7 +135,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       id: 9,
       title: "Barclays Demo",
       description: "Barclays demo showcasing an example agentic framework for the Know Your Customer (KYC) use case.",
-      image: "/dining-food-scene.png",
+      image: "/barclays-banking-professional-modern-workspace.jpg",
       alliance: "Industry / Financial Services",
       tags: ["KYC", "Banking", "Compliance", "Customer Onboarding"],
       type: "Interactive Demo",
@@ -147,7 +147,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "New Barclays",
       description:
         "Updated Barclays demo. Will require a login for enhanced security and personalized banking experience.",
-      image: "/dining-food-scene.png",
+      image: "/secure-banking-professional-digital-workspace.jpg",
       alliance: "Industry / Financial Services",
       tags: ["Banking", "Security", "Personalization"],
       type: "Interactive Demo",
@@ -159,7 +159,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "L&G Consumer Duty",
       description:
         "An agentic AI system enabling automating data extraction, data validation, and masterfile report generation from multiple consumer files.",
-      image: "/dining-food-scene.png",
+      image: "/legal-general-compliance-professional-workspace.jpg",
       alliance: "Industry / Financial Services",
       tags: ["Consumer Duty", "Data Extraction", "Compliance", "Report Generation"],
       type: "Interactive Demo",
@@ -171,7 +171,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "L&G ESG Demo",
       description:
         "This demo indicates an agentic AI system where agents gather information from external/internal databases and online resources to generate the L&G portfolio and future investment ESG performance.",
-      image: "/dining-food-scene.png",
+      image: "/esg-investment-professional-sustainable-office.jpg",
       alliance: "Industry / Financial Services",
       tags: ["ESG", "Investment", "Portfolio Management", "Sustainability"],
       type: "Interactive Demo",
@@ -183,7 +183,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "First Notice of Loss (FNOL)",
       description:
         "Streamlined insurance claims processing system with AI-powered document analysis and fraud detection capabilities.",
-      image: "/construction-site-overview.png",
+      image: "/insurance-claims-professional-reviewing-documents.jpg",
       alliance: "Industry / Insurance",
       tags: [
         "Report a Claim with supporting documents",
@@ -201,7 +201,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Metlife Demo",
       description:
         "Insurance industry demonstration showcasing digital transformation solutions for the insurance sector. Features customer portal, claims processing, and policy management systems.",
-      image: "/construction-site-overview.png",
+      image: "/metlife-insurance-professional-digital-platform.jpg",
       alliance: "Industry / Insurance",
       tags: ["Insurance", "Digital Transformation", "Claims Processing", "Policy Management"],
       type: "Interactive Demo",
@@ -213,7 +213,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Agentic Sales Assistant",
       description:
         "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
-      image: "/grocery-shopping-scene.png",
+      image: "/retail-sales-professional-helping-customer-warm.jpg",
       alliance: "Industry / Retail",
       tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
       type: "Case Study",
@@ -225,7 +225,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Legal Documents Generator",
       description:
         "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
-      image: "/construction-site-overview.png",
+      image: "/insurance-legal-professional-document-review.jpg",
       alliance: "Industry / Insurance",
       tags: ["Legal Tech", "Document Automation", "Compliance"],
       type: "Case Study",
@@ -237,7 +237,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "DeploySafe Guardian",
       description:
         "Cobol Demo - Advanced security and deployment management system for government and enterprise applications.",
-      image: "/construction-site-overview.png",
+      image: "/government-it-professional-security-monitoring.jpg",
       alliance: "Industry / Government",
       tags: ["Security", "Deployment", "Enterprise", "Cobol"],
       type: "Interactive Demo",
@@ -249,7 +249,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Agentic Media Monitor",
       description:
         "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
-      image: "/placeholder-98f8c.png",
+      image: "/media-analyst-monitoring-multiple-screens-warm.jpg",
       alliance: "Industry / Communications & Media",
       tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
       type: "Case Study",
@@ -261,7 +261,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "WorldTel Email Response System",
       description:
         "Automated email response system for telecommunications companies providing intelligent customer service and support.",
-      image: "/placeholder-98f8c.png",
+      image: "/telecommunications-professional-email-system.jpg",
       alliance: "Industry / Communications & Media",
       tags: ["Email", "Response System", "AI/ML", "Communication"],
       type: "Hyperscalar Demo",
@@ -272,7 +272,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       id: 20,
       title: "TVG Demo",
       description: "Demo for The Very Group showcasing retail and media convergence solutions.",
-      image: "/grocery-shopping-scene.png",
+      image: "/retail-ecommerce-professional-digital-platform.jpg",
       alliance: "Industry / Retail",
       tags: ["Retail Media", "Customer Experience", "Digital Commerce"],
       type: "Hyperscalar Demo",
@@ -284,7 +284,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Marketing Automation",
       description:
         "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
-      image: "/sheep-livestock.png",
+      image: "/marketing-professional-campaign-automation-warm.jpg",
       alliance: "Industry / Telecommunications",
       tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
       type: "Case Study",
@@ -296,7 +296,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "SRE AI Agent",
       description:
         "Site Reliability Engineering AI agent for automated monitoring, incident response, and system optimization.",
-      image: "/construction-site-overview.png",
+      image: "/sre-engineer-monitoring-systems-modern-office.jpg",
       alliance: "Industry / Technology",
       tags: [
         "Site Reliability Engineer",
@@ -317,7 +317,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "Kyndryl Post, Trusted mail service",
       description:
         "Enterprise-grade trusted mail service providing secure email communication and cloud services integration.",
-      image: "/placeholder-98f8c.png",
+      image: "/enterprise-email-professional-secure-workspace.jpg",
       alliance: "Industry / Enterprise",
       tags: ["Email", "Security", "Cloud Services", "Enterprise"],
       type: "Hyperscalar Demo",
@@ -329,7 +329,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       title: "TVG Demo",
       description:
         "Demo for The Very Group showcasing retail and e-commerce solutions with AI-powered customer experience.",
-      image: "/grocery-shopping-scene.png",
+      image: "/digital-commerce-professional-customer-experience.jpg",
       alliance: "Industry / Retail",
       tags: ["Retail", "E-commerce", "Customer Experience", "Digital Commerce"],
       type: "Hyperscalar Demo",
@@ -543,7 +543,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                         textTransform: "uppercase",
                       }}
                     >
-                      {story.type}
+                      {story.type === "Hyperscalar Demo" ? "Kyndryl Agentic AI Framework Demo" : story.type}
                     </span>
                   </div>
                   <h3

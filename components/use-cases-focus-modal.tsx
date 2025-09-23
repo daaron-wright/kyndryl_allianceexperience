@@ -11,7 +11,7 @@ interface UseCasesFocusModalProps {
 
 export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(1) // Set current page to 1 since we only have one page now
+  const [currentPage, setCurrentPage] = useState(1) // Changed initial page from 2 to 1 so modal starts on first page
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedFeature, setSelectedFeature] = useState<any>(null)
 
@@ -19,44 +19,8 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
 
   const caseStudies = [
     {
-      id: 1,
-      image: "/airport-operations-ai-dashboard.jpg",
-      alliance: "Industry / Transportation",
-      title: "Agentic Airport AI Experience",
-      description:
-        "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
-      tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
-    },
-    {
-      id: 2,
-      image: "/media-monitoring-analytics-dashboard.jpg",
-      alliance: "Industry / Communications & Media",
-      title: "Agentic Media Monitor",
-      description:
-        "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
-      tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
-    },
-    {
-      id: 3,
-      image: "/ai-sales-assistant-crm-interface.jpg",
-      alliance: "Industry / Retail",
-      title: "Agentic Sales Assistant",
-      description:
-        "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
-      tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
-    },
-    {
-      id: 4,
-      image: "/legal-document-generator-ai-interface.jpg",
-      alliance: "Industry / Government",
-      title: "Legal Documents Generator",
-      description:
-        "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
-      tags: ["Legal Tech", "Document Automation", "Compliance"],
-    },
-    {
-      id: 5,
-      image: "/dynamic-pricing-optimization-dashboard.jpg",
+      id: 5, // Pricing Model in FeatureFocusModal
+      image: "/placeholder-98f8c.png",
       alliance: "Industry / Financial Services",
       title: "Pricing Model",
       description:
@@ -64,8 +28,8 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
       tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
     },
     {
-      id: 6,
-      image: "/hand-phone-scanning-nfc-mobile-pos-desktop-background.jpg",
+      id: 6, // Marketing Automation in FeatureFocusModal
+      image: "/placeholder-98f8c.png",
       alliance: "Industry / Telecommunications",
       title: "Marketing Automation",
       description:
@@ -73,24 +37,64 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
       tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
     },
     {
-      id: 7,
-      image: "/medical-xray-ai-analysis-interface.jpg",
-      alliance: "Industry / Healthcare",
+      id: 7, // X-Ray Image Analysis in FeatureFocusModal
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Transportation", // Updated to Transportation as per previous change
       title: "X-Ray Image Analysis",
       description:
-        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
-      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
+        "Advanced security screening analysis using AI to assist transportation professionals in threat detection and passenger safety.",
+      tags: ["Security AI", "Image Analysis", "Transportation Technology"],
     },
     {
-      id: 8,
-      image: "/smart-baggage-claim-system-with-ai-tracking.jpg",
+      id: 8, // Smart Baggage Claim in FeatureFocusModal (but keeping ID 4 for proper grid display)
+      image: "/smart-baggage-claim.png",
       alliance: "Industry / Transportation",
       title: "Smart Baggage Claim",
       description:
-        "Intelligent baggage tracking and claim system using AI-powered computer vision and RFID technology to streamline airport baggage operations and enhance passenger experience.",
+        "Intelligent baggage tracking and claim system using AI-powered computer vision and RFID technology to streamline airport baggage operations.",
       tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
     },
+    {
+      id: 1, // Agentic Airport AI Experience in FeatureFocusModal
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Transportation",
+      title: "Agentic Airport AI Experience",
+      description:
+        "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
+      tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
+    },
+    {
+      id: 2, // Agentic Media Monitor in FeatureFocusModal
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Communications & Media",
+      title: "Agentic Media Monitor",
+      description:
+        "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
+      tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
+    },
+    {
+      id: 3, // Agentic Sales Assistant in FeatureFocusModal
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Retail",
+      title: "Agentic Sales Assistant",
+      description:
+        "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
+      tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
+    },
+    {
+      id: 4, // Legal Documents Generator in FeatureFocusModal
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Government",
+      title: "Legal Documents Generator",
+      description:
+        "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
+      tags: ["Legal Tech", "Document Automation", "Compliance"],
+    },
   ]
+
+  const itemsPerPage = 4
+  const totalPages = Math.ceil(caseStudies.length / itemsPerPage)
+  const currentItems = caseStudies.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 
   const handleCardClick = (study: any) => {
     setSelectedFeature(study)
@@ -106,7 +110,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.8)", // ensuring background matches other modals exactly
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -138,7 +142,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                 margin: 0,
               }}
             >
-              Case studies
+              Customer Stories - Case studies
             </h1>
 
             <div className="flex items-center gap-4">
@@ -165,26 +169,26 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
           </div>
 
           {/* Case Studies Grid */}
-          <div className="px-6 py-4">
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
-              {caseStudies.slice((currentPage - 1) * 8, currentPage * 8).map((study) => (
+          <div className="px-16 py-8" style={{ backgroundColor: "#F2F1EE" }}>
+            <div className="grid grid-cols-4 gap-6 mb-16">
+              {currentItems.map((study) => (
                 <div
                   key={study.id}
                   className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-shadow"
                   style={{
-                    height: "240px",
+                    height: "400px",
                   }}
                   onClick={() => handleCardClick(study)}
                 >
                   <div
-                    className="w-full h-24 bg-cover bg-center"
+                    className="w-full h-48 bg-cover bg-center"
                     style={{
                       backgroundImage: `url(${study.image})`,
                     }}
                   />
-                  <div className="p-3">
+                  <div className="p-4">
                     <p
-                      className="text-[#FF462D] text-xs font-medium mb-1"
+                      className="text-[#FF462D] text-sm font-medium mb-2"
                       style={{
                         fontFamily: "TWK Everett, sans-serif",
                       }}
@@ -192,7 +196,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                       {study.alliance}
                     </p>
                     <h3
-                      className="text-[#3D3C3C] font-medium mb-2 text-sm leading-tight"
+                      className="text-[#3D3C3C] font-medium mb-3 text-lg leading-tight"
                       style={{
                         fontFamily: "TWK Everett, sans-serif",
                       }}
@@ -200,37 +204,23 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                       {study.title}
                     </h3>
                     <p
-                      className="text-[#727175] text-xs mb-2 leading-relaxed"
+                      className="text-[#727175] text-sm mb-4 leading-relaxed"
                       style={{
                         fontFamily: "TWK Everett, sans-serif",
                       }}
                     >
                       {study.description}
                     </p>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-4">
                       <button
-                        className="text-[#3D3C3C] text-xs font-medium hover:text-[#FF462D] transition-colors flex items-center gap-1"
+                        className="text-[#3D3C3C] text-sm font-medium hover:text-[#FF462D] transition-colors flex items-center gap-1"
                         style={{
                           fontFamily: "TWK Everett, sans-serif",
                         }}
                       >
                         Learn more
-                        <ChevronRight size={12} />
+                        <ChevronRight size={16} />
                       </button>
-                    </div>
-                    <div className="flex gap-1 flex-wrap">
-                      {study.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
-                          style={{
-                            fontFamily: "TWK Everett, sans-serif",
-                            fontSize: "10px",
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
                     </div>
                   </div>
                 </div>
@@ -247,13 +237,14 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                   fontFamily: "TWK Everett, sans-serif",
                 }}
                 onClick={() => setCurrentPage(currentPage > 1 ? currentPage - 1 : currentPage)}
+                disabled={currentPage === 1}
               >
                 <ChevronLeft size={20} />
                 Previous
               </button>
 
               <div className="flex items-center gap-6 relative">
-                {[1].map((page) => (
+                {[1, 2].map((page) => (
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
@@ -276,7 +267,8 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                 style={{
                   fontFamily: "TWK Everett, sans-serif",
                 }}
-                onClick={() => setCurrentPage(currentPage < 6 ? currentPage + 1 : currentPage)}
+                onClick={() => setCurrentPage(currentPage < totalPages ? currentPage + 1 : currentPage)}
+                disabled={currentPage === totalPages}
               >
                 Next
                 <ChevronRight size={20} />
