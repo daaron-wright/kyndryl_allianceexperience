@@ -36,7 +36,7 @@ export default function AIJourneyPage() {
       title: "Agentic Media Monitor",
       description:
         "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
-      image: "/media-monitoring-analytics-dashboard.jpg",
+      image: "/analytics-dashboard-viewer.png",
       alliance: "Industry / Communications & Media",
       tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
       alliancePartner: "Google Cloud",
@@ -58,7 +58,7 @@ export default function AIJourneyPage() {
       title: "Legal Documents Generator",
       description:
         "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
-      image: "/legal-document-generator-ai-interface.jpg",
+      image: "/legal-document-review.png",
       alliance: "Industry / Government",
       tags: ["Legal Tech", "Document Automation", "Compliance"],
       alliancePartner: "AWS",
