@@ -15,124 +15,102 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
   const allCustomerStories = [
     {
       id: 1,
-      title: "Autonomous Vehicle Fleet Management",
-      description:
-        "AI-powered fleet management system for autonomous vehicles, optimizing routes, maintenance schedules, and passenger safety through predictive analytics.",
-      image: "/construction-site-overview.png",
-      alliance: "Industry / Automotive",
-      tags: ["Autonomous Vehicles", "Fleet Management", "Predictive Analytics"],
-      alliancePartner: "AWS",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 2,
-      title: "Intelligent Banking Risk Assessment",
-      description:
-        "Advanced AI system for real-time credit risk assessment and fraud detection, enabling faster loan approvals and enhanced security measures.",
-      image: "/dining-food-scene.png",
-      alliance: "Industry / Banking and Financial Markets",
-      tags: ["Risk Assessment", "Fraud Detection", "Credit Analysis"],
-      alliancePartner: "Google Cloud",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 3,
-      title: "Smart Insurance Claims Processing",
-      description:
-        "Automated insurance claims processing using AI to analyze documents, assess damages, and expedite claim settlements with improved accuracy.",
-      image: "/sheep-livestock.png",
-      alliance: "Industry / Insurance",
-      tags: ["Claims Processing", "Document Analysis", "Automation"],
-      alliancePartner: "Microsoft Azure",
-      aiFeature: "Automation",
-    },
-    {
-      id: 4,
-      title: "Predictive Manufacturing Maintenance",
-      description:
-        "IoT-enabled predictive maintenance system that uses AI to forecast equipment failures and optimize production schedules in manufacturing facilities.",
-      image: "/grocery-shopping-scene.png",
-      alliance: "Industry / Manufacturing",
-      tags: ["Predictive Maintenance", "IoT Integration", "Production Optimization"],
-      alliancePartner: "AWS",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 5,
       title: "Agentic Airport AI Experience",
       description:
         "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
       image: "/shipping-port-containers.png",
-      alliance: "Industry / Travel and Transportation",
+      alliance: "Industry / Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
       alliancePartner: "Google Cloud",
       aiFeature: "AI & Machine Learning",
     },
     {
-      id: 6,
-      title: "Smart Baggage Handling System",
+      id: 2,
+      title: "Agentic Media Monitor",
       description:
-        "AI-driven baggage tracking and handling system that reduces lost luggage incidents and improves airport operational efficiency.",
+        "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
       image: "/placeholder-98f8c.png",
-      alliance: "Industry / Travel and Transportation",
-      tags: ["Baggage Tracking", "Airport Operations", "Efficiency Optimization"],
+      alliance: "Industry / Communications & Media",
+      tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 3,
+      title: "Agentic Sales Assistant",
+      description:
+        "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
+      image: "/grocery-shopping-scene.png",
+      alliance: "Industry / Retail",
+      tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
       alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 4,
+      title: "Legal Documents Generator",
+      description:
+        "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
+      image: "/construction-site-overview.png",
+      alliance: "Industry / Government",
+      tags: ["Legal Tech", "Document Automation", "Compliance"],
+      alliancePartner: "AWS",
       aiFeature: "Automation",
     },
     {
-      id: 10,
-      title: "Smart Baggage Claim",
+      id: 5,
+      title: "Pricing Model",
       description:
-        "Intelligent baggage claim system using AI-powered computer vision and RFID tracking to streamline passenger baggage retrieval, reduce wait times, and enhance airport customer experience.",
-      image: "/smart-baggage-claim-system-with-ai-tracking.jpg",
-      alliance: "Industry / Travel and Transportation",
-      tags: ["Baggage Claim", "Computer Vision", "RFID Tracking", "Customer Experience"],
-      alliancePartner: "AWS",
+        "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 6,
+      title: "Marketing Automation",
+      description:
+        "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
+      image: "/sheep-livestock.png",
+      alliance: "Industry / Telecommunications",
+      tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
+      alliancePartner: "Microsoft Azure",
       aiFeature: "AI & Machine Learning",
     },
     {
       id: 7,
-      title: "Personalized Retail Experience Platform",
+      title: "X-Ray Image Analysis",
       description:
-        "AI-powered personalization engine that delivers customized shopping experiences, product recommendations, and dynamic pricing strategies.",
-      image: "/dining-food-scene.png",
-      alliance: "Industry / Consumer and Retail",
-      tags: ["Personalization", "Product Recommendations", "Dynamic Pricing"],
+        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Healthcare",
+      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
       alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
     },
     {
       id: 8,
-      title: "Intelligent Inventory Management",
+      title: "Smart Baggage Claim",
       description:
-        "Smart inventory optimization system using AI to predict demand, manage stock levels, and reduce waste in retail operations.",
-      image: "/grocery-shopping-scene.png",
-      alliance: "Industry / Consumer and Retail",
-      tags: ["Inventory Management", "Demand Forecasting", "Waste Reduction"],
-      alliancePartner: "Google Cloud",
-      aiFeature: "Data Analytics",
-    },
-    {
-      id: 9,
-      title: "AI-Powered Medical Diagnostics",
-      description:
-        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning for better patient outcomes.",
-      image: "/sheep-livestock.png",
-      alliance: "Industry / Healthcare",
-      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
-      alliancePartner: "Microsoft Azure",
+        "Intelligent baggage tracking and claim system using AI-powered computer vision and RFID technology to streamline airport baggage operations and enhance passenger experience.",
+      image: "/shipping-port-containers.png",
+      alliance: "Industry / Transportation",
+      tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
+      alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
     },
   ]
 
   const industryMapping = {
     Automotive: "Automotive",
-    "Banking and Financial Markets": "Banking and Financial Markets",
-    "Consumer and Retail": "Consumer and Retail",
+    "Banking and Financial Markets": "Financial Services",
+    "Consumer and Retail": "Retail",
     Healthcare: "Healthcare",
     Insurance: "Insurance",
     Manufacturing: "Manufacturing",
-    "Travel and Transportation": "Travel and Transportation",
+    "Travel and Transportation": "Transportation",
     Government: "Government",
     "Tech, Media and Telecom": "Communications & Media",
     "Chemical, Oil and Gas": "Energy & Utilities",
@@ -185,15 +163,16 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
         <header style={{ padding: "32px 48px", borderBottom: "1px solid #E5E5E5", backgroundColor: "#FFFFFF" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <h1
+              className="font-thin"
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontSize: "32px",
-                fontWeight: "400",
+                fontWeight: "100", // Changed from "400" to "100" for thin font weight
                 color: "#FF462D",
                 margin: 0,
               }}
             >
-              {industry} - Case studies
+              {industry} {/* Removed "- Case studies" text */}
             </h1>
 
             <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>

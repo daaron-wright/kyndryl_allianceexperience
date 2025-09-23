@@ -34,6 +34,72 @@ export default function Industries() {
     "Travel and Transportation",
   ]
 
+  const industryData = {
+    Automotive: {
+      demos: [],
+      caseStudies: [],
+      description: "AI-powered solutions for autonomous vehicles, fleet management, and predictive analytics",
+    },
+    "Banking and Financial Markets": {
+      demos: [
+        "Conversational AI",
+        "Actuary Demo",
+        "Barclays Demo",
+        "L&G Consumer Duty",
+        "L&G ESG Demo",
+        "Metlife Demo",
+        "New Barclays",
+      ],
+      caseStudies: ["Pricing Model"],
+      description: "Advanced AI for risk assessment, fraud detection, and customer service automation",
+    },
+    "Consumer and Retail": {
+      demos: [],
+      caseStudies: ["Agentic Sales Assistant"],
+      description: "AI-driven personalization, inventory optimization, and sales automation",
+    },
+    Healthcare: {
+      demos: ["Virtual Healthcare Assistant", "DeploySafe Guardian"],
+      caseStudies: ["X-Ray Image Analysis"],
+      description: "Medical AI for diagnostics, patient care, and healthcare automation",
+    },
+    Insurance: {
+      demos: ["First Notice of Loss (FNOL)", "TVG Demo"],
+      caseStudies: [],
+      description: "Automated claims processing, risk assessment, and customer service",
+    },
+    Manufacturing: {
+      demos: ["SRE AI Agent"],
+      caseStudies: [],
+      description: "Predictive maintenance, production optimization, and operational intelligence",
+    },
+    "Travel and Transportation": {
+      demos: ["TAP AIRPORTUGAL, FlyTAP AI Agent"],
+      caseStudies: ["Agentic Airport AI Experience", "Smart Baggage Claim"],
+      description: "Airport operations, baggage handling, and passenger experience optimization",
+    },
+    Government: {
+      demos: ["Kyndryl Post, Trusted mail service"],
+      caseStudies: ["Legal Documents Generator"],
+      description: "Document automation, compliance management, and process optimization",
+    },
+    "Tech, Media and Telecom": {
+      demos: ["WorldTel Email Response System"],
+      caseStudies: ["Agentic Media Monitor", "Marketing Automation"],
+      description: "Media monitoring, content analysis, and marketing automation",
+    },
+    "Chemical, Oil and Gas": {
+      demos: [],
+      caseStudies: [],
+      description: "Process optimization, safety monitoring, and predictive analytics",
+    },
+    Utilities: {
+      demos: [],
+      caseStudies: [],
+      description: "Grid optimization, predictive maintenance, and energy management",
+    },
+  }
+
   const handleIndustryClick = (industry: string) => {
     if (!activeIndustries.includes(industry)) {
       return
@@ -141,7 +207,7 @@ export default function Industries() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 35vw, 390px), 1fr))",
-            gridAutoRows: "clamp(160px, 20vh, 220px)",
+            gridAutoRows: "clamp(200px, 25vh, 280px)", // Increased height to accommodate more content
             gap: "clamp(20px, 3vw, 30px)",
             maxWidth: "100%",
             margin: "0 auto",
@@ -150,6 +216,7 @@ export default function Industries() {
         >
           {industries.map((industry, index) => {
             const isActive = activeIndustries.includes(industry)
+            const data = industryData[industry] || { demos: [], caseStudies: [], description: "" }
 
             return (
               <div
@@ -181,18 +248,75 @@ export default function Industries() {
                   }
                 }}
               >
-                <h3
-                  style={{
-                    fontSize: "clamp(18px, 2.5vw, 24px)",
-                    fontFamily: "TWK Everett, sans-serif",
-                    fontWeight: 500,
-                    color: isActive ? "#3D3C3C" : "#9E9287",
-                    margin: 0,
-                    lineHeight: "1.2",
-                  }}
-                >
-                  {industry}
-                </h3>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "clamp(18px, 2.5vw, 24px)",
+                      fontFamily: "TWK Everett, sans-serif",
+                      fontWeight: 500,
+                      color: isActive ? "#3D3C3C" : "#9E9287",
+                      margin: "0 0 clamp(8px, 1vh, 12px) 0",
+                      lineHeight: "1.2",
+                    }}
+                  >
+                    {industry}
+                  </h3>
+
+                  {isActive && data.description && (
+                    <p
+                      style={{
+                        fontSize: "clamp(12px, 1.5vw, 14px)",
+                        fontFamily: "TWK Everett, sans-serif",
+                        color: "#727175",
+                        margin: "0 0 clamp(12px, 2vh, 16px) 0",
+                        lineHeight: "1.3",
+                      }}
+                    >
+                      {data.description}
+                    </p>
+                  )}
+
+                  {isActive && (
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "clamp(8px, 1vw, 12px)",
+                        marginBottom: "clamp(8px, 1vh, 12px)",
+                      }}
+                    >
+                      {data.demos.length > 0 && (
+                        <span
+                          style={{
+                            fontSize: "clamp(10px, 1.2vw, 12px)",
+                            fontFamily: "TWK Everett, sans-serif",
+                            backgroundColor: "#FF462D",
+                            color: "white",
+                            padding: "2px 6px",
+                            borderRadius: "4px",
+                            fontWeight: 500,
+                          }}
+                        >
+                          {data.demos.length} Demo{data.demos.length > 1 ? "s" : ""}
+                        </span>
+                      )}
+                      {data.caseStudies.length > 0 && (
+                        <span
+                          style={{
+                            fontSize: "clamp(10px, 1.2vw, 12px)",
+                            fontFamily: "TWK Everett, sans-serif",
+                            backgroundColor: "#29707A",
+                            color: "white",
+                            padding: "2px 6px",
+                            borderRadius: "4px",
+                            fontWeight: 500,
+                          }}
+                        >
+                          {data.caseStudies.length} Case Stud{data.caseStudies.length > 1 ? "ies" : "y"}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
 
                 <div
                   style={{
