@@ -142,7 +142,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                 margin: 0,
               }}
             >
-              Customer Stories - Case studies
+              Case studies
             </h1>
 
             <div className="flex items-center gap-4">

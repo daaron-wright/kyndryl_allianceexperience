@@ -47,7 +47,8 @@ export default function AIJourneyPage() {
       title: "Agentic Sales Assistant",
       description:
         "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
-      image: "/customer-service-team.png",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-09-23%20at%207.14.49%E2%80%AFAM-5Cggm8ffXljK9mOYw4ngJIhyz6yMlg.png",
       alliance: "Industry / Retail",
       tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
       alliancePartner: "Microsoft Azure",
@@ -537,7 +538,7 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-ejH0eYz1sqhO9H6oVLgJEY9z8DhYOw.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-pnzCNtUuHDTwKocFYfvNJaSCfZ0ssi.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />
