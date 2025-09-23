@@ -18,6 +18,7 @@ export default function AIJourneyPage() {
   const [selectedIndustries, setSelectedIndustries] = useState([])
   const [selectedAIFeatures, setSelectedAIFeatures] = useState([])
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
+  const [isVideoClicked, setIsVideoClicked] = useState(false)
 
   const customerStories = [
     {
@@ -287,50 +288,36 @@ export default function AIJourneyPage() {
               </div>
             </div>
 
-            {/* Right side - Video */}
-            <div className="relative">
-              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
-                <video
-                  tabIndex={-1}
-                  width="2005"
-                  height="1128"
-                  preload="auto"
-                  className="s7videoelement cmp-video--container__video-player inlinePlayer reloadPlayer w-full h-full object-cover"
-                  poster="https://s7d1.scene7.com/is/image/kyndryl/kyndryl-agentic-ai-framework-video-cover-16x9?fit=constrain"
+            {/* Right side - Larger Centered Video */}
+            <div className="relative flex items-center justify-center">
+              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg w-full">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
+                  title="Kyndryl Agentic AI Framework"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full object-contain"
                   style={{
-                    position: "absolute",
-                    width: "1002.666667px",
-                    height: "564px",
-                    left: "0.166667px",
-                    top: "0px",
-                    pointerEvents: "auto",
+                    minHeight: "400px",
                   }}
-                >
-                  <meta itemProp="name" content="Kyndryl Agentic AI Framework" />
-                  <meta
-                    itemProp="description"
-                    content="Kyndryl launches its Agentic AI Framework to deploy adaptive, self-learning AI agents that enhance business performance with security and human oversight."
-                  />
-                  <meta itemProp="duration" content="T1M5S" />
-                  <meta itemProp="uploadDate" content="2025-07-17T12:08:16.437Z" />
-                  <meta
-                    itemProp="thumbnailUrl"
-                    content="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
-                  />
-                  <meta
-                    itemProp="contentURL"
-                    content="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
-                  />
-                </video>
+                />
               </div>
               {/* Play button overlay for better UX */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-4">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white">
-                    <polygon points="5,3 19,12 5,21" fill="currentColor" />
-                  </svg>
+              {!isVideoClicked && (
+                <div
+                  className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                  onClick={() => setIsVideoClicked(true)}
+                >
+                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white">
+                      <polygon points="5,3 19,12 5,21" fill="currentColor" />
+                    </svg>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -616,7 +603,7 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-xSaA10EDLaeXw1IM0kmRa89Z2EG3YK.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29-xSaA10EDLaeXw1IM0kmRa89Z2EG3YK.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />
