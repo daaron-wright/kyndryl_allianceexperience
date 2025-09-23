@@ -66,7 +66,7 @@ export default function AllianceHomeFixed({
 
       <img
         className="my-3"
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29-OJcOzsqRwb35YOXwGs2i4DIFKTq2c0.png"
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-YHEBuEMujXD1tyjk0LMg3SyveEuTy3.png"
         alt="Alliance Experience"
         style={{
           position: "absolute",
@@ -187,7 +187,7 @@ export default function AllianceHomeFixed({
         }}
       >
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29-1SYUdeONCOD7y1p6IVxqldifgre1JH.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-yoNGz4xEkEJ4XN6W1QqgfF17uKKLPh.png"
           alt="Kyndryl"
           style={{
             width: "100%",
@@ -245,7 +245,7 @@ function Tile({
       aria-label={title}
       tabIndex={0}
       onClick={onClick}
-      className="absolute rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 bg-[rgba(5,6,9,1)]"
+      className="absolute rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
       style={{
         left: `${rect.x}%`,
         top: `${rect.y}%`,
@@ -319,7 +319,7 @@ function Tile({
       )}
       {overlay === "space" && showImagery && (
         <div
-          className="pr-14 pl-14 mb-8 ml-1"
+          className="pr-14 pl-14 ml-1 mb-0"
           style={{
             position: "absolute",
             inset: 0,

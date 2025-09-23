@@ -216,7 +216,7 @@ export default function AllianceLanding({
             <div className="bg-white rounded-lg overflow-hidden max-w-md w-full mx-4 p-8 text-center">
               <div className="mb-6">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%283%29%281%29-YsVOPGgBbSmnzLFt8oeo0y61YwY7DP.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%283%29%281%29%281%29-6KJjQk5SSu93azfv3mLzcUwSTwvmhU.png"
                   alt="Demo not available"
                   className="mx-auto h-16 w-16"
                 />
@@ -399,7 +399,7 @@ export default function AllianceLanding({
         >
           <div className="flex items-center" style={{ gap: "clamp(16px, 2vw, 32px)" }}>
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29-o8SAhjfYKJXGa3CC6RGqgV3SocE6qX.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-eW7qHmMw6ZeylE8TpV2Nm9Q5G3wil0.png"
               alt="Kyndryl Alliance Experience"
               style={{ height: "clamp(24px, 3vh, 32px)", width: "auto" }}
             />
