@@ -25,12 +25,10 @@ export default function Industries() {
   ]
 
   const activeIndustries = [
-    "Automotive",
     "Banking and Financial Markets",
     "Consumer and Retail",
     "Healthcare",
     "Insurance",
-    "Manufacturing",
     "Travel and Transportation",
   ]
 

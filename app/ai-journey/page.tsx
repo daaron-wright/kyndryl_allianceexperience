@@ -91,7 +91,7 @@ export default function AIJourneyPage() {
       title: "X-Ray Image Analysis",
       description:
         "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
-      image: "/medical-xray-ai-analysis-interface.jpg",
+      image: "/container-ship-aerial-view.png",
       alliance: "Industry / Healthcare",
       tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
       alliancePartner: "Microsoft Azure",
