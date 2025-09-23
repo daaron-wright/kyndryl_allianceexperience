@@ -251,7 +251,12 @@ export default function AIJourneyPage() {
               Customer Stories
             </button>
             <button
-              onClick={() => setIsUseCasesOpen(true)}
+              onClick={() => {
+                const section = document.getElementById("customer-stories-section")
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
               className="border border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-[#FF462D] transition-colors"
             >
               Case Studies
@@ -523,10 +528,15 @@ export default function AIJourneyPage() {
               Customer Stories
             </button>
             <button
-              onClick={() => setIsUseCasesOpen(true)}
+              onClick={() => {
+                const section = document.getElementById("customer-stories-section")
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
               className="border border-[#FF462D] text-[#FF462D] px-8 py-3 rounded-md font-medium hover:bg-[#FF462D] hover:text-white transition-colors"
             >
-              Use Cases
+              Case Studies
             </button>
           </div>
         </div>
@@ -537,7 +547,7 @@ export default function AIJourneyPage() {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-plMHVgdNeY7DFRL9Mt1yRhvw8XE8Q5.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29-1kxvzJ0Oxd953lzH32hms4djGXuYvP.png"
               alt="Kyndryl Alliance Experience"
               className="object-contain h-8 lg:h-10 w-auto"
             />

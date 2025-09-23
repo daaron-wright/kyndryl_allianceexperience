@@ -174,7 +174,7 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
               {currentItems.map((study) => (
                 <div
                   key={study.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+                  className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200"
                   style={{
                     height: "400px",
                   }}
@@ -216,6 +216,10 @@ export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusMod
                         className="text-[#3D3C3C] text-sm font-medium hover:text-[#FF462D] transition-colors flex items-center gap-1"
                         style={{
                           fontFamily: "TWK Everett, sans-serif",
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation() // Prevent tile click event from firing
+                          handleCardClick(study) // Open the specific case study modal
                         }}
                       >
                         Learn more
