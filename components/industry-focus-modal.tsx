@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react"
 import FeatureFocusModal from "./feature-focus-modal"
+import PricingModelModal from "./pricing-model-modal"
 
 interface IndustryFocusModalProps {
   industry: string
@@ -13,11 +14,30 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false)
   const [selectedStory, setSelectedStory] = useState(null)
 
   const handleCardClick = (story) => {
+    console.log("[v0] Clicked on story with ID:", story.id, "Title:", story.title)
     setSelectedStory(story)
-    setIsFeatureModalOpen(true)
+    if (story.id === 6) {
+      setIsPricingModalOpen(true)
+    } else if (story.id === 16) {
+      // Legal Documents Generator should use the standard FeatureFocusModal with case study ID 4
+      const legalDocsStory = { ...story, id: 4 } // Map to case study ID 4 in FeatureFocusModal
+      setSelectedStory(legalDocsStory)
+      setIsFeatureModalOpen(true)
+    } else if (story.id === 4) {
+      const xrayStory = { ...story, id: 7 } // Map to case study ID 7 in FeatureFocusModal
+      setSelectedStory(xrayStory)
+      setIsFeatureModalOpen(true)
+    } else if (story.id === 2) {
+      const baggageClaimStory = { ...story, id: 2 } // Map to case study ID 2 in FeatureFocusModal
+      setSelectedStory(baggageClaimStory)
+      setIsFeatureModalOpen(true)
+    } else {
+      setIsFeatureModalOpen(true)
+    }
   }
 
   const allCustomerStories = [
@@ -283,7 +303,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       image: "/retail-ecommerce-professional-digital-platform.jpg",
       alliance: "Industry / Retail",
       tags: ["Retail Media", "Customer Experience", "Digital Commerce"],
-      type: "Hyperscalar Demo",
+      type: "Interactive Demo",
       alliancePartner: "Microsoft Azure",
       aiFeature: "AI & Machine Learning",
     },
@@ -340,7 +360,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       image: "/digital-commerce-professional-customer-experience.jpg",
       alliance: "Industry / Retail",
       tags: ["Retail", "E-commerce", "Customer Experience", "Digital Commerce"],
-      type: "Hyperscalar Demo",
+      type: "Interactive Demo",
       alliancePartner: "Microsoft Azure",
       aiFeature: "AI & Machine Learning",
     },
@@ -508,13 +528,18 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                   e.currentTarget.style.transform = "translateY(0)"
                   e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)"
                 }}
-                onClick={() => handleCardClick(story)}
+                onClick={() => {
+                  console.log("[v0] Tile clicked - Story ID:", story.id, "Story:", story)
+                  handleCardClick(story)
+                }}
               >
                 <div style={{ position: "relative", height: "200px", overflow: "hidden" }}>
-                  <img
-                    src={story.image || "/placeholder.svg"}
-                    alt={story.title}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      backgroundColor: "#29707A",
+                    }}
                   />
                 </div>
                 <div style={{ padding: "24px" }}>
@@ -578,7 +603,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                   >
                     {story.description}
                   </p>
-                  {[8, 9, 10, 11, 12, 20, 24].includes(story.id) ? (
+                  {story.type === "Interactive Demo" ? (
                     <div
                       style={{
                         display: "flex",
@@ -590,7 +615,7 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                       <button
                         onClick={(e) => {
                           e.stopPropagation()
-                          window.open("https://kyndryl-demos.web.app/dashboard", "_blank")
+                          window.open("https://kyndryl-demos.web.app/", "_blank")
                         }}
                         style={{
                           backgroundColor: "#FFFFFF",
@@ -616,20 +641,24 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                           e.currentTarget.style.color = "#3D3C3C"
                         }}
                       >
-                        Log in to explore demos
+                        {[8, 9, 10, 11, 12, 20, 24].includes(story.id)
+                          ? "Log in to explore demos"
+                          : "Explore Interactive Demo"}
                         <ChevronRight style={{ width: "16px", height: "16px" }} />
                       </button>
-                      <p
-                        style={{
-                          fontFamily: "TWK Everett, sans-serif",
-                          fontSize: "12px",
-                          color: "#727175",
-                          margin: "0",
-                          lineHeight: "1.4",
-                        }}
-                      >
-                        Username: &lt;email&gt; | Password: &lt;firstname.surname&gt;
-                      </p>
+                      {[8, 9, 10, 11, 12, 20, 24].includes(story.id) && (
+                        <p
+                          style={{
+                            fontFamily: "TWK Everett, sans-serif",
+                            fontSize: "12px",
+                            color: "#727175",
+                            margin: "0",
+                            lineHeight: "1.4",
+                          }}
+                        >
+                          Username: &lt;email&gt; | Password: &lt;firstname.surname&gt;
+                        </p>
+                      )}
                     </div>
                   ) : (
                     <div style={{ marginBottom: "16px" }}>
@@ -648,6 +677,36 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.color = "#3D3C3C"
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          if (story.id === 6) {
+                            console.log("[v0] Pricing Model tile clicked - forcing story ID 6")
+                            const pricingModelStory = allCustomerStories.find(
+                              (s) => s.id === 6 && s.title === "Pricing Model",
+                            )
+                            if (pricingModelStory) {
+                              setSelectedStory(pricingModelStory)
+                              setIsPricingModalOpen(true)
+                            }
+                          } else if (story.id === 16) {
+                            console.log("[v0] Legal Documents Generator tile clicked - using FeatureFocusModal case 4")
+                            const legalDocsStory = { ...story, id: 4 } // Map to case study ID 4 in FeatureFocusModal
+                            setSelectedStory(legalDocsStory)
+                            setIsFeatureModalOpen(true)
+                          } else if (story.id === 4) {
+                            console.log("[v0] X-Ray Image Analysis tile clicked - using FeatureFocusModal case 7")
+                            const xrayStory = { ...story, id: 7 } // Map to case study ID 7 in FeatureFocusModal
+                            setSelectedStory(xrayStory)
+                            setIsFeatureModalOpen(true)
+                          } else if (story.id === 2) {
+                            console.log("[v0] Smart Baggage Claim tile clicked - using FeatureFocusModal case 2")
+                            const baggageClaimStory = { ...story, id: 2 } // Map to case study ID 2 in FeatureFocusModal
+                            setSelectedStory(baggageClaimStory)
+                            setIsFeatureModalOpen(true)
+                          } else {
+                            handleCardClick(story)
+                          }
                         }}
                       >
                         <span style={{ fontFamily: "TWK Everett, sans-serif" }}>Learn more</span>
@@ -707,10 +766,11 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
+                  disabled={currentPage === page}
                   style={{
                     background: "none",
                     border: "none",
-                    cursor: "pointer",
+                    cursor: currentPage === page ? "default" : "pointer",
                     fontFamily: "TWK Everett, sans-serif",
                     fontSize: "18px",
                     color: currentPage === page ? "#FF462D" : "#9E9287",
@@ -799,6 +859,18 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
           isOpen={isFeatureModalOpen}
           onClose={() => {
             setIsFeatureModalOpen(false)
+            setSelectedStory(null)
+          }}
+          story={selectedStory}
+        />
+      )}
+
+      {/* PricingModelModal for Pricing Model case study */}
+      {isPricingModalOpen && selectedStory && (
+        <PricingModelModal
+          isOpen={isPricingModalOpen}
+          onClose={() => {
+            setIsPricingModalOpen(false)
             setSelectedStory(null)
           }}
           story={selectedStory}

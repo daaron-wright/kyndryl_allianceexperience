@@ -306,8 +306,8 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           },
           solution: [
             {
-              title: "Marketing Automation",
-              subtitle: "EPOS",
+              title: "Marketing Personalization",
+              subtitle: "Customer segmented marketing campaigns",
               description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
               image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TPBnIgxdeYffTp5yRiF6aNkKUJWOlY.png",
@@ -671,8 +671,8 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
         >
           <div
             style={{
-              width: "711px",
-              height: "400px",
+              width: story?.id === 6 ? "1080px" : "711px",
+              height: story?.id === 6 ? "720px" : "400px",
               position: "relative",
               backgroundColor: "white",
               borderRadius: "8px",
@@ -717,9 +717,23 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
             ) : (
               <iframe
                 src={
-                  story?.id === 8 && currentSolutionIndex === 1
-                    ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2425-3627&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2425-3627&embed-host=share"
-                    : "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2312-1098&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2312-1098&embed-host=share"
+                  story?.id === 1
+                    ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=0%3A1&node-id=997-1261&t=rBV5oTCx3ZHI9zMg-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=204%3A6246&embed-host=share"
+                    : story?.id === 2
+                      ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=1088%3A1099&node-id=1088-1212&t=omgMNfGFKH1kh1oZ-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1088%3A1212&embed-host=share"
+                      : story?.id === 3
+                        ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=5%3A2&node-id=120-8082&t=fzSoSTsLEyyke7ky-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=120%3A8082&embed-host=share"
+                        : story?.id === 4
+                          ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=5%3A3&node-id=86-7599&t=Q5EiuifDmonXlvpE-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=86%3A7635&embed-host=share"
+                          : story?.id === 5
+                            ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=1788%3A1098&node-id=1852-26411&t=RgR1SqpmmpytTPjX-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1852-26411&embed-host=share"
+                            : story?.id === 6
+                              ? "https://daaron-wright.github.io/EPOSPOSPoC/"
+                              : story?.id === 8 && currentSolutionIndex === 0
+                                ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2312-1098&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2312-1098&embed-host=share"
+                                : story?.id === 8 && currentSolutionIndex === 1
+                                  ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=1088%3A1099&node-id=2425-3627&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2425-3627&embed-host=share"
+                                  : "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2312-1098&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2312-1098&embed-host=share"
                 }
                 style={{
                   width: "100%",
