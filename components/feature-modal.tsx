@@ -106,7 +106,7 @@ export default function FeatureModal({ onClose }: { onClose?: () => void }) {
         {/* Image */}
         <div className="w-[711px] h-full">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-WzDWobsV9SEMHWSlwJ5Ohs7I52IYL8.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-BDY8829SYwQ3vRQitLzQ0Ct5q3FVek.png"
             alt="Professional man in white shirt and glasses holding tablet in modern office environment"
             className="w-full h-full object-cover"
             onError={(e) => {

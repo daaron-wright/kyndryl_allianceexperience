@@ -3,7 +3,7 @@ export default function Loading() {
     <div className="min-h-screen bg-white flex items-center justify-center">
       <div className="text-center">
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-klhABvqyRo4m49UqmwbfXHMUzqGFuy.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-eW7qHmMw6ZeylE8TpV2Nm9Q5G3wil0.png"
           alt="Loading"
           className="w-16 h-auto mx-auto mb-4 animate-pulse"
         />
