@@ -309,7 +309,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               title: "Marketing Personalization",
               subtitle: "Customer segmented marketing campaigns",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "Our intelligent marketing platform transforms customer engagement through advanced segmentation and personalized campaign delivery. By analyzing customer behavior patterns, purchase history, and demographic data, the system automatically creates targeted customer segments and delivers personalized content across multiple channels. Real-time analytics track engagement metrics, conversion rates, and campaign performance, enabling marketers to optimize messaging and timing for maximum impact. The platform integrates seamlessly with existing CRM systems and marketing tools, providing a unified view of customer interactions and enabling sophisticated A/B testing to continuously improve campaign effectiveness.",
               image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TPBnIgxdeYffTp5yRiF6aNkKUJWOlY.png",
             },
           ],
@@ -343,7 +343,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               title: "X-Ray Image Analysis",
               subtitle: "X-Ray Scanner",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "Our advanced AI-powered X-ray analysis system revolutionizes medical imaging diagnostics through machine learning algorithms trained on millions of medical images. The platform automatically detects anomalies, fractures, and pathological conditions with precision that matches or exceeds human radiologists. Real-time image processing provides instant preliminary results, flagging urgent cases for immediate attention while routine scans are processed efficiently. The system integrates seamlessly with existing PACS (Picture Archiving and Communication Systems) and provides detailed diagnostic reports with confidence scores, anatomical annotations, and comparison tools that support clinical decision-making and improve patient outcomes.",
               image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BL8Mq810eoqqoSaJjLfurJyTnewTll.png",
             },
           ],
@@ -377,14 +377,14 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               title: "Baggage Claim",
               subtitle: "Traveller",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "The traveller experience is transformed through our intelligent baggage tracking mobile application that provides real-time visibility into luggage location and status. Passengers receive instant notifications when their bags are loaded, in transit, and ready for collection, eliminating uncertainty and reducing wait times at baggage claim areas. The app features interactive terminal maps showing exact carousel locations, estimated arrival times, and push notifications for any delays or issues. Integration with airline systems ensures seamless tracking from check-in to collection, while the intuitive interface allows passengers to report missing items and track resolution progress.",
               image: "/baggage-claim-mobile-app.png",
             },
             {
               title: "Baggage Claim",
               subtitle: "Admin",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "The administrative dashboard provides comprehensive oversight of baggage operations with real-time monitoring, predictive analytics, and automated alert systems. Airport staff can track baggage flow across all terminals, identify bottlenecks before they impact passengers, and coordinate with ground handling teams for optimal resource allocation. The system features advanced reporting capabilities, performance metrics tracking, and integration with security systems to ensure compliance and operational efficiency. Automated workflows handle exception management, while machine learning algorithms predict peak times and optimize carousel assignments to minimize passenger wait times.",
               image: "/baggage-claim-admin-dashboard.png",
             },
           ],

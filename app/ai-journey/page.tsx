@@ -278,7 +278,7 @@ export default function AIJourneyPage() {
               <div className="flex flex-wrap justify-center gap-4">
                 <button
                   onClick={() => {
-                    const section = document.getElementById("introduction-section")
+                    const section = document.getElementById("customer-stories-section")
                     if (section) {
                       section.scrollIntoView({ behavior: "smooth" })
                     }
@@ -293,21 +293,31 @@ export default function AIJourneyPage() {
             {/* Right side - Extended Video taking 2 columns */}
             <div className="relative flex items-center justify-center lg:col-span-2">
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg w-full">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={
-                    isVideoClicked ? "https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1" : ""
-                  }
-                  title="Kyndryl Agentic AI Framework"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full object-fill"
-                  style={{
-                    minHeight: "400px",
-                  }}
-                />
+                {isVideoClicked ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
+                    title="Kyndryl Agentic AI Framework"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full object-fill"
+                    style={{
+                      minHeight: "400px",
+                    }}
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full bg-gray-100 flex items-center justify-center"
+                    style={{ minHeight: "400px" }}
+                  >
+                    <div className="text-gray-500 text-center">
+                      <div className="text-lg font-medium mb-2">Kyndryl Agentic AI Framework</div>
+                      <div className="text-sm">Click to play video</div>
+                    </div>
+                  </div>
+                )}
               </div>
               {/* Play button overlay for better UX */}
               {!isVideoClicked && (
@@ -462,7 +472,7 @@ export default function AIJourneyPage() {
               >
                 <div className="w-full h-48 overflow-hidden">
                   <img
-                    src={story.image || "/placeholder.svg"}
+                    src={story.image && story.image.trim() !== "" ? story.image : "/placeholder.svg"}
                     alt={story.title}
                     className="w-full h-full object-cover"
                   />
