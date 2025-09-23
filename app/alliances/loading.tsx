@@ -20,7 +20,7 @@ export default function Loading() {
         }}
       >
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-eW7qHmMw6ZeylE8TpV2Nm9Q5G3wil0.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29-9uAOUBj8PtQIU3FT5GKFllkcAv9wWz.png"
           alt="Kyndryl Alliance Experience"
           style={{
             height: "clamp(32px, 4vh, 48px)",
