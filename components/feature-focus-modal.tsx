@@ -701,15 +701,34 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
             >
               <X size={16} />
             </button>
-            <iframe
-              src="https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=5%3A3&node-id=86-7599&scaling=scale-down&content-scaling=fixed&starting-point-node-id=86%3A7635&embed-host=share"
-              style={{
-                width: "100%",
-                height: "100%",
-                border: "1px solid rgba(0, 0, 0, 0.1)",
-              }}
-              allowFullScreen
-            />
+            {story?.id === 7 ? (
+              <video
+                controls
+                autoPlay
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              >
+                <source src="/ych-demo-without-logo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <iframe
+                src={
+                  story?.id === 8 && currentSolutionIndex === 1
+                    ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2425-3627&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2425-3627&embed-host=share"
+                    : "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2312-1098&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2312-1098&embed-host=share"
+                }
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  border: "1px solid rgba(0, 0, 0, 0.1)",
+                }}
+                allowFullScreen
+              />
+            )}
           </div>
         </div>
       )}

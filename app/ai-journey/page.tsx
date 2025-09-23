@@ -275,7 +275,7 @@ export default function AIJourneyPage() {
                   "The Kyndryl Agentic AI Framework is a policy-driven system that coordinates intelligent agents to deliver outcomes, securely, at scale, and always within your governance boundaries. It's not just a platform. It's a new way to think about AI: one that connects strategy to execution, people to intelligent systems, and outcomes to measurable impact. Imagine a hybrid workforce where agents reason, adapt, and act in real time, alongside your people, within your policies, and across your infrastructure. Every decision is informed. Every action is traceable. Every outcome is intentional.\nWatch the explainer video to see how it works."
                 }
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <button
                   onClick={() => {
                     const section = document.getElementById("introduction-section")
@@ -296,7 +296,9 @@ export default function AIJourneyPage() {
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
+                  src={
+                    isVideoClicked ? "https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1" : ""
+                  }
                   title="Kyndryl Agentic AI Framework"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
