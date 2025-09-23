@@ -18,15 +18,14 @@ export default function PricingModelModal({ isOpen, onClose, story }: PricingMod
 
   const tabs = ["Solution", "Challenge", "Outcome"]
 
-  // Mock case study data for Pricing Model
   const currentCaseStudy = {
     solution: [
       {
-        title: "Dynamic Pricing Engine",
-        subtitle: "AI-Powered Revenue Optimization",
+        title: "Pricing Model",
+        subtitle: "Acturance",
         description:
-          "Advanced machine learning algorithms analyze market conditions, competitor pricing, and customer behavior to optimize pricing strategies in real-time, maximizing revenue while maintaining competitive positioning.",
-        image: "/financial-analyst-warm-office-multiple-screens.jpg",
+          "Acturance Comprehensive Insurance offers complete protection for every aspect of life—your home, health, business, and travel—consolidated under one trusted provider. More than just a policy, it delivers peace of mind by safeguarding your family's future and securing your valuable assets. With streamlined onboarding and tailored coverage, Acturance ensures reliable protection at every stage, allowing you to focus on what matters most while we manage the risks.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-5P1bGM2lMEjvWL62yT3qdNusAERKlv.png",
       },
     ],
   }

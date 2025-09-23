@@ -110,18 +110,6 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       aiFeature: "AI & Machine Learning",
     },
     {
-      id: 6,
-      title: "Pricing Model",
-      description:
-        "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
-      image: "/financial-analyst-warm-office-multiple-screens.jpg",
-      alliance: "Industry / Financial Services",
-      tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
-      type: "Case Study",
-      alliancePartner: "Google Cloud",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
       id: 7,
       title: "Conversational AI",
       description:
