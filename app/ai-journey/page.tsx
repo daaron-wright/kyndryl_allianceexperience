@@ -47,7 +47,7 @@ export default function AIJourneyPage() {
       title: "Agentic Sales Assistant",
       description:
         "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
-      image: "/ai-sales-assistant-crm-interface.jpg",
+      image: "/customer-service-team.png",
       alliance: "Industry / Retail",
       tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
       alliancePartner: "Microsoft Azure",
