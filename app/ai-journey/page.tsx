@@ -25,7 +25,7 @@ export default function AIJourneyPage() {
       title: "Agentic Airport AI Experience",
       description:
         "Revolutionizing airport operations with intelligent automation and passenger experience optimization through AI-powered systems.",
-      image: "/airport-operations-ai-dashboard.jpg",
+      image: "/airport-terminal-passenger.png",
       alliance: "Industry / Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
       alliancePartner: "AWS",
