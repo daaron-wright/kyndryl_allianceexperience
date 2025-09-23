@@ -258,20 +258,22 @@ export default function AIJourneyPage() {
       {/* Introduction + Video Section */}
       <section id="introduction-section" className="bg-white px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
             {/* Left side - Introduction */}
-            <div>
+            <div className="lg:col-span-1">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D3C3C] mb-6">
-                Transforming Business with AI Innovation
+                The Kyndryl Agentic AI Framework
               </h2>
               <p className="text-lg text-[#9E9287] mb-6 leading-relaxed">
-                Discover how Kyndryl is pioneering the future of artificial intelligence across industries. Our
-                comprehensive AI solutions help organizations unlock new possibilities, streamline operations, and drive
-                meaningful business outcomes.
+                AI is evolving, and enterprise leaders are asking what comes next. The answer isn’t more automation.
+                It’s orchestration. Most organizations are stuck in pilot purgatory. They’ve tested generative AI, but
+                struggle to scale it across silos, systems, and governance boundaries. Rigid workflows, fragmented data,
+                and compliance complexity stall progress and limit impact.
               </p>
               <p className="text-lg text-[#9E9287] mb-8 leading-relaxed">
-                From intelligent automation to advanced analytics, explore real-world implementations that are reshaping
-                how businesses operate and compete in the digital age.
+                {
+                  "The Kyndryl Agentic AI Framework is a policy-driven system that coordinates intelligent agents to deliver outcomes, securely, at scale, and always within your governance boundaries. It's not just a platform. It's a new way to think about AI: one that connects strategy to execution, people to intelligent systems, and outcomes to measurable impact. Imagine a hybrid workforce where agents reason, adapt, and act in real time, alongside your people, within your policies, and across your infrastructure. Every decision is informed. Every action is traceable. Every outcome is intentional.\nWatch the explainer video to see how it works."
+                }
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
@@ -288,8 +290,8 @@ export default function AIJourneyPage() {
               </div>
             </div>
 
-            {/* Right side - Larger Centered Video */}
-            <div className="relative flex items-center justify-center">
+            {/* Right side - Extended Video taking 2 columns */}
+            <div className="relative flex items-center justify-center lg:col-span-2">
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg w-full">
                 <iframe
                   width="100%"
@@ -299,7 +301,7 @@ export default function AIJourneyPage() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-fill"
                   style={{
                     minHeight: "400px",
                   }}

@@ -106,7 +106,7 @@ export default function DemoFocusModal({ isOpen, onClose }: DemoFocusModalProps)
           <div className="flex justify-between items-end">
             <div>
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-BvBsEJoz9jYnuaBrinWBGSt5GaVsZd.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-jbvNUskL3LuHNxwJDhwTj4EaGpwfvE.png"
                 alt="15+"
                 className="mb-2 h-12 w-auto"
               />
@@ -118,7 +118,7 @@ export default function DemoFocusModal({ isOpen, onClose }: DemoFocusModalProps)
             </div>
             <div>
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-4CryRxQapg6KEeeyIk7zvYWwOHqsfr.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29%281%29-QzGHXrMNbcBPcyUWOSZrdqx4A9BII1.png"
                 alt="8"
                 className="mb-2 h-12 w-auto"
               />
