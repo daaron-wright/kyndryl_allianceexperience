@@ -21,84 +21,319 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
       image: "/shipping-port-containers.png",
       alliance: "Industry / Transportation",
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
+      type: "Case Study",
       alliancePartner: "Google Cloud",
       aiFeature: "AI & Machine Learning",
     },
     {
       id: 2,
-      title: "Agentic Media Monitor",
-      description:
-        "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
-      image: "/placeholder-98f8c.png",
-      alliance: "Industry / Communications & Media",
-      tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
-      alliancePartner: "Google Cloud",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 3,
-      title: "Agentic Sales Assistant",
-      description:
-        "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
-      image: "/grocery-shopping-scene.png",
-      alliance: "Industry / Retail",
-      tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
-      alliancePartner: "Microsoft Azure",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 4,
-      title: "Legal Documents Generator",
-      description:
-        "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
-      image: "/construction-site-overview.png",
-      alliance: "Industry / Government",
-      tags: ["Legal Tech", "Document Automation", "Compliance"],
-      alliancePartner: "AWS",
-      aiFeature: "Automation",
-    },
-    {
-      id: 5,
-      title: "Pricing Model",
-      description:
-        "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
-      image: "/dining-food-scene.png",
-      alliance: "Industry / Financial Services",
-      tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
-      alliancePartner: "Google Cloud",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 6,
-      title: "Marketing Automation",
-      description:
-        "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
-      image: "/sheep-livestock.png",
-      alliance: "Industry / Telecommunications",
-      tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
-      alliancePartner: "Microsoft Azure",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 7,
-      title: "X-Ray Image Analysis",
-      description:
-        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
-      image: "/placeholder-98f8c.png",
-      alliance: "Industry / Healthcare",
-      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
-      alliancePartner: "AWS",
-      aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 8,
       title: "Smart Baggage Claim",
       description:
         "Intelligent baggage tracking and claim system using AI-powered computer vision and RFID technology to streamline airport baggage operations and enhance passenger experience.",
       image: "/shipping-port-containers.png",
       alliance: "Industry / Transportation",
       tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
+      type: "Case Study",
       alliancePartner: "AWS",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 3,
+      title: "TAP AIRPORTUGAL, FlyTAP AI Agent",
+      description:
+        "AI-powered customer service agent for aviation industry providing personalized travel assistance and support.",
+      image: "/shipping-port-containers.png",
+      alliance: "Industry / Transportation",
+      tags: ["Aviation", "AI Agent", "Customer Service", "Travel"],
+      type: "Hyperscalar Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 4,
+      title: "X-Ray Image Analysis",
+      description:
+        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Healthcare",
+      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
+      type: "Case Study",
+      alliancePartner: "AWS",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 5,
+      title: "Virtual Healthcare Assistant",
+      description:
+        "AI-powered virtual assistant for healthcare providing patient support, appointment management, and medical guidance.",
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Healthcare",
+      tags: [
+        "Patient",
+        "Appointment Mgmt",
+        "Prescription Mgmt",
+        "Medication Refills",
+        "General Queries",
+        "Healthcare",
+        "AI Assistant",
+      ],
+      type: "Interactive Demo",
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 6,
+      title: "Pricing Model",
+      description:
+        "Dynamic pricing optimization using AI algorithms to maximize revenue and market competitiveness across various industries.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
+      type: "Case Study",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 7,
+      title: "Conversational AI",
+      description:
+        "Advanced conversational AI system for banking and financial services providing customer support and account management.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: [
+        "Banking Customer",
+        "Non-Banking Customer",
+        "Account Balance",
+        "Transaction History",
+        "Bill Payment",
+        "Reward Points",
+        "Block Card",
+        "Loan Closure",
+        "Complaint Registration",
+        "Branch Location",
+        "General Inquiry",
+        "Financial Services",
+        "AI Assistant",
+      ],
+      type: "Interactive Demo",
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 8,
+      title: "Actuary Demo",
+      description:
+        "Actuarial analysis and risk assessment platform powered by AI for insurance and financial planning.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: ["Risk Assessment", "Actuarial Analysis", "Financial Planning"],
+      type: "Interactive Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 9,
+      title: "Barclays Demo",
+      description: "Barclays demo showcasing an example agentic framework for the Know Your Customer (KYC) use case.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: ["KYC", "Banking", "Compliance", "Customer Onboarding"],
+      type: "Interactive Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 10,
+      title: "New Barclays",
+      description:
+        "Updated Barclays demo. Will require a login for enhanced security and personalized banking experience.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: ["Banking", "Security", "Personalization"],
+      type: "Interactive Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 11,
+      title: "L&G Consumer Duty",
+      description:
+        "An agentic AI system enabling automating data extraction, data validation, and masterfile report generation from multiple consumer files.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: ["Consumer Duty", "Data Extraction", "Compliance", "Report Generation"],
+      type: "Interactive Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 12,
+      title: "L&G ESG Demo",
+      description:
+        "This demo indicates an agentic AI system where agents gather information from external/internal databases and online resources to generate the L&G portfolio and future investment ESG performance.",
+      image: "/dining-food-scene.png",
+      alliance: "Industry / Financial Services",
+      tags: ["ESG", "Investment", "Portfolio Management", "Sustainability"],
+      type: "Interactive Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 13,
+      title: "First Notice of Loss (FNOL)",
+      description:
+        "Streamlined insurance claims processing system with AI-powered document analysis and fraud detection capabilities.",
+      image: "/construction-site-overview.png",
+      alliance: "Industry / Insurance",
+      tags: [
+        "Report a Claim with supporting documents",
+        "Update a claim with supporting documents",
+        "View a claim",
+        "Insurance",
+        "AI Assistant",
+      ],
+      type: "Interactive Demo",
+      alliancePartner: "AWS",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 14,
+      title: "Metlife Demo",
+      description:
+        "Insurance industry demonstration showcasing digital transformation solutions for the insurance sector. Features customer portal, claims processing, and policy management systems.",
+      image: "/construction-site-overview.png",
+      alliance: "Industry / Insurance",
+      tags: ["Insurance", "Digital Transformation", "Claims Processing", "Policy Management"],
+      type: "Interactive Demo",
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 15,
+      title: "Agentic Sales Assistant",
+      description:
+        "AI-powered sales automation that enhances customer interactions, lead qualification, and sales process optimization.",
+      image: "/grocery-shopping-scene.png",
+      alliance: "Industry / Retail",
+      tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
+      type: "Case Study",
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 16,
+      title: "Legal Documents Generator",
+      description:
+        "Automated legal document creation and review system powered by AI to streamline legal processes and ensure compliance.",
+      image: "/construction-site-overview.png",
+      alliance: "Industry / Insurance",
+      tags: ["Legal Tech", "Document Automation", "Compliance"],
+      type: "Case Study",
+      alliancePartner: "AWS",
+      aiFeature: "Automation",
+    },
+    {
+      id: 17,
+      title: "DeploySafe Guardian",
+      description:
+        "Cobol Demo - Advanced security and deployment management system for government and enterprise applications.",
+      image: "/construction-site-overview.png",
+      alliance: "Industry / Government",
+      tags: ["Security", "Deployment", "Enterprise", "Cobol"],
+      type: "Interactive Demo",
+      alliancePartner: "AWS",
+      aiFeature: "Security & Compliance",
+    },
+    {
+      id: 18,
+      title: "Agentic Media Monitor",
+      description:
+        "Advanced media monitoring and analysis using AI to track brand sentiment, content performance, and market trends in real-time.",
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Communications & Media",
+      tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
+      type: "Case Study",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 19,
+      title: "WorldTel Email Response System",
+      description:
+        "Automated email response system for telecommunications companies providing intelligent customer service and support.",
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Communications & Media",
+      tags: ["Email", "Response System", "AI/ML", "Communication"],
+      type: "Hyperscalar Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 20,
+      title: "TVG Demo",
+      description: "Demo for The Very Group showcasing retail and media convergence solutions.",
+      image: "/grocery-shopping-scene.png",
+      alliance: "Industry / Retail",
+      tags: ["Retail Media", "Customer Experience", "Digital Commerce"],
+      type: "Hyperscalar Demo",
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 21,
+      title: "Marketing Automation",
+      description:
+        "Comprehensive AI-driven marketing automation platform for personalized campaigns, customer segmentation, and ROI optimization.",
+      image: "/sheep-livestock.png",
+      alliance: "Industry / Telecommunications",
+      tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
+      type: "Case Study",
+      alliancePartner: "Microsoft Azure",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 22,
+      title: "SRE AI Agent",
+      description:
+        "Site Reliability Engineering AI agent for automated monitoring, incident response, and system optimization.",
+      image: "/construction-site-overview.png",
+      alliance: "Industry / Technology",
+      tags: [
+        "Site Reliability Engineer",
+        "Service Down - Direct",
+        "Service Down - Dependent",
+        "CR Required",
+        "IP Whitelist",
+        "DevOps",
+        "Monitoring",
+        "AI Assistant",
+      ],
+      type: "Interactive Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 23,
+      title: "Kyndryl Post, Trusted mail service",
+      description:
+        "Enterprise-grade trusted mail service providing secure email communication and cloud services integration.",
+      image: "/placeholder-98f8c.png",
+      alliance: "Industry / Enterprise",
+      tags: ["Email", "Security", "Cloud Services", "Enterprise"],
+      type: "Hyperscalar Demo",
+      alliancePartner: "Google Cloud",
+      aiFeature: "Security & Compliance",
+    },
+    {
+      id: 24,
+      title: "TVG Demo",
+      description:
+        "Demo for The Very Group showcasing retail and e-commerce solutions with AI-powered customer experience.",
+      image: "/grocery-shopping-scene.png",
+      alliance: "Industry / Retail",
+      tags: ["Retail", "E-commerce", "Customer Experience", "Digital Commerce"],
+      type: "Hyperscalar Demo",
+      alliancePartner: "Microsoft Azure",
       aiFeature: "AI & Machine Learning",
     },
   ]
@@ -115,6 +350,9 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
     "Tech, Media and Telecom": "Communications & Media",
     "Chemical, Oil and Gas": "Energy & Utilities",
     Utilities: "Energy & Utilities",
+    Technology: "Technology",
+    Enterprise: "Enterprise",
+    Telecommunications: "Telecommunications",
   }
 
   const industryKey = industryMapping[industry] || industry
@@ -167,12 +405,12 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
               style={{
                 fontFamily: "TWK Everett, sans-serif",
                 fontSize: "32px",
-                fontWeight: "100", // Changed from "400" to "100" for thin font weight
+                fontWeight: "100",
                 color: "#FF462D",
                 margin: 0,
               }}
             >
-              {industry} {/* Removed "- Case studies" text */}
+              {industry}
             </h1>
 
             <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
@@ -271,17 +509,43 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
                   />
                 </div>
                 <div style={{ padding: "24px" }}>
-                  <p
-                    style={{
-                      fontFamily: "TWK Everett, sans-serif",
-                      fontSize: "14px",
-                      color: "#FF462D",
-                      margin: "0 0 8px 0",
-                      fontWeight: "500",
-                    }}
-                  >
-                    {story.alliance}
-                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                    <p
+                      style={{
+                        fontFamily: "TWK Everett, sans-serif",
+                        fontSize: "14px",
+                        color: "#FF462D",
+                        margin: "0",
+                        fontWeight: "500",
+                      }}
+                    >
+                      {story.alliance}
+                    </p>
+                    <span
+                      style={{
+                        backgroundColor:
+                          story.type === "Case Study"
+                            ? "#E8F5E8"
+                            : story.type === "Interactive Demo"
+                              ? "#E8F0FF"
+                              : "#FFF3E8",
+                        color:
+                          story.type === "Case Study"
+                            ? "#2D7D32"
+                            : story.type === "Interactive Demo"
+                              ? "#1976D2"
+                              : "#F57C00",
+                        padding: "2px 8px",
+                        borderRadius: "12px",
+                        fontFamily: "TWK Everett, sans-serif",
+                        fontSize: "11px",
+                        fontWeight: "500",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {story.type}
+                    </span>
+                  </div>
                   <h3
                     style={{
                       fontFamily: "TWK Everett, sans-serif",

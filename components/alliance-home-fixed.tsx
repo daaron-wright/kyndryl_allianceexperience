@@ -3,6 +3,11 @@
 // AllianceHomeFixed.tsx
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import AlliancesIcon from "./AlliancesIcon"
+import FactoryIcon from "./FactoryIcon"
+import GlobeIcon from "./GlobeIcon"
+import ChevronRightIcon from "./ChevronRightIcon"
+import CheckmarkIcon from "./CheckmarkIcon"
 
 /** ----- Types ----- */
 type Rect = { x: number; y: number; w: number; h: number }
@@ -61,7 +66,7 @@ export default function AllianceHomeFixed({
 
       <img
         className="my-3"
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29-yUtS58EsINNYHKjGQCAmrI5zDb7Tzo.png"
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29-OJcOzsqRwb35YOXwGs2i4DIFKTq2c0.png"
         alt="Alliance Experience"
         style={{
           position: "absolute",
@@ -140,19 +145,15 @@ export default function AllianceHomeFixed({
       <Tile
         rect={capabilitiesRect}
         title="Capabilities"
-        subtitle="Reach your business potential"
+        subtitle="Solutions that scale with you"
         mode={wireframe ? "wire" : "capabilities"}
         showImagery={showImagery}
-        icon={<CapabilitiesIcon color={wireframe ? C.neutral : C.bg} />}
-        titleColor={wireframe ? C.neutral : C.bg}
+        icon={<CheckmarkIcon color={wireframe ? C.neutral : C.white} />}
+        titleColor={wireframe ? C.neutral : C.white}
         subtitleColor={wireframe ? C.neutral : C.white}
         arrowColor={wireframe ? C.neutral : C.white}
         bgColor={undefined}
-        bgImage={
-          showImagery
-            ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-8K1Ppifm7wrXLOji4AenkUHJlMkQzx.png"
-            : undefined
-        }
+        bgImage={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9PJzPY5akoQQx1QsiszALwSMHu3lFJ.png`}
         titleImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BrnJLUyECmk963bak0FZQb3fC1ASJw.png"
         onClick={() => {
           /* router.push("/capabilities") */
@@ -169,7 +170,7 @@ export default function AllianceHomeFixed({
         titleColor={wireframe ? C.neutral : C.white}
         subtitleColor={wireframe ? C.neutral : C.white}
         arrowColor={wireframe ? C.neutral : C.warmRed}
-        bgColor={showImagery ? "#1a1a2e" : undefined}
+        bgColor={undefined}
         bgImage={showImagery ? marketsImage : undefined}
         overlay={showImagery ? "space" : undefined}
         titleImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-K69IfVc28v4XLmmNu0acI80iWDBuJr.png"
@@ -186,7 +187,7 @@ export default function AllianceHomeFixed({
         }}
       >
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29-FGjWK24ELKYTXLo1rpfHC3swGhDwPM.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29-1SYUdeONCOD7y1p6IVxqldifgre1JH.png"
           alt="Kyndryl"
           style={{
             width: "100%",
@@ -244,7 +245,7 @@ function Tile({
       aria-label={title}
       tabIndex={0}
       onClick={onClick}
-      className="absolute rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+      className="absolute rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] focus:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 bg-[rgba(5,6,9,1)]"
       style={{
         left: `${rect.x}%`,
         top: `${rect.y}%`,
@@ -262,7 +263,20 @@ function Tile({
       }}
     >
       {/* Backgrounds */}
-      {bgColor && showImagery && <div style={{ position: "absolute", inset: 0, background: bgColor }} />}
+      {bgColor && showImagery && mode !== "capabilities" && (
+        <div style={{ position: "absolute", inset: 0, background: bgColor }} />
+      )}
+      {showImagery && mode === "capabilities" && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      )}
       {bgImage && showImagery && mode === "markets" && (
         <div
           style={{
@@ -300,18 +314,6 @@ function Tile({
           }}
         />
       )}
-      {bgImage && showImagery && mode === "capabilities" && (
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: `url(${bgImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            pointerEvents: "none",
-          }}
-        />
-      )}
       {overlay === "dark" && showImagery && (
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.45)" }} />
       )}
@@ -322,7 +324,7 @@ function Tile({
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25KYN_Alliance_Experience-dQ0T1sphi9vUK86agsz5Scg7aN3bGc.png)",
+              "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LvWexEVwYFB0tfkyFl9zxWESPqSweQ.png)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -352,59 +354,5 @@ function Tile({
         <ChevronRightIcon color={arrowColor} size={`clamp(20px, ${rect.w * 0.025}vw, 60px)`} />
       </div>
     </article>
-  )
-}
-
-/** ----- Icons (responsive sizing) ----- */
-function AlliancesIcon({ color = C.ink, size = 270 }: { color?: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="45" stroke={color} strokeWidth="2" />
-      <path
-        d="M30 40 L50 30 L70 40 M30 60 L50 50 L70 60"
-        stroke={color}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function FactoryIcon({ color = C.ink, size = 150 }: { color?: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="40" width="60" height="40" stroke={color} strokeWidth="2" fill="none" />
-      <rect x="30" y="20" width="20" height="20" stroke={color} strokeWidth="2" fill="none" />
-      <rect x="50" y="30" width="20" height="10" stroke={color} strokeWidth="2" fill="none" />
-    </svg>
-  )
-}
-
-function CapabilitiesIcon({ color = C.bg, size = 150 }: { color?: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="48" stroke={color} strokeWidth="2" />
-      <path d="M30 50 L45 65 L70 35" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function GlobeIcon({ color = C.white, size = 90 }: { color?: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="45" stroke={color} strokeWidth="2" />
-      <path d="M50 5 Q30 25 50 50 Q70 25 50 5" stroke={color} strokeWidth="2" fill="none" />
-      <path d="M50 50 Q30 75 50 95 Q70 75 50 50" stroke={color} strokeWidth="2" fill="none" />
-      <line x1="5" y1="50" x2="95" y2="50" stroke={color} strokeWidth="2" />
-    </svg>
-  )
-}
-
-function ChevronRightIcon({ color = C.warmRed, size = 90 }: { color?: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9 5l7 7-7 7" stroke={color} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   )
 }
