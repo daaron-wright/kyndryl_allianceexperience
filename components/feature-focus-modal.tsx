@@ -356,6 +356,47 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           },
         }
 
+      case 8: // Adding Smart Baggage Claim case study
+        return {
+          opportunity: {
+            title: "Smart Baggage Tracking Transformation",
+            subtitle: "Passenger Experience Enhancement",
+            description:
+              "The aviation industry faces increasing pressure to improve baggage handling efficiency and passenger satisfaction. Airports need intelligent systems to track luggage in real-time, reduce claim times, and provide transparency throughout the baggage journey from check-in to collection.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+          challenge: {
+            title: "Baggage Handling Complexity",
+            subtitle: "Current State Analysis",
+            description:
+              "Traditional baggage systems rely on manual tracking and limited visibility, leading to lost luggage, extended claim times, and frustrated passengers. Without real-time monitoring and automated alerts, airports struggle to proactively address baggage issues and optimize operational efficiency.",
+            image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
+          },
+          solution: [
+            {
+              title: "Baggage Claim",
+              subtitle: "Traveller",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image: "/baggage-claim-traveller.png",
+            },
+            {
+              title: "Baggage Claim",
+              subtitle: "Admin",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image: "/baggage-claim-admin.png",
+            },
+          ],
+          outcome: {
+            title: "Enhanced Baggage Operations",
+            subtitle: "Performance Metrics",
+            description:
+              "Implementation of the Smart Baggage Claim system resulted in 96.4% on-time rate, 4.2 minute average claim time, and significant reduction in lost baggage incidents. The real-time tracking and automated notifications improved passenger satisfaction and operational efficiency across the airport.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+        }
+
       default:
         // Return default case study data for other stories
         return defaultCaseStudyData
