@@ -8,6 +8,8 @@ interface Demo {
   description: string
   tags: string[]
   url?: string
+  loginNote?: string
+  examplePrompts?: string[]
 }
 
 interface GoogleCloudDemosModalProps {
@@ -18,7 +20,7 @@ interface GoogleCloudDemosModalProps {
 export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDemosModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 8
+  const itemsPerPage = 4 // Match AWS demos with 4 items per page
 
   if (!isOpen) return null
 
@@ -26,20 +28,38 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
     {
       title: "Kyndryl Post, Trusted mail service",
       description: "demo@kyndryl.com / kyndryl123",
-      tags: ["Email", "Security", "Cloud Services", "Enterprise"],
+      tags: ["Enterprise", "Email", "Security", "Cloud Services"],
       url: "https://kyndrylpost-frontend-441679889998.us-central1.run.app",
     },
     {
       title: "WorldTel Email Response System",
       description: "worldtel@demo.com / worldtel456",
-      tags: ["Email", "Response System", "AI/ML", "Communication"],
+      tags: ["Communication", "Email", "Response System", "AI/ML"],
       url: "http://35.238.3.133:8501",
     },
     {
       title: "TAP AIRPORTUGAL, FlyTAP AI Agent",
       description: "flytap@demo.com / flytap789",
-      tags: ["Aviation", "AI Agent", "Customer Service", "Travel"],
+      tags: ["Travel", "Aviation", "AI Agent", "Customer Service"],
       url: "http://35.238.3.133:4200/",
+    },
+    {
+      title: "Connected Traveler Demo",
+      description: "Interactive aviation experience demo",
+      tags: ["Travel", "Aviation", "Connected Experience", "AI Agent"],
+      url: "https://www.figma.com/proto/oFuCQkQyHoRD1qLrfEwdGj/Kyndryl-Aviation?page-id=359%3A1919&node-id=438-1695&viewport=742%2C507%2C0.06&t=OMtigABUdmkAqEB1-1&scaling=min-zoom&starting-point-node-id=615%3A1721",
+    },
+    {
+      title: "Connected Shopping Demo",
+      description: "Password: drink-chrome-kiosk-mince",
+      tags: ["Retail", "Connected Experience", "Shopping", "Customer Experience"],
+      url: "https://www.figma.com/proto/NhVo9auVTYErgwPGARbi8P/NRF-Event?page-id=255%3A2959&node-id=552-103795&viewport=5899%2C-1406%2C0.13&t=azoPAKa205pvTkv0-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=552%3A103795",
+    },
+    {
+      title: "Connected Operations Demo",
+      description: "Password: spice-market-post-land",
+      tags: ["Operations", "Connected Experience", "Manufacturing", "Plant Management"],
+      url: "https://www.figma.com/proto/2R2qYArOjV0I9bXDBv3hBc/Plant-360-Demo?node-id=239-2737&t=30csRjSwcUMPzizt-1&starting-point-node-id=406%3A1499",
     },
   ]
 
@@ -58,6 +78,25 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
       window.open(url, "_blank", "noopener,noreferrer")
     } else {
       console.log("Learn more clicked")
+    }
+  }
+
+  const getIndustryLabel = (title: string) => {
+    switch (title) {
+      case "Kyndryl Post, Trusted mail service":
+        return "Industry / Enterprise"
+      case "WorldTel Email Response System":
+        return "Industry / Communications"
+      case "TAP AIRPORTUGAL, FlyTAP AI Agent":
+        return "Industry / Travel"
+      case "Connected Traveler Demo":
+        return "Industry / Travel"
+      case "Connected Shopping Demo":
+        return "Industry / Retail"
+      case "Connected Operations Demo":
+        return "Industry / Manufacturing"
+      default:
+        return "Industry / Technology"
     }
   }
 
@@ -92,18 +131,18 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
 
         {/* Main Content */}
         <div className="flex-1 bg-[#F2F1EE] px-16 py-16 overflow-y-auto min-h-0">
-          <div className="grid grid-cols-4 gap-10 mb-16">
+          <div className="grid grid-cols-4 gap-10 mb-16 max-w-7xl mx-auto">
             {currentItems.map((demo, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
               >
-                {/* Demo Label */}
+                {/* Industry Label - Updated to match AWS format */}
                 <div
                   className="text-[#FF462D] text-sm font-medium mb-4 uppercase"
                   style={{ fontFamily: "TWK Everett, sans-serif" }}
                 >
-                  Demo
+                  {getIndustryLabel(demo.title)}
                 </div>
 
                 {/* Title */}
@@ -114,7 +153,7 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
                   {demo.title}
                 </h3>
 
-                {/* Description */}
+                {/* Description - Updated to match AWS login format */}
                 {demo.description && (
                   <div
                     className="text-[#727175] text-sm font-mono mb-4 bg-gray-50 px-3 py-2 rounded border"
@@ -124,27 +163,70 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
                   </div>
                 )}
 
+                {/* Login Note */}
+                {demo.loginNote && (
+                  <div
+                    className="text-[#727175] text-xs mb-4 bg-blue-50 px-3 py-2 rounded border border-blue-200"
+                    style={{ fontFamily: "TWK Everett, sans-serif" }}
+                  >
+                    Note: {demo.loginNote}
+                  </div>
+                )}
+
+                {/* Example Prompts */}
+                {demo.examplePrompts && (
+                  <div className="mb-4">
+                    <div
+                      className="text-[#727175] text-xs font-medium mb-2 uppercase"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      Example Prompts:
+                    </div>
+                    <div className="space-y-1">
+                      {demo.examplePrompts.map((prompt, promptIndex) => (
+                        <div
+                          key={promptIndex}
+                          className="text-[#727175] text-xs bg-gray-50 px-2 py-1 rounded text-left"
+                          style={{ fontFamily: "TWK Everett, sans-serif" }}
+                        >
+                          • {prompt}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Learn More Link */}
                 <div
                   className="flex items-center text-[#727175] text-base font-medium mb-6 cursor-pointer hover:text-[#FF462D] transition-colors"
                   style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  onClick={() => handleLearnMoreClick((demo as any).url)}
+                  onClick={() => handleLearnMoreClick(demo.url)}
                 >
                   Learn more
                   <ChevronRight className="ml-2 w-4 h-4" />
                 </div>
 
-                {/* Meta Tags */}
+                {/* Meta Tags - Updated to match AWS tag styling with persona detection */}
                 <div className="flex gap-2 flex-wrap">
-                  {demo.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 bg-[#F2F1EE] text-[#727175] text-xs rounded-full"
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {demo.tags.map((tag, tagIndex) => {
+                    const isPersonaTag =
+                      tag === "Enterprise" ||
+                      tag === "Communication" ||
+                      tag === "Travel" ||
+                      tag === "Retail" ||
+                      tag === "Operations"
+                    return (
+                      <span
+                        key={tagIndex}
+                        className={`px-3 py-1 text-xs rounded-full ${
+                          isPersonaTag ? "bg-[#ff462d] text-white" : "bg-[#F2F1EE] text-[#727175]"
+                        }`}
+                        style={{ fontFamily: "TWK Everett, sans-serif" }}
+                      >
+                        {tag}
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
             ))}
