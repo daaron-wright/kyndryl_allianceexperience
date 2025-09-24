@@ -91,10 +91,10 @@ export default function AIJourneyPage() {
       id: 7,
       title: "X-Ray Image Analysis",
       description:
-        "Advanced medical imaging analysis using AI to assist healthcare professionals in diagnostic accuracy and treatment planning.",
+        "Advanced cargo and baggage screening using AI-powered X-ray analysis to enhance security, detect contraband, and streamline transportation operations at ports, airports, and border crossings.",
       image: "/container-ship-aerial-view.png",
-      alliance: "Industry / Healthcare",
-      tags: ["Medical AI", "Image Analysis", "Healthcare Technology"],
+      alliance: "Industry / Transportation",
+      tags: ["Cargo Security", "Image Analysis", "Transportation Technology"],
       alliancePartner: "Microsoft Azure",
       aiFeature: "AI & Machine Learning",
     },

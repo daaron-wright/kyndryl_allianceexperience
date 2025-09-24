@@ -322,20 +322,20 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           },
         }
 
-      case 7: // Adding X-Ray Image Analysis case study
+      case 7: // Updated X-Ray Image Analysis to focus on cargo and baggage screening instead of medical imaging
         return {
           opportunity: {
-            title: "Medical Imaging Analysis Transformation",
-            subtitle: "AI-Powered Diagnostics",
+            title: "Cargo Security Transformation",
+            subtitle: "AI-Powered Screening Technology",
             description:
-              "The healthcare industry faces increasing pressure to improve diagnostic accuracy, reduce analysis time, and enhance patient outcomes through advanced medical imaging. Healthcare providers need intelligent systems to analyze X-ray images, detect anomalies, and provide rapid, accurate diagnostic insights that support clinical decision-making.",
+              "The transportation and logistics industry faces increasing pressure to enhance security screening efficiency while maintaining high throughput at ports, airports, and border crossings. Organizations need intelligent X-ray systems to detect threats, contraband, and prohibited items in cargo containers, baggage, and freight shipments with greater accuracy and speed.",
             image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
           },
           challenge: {
-            title: "Diagnostic Complexity",
+            title: "Security Screening Complexity",
             subtitle: "Current State Analysis",
             description:
-              "Traditional X-ray analysis relies on manual interpretation, leading to potential human error, extended diagnosis times, and inconsistent results across different radiologists. The growing volume of medical imaging data requires automated solutions to maintain quality while improving efficiency.",
+              "Traditional X-ray screening relies on manual image interpretation by security personnel, leading to potential oversight, extended processing times, and inconsistent threat detection across different operators. The growing volume of cargo and baggage requires automated solutions to maintain security standards while improving operational efficiency.",
             image: "/operational-challenges-dashboard-showing-alerts-an.jpg",
           },
           solution: [
@@ -343,15 +343,15 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               title: "X-Ray Image Analysis",
               subtitle: "X-Ray Scanner",
               description:
-                "Our advanced AI-powered X-ray analysis system revolutionizes medical imaging diagnostics through machine learning algorithms trained on millions of medical images. The platform automatically detects anomalies, fractures, and pathological conditions with precision that matches or exceeds human radiologists. Real-time image processing provides instant preliminary results, flagging urgent cases for immediate attention while routine scans are processed efficiently. The system integrates seamlessly with existing PACS (Picture Archiving and Communication Systems) and provides detailed diagnostic reports with confidence scores, anatomical annotations, and comparison tools that support clinical decision-making and improve patient outcomes.",
+                "Our advanced AI-powered X-ray screening system revolutionizes cargo and baggage security through machine learning algorithms trained on millions of security images. The platform automatically detects weapons, explosives, contraband, and prohibited items with precision that exceeds human operators. Real-time image processing provides instant threat assessment, flagging suspicious items for immediate security attention while routine cargo is processed efficiently. The system integrates seamlessly with existing security infrastructure and provides detailed threat reports with confidence scores, item identification, and risk assessment tools that support security decision-making and enhance transportation safety.",
               image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BL8Mq810eoqqoSaJjLfurJyTnewTll.png",
             },
           ],
           outcome: {
-            title: "Enhanced Diagnostic Performance",
+            title: "Enhanced Security Performance",
             subtitle: "Performance Metrics",
             description:
-              "Implementation of the X-Ray Image Analysis system resulted in 95% diagnostic accuracy improvement, 75% reduction in analysis time, and 90% consistency in diagnostic results. The AI-powered platform enabled faster, more reliable medical imaging analysis, leading to improved patient care and clinical outcomes.",
+              "Implementation of the X-Ray Image Analysis system resulted in 98% threat detection accuracy, 65% reduction in screening time, and 95% consistency in security assessments. The AI-powered platform enabled faster, more reliable cargo and baggage screening, leading to improved transportation security and operational efficiency.",
             image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
           },
         }
