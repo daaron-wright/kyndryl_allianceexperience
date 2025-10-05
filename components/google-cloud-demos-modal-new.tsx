@@ -43,9 +43,8 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
       title: "Realtime travel companion",
       tags: ["Travel", "Aviation", "AI Agent", "Customer Service"],
       url: "http://35.238.3.133:4200",
-      linkUrl:
-        "https://kyndrylde.sharepoint.com/:p:/r/sites/AI-Use-Cases-Assets/Shared%20Documents/Global%20Consult%20Hub%20-%20Selected%20Use%20Cases/TAP%20Airline/Presentation/TAP%20Airline%20-%20One%20Pager.pptx?d=w77137642b9304f1ba36befdde1a77e52&csf=1&web=1&e=D5nKyG",
-      linkLabel: "Link",
+      linkUrl: "http://35.238.3.133:4200",
+      linkLabel: "View demo",
     },
     {
       title: "Connected Traveler Demo",
@@ -169,15 +168,17 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
 
                 {/* Link pill for supplemental resources */}
                 {demo.linkUrl && (
-                  <a
-                    href={demo.linkUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm font-medium text-[#FF462D] bg-[#F2F1EE] rounded-full px-4 py-2 mb-4"
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  >
-                    {demo.linkLabel ?? "Link"}
-                  </a>
+                  <div className="mb-4">
+                    <a
+                      href={demo.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm font-medium text-[#FF462D] bg-[#F2F1EE] rounded-full px-4 py-2"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {demo.linkLabel ?? "Link"}
+                    </a>
+                  </div>
                 )}
 
                 {/* Login Note */}
@@ -217,7 +218,7 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
                 <div
                   className="flex items-center text-[#727175] text-base font-medium mb-6 cursor-pointer hover:text-[#FF462D] transition-colors"
                   style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  onClick={() => handleLearnMoreClick(demo.url)}
+                  onClick={() => handleLearnMoreClick(demo.linkUrl ?? demo.url)}
                 >
                   Learn more
                   <ChevronRight className="ml-2 w-4 h-4" />
