@@ -5,11 +5,13 @@ import { X, Search, ChevronRight, ChevronLeft } from "lucide-react"
 
 interface Demo {
   title: string
-  description: string
+  description?: string
   tags: string[]
   url?: string
   loginNote?: string
   examplePrompts?: string[]
+  linkUrl?: string
+  linkLabel?: string
 }
 
 interface GoogleCloudDemosModalProps {
@@ -39,9 +41,11 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
     },
     {
       title: "Realtime travel companion",
-      description: "flytap@demo.com / flytap789",
       tags: ["Travel", "Aviation", "AI Agent", "Customer Service"],
       url: "http://35.238.3.133:4200",
+      linkUrl:
+        "https://kyndrylde.sharepoint.com/:p:/r/sites/AI-Use-Cases-Assets/Shared%20Documents/Global%20Consult%20Hub%20-%20Selected%20Use%20Cases/TAP%20Airline/Presentation/TAP%20Airline%20-%20One%20Pager.pptx?d=w77137642b9304f1ba36befdde1a77e52&csf=1&web=1&e=D5nKyG",
+      linkLabel: "Link",
     },
     {
       title: "Connected Traveler Demo",
@@ -161,6 +165,19 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
                   >
                     Login: {demo.description}
                   </div>
+                )}
+
+                {/* Link pill for supplemental resources */}
+                {demo.linkUrl && (
+                  <a
+                    href={demo.linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm font-medium text-[#FF462D] bg-[#F2F1EE] rounded-full px-4 py-2 mb-4"
+                    style={{ fontFamily: "TWK Everett, sans-serif" }}
+                  >
+                    {demo.linkLabel ?? "Link"}
+                  </a>
                 )}
 
                 {/* Login Note */}
