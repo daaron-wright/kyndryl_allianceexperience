@@ -38,10 +38,10 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
       url: "http://35.238.3.133:8501",
     },
     {
-      title: "TAP AIRPORTUGAL, FlyTAP AI Agent",
+      title: "Realtime travel companion",
       description: "flytap@demo.com / flytap789",
       tags: ["Travel", "Aviation", "AI Agent", "Customer Service"],
-      url: "http://35.238.3.133:4200/",
+      url: "http://35.238.3.133:4200",
     },
     {
       title: "Connected Traveler Demo",
@@ -87,7 +87,7 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
         return "Industry / Enterprise"
       case "WorldTel Email Response System":
         return "Industry / Communications"
-      case "TAP AIRPORTUGAL, FlyTAP AI Agent":
+      case "Realtime travel companion":
         return "Industry / Travel"
       case "Connected Traveler Demo":
         return "Industry / Travel"
