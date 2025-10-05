@@ -72,7 +72,7 @@ export default function Industries() {
       description: "Predictive maintenance, production optimization, and operational intelligence",
     },
     "Travel and Transportation": {
-      demos: ["TAP AIRPORTUGAL, FlyTAP AI Agent"],
+      demos: ["Realtime travel companion"],
       caseStudies: ["Agentic Airport AI Experience", "Smart Baggage Claim"],
       description: "Airport operations, baggage handling, and passenger experience optimization",
     },
