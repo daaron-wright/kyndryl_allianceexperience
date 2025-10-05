@@ -292,7 +292,7 @@ export default function AIJourneyPage() {
 
             {/* Right side - Extended Video taking 2 columns */}
             <div className="relative flex items-center justify-center lg:col-span-2">
-              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg w-full">
+              <div className="aspect-video rounded-lg overflow-hidden shadow-lg w-full">
                 {isVideoClicked ? (
                   <iframe
                     width="100%"
@@ -302,20 +302,11 @@ export default function AIJourneyPage() {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    className="w-full h-full object-fill"
-                    style={{
-                      minHeight: "400px",
-                    }}
+                    className="w-full h-full object-fill min-h-[400px]"
                   />
                 ) : (
-                  <div
-                    className="w-full h-full bg-gray-100 flex items-center justify-center"
-                    style={{ minHeight: "400px" }}
-                  >
-                    <div className="text-gray-500 text-center">
-                      <div className="text-lg font-medium mb-2">Kyndryl Agentic AI Framework</div>
-                      <div className="text-sm">Click to play video</div>
-                    </div>
+                  <div className="flex h-full w-full items-center justify-center bg-[#3D3C3C] min-h-[400px]">
+                    <span className="sr-only">Play Kyndryl Agentic AI Framework video</span>
                   </div>
                 )}
               </div>
@@ -325,7 +316,7 @@ export default function AIJourneyPage() {
                   className="absolute inset-0 flex items-center justify-center cursor-pointer"
                   onClick={() => setIsVideoClicked(true)}
                 >
-                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors">
+                  <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm transition-colors hover:bg-white/30">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white">
                       <polygon points="5,3 19,12 5,21" fill="currentColor" />
                     </svg>
