@@ -665,17 +665,17 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
             alignItems: "center",
             justifyContent: "center",
             zIndex: 1002,
-            padding: "2rem",
+            padding: 0,
           }}
           onClick={() => setIsIframeOpen(false)}
         >
           <div
             style={{
-              width: story?.id === 6 ? "1080px" : "711px",
-              height: story?.id === 6 ? "720px" : "400px",
+              width: "100%",
+              height: "100%",
               position: "relative",
               backgroundColor: "white",
-              borderRadius: "8px",
+              borderRadius: 0,
               overflow: "hidden",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -738,7 +738,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
                 style={{
                   width: "100%",
                   height: "100%",
-                  border: "1px solid rgba(0, 0, 0, 0.1)",
+                  border: "none",
                 }}
                 allowFullScreen
               />
