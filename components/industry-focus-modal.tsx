@@ -67,9 +67,9 @@ export default function IndustryFocusModal({ industry, onClose }: IndustryFocusM
     },
     {
       id: 3,
-      title: "TAP AIRPORTUGAL, FlyTAP AI Agent",
+      title: "Realtime travel companion",
       description:
-        "AI-powered customer service agent for aviation industry providing personalized travel assistance and support.",
+        "AI-powered customer service companion for aviation providing personalized travel assistance and proactive support.",
       image: "/airline-customer-service-professional-warm-office.jpg",
       alliance: "Industry / Transportation",
       tags: ["Aviation", "AI Agent", "Customer Service", "Travel"],
