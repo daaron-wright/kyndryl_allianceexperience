@@ -703,7 +703,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
             </button>
             {story?.id === 7 ? (
               <div className="flex h-full w-full items-center justify-center">
-                <div style={{ maxWidth: "1280px", width: "100%" }}>
+                <div style={{ maxWidth: "1280px" }}>
                   <div
                     style={{
                       position: "relative",
@@ -729,7 +729,6 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
                         bottom: 0,
                         height: "100%",
                         maxWidth: "100%",
-                        width: "100%",
                       }}
                     />
                   </div>
