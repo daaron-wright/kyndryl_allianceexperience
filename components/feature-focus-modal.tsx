@@ -702,18 +702,39 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
               <X size={16} />
             </button>
             {story?.id === 7 ? (
-              <video
-                controls
-                autoPlay
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                }}
-              >
-                <source src="/ych-demo-without-logo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div className="flex h-full w-full items-center justify-center">
+                <div style={{ maxWidth: "1280px", width: "100%" }}>
+                  <div
+                    style={{
+                      position: "relative",
+                      paddingBottom: "56.25%",
+                      height: 0,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <iframe
+                      src="https://kyndryl.sharepoint.com/teams/ASEAN_AI/_layouts/15/embed.aspx?UniqueId=e1998956-f7ea-4f25-a685-de0b2e3b9049&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
+                      width="1280"
+                      height="720"
+                      frameBorder="0"
+                      scrolling="no"
+                      allowFullScreen
+                      title="ych-demo-without-logo.mp4"
+                      style={{
+                        border: "none",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        height: "100%",
+                        maxWidth: "100%",
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             ) : (
               <iframe
                 src={
