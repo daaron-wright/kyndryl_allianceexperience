@@ -34,6 +34,16 @@ export default function AIJourneyPage() {
     connectedTravelerPrototypeUrl,
   )}`
 
+  const openEmbedModalForStory = (story, overrides = {}) => {
+    if (!story) {
+      return
+    }
+
+    const embedStory = { ...story, ...overrides }
+    setActiveEmbedStory(embedStory)
+    setActiveEmbedView(embedStory.videoUrl ? "video" : "figma")
+  }
+
   const customerStories = [
     {
       id: 9,
