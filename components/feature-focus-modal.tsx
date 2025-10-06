@@ -761,7 +761,7 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
                     }}
                   >
                     <iframe
-                      src="https://drive.google.com/file/d/130FyTA0lihbkbGn15h6lf48u8Uen8j94/view?usp=sharing"
+                      src="https://kyndryl.sharepoint.com/teams/ASEAN_AI/_layouts/15/embed.aspx?UniqueId=e1998956-f7ea-4f25-a685-de0b2e3b9049&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
                       width="1280"
                       height="720"
                       frameBorder="0"
