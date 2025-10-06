@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { ChevronRight } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { ChevronRight, X } from "lucide-react"
 import DemoLoginModal from "@/components/demo-login-modal"
 import UseCasesFocusModal from "@/components/use-cases-focus-modal"
 import FeatureFocusModal from "@/components/feature-focus-modal"
@@ -12,6 +12,8 @@ export default function AIJourneyPage() {
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false)
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedStory, setSelectedStory] = useState(null)
+  const [activeEmbedStory, setActiveEmbedStory] = useState(null)
+  const [activeEmbedView, setActiveEmbedView] = useState<"video" | "figma">("video")
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
@@ -19,8 +21,29 @@ export default function AIJourneyPage() {
   const [selectedAIFeatures, setSelectedAIFeatures] = useState([])
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
   const [isVideoClicked, setIsVideoClicked] = useState(false)
+  const isHydratingRef = useRef(true)
+
+  const connectedTravelerPrototypeUrl =
+    "https://www.figma.com/proto/SOJfxIoop1uPyLkAYrd19D/Kyndryl-Connected-Traveller--New-Version?page-id=170%3A2293&node-id=2014-11654&viewport=3245%2C-460%2C0.13&t=JtIjOc4RmPuhg9dW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2014%3A9590"
+  const connectedTravelerEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(
+    connectedTravelerPrototypeUrl,
+  )}`
 
   const customerStories = [
+    {
+      id: 9,
+      title: "Connected Traveler",
+      description:
+        "A real-time travel companion that orchestrates itineraries, monitors disruptions, and coordinates services across the journey to keep passengers informed and supported end-to-end.",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F4f55495a54b1427b9bd40ba1c8f3c8aa%2F47d764b4eb0749968a9ea3df03744a3f?format=webp&width=800",
+      alliance: "Industry / Transportation",
+      tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+      videoUrl: "https://s7d1.scene7.com/is/content/kyndryl/airline-consult",
+      embedUrl: connectedTravelerEmbedUrl,
+      externalUrl: connectedTravelerPrototypeUrl,
+    },
     {
       id: 1,
       title: "Agentic Airport AI Experience",
@@ -122,6 +145,7 @@ export default function AIJourneyPage() {
     "Telecommunications",
     "Retail",
     "Energy & Utilities",
+    "Transportation",
   ]
   const aiFeatureOptions = [
     "AI & Machine Learning",
@@ -133,6 +157,13 @@ export default function AIJourneyPage() {
     "Digital Transformation",
     "Managed Services",
   ]
+
+  useEffect(() => {
+    if (isHydratingRef.current) {
+      isHydratingRef.current = false
+      setCurrentPage((prev) => (prev === 1 ? prev : 1))
+    }
+  }, [])
 
   const filteredStories = customerStories.filter((story) => {
     const matchesSearch =
@@ -148,13 +179,32 @@ export default function AIJourneyPage() {
   })
 
   const itemsPerPage = 4
-  const totalPages = Math.ceil(filteredStories.length / itemsPerPage)
-  const startIndex = (currentPage - 1) * itemsPerPage
+  const totalPages = Math.max(1, Math.ceil(filteredStories.length / itemsPerPage))
+  const effectiveCurrentPage = Math.min(currentPage, totalPages)
+  const renderCurrentPage = isHydratingRef.current ? 1 : effectiveCurrentPage
+  const startIndex = (renderCurrentPage - 1) * itemsPerPage
   const currentItems = filteredStories.slice(startIndex, startIndex + itemsPerPage)
 
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages)
+    }
+  }, [currentPage, totalPages])
+
   const handleCardClick = (story) => {
+    if (story.embedUrl) {
+      setActiveEmbedStory(story)
+      setActiveEmbedView("video")
+      return
+    }
+
     setSelectedStory(story)
     setIsFeatureModalOpen(true)
+  }
+
+  const handleCloseEmbed = () => {
+    setActiveEmbedStory(null)
+    setActiveEmbedView("video")
   }
 
   const toggleIndustryFilter = (industry) => {
@@ -258,9 +308,9 @@ export default function AIJourneyPage() {
       {/* Introduction + Video Section */}
       <section id="introduction-section" className="bg-white px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Introduction */}
-            <div className="lg:col-span-1">
+            <div className="lg:pr-10 lg:self-start">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D3C3C] mb-6">
                 The Kyndryl Agentic AI Framework
               </h2>
@@ -275,7 +325,7 @@ export default function AIJourneyPage() {
                   "The Kyndryl Agentic AI Framework is a policy-driven system that coordinates intelligent agents to deliver outcomes, securely, at scale, and always within your governance boundaries. It's not just a platform. It's a new way to think about AI: one that connects strategy to execution, people to intelligent systems, and outcomes to measurable impact. Imagine a hybrid workforce where agents reason, adapt, and act in real time, alongside your people, within your policies, and across your infrastructure. Every decision is informed. Every action is traceable. Every outcome is intentional.\nWatch the explainer video to see how it works."
                 }
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-wrap gap-4 justify-start">
                 <button
                   onClick={() => {
                     const section = document.getElementById("customer-stories-section")
@@ -290,9 +340,9 @@ export default function AIJourneyPage() {
               </div>
             </div>
 
-            {/* Right side - Extended Video taking 2 columns */}
-            <div className="relative flex items-center justify-center lg:col-span-2">
-              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg w-full">
+            {/* Right side - Extended Video */}
+            <div className="relative flex items-center justify-center self-center">
+              <div className="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
                 {isVideoClicked ? (
                   <iframe
                     width="100%"
@@ -302,20 +352,11 @@ export default function AIJourneyPage() {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    className="w-full h-full object-fill"
-                    style={{
-                      minHeight: "400px",
-                    }}
+                    className="w-full h-full object-fill min-h-[400px]"
                   />
                 ) : (
-                  <div
-                    className="w-full h-full bg-gray-100 flex items-center justify-center"
-                    style={{ minHeight: "400px" }}
-                  >
-                    <div className="text-gray-500 text-center">
-                      <div className="text-lg font-medium mb-2">Kyndryl Agentic AI Framework</div>
-                      <div className="text-sm">Click to play video</div>
-                    </div>
+                  <div className="flex h-full w-full items-center justify-center bg-[#3D3C3C] min-h-[400px]">
+                    <span className="sr-only">Play Kyndryl Agentic AI Framework video</span>
                   </div>
                 )}
               </div>
@@ -325,7 +366,7 @@ export default function AIJourneyPage() {
                   className="absolute inset-0 flex items-center justify-center cursor-pointer"
                   onClick={() => setIsVideoClicked(true)}
                 >
-                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors">
+                  <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm transition-colors hover:bg-white/30">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white">
                       <polygon points="5,3 19,12 5,21" fill="currentColor" />
                     </svg>
@@ -516,11 +557,11 @@ export default function AIJourneyPage() {
                     key={page}
                     onClick={() => setCurrentPage(page)}
                     className={`text-lg ${
-                      currentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
+                      renderCurrentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
                     }`}
                   >
                     {page}
-                    {currentPage === page && (
+                    {renderCurrentPage === page && (
                       <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
                     )}
                   </button>
@@ -534,9 +575,9 @@ export default function AIJourneyPage() {
             <div className="flex items-center justify-between mt-8">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                disabled={currentPage === 1}
+                disabled={renderCurrentPage === 1}
                 className={`flex items-center text-sm font-medium ${
-                  currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                  renderCurrentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
                 }`}
               >
                 <svg
@@ -554,9 +595,9 @@ export default function AIJourneyPage() {
               </button>
               <button
                 onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                disabled={currentPage === totalPages}
+                disabled={renderCurrentPage === totalPages}
                 className={`flex items-center text-sm font-medium ${
-                  currentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                  renderCurrentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
                 }`}
               >
                 Next
@@ -576,6 +617,87 @@ export default function AIJourneyPage() {
           )}
         </div>
       </section>
+
+      {activeEmbedStory && (
+        <div
+          className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 px-4 py-10"
+          onClick={handleCloseEmbed}
+        >
+          <div
+            className="relative flex w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-gray-200 bg-[#F2F1EE] px-6 py-4">
+              <div>
+                <p className="text-sm font-medium text-[#FF462D]">{activeEmbedStory.alliance}</p>
+                <h2 className="text-2xl font-light text-[#3D3C3C]">{activeEmbedStory.title}</h2>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 rounded-full border border-gray-300 bg-white p-1">
+                  <button
+                    type="button"
+                    onClick={() => setActiveEmbedView("video")}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                      activeEmbedView === "video"
+                        ? "bg-[#FF462D] text-white shadow-sm"
+                        : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                    }`}
+                    aria-pressed={activeEmbedView === "video"}
+                  >
+                    Watch Video
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveEmbedView("figma")}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                      activeEmbedView === "figma"
+                        ? "bg-[#FF462D] text-white shadow-sm"
+                        : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                    }`}
+                    aria-pressed={activeEmbedView === "figma"}
+                  >
+                    View Demo
+                  </button>
+                </div>
+                <a
+                  href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-[#FF462D] px-4 py-2 text-sm font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
+                >
+                  Open in New Tab
+                </a>
+                <button
+                  type="button"
+                  onClick={handleCloseEmbed}
+                  className="rounded-full bg-white p-2 text-[#3D3C3C] transition-colors hover:bg-[#FF462D] hover:text-white"
+                  aria-label="Close Connected Traveler modal"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 bg-[#1C1C1C]">
+              {activeEmbedView === "figma" || !activeEmbedStory.videoUrl ? (
+                <iframe
+                  src={activeEmbedStory.embedUrl}
+                  title={`${activeEmbedStory.title} prototype`}
+                  className="h-[70vh] w-full border-0"
+                  allowFullScreen
+                />
+              ) : (
+                <iframe
+                  src={activeEmbedStory.videoUrl}
+                  title={`${activeEmbedStory.title} overview video`}
+                  className="h-[70vh] w-full border-0"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* CTA Section */}
       <section className="bg-[#F2F1EE] px-4 sm:px-8 lg:px-16 py-12 lg:py-20">

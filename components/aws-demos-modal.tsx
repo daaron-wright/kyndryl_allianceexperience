@@ -8,6 +8,7 @@ interface AWSDemo {
   description: string
   tags: string[]
   url: string
+  linkLabel?: string
 }
 
 interface AWSDemosModalProps {
@@ -30,6 +31,7 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: Appointment Management - Book/Cancel/Reschedule/List appointments with intelligent scheduling and automated reminders",
       tags: ["Healthcare", "Scheduling", "Automation"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
     {
       id: 2,
@@ -38,6 +40,7 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: Prescription Management - Get prescriptions details, track medication history, and manage dosage information",
       tags: ["Healthcare", "Prescriptions", "Medical Records"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
     {
       id: 3,
@@ -46,6 +49,7 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: Medication Refill Management - Check refill eligibility and Place Refill request with automated approval workflows",
       tags: ["Healthcare", "Refills", "Pharmacy"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
     {
       id: 4,
@@ -54,8 +58,15 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: General Query - Information from available knowledgebase of the documents with AI-powered search and insights",
       tags: ["Healthcare", "Knowledge Base", "AI Search"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
   ]
+
+  const handleOpenLink = (url?: string) => {
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer")
+    }
+  }
 
   const filteredDemos = demos.filter(
     (demo) =>
@@ -185,12 +196,9 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
                   backgroundColor: "#FFFFFF",
                   borderRadius: "8px",
                   padding: "24px",
-                  cursor: "pointer",
+                  cursor: "default",
                   transition: "all 0.2s ease",
                   border: "1px solid transparent",
-                }}
-                onClick={() => {
-                  window.open(demo.url, "_blank")
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)"
@@ -244,20 +252,46 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
                   {demo.description}
                 </p>
 
-                <button
+                {demo.url && (
+                  <div style={{ marginBottom: "24px" }}>
+                    <a
+                      href={demo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        fontFamily: "TWK Everett, sans-serif",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        color: "#FF462D",
+                        backgroundColor: "#F2F1EE",
+                        padding: "8px 16px",
+                        borderRadius: "9999px",
+                        textDecoration: "none",
+                      }}
+                      onClick={(event) => event.stopPropagation()}
+                    >
+                      {demo.linkLabel ?? "View demo"}
+                    </a>
+                  </div>
+                )}
+
+                <div
                   style={{
-                    backgroundColor: "transparent",
-                    border: "none",
-                    cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
                     fontFamily: "TWK Everett, sans-serif",
                     fontSize: "16px",
                     color: "#727175",
-                    padding: 0,
                     marginBottom: "24px",
+                    cursor: "pointer",
                     transition: "color 0.2s ease",
+                  }}
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    handleOpenLink(demo.url)
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "#FF462D"
@@ -266,9 +300,9 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
                     e.currentTarget.style.color = "#727175"
                   }}
                 >
-                  Launch Demo
+                  Learn more
                   <ChevronRight style={{ width: "16px", height: "16px" }} />
-                </button>
+                </div>
 
                 <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                   {demo.tags.map((tag, index) => (

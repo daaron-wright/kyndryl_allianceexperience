@@ -1,4 +1,6 @@
-"use client"
+'use client'
+
+import { useEffect, useState } from "react"
 import { X, ChevronRight, Users, Play } from "lucide-react"
 
 interface AllianceWelcomeModalProps {
@@ -12,6 +14,17 @@ export default function AllianceWelcomeModal({
   onExploreStories,
   allianceName = "Google Cloud",
 }: AllianceWelcomeModalProps) {
+  const getIsMobile = () => (typeof window !== "undefined" ? window.innerWidth <= 768 : false)
+  const [isMobileLayout, setIsMobileLayout] = useState(getIsMobile)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobileLayout(getIsMobile())
+    handleResize()
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   return (
     <div
       style={{
@@ -39,7 +52,7 @@ export default function AllianceWelcomeModal({
           position: "relative",
           overflow: "hidden",
           display: "flex",
-          flexDirection: window.innerWidth <= 768 ? "column" : "row",
+          flexDirection: isMobileLayout ? "column" : "row",
         }}
         onClick={(e) => e.stopPropagation()}
       >

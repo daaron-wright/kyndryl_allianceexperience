@@ -5,11 +5,13 @@ import { X, Search, ChevronRight, ChevronLeft } from "lucide-react"
 
 interface Demo {
   title: string
-  description: string
+  description?: string
   tags: string[]
   url?: string
   loginNote?: string
   examplePrompts?: string[]
+  linkUrl?: string
+  linkLabel?: string
 }
 
 interface GoogleCloudDemosModalProps {
@@ -30,36 +32,50 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
       description: "demo@kyndryl.com / kyndryl123",
       tags: ["Enterprise", "Email", "Security", "Cloud Services"],
       url: "https://kyndrylpost-frontend-441679889998.us-central1.run.app",
+      linkUrl: "https://kyndrylpost-frontend-441679889998.us-central1.run.app",
+      linkLabel: "View demo",
     },
     {
       title: "WorldTel Email Response System",
       description: "worldtel@demo.com / worldtel456",
       tags: ["Communication", "Email", "Response System", "AI/ML"],
       url: "http://35.238.3.133:8501",
+      linkUrl: "http://35.238.3.133:8501",
+      linkLabel: "View demo",
     },
     {
-      title: "TAP AIRPORTUGAL, FlyTAP AI Agent",
-      description: "flytap@demo.com / flytap789",
+      title: "Realtime travel companion",
       tags: ["Travel", "Aviation", "AI Agent", "Customer Service"],
-      url: "http://35.238.3.133:4200/",
+      url: "http://35.238.3.133:4200",
+      linkUrl: "http://35.238.3.133:4200",
+      linkLabel: "View demo",
     },
     {
       title: "Connected Traveler Demo",
       description: "Interactive aviation experience demo",
       tags: ["Travel", "Aviation", "Connected Experience", "AI Agent"],
       url: "https://www.figma.com/proto/oFuCQkQyHoRD1qLrfEwdGj/Kyndryl-Aviation?page-id=359%3A1919&node-id=438-1695&viewport=742%2C507%2C0.06&t=OMtigABUdmkAqEB1-1&scaling=min-zoom&starting-point-node-id=615%3A1721",
+      linkUrl:
+        "https://www.figma.com/proto/oFuCQkQyHoRD1qLrfEwdGj/Kyndryl-Aviation?page-id=359%3A1919&node-id=438-1695&viewport=742%2C507%2C0.06&t=OMtigABUdmkAqEB1-1&scaling=min-zoom&starting-point-node-id=615%3A1721",
+      linkLabel: "View demo",
     },
     {
       title: "Connected Shopping Demo",
       description: "Password: drink-chrome-kiosk-mince",
       tags: ["Retail", "Connected Experience", "Shopping", "Customer Experience"],
       url: "https://www.figma.com/proto/NhVo9auVTYErgwPGARbi8P/NRF-Event?page-id=255%3A2959&node-id=552-103795&viewport=5899%2C-1406%2C0.13&t=azoPAKa205pvTkv0-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=552%3A103795",
+      linkUrl:
+        "https://www.figma.com/proto/NhVo9auVTYErgwPGARbi8P/NRF-Event?page-id=255%3A2959&node-id=552-103795&viewport=5899%2C-1406%2C0.13&t=azoPAKa205pvTkv0-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=552%3A103795",
+      linkLabel: "View demo",
     },
     {
       title: "Connected Operations Demo",
       description: "Password: spice-market-post-land",
       tags: ["Operations", "Connected Experience", "Manufacturing", "Plant Management"],
       url: "https://www.figma.com/proto/2R2qYArOjV0I9bXDBv3hBc/Plant-360-Demo?node-id=239-2737&t=30csRjSwcUMPzizt-1&starting-point-node-id=406%3A1499",
+      linkUrl:
+        "https://www.figma.com/proto/2R2qYArOjV0I9bXDBv3hBc/Plant-360-Demo?node-id=239-2737&t=30csRjSwcUMPzizt-1&starting-point-node-id=406%3A1499",
+      linkLabel: "View demo",
     },
   ]
 
@@ -87,7 +103,7 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
         return "Industry / Enterprise"
       case "WorldTel Email Response System":
         return "Industry / Communications"
-      case "TAP AIRPORTUGAL, FlyTAP AI Agent":
+      case "Realtime travel companion":
         return "Industry / Travel"
       case "Connected Traveler Demo":
         return "Industry / Travel"
@@ -163,6 +179,21 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
                   </div>
                 )}
 
+                {/* Link pill for supplemental resources */}
+                {demo.linkUrl && (
+                  <div className="mb-4">
+                    <a
+                      href={demo.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm font-medium text-[#FF462D] bg-[#F2F1EE] rounded-full px-4 py-2"
+                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                    >
+                      {demo.linkLabel ?? "Link"}
+                    </a>
+                  </div>
+                )}
+
                 {/* Login Note */}
                 {demo.loginNote && (
                   <div
@@ -200,7 +231,7 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
                 <div
                   className="flex items-center text-[#727175] text-base font-medium mb-6 cursor-pointer hover:text-[#FF462D] transition-colors"
                   style={{ fontFamily: "TWK Everett, sans-serif" }}
-                  onClick={() => handleLearnMoreClick(demo.url)}
+                  onClick={() => handleLearnMoreClick(demo.linkUrl ?? demo.url)}
                 >
                   Learn more
                   <ChevronRight className="ml-2 w-4 h-4" />
