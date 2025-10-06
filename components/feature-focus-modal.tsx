@@ -493,6 +493,7 @@ export default function FeatureFocusModal({
     "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=3110-2828&t=lA0T8IZUnEGu6TSv-1"
   const adminPrototypeUrl =
     "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2759-10042&t=78vZtCqT78ndB4ds-1"
+  const agenticMediaMonitorDemoUrl = "http://35.192.197.191:8081"
 
   const solutionExternalLink =
     activeTab === "Solution" && currentContent.title === "Baggage Claim"
@@ -507,12 +508,20 @@ export default function FeatureFocusModal({
     ? `Open Smart Baggage Claim ${currentContent.subtitle?.toLowerCase()} prototype`
     : undefined
 
-  const shouldShowAgenticDemoButton =
-    activeTab === "Solution" && currentContent.title === "Agentic Media Monitor"
+  const isAgenticMediaMonitorSolution = activeTab === "Solution" && currentContent.title === "Agentic Media Monitor"
 
-  const canTriggerViewDemo = Boolean(story && (story.embedUrl || story.externalUrl))
+  const shouldShowAgenticDemoButton = isAgenticMediaMonitorSolution
+
+  const canTriggerViewDemo = Boolean(
+    (story && (story.embedUrl || story.externalUrl) && activeTab === "Solution") || isAgenticMediaMonitorSolution,
+  )
 
   const handleViewDemoButtonClick = () => {
+    if (isAgenticMediaMonitorSolution) {
+      window.open(agenticMediaMonitorDemoUrl, "_blank", "noopener,noreferrer")
+      return
+    }
+
     if (!onOpenEmbed || !story || !(story.embedUrl || story.externalUrl)) {
       return
     }
@@ -663,22 +672,34 @@ export default function FeatureFocusModal({
               </p>
 
               {shouldShowAgenticDemoButton && (
-                <div className="mt-8 flex">
-                  <button
-                    type="button"
-                    onClick={canTriggerViewDemo ? handleViewDemoButtonClick : undefined}
-                    disabled={!canTriggerViewDemo}
-                    className={`rounded-full px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors ${
-                      canTriggerViewDemo
-                        ? "bg-[#FF462D] text-white hover:bg-[#e03f29]"
-                        : "bg-[#FF462D]/60 text-white cursor-not-allowed"
-                    }`}
+                <div className="mt-8">
+                  <div className="flex">
+                    <button
+                      type="button"
+                      onClick={canTriggerViewDemo ? handleViewDemoButtonClick : undefined}
+                      disabled={!canTriggerViewDemo}
+                      className={`rounded-full px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors ${
+                        canTriggerViewDemo
+                          ? "bg-[#FF462D] text-white hover:bg-[#e03f29]"
+                          : "bg-[#FF462D]/60 text-white cursor-not-allowed"
+                      }`}
+                      style={{
+                        fontFamily: "TWK Everett, sans-serif",
+                      }}
+                    >
+                      View Demo
+                    </button>
+                  </div>
+                  <div
+                    className="mt-3 inline-flex flex-col rounded border border-gray-200 bg-white px-4 py-3 text-sm text-[#3D3C3C]"
                     style={{
                       fontFamily: "TWK Everett, sans-serif",
+                      lineHeight: "1.5",
                     }}
                   >
-                    View demo
-                  </button>
+                    <span>Username: admin</span>
+                    <span>Password: laDKd1384FR</span>
+                  </div>
                 </div>
               )}
 
