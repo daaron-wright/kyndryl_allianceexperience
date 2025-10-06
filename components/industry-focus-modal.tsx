@@ -851,6 +851,7 @@ export default function IndustryFocusModal({ industry, onClose, onOpenEmbed }: I
             setSelectedStory(null)
           }}
           story={selectedStory}
+          onOpenEmbed={onOpenEmbed}
         />
       )}
 
