@@ -252,20 +252,46 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
                   {demo.description}
                 </p>
 
-                <button
+                {demo.url && (
+                  <div style={{ marginBottom: "24px" }}>
+                    <a
+                      href={demo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        fontFamily: "TWK Everett, sans-serif",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        color: "#FF462D",
+                        backgroundColor: "#F2F1EE",
+                        padding: "8px 16px",
+                        borderRadius: "9999px",
+                        textDecoration: "none",
+                      }}
+                      onClick={(event) => event.stopPropagation()}
+                    >
+                      {demo.linkLabel ?? "View demo"}
+                    </a>
+                  </div>
+                )}
+
+                <div
                   style={{
-                    backgroundColor: "transparent",
-                    border: "none",
-                    cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
                     fontFamily: "TWK Everett, sans-serif",
                     fontSize: "16px",
                     color: "#727175",
-                    padding: 0,
                     marginBottom: "24px",
+                    cursor: "pointer",
                     transition: "color 0.2s ease",
+                  }}
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    handleOpenLink(demo.url)
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "#FF462D"
@@ -274,9 +300,9 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
                     e.currentTarget.style.color = "#727175"
                   }}
                 >
-                  Launch Demo
+                  Learn more
                   <ChevronRight style={{ width: "16px", height: "16px" }} />
-                </button>
+                </div>
 
                 <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                   {demo.tags.map((tag, index) => (
