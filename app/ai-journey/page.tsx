@@ -35,7 +35,7 @@ export default function AIJourneyPage() {
       title: "Connected Traveler",
       description:
         "A real-time travel companion that orchestrates itineraries, monitors disruptions, and coordinates services across the journey to keep passengers informed and supported end-to-end.",
-      image: "/modern-airport-terminal-with-ai-powered-passenger.jpg",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F4f55495a54b1427b9bd40ba1c8f3c8aa%2F47d764b4eb0749968a9ea3df03744a3f?format=webp&width=800",
       alliance: "Industry / Transportation",
       tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
       alliancePartner: "Google Cloud",
