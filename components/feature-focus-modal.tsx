@@ -643,19 +643,28 @@ export default function FeatureFocusModal({
             </div>
 
             {/* Right Image Section - Only show for Solution tab */}
-            {activeTab === "Solution" && (
-              <div
-                className="flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8 cursor-pointer"
-                style={{
-                  backgroundImage: `url(${currentContent.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                onClick={() => setIsIframeOpen(true)}
-              >
-                {/* Static image with click functionality */}
-              </div>
-            )}
+          {activeTab === "Solution" && (
+            <div
+              className={`${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`}
+              style={{
+                backgroundImage: `url(${currentContent.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              onClick={() => {
+                if (story?.id === 7 && onOpenEmbed) {
+                  onOpenEmbed(story, {
+                    videoUrl:
+                      "https://kyndryl.sharepoint.com/teams/ASEAN_AI/_layouts/15/embed.aspx?UniqueId=e1998956-f7ea-4f25-a685-de0b2e3b9049&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create",
+                    externalUrl:
+                      "https://kyndryl.sharepoint.com/teams/ASEAN_AI/_layouts/15/embed.aspx?UniqueId=e1998956-f7ea-4f25-a685-de0b2e3b9049&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create",
+                  })
+                }
+              }}
+            >
+              {/* Static image with click functionality */}
+            </div>
+          )}
           </div>
 
           {/* Navigation Tabs */}
