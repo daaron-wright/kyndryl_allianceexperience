@@ -489,6 +489,63 @@ export default function FeatureFocusModal({
     setCurrentSolutionIndex((prev) => (prev === currentCaseStudy.solution.length - 1 ? 0 : prev + 1))
   }
 
+  const travellerPrototypeUrl =
+    "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=3110-2828&t=lA0T8IZUnEGu6TSv-1"
+  const adminPrototypeUrl =
+    "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2759-10042&t=78vZtCqT78ndB4ds-1"
+  const agenticMediaMonitorDemoUrl = "http://35.192.197.191:8081"
+
+  const solutionExternalLink =
+    activeTab === "Solution" && currentContent.title === "Baggage Claim"
+      ? currentContent.subtitle === "Traveller"
+        ? travellerPrototypeUrl
+        : currentContent.subtitle === "Admin"
+        ? adminPrototypeUrl
+        : undefined
+      : undefined
+
+  const imageLinkLabel = solutionExternalLink
+    ? `Open Smart Baggage Claim ${currentContent.subtitle?.toLowerCase()} prototype`
+    : undefined
+
+  const isAgenticMediaMonitorSolution = activeTab === "Solution" && currentContent.title === "Agentic Media Monitor"
+
+  const shouldShowAgenticDemoButton = isAgenticMediaMonitorSolution
+
+  const canTriggerViewDemo = Boolean(
+    (story && (story.embedUrl || story.externalUrl) && activeTab === "Solution") || isAgenticMediaMonitorSolution,
+  )
+
+  const handleViewDemoButtonClick = () => {
+    if (isAgenticMediaMonitorSolution) {
+      window.open(agenticMediaMonitorDemoUrl, "_blank", "noopener,noreferrer")
+      return
+    }
+
+    if (!onOpenEmbed || !story || !(story.embedUrl || story.externalUrl)) {
+      return
+    }
+
+    onOpenEmbed(story)
+  }
+
+  const imageSectionClassName = `${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`
+
+  const imageSectionStyle = {
+    backgroundImage: `url(${currentContent.image})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }
+
+  const handleImageSectionClick = () => {
+    if (story?.id === 7 && onOpenEmbed) {
+      onOpenEmbed(story, {
+        videoUrl: xRaySharepointUrl,
+        externalUrl: xRaySharepointUrl,
+      })
+    }
+  }
+
   return (
     <>
       <div
@@ -614,6 +671,38 @@ export default function FeatureFocusModal({
                 {currentContent.description}
               </p>
 
+              {shouldShowAgenticDemoButton && (
+                <div className="mt-8">
+                  <div className="flex">
+                    <button
+                      type="button"
+                      onClick={canTriggerViewDemo ? handleViewDemoButtonClick : undefined}
+                      disabled={!canTriggerViewDemo}
+                      className={`rounded-full px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors ${
+                        canTriggerViewDemo
+                          ? "bg-[#FF462D] text-white hover:bg-[#e03f29]"
+                          : "bg-[#FF462D]/60 text-white cursor-not-allowed"
+                      }`}
+                      style={{
+                        fontFamily: "TWK Everett, sans-serif",
+                      }}
+                    >
+                      View Demo
+                    </button>
+                  </div>
+                  <div
+                    className="mt-3 inline-flex flex-col rounded border border-gray-200 bg-white px-4 py-3 text-sm text-[#3D3C3C]"
+                    style={{
+                      fontFamily: "TWK Everett, sans-serif",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    <span>Username: admin</span>
+                    <span>Password: laDKd1384FR</span>
+                  </div>
+                </div>
+              )}
+
               {activeTab === "Solution" && currentCaseStudy.solution.length > 1 && (
                 <div className="flex items-center gap-4 mt-8">
                   <button
@@ -647,24 +736,23 @@ export default function FeatureFocusModal({
 
             {/* Right Image Section - Only show for Solution tab */}
           {activeTab === "Solution" && (
-            <div
-              className={`${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`}
-              style={{
-                backgroundImage: `url(${currentContent.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              onClick={() => {
-                if (story?.id === 7 && onOpenEmbed) {
-                  onOpenEmbed(story, {
-                    videoUrl: xRaySharepointUrl,
-                    externalUrl: xRaySharepointUrl,
-                  })
-                }
-              }}
-            >
-              {/* Static image with click functionality */}
-            </div>
+            solutionExternalLink ? (
+              <a
+                className={imageSectionClassName}
+                style={imageSectionStyle}
+                href={solutionExternalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="sr-only">{imageLinkLabel}</span>
+              </a>
+            ) : (
+              <div
+                className={imageSectionClassName}
+                style={imageSectionStyle}
+                onClick={story?.id === 7 && onOpenEmbed ? handleImageSectionClick : undefined}
+              />
+            )
           )}
           </div>
 

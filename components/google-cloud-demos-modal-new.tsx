@@ -44,6 +44,14 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
       linkLabel: "View demo",
     },
     {
+      title: "Sentiment analysis for customer feedback",
+      description: "admin / laDKd1384FR",
+      tags: ["Travel", "Sentiment Analysis", "Customer Feedback", "AI/ML"],
+      url: "http://35.192.197.191:8081",
+      linkUrl: "http://35.192.197.191:8081",
+      linkLabel: "View demo",
+    },
+    {
       title: "Realtime travel companion",
       tags: ["Travel", "Aviation", "AI Agent", "Customer Service"],
       url: "http://35.238.3.133:4200",
@@ -105,6 +113,8 @@ export default function GoogleCloudDemosModal({ isOpen, onClose }: GoogleCloudDe
         return "Industry / Communications"
       case "Realtime travel companion":
         return "Industry / Travel"
+      case "Sentiment analysis for customer feedback":
+        return "Industry / TRAVEL"
       case "Connected Traveler Demo":
         return "Industry / Travel"
       case "Connected Shopping Demo":
