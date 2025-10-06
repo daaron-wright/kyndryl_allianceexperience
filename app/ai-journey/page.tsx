@@ -34,6 +34,12 @@ export default function AIJourneyPage() {
     connectedTravelerPrototypeUrl,
   )}`
 
+  const maintenanceOperationsPrototypeUrl =
+    "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=3292-1098&t=kFaztkRwYKhDlA1A-1"
+  const maintenanceOperationsEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(
+    maintenanceOperationsPrototypeUrl,
+  )}`
+
   const openEmbedModalForStory = (story, overrides = {}) => {
     if (!story) {
       return
@@ -69,6 +75,19 @@ export default function AIJourneyPage() {
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
       alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
+    },
+    {
+      id: 10,
+      title: "Maintenance, Repair, and Operations",
+      description:
+        "Coordinated maintenance planning and intelligent operations workflows that keep transportation assets mission-ready and resilient across the network.",
+      image: "/modern-baggage-handling-professionals-natural-light.jpg",
+      alliance: "Industry / Transportation",
+      tags: ["Maintenance Intelligence", "Asset Reliability", "Operational Efficiency"],
+      alliancePartner: "AWS",
+      aiFeature: "Automation",
+      embedUrl: maintenanceOperationsEmbedUrl,
+      externalUrl: maintenanceOperationsPrototypeUrl,
     },
     {
       id: 2,
