@@ -816,6 +816,7 @@ export default function AIJourneyPage() {
             setSelectedStory(null)
           }}
           story={selectedStory}
+          onOpenEmbed={openEmbedModalForStory}
         />
       )}
 
