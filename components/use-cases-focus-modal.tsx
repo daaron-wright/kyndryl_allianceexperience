@@ -287,7 +287,8 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
       <FeatureFocusModal
         isOpen={isFeatureModalOpen}
         onClose={() => setIsFeatureModalOpen(false)}
-        featureData={selectedFeature}
+        story={selectedFeature}
+        onOpenEmbed={onOpenEmbed}
       />
     </>
   )
