@@ -655,7 +655,7 @@ export default function AIJourneyPage() {
                     }`}
                     aria-pressed={activeEmbedView === "figma"}
                   >
-                    View Figma
+                    View Prototype
                   </button>
                 </div>
                 <a
