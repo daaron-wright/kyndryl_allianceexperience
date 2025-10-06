@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, X } from "lucide-react"
 import DemoLoginModal from "@/components/demo-login-modal"
 import UseCasesFocusModal from "@/components/use-cases-focus-modal"
 import FeatureFocusModal from "@/components/feature-focus-modal"
@@ -12,6 +12,7 @@ export default function AIJourneyPage() {
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false)
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedStory, setSelectedStory] = useState(null)
+  const [activeEmbedStory, setActiveEmbedStory] = useState(null)
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
@@ -20,6 +21,12 @@ export default function AIJourneyPage() {
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
   const [isVideoClicked, setIsVideoClicked] = useState(false)
   const isHydratingRef = useRef(true)
+
+  const connectedTravelerPrototypeUrl =
+    "https://www.figma.com/proto/SOJfxIoop1uPyLkAYrd19D/Kyndryl-Connected-Traveller--New-Version?page-id=170%3A2293&node-id=2014-11654&viewport=3245%2C-460%2C0.13&t=JtIjOc4RmPuhg9dW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2014%3A9590"
+  const connectedTravelerEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(
+    connectedTravelerPrototypeUrl,
+  )}`
 
   const customerStories = [
     {
@@ -120,8 +127,8 @@ export default function AIJourneyPage() {
       tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
       alliancePartner: "Google Cloud",
       aiFeature: "AI & Machine Learning",
-      linkUrl:
-        "https://www.figma.com/proto/SOJfxIoop1uPyLkAYrd19D/Kyndryl-Connected-Traveller--New-Version?page-id=170%3A2293&node-id=2014-11654&viewport=3245%2C-460%2C0.13&t=JtIjOc4RmPuhg9dW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2014%3A9590",
+      embedUrl: connectedTravelerEmbedUrl,
+      externalUrl: connectedTravelerPrototypeUrl,
     },
   ]
 
@@ -182,8 +189,8 @@ export default function AIJourneyPage() {
   }, [currentPage, totalPages])
 
   const handleCardClick = (story) => {
-    if (story.linkUrl) {
-      window.open(story.linkUrl, "_blank", "noopener,noreferrer")
+    if (story.embedUrl) {
+      setActiveEmbedStory(story)
       return
     }
 
@@ -601,6 +608,51 @@ export default function AIJourneyPage() {
           )}
         </div>
       </section>
+
+      {activeEmbedStory && (
+        <div
+          className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 px-4 py-10"
+          onClick={() => setActiveEmbedStory(null)}
+        >
+          <div
+            className="relative flex w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-gray-200 bg-[#F2F1EE] px-6 py-4">
+              <div>
+                <p className="text-sm font-medium text-[#FF462D]">{activeEmbedStory.alliance}</p>
+                <h2 className="text-2xl font-light text-[#3D3C3C]">{activeEmbedStory.title}</h2>
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-[#FF462D] px-4 py-2 text-sm font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
+                >
+                  Open in Figma
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setActiveEmbedStory(null)}
+                  className="rounded-full bg-white p-2 text-[#3D3C3C] transition-colors hover:bg-[#FF462D] hover:text-white"
+                  aria-label="Close Figma prototype"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 bg-[#1C1C1C]">
+              <iframe
+                src={activeEmbedStory.embedUrl}
+                title={`${activeEmbedStory.title} prototype`}
+                className="h-[70vh] w-full border-0"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* CTA Section */}
       <section className="bg-[#F2F1EE] px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
