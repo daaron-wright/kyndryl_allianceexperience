@@ -193,6 +193,7 @@ export default function AIJourneyPage() {
   const handleCardClick = (story) => {
     if (story.embedUrl) {
       setActiveEmbedStory(story)
+      setActiveEmbedView("video")
       return
     }
 
