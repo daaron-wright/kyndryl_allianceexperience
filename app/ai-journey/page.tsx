@@ -13,7 +13,7 @@ export default function AIJourneyPage() {
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedStory, setSelectedStory] = useState(null)
   const [activeEmbedStory, setActiveEmbedStory] = useState(null)
-  const [activeEmbedView, setActiveEmbedView] = useState<"video" | "figma">("video")
+  const [activeEmbedView, setActiveEmbedView] = useState<"video" | "figma" | "demo">("video")
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
@@ -25,8 +25,12 @@ export default function AIJourneyPage() {
 
   const hasActiveVideo = Boolean(activeEmbedStory?.videoUrl)
   const hasActiveDemo = Boolean(
-    activeEmbedStory?.embedUrl && (!hasActiveVideo || activeEmbedStory.embedUrl !== activeEmbedStory.videoUrl),
+    (activeEmbedStory?.embedUrl && (!hasActiveVideo || activeEmbedStory.embedUrl !== activeEmbedStory.videoUrl)) ||
+      activeEmbedStory?.demoUrl,
   )
+  const demoCredentials = activeEmbedStory?.demoCredentials
+  const isViewDemoActive =
+    activeEmbedView === "figma" || (activeEmbedStory?.demoUrl && activeEmbedView === "demo")
 
   const connectedTravelerPrototypeUrl =
     "https://www.figma.com/proto/SOJfxIoop1uPyLkAYrd19D/Kyndryl-Connected-Traveller--New-Version?page-id=170%3A2293&node-id=2014-11654&viewport=3245%2C-460%2C0.13&t=JtIjOc4RmPuhg9dW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2014%3A9590"
@@ -39,6 +43,7 @@ export default function AIJourneyPage() {
   const maintenanceOperationsEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(
     maintenanceOperationsPrototypeUrl,
   )}`
+  const maintenanceOperationsDemoUrl = "https://aeromonitor.apps-aws.com/login"
 
   const openEmbedModalForStory = (story, overrides = {}) => {
     if (!story) {
@@ -46,8 +51,13 @@ export default function AIJourneyPage() {
     }
 
     const embedStory = { ...story, ...overrides }
+    const hasVideo = Boolean(embedStory.videoUrl)
+    const hasEmbed = Boolean(embedStory.embedUrl)
+    const hasDemoLink = Boolean(embedStory.demoUrl)
+    const initialView = hasVideo ? "video" : hasEmbed ? "figma" : hasDemoLink ? "demo" : "figma"
+
     setActiveEmbedStory(embedStory)
-    setActiveEmbedView(embedStory.videoUrl ? "video" : "figma")
+    setActiveEmbedView(initialView)
   }
 
   const customerStories = [
@@ -89,6 +99,11 @@ export default function AIJourneyPage() {
       aiFeature: "Automation",
       embedUrl: maintenanceOperationsEmbedUrl,
       externalUrl: maintenanceOperationsPrototypeUrl,
+      demoUrl: maintenanceOperationsDemoUrl,
+      demoCredentials: {
+        username: "admin",
+        password: "admin123",
+      },
     },
     {
       id: 2,
@@ -666,7 +681,12 @@ export default function AIJourneyPage() {
                 <p className="text-sm font-medium text-[#FF462D]">{activeEmbedStory.alliance}</p>
                 <h2 className="text-2xl font-light text-[#3D3C3C]">{activeEmbedStory.title}</h2>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center justify-end gap-3">
+                {demoCredentials && (
+                  <div className="rounded-md border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-[#3D3C3C]">
+                    Login: <span className="font-semibold">{demoCredentials.username}</span> / {demoCredentials.password}
+                  </div>
+                )}
                 {(hasActiveVideo || hasActiveDemo) && (
                   <div className="flex items-center gap-2 rounded-full border border-gray-300 bg-white p-1">
                     {hasActiveVideo && (
@@ -686,13 +706,20 @@ export default function AIJourneyPage() {
                     {hasActiveDemo && (
                       <button
                         type="button"
-                        onClick={() => setActiveEmbedView("figma")}
+                        onClick={() => {
+                          if (typeof window !== "undefined" && activeEmbedStory?.demoUrl) {
+                            window.open(activeEmbedStory.demoUrl, "_blank", "noopener,noreferrer")
+                          }
+                          if (activeEmbedStory?.demoUrl) {
+                            setActiveEmbedView("demo")
+                            return
+                          }
+                          setActiveEmbedView("figma")
+                        }}
                         className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                          activeEmbedView === "figma"
-                            ? "bg-[#FF462D] text-white shadow-sm"
-                            : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                          isViewDemoActive ? "bg-[#FF462D] text-white shadow-sm" : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
                         }`}
-                        aria-pressed={activeEmbedView === "figma"}
+                        aria-pressed={isViewDemoActive}
                       >
                         View Demo
                       </button>
@@ -700,7 +727,7 @@ export default function AIJourneyPage() {
                   </div>
                 )}
                 <a
-                  href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl}
+                  href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl || activeEmbedStory.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full border border-[#FF462D] px-4 py-2 text-sm font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
@@ -718,19 +745,38 @@ export default function AIJourneyPage() {
               </div>
             </div>
             <div className="flex-1 bg-[#1C1C1C]">
-              {activeEmbedView === "figma" || !activeEmbedStory.videoUrl ? (
-                <iframe
-                  src={activeEmbedStory.embedUrl}
-                  title={`${activeEmbedStory.title} prototype`}
-                  className="h-[70vh] w-full border-0"
-                  allowFullScreen
-                />
-              ) : (
+              {activeEmbedView === "video" && activeEmbedStory.videoUrl ? (
                 <iframe
                   src={activeEmbedStory.videoUrl}
                   title={`${activeEmbedStory.title} overview video`}
                   className="h-[70vh] w-full border-0"
                   allow="autoplay; fullscreen"
+                  allowFullScreen
+                />
+              ) : activeEmbedView === "demo" && activeEmbedStory.demoUrl ? (
+                <div className="flex h-full flex-col items-center justify-center gap-4 px-6 text-center text-white">
+                  <p className="text-lg font-light text-white">
+                    Open the demo in a new tab to explore the Maintenance, Repair, and Operations experience.
+                  </p>
+                  <a
+                    href={activeEmbedStory.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-white px-6 py-3 text-sm font-medium uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#FF462D]"
+                  >
+                    Launch Demo
+                  </a>
+                  {demoCredentials && (
+                    <div className="rounded-md border border-white/60 bg-white/10 px-4 py-3 text-sm">
+                      Login: <span className="font-semibold">{demoCredentials.username}</span> / {demoCredentials.password}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <iframe
+                  src={activeEmbedStory.embedUrl}
+                  title={`${activeEmbedStory.title} prototype`}
+                  className="h-[70vh] w-full border-0"
                   allowFullScreen
                 />
               )}
