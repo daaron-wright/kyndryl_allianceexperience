@@ -40,6 +40,7 @@ export default function AIJourneyPage() {
       tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
       alliancePartner: "Google Cloud",
       aiFeature: "AI & Machine Learning",
+      videoUrl: "https://s7d1.scene7.com/is/content/kyndryl/airline-consult",
       embedUrl: connectedTravelerEmbedUrl,
       externalUrl: connectedTravelerPrototypeUrl,
     },
