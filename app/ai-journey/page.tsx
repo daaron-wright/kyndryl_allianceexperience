@@ -95,6 +95,11 @@ export default function AIJourneyPage() {
       aiFeature: "Automation",
       embedUrl: maintenanceOperationsEmbedUrl,
       externalUrl: maintenanceOperationsPrototypeUrl,
+      demoUrl: maintenanceOperationsDemoUrl,
+      demoCredentials: {
+        username: "admin",
+        password: "admin123",
+      },
     },
     {
       id: 2,
