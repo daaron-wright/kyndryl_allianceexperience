@@ -81,7 +81,8 @@ export default function AIJourneyPage() {
       title: "Maintenance, Repair, and Operations",
       description:
         "Coordinated maintenance planning and intelligent operations workflows that keep transportation assets mission-ready and resilient across the network.",
-      image: "/modern-baggage-handling-professionals-natural-light.jpg",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F4f55495a54b1427b9bd40ba1c8f3c8aa%2F1d434d3e2f904c149b1ca4aa00717097?format=webp&width=800",
       alliance: "Industry / Transportation",
       tags: ["Maintenance Intelligence", "Asset Reliability", "Operational Efficiency"],
       alliancePartner: "AWS",
