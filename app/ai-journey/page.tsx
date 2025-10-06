@@ -149,7 +149,7 @@ export default function AIJourneyPage() {
   useEffect(() => {
     if (isHydratingRef.current) {
       isHydratingRef.current = false
-      setCurrentPage(1)
+      setCurrentPage((prev) => (prev === 1 ? prev : 1))
     }
   }, [])
 
