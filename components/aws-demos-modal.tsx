@@ -8,6 +8,7 @@ interface AWSDemo {
   description: string
   tags: string[]
   url: string
+  linkLabel?: string
 }
 
 interface AWSDemosModalProps {
@@ -30,6 +31,7 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: Appointment Management - Book/Cancel/Reschedule/List appointments with intelligent scheduling and automated reminders",
       tags: ["Healthcare", "Scheduling", "Automation"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
     {
       id: 2,
@@ -38,6 +40,7 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: Prescription Management - Get prescriptions details, track medication history, and manage dosage information",
       tags: ["Healthcare", "Prescriptions", "Medical Records"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
     {
       id: 3,
@@ -46,6 +49,7 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: Medication Refill Management - Check refill eligibility and Place Refill request with automated approval workflows",
       tags: ["Healthcare", "Refills", "Pharmacy"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
     {
       id: 4,
@@ -54,8 +58,15 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
         "Use-Case: General Query - Information from available knowledgebase of the documents with AI-powered search and insights",
       tags: ["Healthcare", "Knowledge Base", "AI Search"],
       url: "https://develop-vks.d2hmtm6qbgyxg0.amplifyapp.com",
+      linkLabel: "View demo",
     },
   ]
+
+  const handleOpenLink = (url?: string) => {
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer")
+    }
+  }
 
   const filteredDemos = demos.filter(
     (demo) =>
