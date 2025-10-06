@@ -47,8 +47,13 @@ export default function AIJourneyPage() {
     }
 
     const embedStory = { ...story, ...overrides }
+    const hasVideo = Boolean(embedStory.videoUrl)
+    const hasEmbed = Boolean(embedStory.embedUrl)
+    const hasDemoLink = Boolean(embedStory.demoUrl)
+    const initialView = hasVideo ? "video" : hasEmbed ? "figma" : hasDemoLink ? "demo" : "figma"
+
     setActiveEmbedStory(embedStory)
-    setActiveEmbedView(embedStory.videoUrl ? "video" : "figma")
+    setActiveEmbedView(initialView)
   }
 
   const customerStories = [
