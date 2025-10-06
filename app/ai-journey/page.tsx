@@ -138,13 +138,13 @@ export default function AIJourneyPage() {
     "Automotive",
     "Banking",
     "Communications & Media",
-    "Energy & Utilities",
     "Financial Services",
-    "Government",
     "Healthcare",
     "Manufacturing",
-    "Retail",
+    "Government",
     "Telecommunications",
+    "Retail",
+    "Energy & Utilities",
     "Transportation",
   ]
   const aiFeatureOptions = [
