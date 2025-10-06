@@ -109,6 +109,17 @@ export default function AIJourneyPage() {
       alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
     },
+    {
+      id: 9,
+      title: "Connected Traveler",
+      description:
+        "A real-time travel companion that orchestrates itineraries, monitors disruptions, and coordinates services across the journey to keep passengers informed and supported end-to-end.",
+      image: "/modern-airport-terminal-with-ai-powered-passenger.jpg",
+      alliance: "Industry / Transportation",
+      tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+    },
   ]
 
   const industryOptions = [
