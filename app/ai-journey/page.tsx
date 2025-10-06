@@ -798,7 +798,11 @@ export default function AIJourneyPage() {
       {isUseCasesOpen && (
         <div className="fixed inset-0 backdrop-blur-md bg-white/20 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
-            <UseCasesFocusModal isOpen={isUseCasesOpen} onClose={() => setIsUseCasesOpen(false)} />
+            <UseCasesFocusModal
+              isOpen={isUseCasesOpen}
+              onClose={() => setIsUseCasesOpen(false)}
+              onOpenEmbed={openEmbedModalForStory}
+            />
           </div>
         </div>
       )}
