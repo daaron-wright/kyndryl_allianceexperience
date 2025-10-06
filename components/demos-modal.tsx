@@ -85,6 +85,20 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
       ],
       learnMoreUrl: "https://develop.dl8vx96rzs86v.amplifyapp.com",
     },
+    {
+      title: "Entreprise Observability",
+      description: "admin / admin123",
+      tags: [
+        "Site Reliability Engineer", // Persona
+        "Observability",
+        "Monitoring",
+        "Incident Response",
+        "Telemetry",
+        "AWS",
+        "AI Assistant",
+      ],
+      learnMoreUrl: "https://aeromonitor.apps-aws.com/",
+    },
   ]
 
   const itemsPerPage = 4 // Updated to match the 4 demo tiles
@@ -140,6 +154,8 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
                     return "Industry / Financial Services"
                   case "First Notice of Loss (FNOL)":
                     return "Industry / Insurance"
+                  case "Entreprise Observability":
+                    return "Industry / Transportation"
                   default:
                     return "Industry / Technology"
                 }
