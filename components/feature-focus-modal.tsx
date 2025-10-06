@@ -491,13 +491,21 @@ export default function FeatureFocusModal({
 
   const travellerPrototypeUrl =
     "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=3110-2828&t=lA0T8IZUnEGu6TSv-1"
+  const adminPrototypeUrl =
+    "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2759-10042&t=78vZtCqT78ndB4ds-1"
 
   const solutionExternalLink =
-    activeTab === "Solution" &&
-    currentContent.title === "Baggage Claim" &&
-    currentContent.subtitle === "Traveller"
-      ? travellerPrototypeUrl
+    activeTab === "Solution" && currentContent.title === "Baggage Claim"
+      ? currentContent.subtitle === "Traveller"
+        ? travellerPrototypeUrl
+        : currentContent.subtitle === "Admin"
+        ? adminPrototypeUrl
+        : undefined
       : undefined
+
+  const imageLinkLabel = solutionExternalLink
+    ? `Open Smart Baggage Claim ${currentContent.subtitle?.toLowerCase()} prototype`
+    : undefined
 
   const imageSectionClassName = `${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`
 
@@ -682,7 +690,7 @@ export default function FeatureFocusModal({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="sr-only">Open Smart Baggage Claim traveller prototype</span>
+                <span className="sr-only">{imageLinkLabel}</span>
               </a>
             ) : (
               <div
