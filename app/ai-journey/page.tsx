@@ -710,11 +710,11 @@ export default function AIJourneyPage() {
                           if (typeof window !== "undefined" && activeEmbedStory?.demoUrl) {
                             window.open(activeEmbedStory.demoUrl, "_blank", "noopener,noreferrer")
                           }
-                          if (activeEmbedStory?.embedUrl) {
-                            setActiveEmbedView("figma")
-                          } else {
+                          if (activeEmbedStory?.demoUrl) {
                             setActiveEmbedView("demo")
+                            return
                           }
+                          setActiveEmbedView("figma")
                         }}
                         className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                           isViewDemoActive ? "bg-[#FF462D] text-white shadow-sm" : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
