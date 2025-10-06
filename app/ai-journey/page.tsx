@@ -30,6 +30,19 @@ export default function AIJourneyPage() {
 
   const customerStories = [
     {
+      id: 9,
+      title: "Connected Traveler",
+      description:
+        "A real-time travel companion that orchestrates itineraries, monitors disruptions, and coordinates services across the journey to keep passengers informed and supported end-to-end.",
+      image: "/modern-airport-terminal-with-ai-powered-passenger.jpg",
+      alliance: "Industry / Transportation",
+      tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
+      alliancePartner: "Google Cloud",
+      aiFeature: "AI & Machine Learning",
+      embedUrl: connectedTravelerEmbedUrl,
+      externalUrl: connectedTravelerPrototypeUrl,
+    },
+    {
       id: 1,
       title: "Agentic Airport AI Experience",
       description:
@@ -116,19 +129,6 @@ export default function AIJourneyPage() {
       tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
       alliancePartner: "AWS",
       aiFeature: "AI & Machine Learning",
-    },
-    {
-      id: 9,
-      title: "Connected Traveler",
-      description:
-        "A real-time travel companion that orchestrates itineraries, monitors disruptions, and coordinates services across the journey to keep passengers informed and supported end-to-end.",
-      image: "/modern-airport-terminal-with-ai-powered-passenger.jpg",
-      alliance: "Industry / Transportation",
-      tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
-      alliancePartner: "Google Cloud",
-      aiFeature: "AI & Machine Learning",
-      embedUrl: connectedTravelerEmbedUrl,
-      externalUrl: connectedTravelerPrototypeUrl,
     },
   ]
 
