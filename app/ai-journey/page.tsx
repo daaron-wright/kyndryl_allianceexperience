@@ -745,19 +745,38 @@ export default function AIJourneyPage() {
               </div>
             </div>
             <div className="flex-1 bg-[#1C1C1C]">
-              {activeEmbedView === "figma" || !activeEmbedStory.videoUrl ? (
-                <iframe
-                  src={activeEmbedStory.embedUrl}
-                  title={`${activeEmbedStory.title} prototype`}
-                  className="h-[70vh] w-full border-0"
-                  allowFullScreen
-                />
-              ) : (
+              {activeEmbedView === "video" && activeEmbedStory.videoUrl ? (
                 <iframe
                   src={activeEmbedStory.videoUrl}
                   title={`${activeEmbedStory.title} overview video`}
                   className="h-[70vh] w-full border-0"
                   allow="autoplay; fullscreen"
+                  allowFullScreen
+                />
+              ) : activeEmbedView === "demo" && activeEmbedStory.demoUrl ? (
+                <div className="flex h-full flex-col items-center justify-center gap-4 px-6 text-center text-white">
+                  <p className="text-lg font-light text-white">
+                    Open the demo in a new tab to explore the Maintenance, Repair, and Operations experience.
+                  </p>
+                  <a
+                    href={activeEmbedStory.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-white px-6 py-3 text-sm font-medium uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#FF462D]"
+                  >
+                    Launch Demo
+                  </a>
+                  {demoCredentials && (
+                    <div className="rounded-md border border-white/60 bg-white/10 px-4 py-3 text-sm">
+                      Login: <span className="font-semibold">{demoCredentials.username}</span> / {demoCredentials.password}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <iframe
+                  src={activeEmbedStory.embedUrl}
+                  title={`${activeEmbedStory.title} prototype`}
+                  className="h-[70vh] w-full border-0"
                   allowFullScreen
                 />
               )}
