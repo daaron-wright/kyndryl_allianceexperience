@@ -93,7 +93,7 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
         "Observability",
         "Monitoring",
         "Incident Response",
-        "Telemetries",
+        "Telemetry",
         "AWS",
         "AI Assistant",
       ],
