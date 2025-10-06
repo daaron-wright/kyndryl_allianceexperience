@@ -7,9 +7,10 @@ import FeatureFocusModal from "./feature-focus-modal"
 interface UseCasesFocusModalProps {
   isOpen: boolean
   onClose: () => void
+  onOpenEmbed?: (story: any, overrides?: { videoUrl?: string; embedUrl?: string; externalUrl?: string }) => void
 }
 
-export default function UseCasesFocusModal({ isOpen, onClose }: UseCasesFocusModalProps) {
+export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: UseCasesFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1) // Changed initial page from 2 to 1 so modal starts on first page
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
