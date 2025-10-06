@@ -29,6 +29,8 @@ export default function AIJourneyPage() {
       activeEmbedStory?.demoUrl,
   )
   const demoCredentials = activeEmbedStory?.demoCredentials
+  const isViewDemoActive =
+    activeEmbedView === "figma" || (!activeEmbedStory?.embedUrl && activeEmbedView === "demo")
 
   const connectedTravelerPrototypeUrl =
     "https://www.figma.com/proto/SOJfxIoop1uPyLkAYrd19D/Kyndryl-Connected-Traveller--New-Version?page-id=170%3A2293&node-id=2014-11654&viewport=3245%2C-460%2C0.13&t=JtIjOc4RmPuhg9dW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2014%3A9590"
