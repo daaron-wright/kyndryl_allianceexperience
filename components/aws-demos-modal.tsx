@@ -200,9 +200,6 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
                   transition: "all 0.2s ease",
                   border: "1px solid transparent",
                 }}
-                onClick={() => {
-                  window.open(demo.url, "_blank")
-                }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)"
                   e.currentTarget.style.boxShadow = "0 8px 25px rgba(0, 0, 0, 0.15)"
