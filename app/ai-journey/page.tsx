@@ -201,6 +201,11 @@ export default function AIJourneyPage() {
     setIsFeatureModalOpen(true)
   }
 
+  const handleCloseEmbed = () => {
+    setActiveEmbedStory(null)
+    setActiveEmbedView("video")
+  }
+
   const toggleIndustryFilter = (industry) => {
     setSelectedIndustries((prev) =>
       prev.includes(industry) ? prev.filter((i) => i !== industry) : [...prev, industry],
