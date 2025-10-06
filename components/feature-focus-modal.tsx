@@ -489,6 +489,33 @@ export default function FeatureFocusModal({
     setCurrentSolutionIndex((prev) => (prev === currentCaseStudy.solution.length - 1 ? 0 : prev + 1))
   }
 
+  const travellerPrototypeUrl =
+    "https://www.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=3110-2828&t=lA0T8IZUnEGu6TSv-1"
+
+  const solutionExternalLink =
+    activeTab === "Solution" &&
+    currentContent.title === "Baggage Claim" &&
+    currentContent.subtitle === "Traveller"
+      ? travellerPrototypeUrl
+      : undefined
+
+  const imageSectionClassName = `${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`
+
+  const imageSectionStyle = {
+    backgroundImage: `url(${currentContent.image})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }
+
+  const handleImageSectionClick = () => {
+    if (story?.id === 7 && onOpenEmbed) {
+      onOpenEmbed(story, {
+        videoUrl: xRaySharepointUrl,
+        externalUrl: xRaySharepointUrl,
+      })
+    }
+  }
+
   return (
     <>
       <div
@@ -647,24 +674,23 @@ export default function FeatureFocusModal({
 
             {/* Right Image Section - Only show for Solution tab */}
           {activeTab === "Solution" && (
-            <div
-              className={`${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`}
-              style={{
-                backgroundImage: `url(${currentContent.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              onClick={() => {
-                if (story?.id === 7 && onOpenEmbed) {
-                  onOpenEmbed(story, {
-                    videoUrl: xRaySharepointUrl,
-                    externalUrl: xRaySharepointUrl,
-                  })
-                }
-              }}
-            >
-              {/* Static image with click functionality */}
-            </div>
+            solutionExternalLink ? (
+              <a
+                className={imageSectionClassName}
+                style={imageSectionStyle}
+                href={solutionExternalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="sr-only">Open Smart Baggage Claim traveller prototype</span>
+              </a>
+            ) : (
+              <div
+                className={imageSectionClassName}
+                style={imageSectionStyle}
+                onClick={story?.id === 7 && onOpenEmbed ? handleImageSectionClick : undefined}
+              />
+            )
           )}
           </div>
 
