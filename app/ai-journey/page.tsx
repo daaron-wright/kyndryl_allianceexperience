@@ -681,7 +681,12 @@ export default function AIJourneyPage() {
                 <p className="text-sm font-medium text-[#FF462D]">{activeEmbedStory.alliance}</p>
                 <h2 className="text-2xl font-light text-[#3D3C3C]">{activeEmbedStory.title}</h2>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center justify-end gap-3">
+                {demoCredentials && (
+                  <div className="rounded-md border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-[#3D3C3C]">
+                    Login: <span className="font-semibold">{demoCredentials.username}</span> / {demoCredentials.password}
+                  </div>
+                )}
                 {(hasActiveVideo || hasActiveDemo) && (
                   <div className="flex items-center gap-2 rounded-full border border-gray-300 bg-white p-1">
                     {hasActiveVideo && (
@@ -701,13 +706,20 @@ export default function AIJourneyPage() {
                     {hasActiveDemo && (
                       <button
                         type="button"
-                        onClick={() => setActiveEmbedView("figma")}
+                        onClick={() => {
+                          if (typeof window !== "undefined" && activeEmbedStory?.demoUrl) {
+                            window.open(activeEmbedStory.demoUrl, "_blank", "noopener,noreferrer")
+                          }
+                          if (activeEmbedStory?.embedUrl) {
+                            setActiveEmbedView("figma")
+                          } else {
+                            setActiveEmbedView("demo")
+                          }
+                        }}
                         className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                          activeEmbedView === "figma"
-                            ? "bg-[#FF462D] text-white shadow-sm"
-                            : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                          isViewDemoActive ? "bg-[#FF462D] text-white shadow-sm" : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
                         }`}
-                        aria-pressed={activeEmbedView === "figma"}
+                        aria-pressed={isViewDemoActive}
                       >
                         View Demo
                       </button>
@@ -715,7 +727,7 @@ export default function AIJourneyPage() {
                   </div>
                 )}
                 <a
-                  href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl}
+                  href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl || activeEmbedStory.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full border border-[#FF462D] px-4 py-2 text-sm font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
