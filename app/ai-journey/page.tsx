@@ -310,7 +310,7 @@ export default function AIJourneyPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
             {/* Left side - Introduction */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-2 lg:pr-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D3C3C] mb-6">
                 The Kyndryl Agentic AI Framework
               </h2>
@@ -340,8 +340,8 @@ export default function AIJourneyPage() {
               </div>
             </div>
 
-            {/* Right side - Extended Video taking 2 columns */}
-            <div className="relative flex items-center justify-center lg:col-span-2">
+            {/* Right side - Extended Video */}
+            <div className="relative flex items-center justify-center lg:col-span-1">
               <div className="aspect-video rounded-lg overflow-hidden shadow-lg w-full">
                 {isVideoClicked ? (
                   <iframe
