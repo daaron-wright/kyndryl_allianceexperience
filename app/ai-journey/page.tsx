@@ -620,7 +620,7 @@ export default function AIJourneyPage() {
       {activeEmbedStory && (
         <div
           className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 px-4 py-10"
-          onClick={() => setActiveEmbedStory(null)}
+          onClick={handleCloseEmbed}
         >
           <div
             className="relative flex w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
@@ -632,31 +632,67 @@ export default function AIJourneyPage() {
                 <h2 className="text-2xl font-light text-[#3D3C3C]">{activeEmbedStory.title}</h2>
               </div>
               <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 rounded-full border border-gray-300 bg-white p-1">
+                  <button
+                    type="button"
+                    onClick={() => setActiveEmbedView("video")}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                      activeEmbedView === "video"
+                        ? "bg-[#FF462D] text-white shadow-sm"
+                        : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                    }`}
+                    aria-pressed={activeEmbedView === "video"}
+                  >
+                    Watch Video
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveEmbedView("figma")}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                      activeEmbedView === "figma"
+                        ? "bg-[#FF462D] text-white shadow-sm"
+                        : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                    }`}
+                    aria-pressed={activeEmbedView === "figma"}
+                  >
+                    View Figma
+                  </button>
+                </div>
                 <a
                   href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full border border-[#FF462D] px-4 py-2 text-sm font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
                 >
-                  Open in Figma
+                  Open in New Tab
                 </a>
                 <button
                   type="button"
-                  onClick={() => setActiveEmbedStory(null)}
+                  onClick={handleCloseEmbed}
                   className="rounded-full bg-white p-2 text-[#3D3C3C] transition-colors hover:bg-[#FF462D] hover:text-white"
-                  aria-label="Close Figma prototype"
+                  aria-label="Close Connected Traveler modal"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
             </div>
             <div className="flex-1 bg-[#1C1C1C]">
-              <iframe
-                src={activeEmbedStory.embedUrl}
-                title={`${activeEmbedStory.title} prototype`}
-                className="h-[70vh] w-full border-0"
-                allowFullScreen
-              />
+              {activeEmbedView === "figma" || !activeEmbedStory.videoUrl ? (
+                <iframe
+                  src={activeEmbedStory.embedUrl}
+                  title={`${activeEmbedStory.title} prototype`}
+                  className="h-[70vh] w-full border-0"
+                  allowFullScreen
+                />
+              ) : (
+                <iframe
+                  src={activeEmbedStory.videoUrl}
+                  title={`${activeEmbedStory.title} overview video`}
+                  className="h-[70vh] w-full border-0"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                />
+              )}
             </div>
           </div>
         </div>
