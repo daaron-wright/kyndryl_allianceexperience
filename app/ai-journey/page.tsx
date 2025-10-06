@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ChevronRight } from "lucide-react"
 import DemoLoginModal from "@/components/demo-login-modal"
 import UseCasesFocusModal from "@/components/use-cases-focus-modal"
