@@ -29,13 +29,19 @@ interface FeatureFocusModalProps {
   onClose: () => void
   caseStudyData?: CaseStudyData
   story?: any
+  onOpenEmbed?: (story: any, overrides?: { videoUrl?: string; embedUrl?: string; externalUrl?: string }) => void
 }
 
-export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, story }: FeatureFocusModalProps) {
+export default function FeatureFocusModal({
+  isOpen,
+  onClose,
+  caseStudyData,
+  story,
+  onOpenEmbed,
+}: FeatureFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("Solution")
-  const [isIframeOpen, setIsIframeOpen] = useState(false)
-  const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0) // Added state for solution screen index
+  const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0)
 
   if (!isOpen) return null
 
