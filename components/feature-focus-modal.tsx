@@ -397,6 +397,54 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
           },
         }
 
+      case 9: // Connected Traveler
+        return {
+          opportunity: {
+            title: "Seamless Journey Orchestration",
+            subtitle: "End-to-End Passenger Support",
+            description:
+              "Airlines and airports must coordinate multiple handoffs, partners, and data sources to deliver a reliable travel experience. Travellers expect proactive guidance, real-time updates, and personalized services from booking through arrival.",
+            image: "/modern-airport-terminal-with-ai-powered-passenger.jpg",
+          },
+          challenge: {
+            title: "Fragmented Travel Touchpoints",
+            subtitle: "Disconnected Service Landscape",
+            description:
+              "Information silos across carriers, airports, and service providers make it difficult to respond quickly to disruptions. Travellers receive inconsistent updates, making it hard to adapt plans or access timely assistance.",
+            image: "/modern-airport-terminal-with-ai-powered-passenger.jpg",
+          },
+          solution: [
+            {
+              title: "Connected Traveler Companion",
+              subtitle: "Personal Itinerary Concierge",
+              description:
+                "AI curates a unified itinerary that synchronizes flights, transfers, and accommodations. The companion delivers contextual prompts, proactive re-booking options, and on-demand concierge support through voice and chat channels.",
+              image: "/modern-airport-terminal-with-ai-powered-passenger.jpg",
+            },
+            {
+              title: "Operations Control Console",
+              subtitle: "Real-time Coordination",
+              description:
+                "Airline and airport teams monitor traveller cohorts with live dashboards that surface disruption risks, recommend interventions, and orchestrate handoffs with ground services, loyalty teams, and hospitality partners.",
+              image: "/baggage-claim-admin.png",
+            },
+            {
+              title: "Destination Services Hub",
+              subtitle: "Integrated Experience Marketplace",
+              description:
+                "Partners publish ground transport, lounge access, and local experiences that automatically match traveller personas. AI agents negotiate availability, confirm bookings, and push confirmations into the companion app.",
+              image: "/grand-hotel-exterior.png",
+            },
+          ],
+          outcome: {
+            title: "Elevated Passenger Satisfaction",
+            subtitle: "Performance Metrics",
+            description:
+              "Connected Traveler drives 35% faster disruption recovery, 25% ancillary revenue uplift, and a 15-point increase in NPS by keeping travellers informed, supported, and delighted across every touchpoint.",
+            image: "/business-opportunity-dashboard-with-growth-charts-.jpg",
+          },
+        }
+
       default:
         // Return default case study data for other stories
         return defaultCaseStudyData
