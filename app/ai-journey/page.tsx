@@ -39,6 +39,7 @@ export default function AIJourneyPage() {
   const maintenanceOperationsEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(
     maintenanceOperationsPrototypeUrl,
   )}`
+  const maintenanceOperationsDemoUrl = "https://aeromonitor.apps-aws.com/login"
 
   const openEmbedModalForStory = (story, overrides = {}) => {
     if (!story) {
