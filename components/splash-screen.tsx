@@ -86,7 +86,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
       <button
         onClick={handleVideoComplete}
-        className="absolute top-2 right-2 sm:top-4 sm:right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-lg transition-all duration-200 z-30 font-medium shadow-sm"
+        className="absolute top-2 right-2 sm:top-4 sm:right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 text-white bg-[#FF462D] hover:bg-[#E63E32] border border-white rounded-lg transition-all duration-200 z-30 font-medium shadow-sm"
         style={{
           fontSize: "clamp(0.75rem, 2vw, 1rem)",
           padding: "clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1.25rem)",
