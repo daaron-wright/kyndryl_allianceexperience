@@ -196,7 +196,7 @@ export default function AWSDemosModal({ isOpen, onClose }: AWSDemosModalProps) {
                   backgroundColor: "#FFFFFF",
                   borderRadius: "8px",
                   padding: "24px",
-                  cursor: "pointer",
+                  cursor: "default",
                   transition: "all 0.2s ease",
                   border: "1px solid transparent",
                 }}
