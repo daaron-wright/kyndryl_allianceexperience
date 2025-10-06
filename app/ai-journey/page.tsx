@@ -169,7 +169,8 @@ export default function AIJourneyPage() {
   const itemsPerPage = 4
   const totalPages = Math.max(1, Math.ceil(filteredStories.length / itemsPerPage))
   const effectiveCurrentPage = Math.min(currentPage, totalPages)
-  const startIndex = (isHydratingRef.current ? 0 : (effectiveCurrentPage - 1) * itemsPerPage)
+  const renderCurrentPage = isHydratingRef.current ? 1 : effectiveCurrentPage
+  const startIndex = (renderCurrentPage - 1) * itemsPerPage
   const currentItems = filteredStories.slice(startIndex, startIndex + itemsPerPage)
 
   useEffect(() => {
@@ -533,11 +534,11 @@ export default function AIJourneyPage() {
                     key={page}
                     onClick={() => setCurrentPage(page)}
                     className={`text-lg ${
-                      effectiveCurrentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
+                      renderCurrentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
                     }`}
                   >
                     {page}
-                    {effectiveCurrentPage === page && (
+                    {renderCurrentPage === page && (
                       <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
                     )}
                   </button>
@@ -551,9 +552,9 @@ export default function AIJourneyPage() {
             <div className="flex items-center justify-between mt-8">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                disabled={effectiveCurrentPage === 1}
+                disabled={renderCurrentPage === 1}
                 className={`flex items-center text-sm font-medium ${
-                  effectiveCurrentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                  renderCurrentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
                 }`}
               >
                 <svg
@@ -571,9 +572,9 @@ export default function AIJourneyPage() {
               </button>
               <button
                 onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                disabled={effectiveCurrentPage === totalPages}
+                disabled={renderCurrentPage === totalPages}
                 className={`flex items-center text-sm font-medium ${
-                  effectiveCurrentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                  renderCurrentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
                 }`}
               >
                 Next
