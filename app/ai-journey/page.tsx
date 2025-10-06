@@ -308,9 +308,9 @@ export default function AIJourneyPage() {
       {/* Introduction + Video Section */}
       <section id="introduction-section" className="bg-white px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left side - Introduction */}
-            <div className="lg:col-span-2 lg:pr-12">
+            <div className="lg:pr-10">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D3C3C] mb-6">
                 The Kyndryl Agentic AI Framework
               </h2>
@@ -341,8 +341,8 @@ export default function AIJourneyPage() {
             </div>
 
             {/* Right side - Extended Video */}
-            <div className="relative flex items-center justify-center lg:col-span-1">
-              <div className="aspect-video rounded-lg overflow-hidden shadow-lg w-full">
+            <div className="relative flex items-center justify-center">
+              <div className="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
                 {isVideoClicked ? (
                   <iframe
                     width="100%"
