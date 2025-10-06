@@ -155,7 +155,7 @@ export default function DemosModal({ onClose, learnMoreUrl }: DemosModalProps) {
                   case "First Notice of Loss (FNOL)":
                     return "Industry / Insurance"
                   case "Entreprise Observability":
-                    return "Industry / Technology"
+                    return "Industry / Transportation"
                   default:
                     return "Industry / Technology"
                 }
