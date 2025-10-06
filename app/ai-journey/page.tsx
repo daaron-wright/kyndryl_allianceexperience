@@ -325,7 +325,7 @@ export default function AIJourneyPage() {
                   "The Kyndryl Agentic AI Framework is a policy-driven system that coordinates intelligent agents to deliver outcomes, securely, at scale, and always within your governance boundaries. It's not just a platform. It's a new way to think about AI: one that connects strategy to execution, people to intelligent systems, and outcomes to measurable impact. Imagine a hybrid workforce where agents reason, adapt, and act in real time, alongside your people, within your policies, and across your infrastructure. Every decision is informed. Every action is traceable. Every outcome is intentional.\nWatch the explainer video to see how it works."
                 }
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-start">
                 <button
                   onClick={() => {
                     const section = document.getElementById("customer-stories-section")
