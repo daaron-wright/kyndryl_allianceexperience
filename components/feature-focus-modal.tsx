@@ -507,6 +507,19 @@ export default function FeatureFocusModal({
     ? `Open Smart Baggage Claim ${currentContent.subtitle?.toLowerCase()} prototype`
     : undefined
 
+  const shouldShowAgenticDemoButton =
+    activeTab === "Solution" && currentContent.title === "Agentic Media Monitor"
+
+  const canTriggerViewDemo = Boolean(story && (story.embedUrl || story.externalUrl))
+
+  const handleViewDemoButtonClick = () => {
+    if (!onOpenEmbed || !story || !(story.embedUrl || story.externalUrl)) {
+      return
+    }
+
+    onOpenEmbed(story)
+  }
+
   const imageSectionClassName = `${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`
 
   const imageSectionStyle = {
@@ -648,6 +661,26 @@ export default function FeatureFocusModal({
               >
                 {currentContent.description}
               </p>
+
+              {shouldShowAgenticDemoButton && (
+                <div className="mt-8 flex">
+                  <button
+                    type="button"
+                    onClick={canTriggerViewDemo ? handleViewDemoButtonClick : undefined}
+                    disabled={!canTriggerViewDemo}
+                    className={`rounded-full px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors ${
+                      canTriggerViewDemo
+                        ? "bg-[#FF462D] text-white hover:bg-[#e03f29]"
+                        : "bg-[#FF462D]/60 text-white cursor-not-allowed"
+                    }`}
+                    style={{
+                      fontFamily: "TWK Everett, sans-serif",
+                    }}
+                  >
+                    View demo
+                  </button>
+                </div>
+              )}
 
               {activeTab === "Solution" && currentCaseStudy.solution.length > 1 && (
                 <div className="flex items-center gap-4 mt-8">
