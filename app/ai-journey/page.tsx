@@ -19,6 +19,7 @@ export default function AIJourneyPage() {
   const [selectedAIFeatures, setSelectedAIFeatures] = useState([])
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
   const [isVideoClicked, setIsVideoClicked] = useState(false)
+  const isHydratingRef = useRef(true)
 
   const customerStories = [
     {
@@ -145,6 +146,13 @@ export default function AIJourneyPage() {
     "Managed Services",
   ]
 
+  useEffect(() => {
+    if (isHydratingRef.current) {
+      isHydratingRef.current = false
+      setCurrentPage(1)
+    }
+  }, [])
+
   const filteredStories = customerStories.filter((story) => {
     const matchesSearch =
       story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -159,9 +167,16 @@ export default function AIJourneyPage() {
   })
 
   const itemsPerPage = 4
-  const totalPages = Math.ceil(filteredStories.length / itemsPerPage)
-  const startIndex = (currentPage - 1) * itemsPerPage
+  const totalPages = Math.max(1, Math.ceil(filteredStories.length / itemsPerPage))
+  const effectiveCurrentPage = Math.min(currentPage, totalPages)
+  const startIndex = (isHydratingRef.current ? 0 : (effectiveCurrentPage - 1) * itemsPerPage)
   const currentItems = filteredStories.slice(startIndex, startIndex + itemsPerPage)
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages)
+    }
+  }, [currentPage, totalPages])
 
   const handleCardClick = (story) => {
     setSelectedStory(story)
@@ -518,11 +533,11 @@ export default function AIJourneyPage() {
                     key={page}
                     onClick={() => setCurrentPage(page)}
                     className={`text-lg ${
-                      currentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
+                      effectiveCurrentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
                     }`}
                   >
                     {page}
-                    {currentPage === page && (
+                    {effectiveCurrentPage === page && (
                       <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
                     )}
                   </button>
@@ -536,9 +551,9 @@ export default function AIJourneyPage() {
             <div className="flex items-center justify-between mt-8">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                disabled={currentPage === 1}
+                disabled={effectiveCurrentPage === 1}
                 className={`flex items-center text-sm font-medium ${
-                  currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                  effectiveCurrentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
                 }`}
               >
                 <svg
@@ -556,9 +571,9 @@ export default function AIJourneyPage() {
               </button>
               <button
                 onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                disabled={currentPage === totalPages}
+                disabled={effectiveCurrentPage === totalPages}
                 className={`flex items-center text-sm font-medium ${
-                  currentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                  effectiveCurrentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
                 }`}
               >
                 Next
