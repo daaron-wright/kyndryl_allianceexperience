@@ -13,6 +13,7 @@ export default function AIJourneyPage() {
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedStory, setSelectedStory] = useState(null)
   const [activeEmbedStory, setActiveEmbedStory] = useState(null)
+  const [activeEmbedView, setActiveEmbedView] = useState<"video" | "figma">("video")
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
