@@ -23,11 +23,26 @@ export default function AIJourneyPage() {
   const [isVideoClicked, setIsVideoClicked] = useState(false)
   const isHydratingRef = useRef(true)
 
+  const hasActiveVideo = Boolean(activeEmbedStory?.videoUrl)
+  const hasActiveDemo = Boolean(
+    activeEmbedStory?.embedUrl && (!hasActiveVideo || activeEmbedStory.embedUrl !== activeEmbedStory.videoUrl),
+  )
+
   const connectedTravelerPrototypeUrl =
     "https://www.figma.com/proto/SOJfxIoop1uPyLkAYrd19D/Kyndryl-Connected-Traveller--New-Version?page-id=170%3A2293&node-id=2014-11654&viewport=3245%2C-460%2C0.13&t=JtIjOc4RmPuhg9dW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2014%3A9590"
   const connectedTravelerEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(
     connectedTravelerPrototypeUrl,
   )}`
+
+  const openEmbedModalForStory = (story, overrides = {}) => {
+    if (!story) {
+      return
+    }
+
+    const embedStory = { ...story, ...overrides }
+    setActiveEmbedStory(embedStory)
+    setActiveEmbedView(embedStory.videoUrl ? "video" : "figma")
+  }
 
   const customerStories = [
     {
@@ -193,8 +208,7 @@ export default function AIJourneyPage() {
 
   const handleCardClick = (story) => {
     if (story.embedUrl) {
-      setActiveEmbedStory(story)
-      setActiveEmbedView("video")
+      openEmbedModalForStory(story)
       return
     }
 
@@ -633,32 +647,38 @@ export default function AIJourneyPage() {
                 <h2 className="text-2xl font-light text-[#3D3C3C]">{activeEmbedStory.title}</h2>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2 rounded-full border border-gray-300 bg-white p-1">
-                  <button
-                    type="button"
-                    onClick={() => setActiveEmbedView("video")}
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                      activeEmbedView === "video"
-                        ? "bg-[#FF462D] text-white shadow-sm"
-                        : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
-                    }`}
-                    aria-pressed={activeEmbedView === "video"}
-                  >
-                    Watch Video
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveEmbedView("figma")}
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                      activeEmbedView === "figma"
-                        ? "bg-[#FF462D] text-white shadow-sm"
-                        : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
-                    }`}
-                    aria-pressed={activeEmbedView === "figma"}
-                  >
-                    View Demo
-                  </button>
-                </div>
+                {(hasActiveVideo || hasActiveDemo) && (
+                  <div className="flex items-center gap-2 rounded-full border border-gray-300 bg-white p-1">
+                    {hasActiveVideo && (
+                      <button
+                        type="button"
+                        onClick={() => setActiveEmbedView("video")}
+                        className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                          activeEmbedView === "video"
+                            ? "bg-[#FF462D] text-white shadow-sm"
+                            : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                        }`}
+                        aria-pressed={activeEmbedView === "video"}
+                      >
+                        Watch Video
+                      </button>
+                    )}
+                    {hasActiveDemo && (
+                      <button
+                        type="button"
+                        onClick={() => setActiveEmbedView("figma")}
+                        className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                          activeEmbedView === "figma"
+                            ? "bg-[#FF462D] text-white shadow-sm"
+                            : "text-[#3D3C3C] hover:bg-[#F2F1EE]"
+                        }`}
+                        aria-pressed={activeEmbedView === "figma"}
+                      >
+                        View Demo
+                      </button>
+                    )}
+                  </div>
+                )}
                 <a
                   href={activeEmbedStory.externalUrl || activeEmbedStory.embedUrl}
                   target="_blank"
@@ -778,7 +798,11 @@ export default function AIJourneyPage() {
       {isUseCasesOpen && (
         <div className="fixed inset-0 backdrop-blur-md bg-white/20 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
-            <UseCasesFocusModal isOpen={isUseCasesOpen} onClose={() => setIsUseCasesOpen(false)} />
+            <UseCasesFocusModal
+              isOpen={isUseCasesOpen}
+              onClose={() => setIsUseCasesOpen(false)}
+              onOpenEmbed={openEmbedModalForStory}
+            />
           </div>
         </div>
       )}
@@ -792,6 +816,7 @@ export default function AIJourneyPage() {
             setSelectedStory(null)
           }}
           story={selectedStory}
+          onOpenEmbed={openEmbedModalForStory}
         />
       )}
 

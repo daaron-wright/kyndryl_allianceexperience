@@ -29,13 +29,22 @@ interface FeatureFocusModalProps {
   onClose: () => void
   caseStudyData?: CaseStudyData
   story?: any
+  onOpenEmbed?: (story: any, overrides?: { videoUrl?: string; embedUrl?: string; externalUrl?: string }) => void
 }
 
-export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, story }: FeatureFocusModalProps) {
+export default function FeatureFocusModal({
+  isOpen,
+  onClose,
+  caseStudyData,
+  story,
+  onOpenEmbed,
+}: FeatureFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("Solution")
-  const [isIframeOpen, setIsIframeOpen] = useState(false)
-  const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0) // Added state for solution screen index
+  const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0)
+
+  const xRaySharepointUrl =
+    "https://kyndryl.sharepoint.com/teams/ASEAN_AI/_layouts/15/embed.aspx?UniqueId=e1998956-f7ea-4f25-a685-de0b2e3b9049&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
 
   if (!isOpen) return null
 
@@ -637,19 +646,26 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
             </div>
 
             {/* Right Image Section - Only show for Solution tab */}
-            {activeTab === "Solution" && (
-              <div
-                className="flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8 cursor-pointer"
-                style={{
-                  backgroundImage: `url(${currentContent.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                onClick={() => setIsIframeOpen(true)}
-              >
-                {/* Static image with click functionality */}
-              </div>
-            )}
+          {activeTab === "Solution" && (
+            <div
+              className={`${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`}
+              style={{
+                backgroundImage: `url(${currentContent.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              onClick={() => {
+                if (story?.id === 7 && onOpenEmbed) {
+                  onOpenEmbed(story, {
+                    videoUrl: xRaySharepointUrl,
+                    externalUrl: xRaySharepointUrl,
+                  })
+                }
+              }}
+            >
+              {/* Static image with click functionality */}
+            </div>
+          )}
           </div>
 
           {/* Navigation Tabs */}
@@ -700,120 +716,6 @@ export default function FeatureFocusModal({ isOpen, onClose, caseStudyData, stor
         </div>
       </div>
 
-      {isIframeOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1002,
-            padding: 0,
-          }}
-          onClick={() => setIsIframeOpen(false)}
-        >
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              position: "relative",
-              backgroundColor: "white",
-              borderRadius: 0,
-              overflow: "hidden",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setIsIframeOpen(false)}
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
-                zIndex: 1003,
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                color: "white",
-                border: "none",
-                borderRadius: "50%",
-                width: "30px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-              }}
-            >
-              <X size={16} />
-            </button>
-            {story?.id === 7 ? (
-              <div className="flex h-full w-full items-center justify-center">
-                <div style={{ maxWidth: "1280px" }}>
-                  <div
-                    style={{
-                      position: "relative",
-                      paddingBottom: "56.25%",
-                      height: 0,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <iframe
-                      src="https://kyndryl.sharepoint.com/teams/ASEAN_AI/_layouts/15/embed.aspx?UniqueId=e1998956-f7ea-4f25-a685-de0b2e3b9049&nav=%7B%22playbackOptions%22%3A%7B%22startTimeInSeconds%22%3A0%7D%7D&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
-                      width="1280"
-                      height="720"
-                      frameBorder="0"
-                      scrolling="no"
-                      allowFullScreen
-                      title="ych-demo-without-logo.mp4"
-                      style={{
-                        border: "none",
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        height: "100%",
-                        maxWidth: "100%",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <iframe
-                src={
-                  story?.id === 1
-                    ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=0%3A1&node-id=997-1261&t=rBV5oTCx3ZHI9zMg-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=204%3A6246&embed-host=share"
-                    : story?.id === 2
-                      ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=1088%3A1099&node-id=1088-1212&t=omgMNfGFKH1kh1oZ-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1088%3A1212&embed-host=share"
-                      : story?.id === 3
-                        ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=5%3A2&node-id=120-8082&t=fzSoSTsLEyyke7ky-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=120%3A8082&embed-host=share"
-                        : story?.id === 4
-                          ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=5%3A3&node-id=86-7599&t=Q5EiuifDmonXlvpE-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=86%3A7635&embed-host=share"
-                          : story?.id === 5
-                            ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=1788%3A1098&node-id=1852-26411&t=RgR1SqpmmpytTPjX-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1852-26411&embed-host=share"
-                            : story?.id === 6
-                              ? "https://daaron-wright.github.io/EPOSPOSPoC/"
-                              : story?.id === 8 && currentSolutionIndex === 0
-                                ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2312-1098&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2312-1098&embed-host=share"
-                                : story?.id === 8 && currentSolutionIndex === 1
-                                  ? "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?page-id=1088%3A1099&node-id=2425-3627&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2425-3627&embed-host=share"
-                                  : "https://embed.figma.com/proto/6ecHaQxnlMV4HV057v0rQD/Liverpool-Studio-Use-cases?node-id=2312-1098&t=Obb1AiSCNIX8RfwC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2312-1098&embed-host=share"
-                }
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
-                allowFullScreen
-              />
-            )}
-          </div>
-        </div>
-      )}
     </>
   )
 }
