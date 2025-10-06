@@ -8,9 +8,10 @@ import PricingModelModal from "./pricing-model-modal"
 interface IndustryFocusModalProps {
   industry: string
   onClose: () => void
+  onOpenEmbed?: (story: any, overrides?: { videoUrl?: string; embedUrl?: string; externalUrl?: string }) => void
 }
 
-export default function IndustryFocusModal({ industry, onClose }: IndustryFocusModalProps) {
+export default function IndustryFocusModal({ industry, onClose, onOpenEmbed }: IndustryFocusModalProps) {
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
