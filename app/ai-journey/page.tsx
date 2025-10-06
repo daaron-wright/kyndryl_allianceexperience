@@ -120,6 +120,8 @@ export default function AIJourneyPage() {
       tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
       alliancePartner: "Google Cloud",
       aiFeature: "AI & Machine Learning",
+      linkUrl:
+        "https://www.figma.com/proto/SOJfxIoop1uPyLkAYrd19D/Kyndryl-Connected-Traveller--New-Version?page-id=170%3A2293&node-id=2014-11654&viewport=3245%2C-460%2C0.13&t=JtIjOc4RmPuhg9dW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2014%3A9590",
     },
   ]
 
@@ -180,6 +182,11 @@ export default function AIJourneyPage() {
   }, [currentPage, totalPages])
 
   const handleCardClick = (story) => {
+    if (story.linkUrl) {
+      window.open(story.linkUrl, "_blank", "noopener,noreferrer")
+      return
+    }
+
     setSelectedStory(story)
     setIsFeatureModalOpen(true)
   }
