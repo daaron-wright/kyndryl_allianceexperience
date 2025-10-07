@@ -456,7 +456,7 @@ export default function VideoLibraryModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-gray-200 bg-white p-6">
+        <div className="flex flex-col gap-4 border-b border-gray-200 bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
           <h1 className="text-[32px] font-light text-[#FF462D]">Customer Stories</h1>
           <div className="flex items-center gap-4">
             <div className="relative w-full sm:w-64 md:w-80">
