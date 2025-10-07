@@ -101,14 +101,6 @@ export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps
         </button>
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-        <button
-          onClick={onLogin}
-          className="rounded-md bg-[#FF462D] px-6 py-3 text-sm font-medium uppercase tracking-wide text-white transition-colors hover:bg-[#e4402c]"
-        >
-          Continue
-        </button>
-      </div>
     </div>
   )
 }
