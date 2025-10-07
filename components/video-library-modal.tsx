@@ -452,7 +452,7 @@ export default function VideoLibraryModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden"
+        className={`w-full max-w-7xl h-full max-h-[90vh] overflow-hidden rounded-lg bg-white shadow-2xl flex flex-col ${fontFamilyClass}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
