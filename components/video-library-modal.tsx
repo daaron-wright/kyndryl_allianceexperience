@@ -456,10 +456,8 @@ export default function VideoLibraryModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-white">
-          <h1 className="text-[32px] font-light text-[#FF462D]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-            Customer Stories
-          </h1>
+        <div className="flex items-center justify-between border-b border-gray-200 bg-white p-6">
+          <h1 className="text-[32px] font-light text-[#FF462D]">Customer Stories</h1>
           <div className="flex items-center gap-4">
             <div className="relative">
               <input
