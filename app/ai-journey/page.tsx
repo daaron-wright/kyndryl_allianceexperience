@@ -350,7 +350,7 @@ export default function AIJourneyPage() {
       <section className="bg-gradient-to-r from-[#FF462D] to-[#E63E32] px-4 py-12 text-white sm:px-8 lg:px-16 lg:py-20">
         <div className="max-w-4xl">
           <h2 className="mb-6 text-2xl font-light text-white sm:text-3xl lg:text-4xl">Turn AI ambition into impact </h2>
-          <p className="mb-8 text-lg font-light text-white opacity-90 sm:text-xl lg:text-2xl">{"")}</p>
+          <p className="mb-8 text-lg font-light text-white opacity-90 sm:text-xl lg:text-2xl">{""}</p>
           <div className="flex flex-wrap gap-3 sm:gap-4">
             <button
               onClick={() => setIsDemoLoginOpen(true)}
