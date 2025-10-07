@@ -508,6 +508,45 @@ export default function FeatureFocusModal({
     ? `Open Smart Baggage Claim ${currentContent.subtitle?.toLowerCase()} prototype`
     : undefined
 
+  const isInteractiveImage = story?.id === 7 && Boolean(onOpenEmbed)
+
+  const renderImageSection = () => {
+    const wrapperBaseClass =
+      "relative flex w-full max-w-3xl overflow-hidden rounded-2xl bg-[#1C1C1C] shadow-lg"
+    const imageElement = (
+      <img src={currentContent.image} alt={currentContent.title} className="h-full w-full object-cover" />
+    )
+
+    if (solutionExternalLink) {
+      return (
+        <a
+          href={solutionExternalLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${wrapperBaseClass} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF462D]`}
+          aria-label={imageLinkLabel || currentContent.title}
+        >
+          {imageElement}
+        </a>
+      )
+    }
+
+    if (isInteractiveImage) {
+      return (
+        <button
+          type="button"
+          onClick={handleImageSectionClick}
+          className={`${wrapperBaseClass} cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF462D]`}
+          aria-label={imageLinkLabel || `Open ${currentContent.title}`}
+        >
+          {imageElement}
+        </button>
+      )
+    }
+
+    return <div className={`${wrapperBaseClass} cursor-default`}>{imageElement}</div>
+  }
+
   const isAgenticMediaMonitorSolution = activeTab === "Solution" && currentContent.title === "Agentic Media Monitor"
 
   const shouldShowAgenticDemoButton = isAgenticMediaMonitorSolution
