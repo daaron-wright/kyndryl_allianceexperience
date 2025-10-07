@@ -1,5 +1,7 @@
 "use client"
 
+"use client"
+
 import { useEffect, useRef, useState } from "react"
 import { ChevronRight, X } from "lucide-react"
 import DemoLoginModal from "@/components/demo-login-modal"
