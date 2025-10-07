@@ -104,7 +104,7 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
         value.toLowerCase().includes(normalizedQuery),
       ),
     )
-  }, [caseStudies, searchQuery])
+  }, [searchQuery])
 
   const itemsPerPage = 4
   const totalPages = Math.max(1, Math.ceil(filteredStudies.length / itemsPerPage))
