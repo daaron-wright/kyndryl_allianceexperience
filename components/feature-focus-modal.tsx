@@ -3,6 +3,8 @@
 import { X, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
 
+const fontFamilyClass = "font-['TWK_Everett',sans-serif]"
+
 interface TabContent {
   title: string
   subtitle: string
@@ -508,6 +510,45 @@ export default function FeatureFocusModal({
     ? `Open Smart Baggage Claim ${currentContent.subtitle?.toLowerCase()} prototype`
     : undefined
 
+  const isInteractiveImage = story?.id === 7 && Boolean(onOpenEmbed)
+
+  const renderImageSection = () => {
+    const wrapperBaseClass =
+      "relative flex w-full max-w-3xl overflow-hidden rounded-2xl bg-[#1C1C1C] shadow-lg"
+    const imageElement = (
+      <img src={currentContent.image} alt={currentContent.title} className="h-full w-full object-cover" />
+    )
+
+    if (solutionExternalLink) {
+      return (
+        <a
+          href={solutionExternalLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${wrapperBaseClass} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF462D]`}
+          aria-label={imageLinkLabel || currentContent.title}
+        >
+          {imageElement}
+        </a>
+      )
+    }
+
+    if (isInteractiveImage) {
+      return (
+        <button
+          type="button"
+          onClick={handleImageSectionClick}
+          className={`${wrapperBaseClass} cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF462D]`}
+          aria-label={imageLinkLabel || `Open ${currentContent.title}`}
+        >
+          {imageElement}
+        </button>
+      )
+    }
+
+    return <div className={`${wrapperBaseClass} cursor-default`}>{imageElement}</div>
+  }
+
   const isAgenticMediaMonitorSolution = activeTab === "Solution" && currentContent.title === "Agentic Media Monitor"
 
   const shouldShowAgenticDemoButton = isAgenticMediaMonitorSolution
@@ -529,14 +570,6 @@ export default function FeatureFocusModal({
     onOpenEmbed(story)
   }
 
-  const imageSectionClassName = `${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`
-
-  const imageSectionStyle = {
-    backgroundImage: `url(${currentContent.image})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }
-
   const handleImageSectionClick = () => {
     if (story?.id === 7 && onOpenEmbed) {
       onOpenEmbed(story, {
@@ -549,257 +582,149 @@ export default function FeatureFocusModal({
   return (
     <>
       <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 1001,
-          padding: "2rem",
-        }}
+        className="fixed inset-0 z-[1001] flex items-center justify-center bg-black/80 px-4 py-6 sm:p-8"
         onClick={onClose}
       >
         <div
-          style={{
-            backgroundColor: "white",
-            borderRadius: "8px",
-            width: "1422px",
-            height: "800px",
-            position: "relative",
-            boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
-            overflow: "hidden",
-          }}
-          onClick={(e) => e.stopPropagation()}
+          className={`relative flex h-full w-full max-w-[90rem] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.3)] ${fontFamilyClass}`}
+          onClick={(event) => event.stopPropagation()}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 pb-4 bg-background">
-            <div className="flex items-center gap-4">
-              <h1
-                style={{
-                  fontSize: "2rem",
-                  fontFamily: "TWK Everett, sans-serif",
-                  fontWeight: 300,
-                  color: "#FF462D",
-                  margin: 0,
-                }}
-              >
-                {activeTab}
-              </h1>
-
+          <div className="flex flex-col gap-4 border-b border-gray-200 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <div className="flex flex-wrap items-center gap-4">
+              <h1 className="text-2xl font-light text-[#FF462D]">{activeTab}</h1>
               {activeTab === "Solution" && (
-                <div className="flex items-center gap-2 ml-4">
+                <div className="flex items-center gap-2">
                   {currentCaseStudy.solution.map((_, index) => (
                     <button
-                      key={index}
+                      key={`solution-dot-${index}`}
                       onClick={() => setCurrentSolutionIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-colors ${
+                      className={`h-2 w-2 rounded-full transition-colors ${
                         index === currentSolutionIndex ? "bg-[#FF462D]" : "bg-gray-300"
                       }`}
+                      aria-label={`View solution ${index + 1}`}
                     />
                   ))}
                 </div>
               )}
             </div>
-
             <div className="flex items-center gap-4">
-              {/* Search Bar */}
-              <div className="relative">
+              <div className="relative w-full sm:w-64 md:w-80">
                 <input
                   type="text"
                   placeholder="Search"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-80 px-4 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
-                  style={{
-                    fontFamily: "TWK Everett, sans-serif",
-                  }}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 pr-10 text-sm text-gray-700 placeholder:text-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#FF462D]"
                 />
-                <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
               </div>
-
-              {/* Close Button */}
-              <button onClick={onClose} className="text-gray-600 hover:text-gray-800 transition-colors">
-                <X size={24} />
+              <button
+                onClick={onClose}
+                className="flex items-center rounded-full border border-gray-300 p-2 text-gray-600 transition-colors hover:border-[#FF462D] hover:text-[#FF462D]"
+                aria-label="Close feature focus modal"
+              >
+                <X size={20} />
               </button>
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="flex h-full bg-[rgba(242,241,238,1)]" style={{ height: "calc(100% - 180px)" }}>
-            {/* Left Content Section */}
-            <div
-              className={`${activeTab === "Solution" ? "flex-1" : "w-full"} flex flex-col justify-center px-12 py-8 bg-[rgba(242,241,238,1)]`}
-            >
-              <h2
-                className="text-[#3D3C3C] mb-4 leading-tight"
-                style={{
-                  fontSize: "3rem",
-                  fontFamily: "TWK Everett, sans-serif",
-                  fontWeight: 300,
-                  lineHeight: "1.1",
-                }}
+          <div className="flex flex-1 flex-col overflow-hidden bg-[#F2F1EE]">
+            <div className="flex flex-1 flex-col gap-8 overflow-y-auto px-4 py-6 sm:px-8 lg:flex-row lg:px-12">
+              <div
+                className={`flex w-full flex-col justify-center gap-6 ${
+                  activeTab === "Solution" ? "lg:w-1/2" : "lg:w-full"
+                }`}
               >
-                {currentContent.title}
-              </h2>
+                <h2 className="text-3xl font-light text-[#3D3C3C] leading-tight sm:text-4xl">{currentContent.title}</h2>
+                {currentContent.subtitle && (
+                  <h3 className="text-xl font-normal text-[#3D3C3C] sm:text-2xl">{currentContent.subtitle}</h3>
+                )}
+                <p className="text-base leading-relaxed text-[#3D3C3C] sm:text-lg">{currentContent.description}</p>
 
-              {currentContent.subtitle && (
-                <h3
-                  className="text-[#3D3C3C] mb-8"
-                  style={{
-                    fontSize: "1.5rem",
-                    fontFamily: "TWK Everett, sans-serif",
-                    fontWeight: 400,
-                  }}
-                >
-                  {currentContent.subtitle}
-                </h3>
-              )}
-
-              <p
-                className="text-[#3D3C3C] leading-relaxed"
-                style={{
-                  fontSize: "1.1rem",
-                  fontFamily: "TWK Everett, sans-serif",
-                  lineHeight: "1.6",
-                }}
-              >
-                {currentContent.description}
-              </p>
-
-              {shouldShowAgenticDemoButton && (
-                <div className="mt-8">
-                  <div className="flex">
+                {shouldShowAgenticDemoButton && (
+                  <div className="space-y-3 rounded-xl border border-gray-200 bg-white/70 p-4">
                     <button
                       type="button"
                       onClick={canTriggerViewDemo ? handleViewDemoButtonClick : undefined}
                       disabled={!canTriggerViewDemo}
-                      className={`rounded-full px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors ${
+                      className={`w-fit rounded-full px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors ${
                         canTriggerViewDemo
                           ? "bg-[#FF462D] text-white hover:bg-[#e03f29]"
-                          : "bg-[#FF462D]/60 text-white cursor-not-allowed"
+                          : "cursor-not-allowed bg-[#FF462D]/60 text-white"
                       }`}
-                      style={{
-                        fontFamily: "TWK Everett, sans-serif",
-                      }}
                     >
                       View Demo
                     </button>
+                    <div className="inline-flex flex-col gap-1 rounded border border-[#FF462D]/20 bg-white px-4 py-3 text-sm text-[#3D3C3C]">
+                      <span>Username: admin</span>
+                      <span>Password: laDKd1384FR</span>
+                    </div>
                   </div>
-                  <div
-                    className="mt-3 inline-flex flex-col rounded border border-gray-200 bg-white px-4 py-3 text-sm text-[#3D3C3C]"
-                    style={{
-                      fontFamily: "TWK Everett, sans-serif",
-                      lineHeight: "1.5",
-                    }}
-                  >
-                    <span>Username: admin</span>
-                    <span>Password: laDKd1384FR</span>
+                )}
+
+                {activeTab === "Solution" && currentCaseStudy.solution.length > 1 && (
+                  <div className="flex flex-wrap items-center gap-4">
+                    <button
+                      onClick={handlePreviousSolution}
+                      className="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 text-sm text-[#727175] transition-colors hover:border-[#FF462D] hover:text-[#3D3C3C]"
+                    >
+                      <ChevronLeft size={16} />
+                      Previous
+                    </button>
+                    <span className="text-sm text-[#727175]">
+                      {currentSolutionIndex + 1} of {currentCaseStudy.solution.length}
+                    </span>
+                    <button
+                      onClick={handleNextSolution}
+                      className="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 text-sm text-[#727175] transition-colors hover:border-[#FF462D] hover:text-[#3D3C3C]"
+                    >
+                      Next
+                      <ChevronRight size={16} />
+                    </button>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
 
-              {activeTab === "Solution" && currentCaseStudy.solution.length > 1 && (
-                <div className="flex items-center gap-4 mt-8">
-                  <button
-                    onClick={handlePreviousSolution}
-                    className="flex items-center gap-2 px-4 py-2 text-[#727175] hover:text-[#3D3C3C] transition-colors border border-gray-300 rounded-md hover:border-[#FF462D]"
-                    style={{
-                      fontFamily: "TWK Everett, sans-serif",
-                    }}
-                  >
-                    <ChevronLeft size={16} />
-                    Previous
-                  </button>
-
-                  <span className="text-[#727175]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-                    {currentSolutionIndex + 1} of {currentCaseStudy.solution.length}
-                  </span>
-
-                  <button
-                    onClick={handleNextSolution}
-                    className="flex items-center gap-2 px-4 py-2 text-[#727175] hover:text-[#3D3C3C] transition-colors border border-gray-300 rounded-md hover:border-[#FF462D]"
-                    style={{
-                      fontFamily: "TWK Everett, sans-serif",
-                    }}
-                  >
-                    Next
-                    <ChevronRight size={16} />
-                  </button>
-                </div>
+              {activeTab === "Solution" && (
+                <div className="flex w-full items-center justify-center lg:w-1/2">{renderImageSection()}</div>
               )}
             </div>
 
-            {/* Right Image Section - Only show for Solution tab */}
-          {activeTab === "Solution" && (
-            solutionExternalLink ? (
-              <a
-                className={imageSectionClassName}
-                style={imageSectionStyle}
-                href={solutionExternalLink}
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="border-t border-gray-200 px-4 py-4 sm:px-8">
+              <div className="flex flex-wrap items-center justify-center gap-6">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`relative text-base font-medium transition-colors ${
+                      activeTab === tab ? "text-[#3D3C3C]" : "text-[#727175] hover:text-[#3D3C3C]"
+                    }`}
+                  >
+                    {tab}
+                    {activeTab === tab && (
+                      <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#FF462D]" aria-hidden />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-gray-200 px-4 py-4 sm:px-8">
+              <button
+                onClick={handlePreviousTab}
+                className="flex items-center gap-2 text-sm text-[#727175] transition-colors hover:text-[#3D3C3C]"
               >
-                <span className="sr-only">{imageLinkLabel}</span>
-              </a>
-            ) : (
-              <div
-                className={imageSectionClassName}
-                style={imageSectionStyle}
-                onClick={story?.id === 7 && onOpenEmbed ? handleImageSectionClick : undefined}
-              />
-            )
-          )}
-          </div>
-
-          {/* Navigation Tabs */}
-          <div className="absolute bottom-16 left-0 right-0 flex items-center justify-center">
-            <div className="flex items-center gap-8 relative">
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`text-lg font-medium transition-colors relative py-[-10px] px-4 py-0 pt-0 my-0 ${
-                    activeTab === tab ? "text-[#3D3C3C]" : "text-[#727175] hover:text-[#3D3C3C]"
-                  }`}
-                  style={{
-                    fontFamily: "TWK Everett, sans-serif",
-                  }}
-                >
-                  {tab}
-                  {activeTab === tab && <div className="absolute bottom-[-8px] left-0 right-0 h-0.5 bg-[#FF462D]" />}
-                </button>
-              ))}
+                <ChevronLeft size={20} />
+                Previous
+              </button>
+              <button
+                onClick={handleNextTab}
+                className="flex items-center gap-2 text-sm text-[#727175] transition-colors hover:text-[#3D3C3C]"
+              >
+                Next
+                <ChevronRight size={20} />
+              </button>
             </div>
-          </div>
-
-          {/* Bottom Navigation */}
-          <div className="absolute bottom-6 left-0 right-0 flex items-center justify-between px-6">
-            <button
-              onClick={handlePreviousTab}
-              className="flex items-center gap-2 text-[#727175] hover:text-[#3D3C3C] transition-colors"
-              style={{
-                fontFamily: "TWK Everett, sans-serif",
-              }}
-            >
-              <ChevronLeft size={20} />
-              Previous
-            </button>
-
-            <button
-              onClick={handleNextTab}
-              className="flex items-center gap-2 text-[#727175] hover:text-[#3D3C3C] transition-colors"
-              style={{
-                fontFamily: "TWK Everett, sans-serif",
-              }}
-            >
-              Next
-              <ChevronRight size={20} />
-            </button>
           </div>
         </div>
       </div>

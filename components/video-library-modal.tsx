@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 
+const fontFamilyClass = "font-['TWK_Everett',sans-serif]"
+
 export default function VideoLibraryModal({
   onClose,
   initialAlliance = "All",
@@ -446,28 +448,24 @@ export default function VideoLibraryModal({
 
   return (
     <div
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden"
+        className={`w-full max-w-7xl h-full max-h-[90vh] overflow-hidden rounded-lg bg-white shadow-2xl flex flex-col ${fontFamilyClass}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-white">
-          <h1 className="text-[32px] font-light text-[#FF462D]" style={{ fontFamily: "TWK Everett, sans-serif" }}>
-            Customer Stories
-          </h1>
+        <div className="flex flex-col gap-4 border-b border-gray-200 bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
+          <h1 className="text-[32px] font-light text-[#FF462D]">Customer Stories</h1>
           <div className="flex items-center gap-4">
-            <div className="relative">
+            <div className="relative w-full sm:w-64 md:w-80">
               <input
                 type="text"
                 placeholder="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-80 px-4 py-2 border border-gray-300 rounded-md text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
-                style={{ fontFamily: "TWK Everett, sans-serif" }}
+                className="w-full rounded-md border border-gray-300 px-4 py-2 text-gray-600 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#FF462D]"
               />
               <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -491,7 +489,7 @@ export default function VideoLibraryModal({
             onClick={() => setIsFilterCollapsed(!isFilterCollapsed)}
             className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
           >
-            <span className="text-lg font-medium text-gray-900 mb-3" style={{ fontFamily: "TWK Everett, sans-serif" }}>
+            <span className="text-lg font-medium text-gray-900 mb-3">
               Filters
             </span>
             <svg
@@ -513,7 +511,7 @@ export default function VideoLibraryModal({
               <div>
                 <h3
                   className="text-lg font-medium text-gray-900 mb-3"
-                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                 
                 >
                   Industry
                 </h3>
@@ -530,7 +528,7 @@ export default function VideoLibraryModal({
                           ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                     
                     >
                       {industry}
                     </button>
@@ -542,7 +540,7 @@ export default function VideoLibraryModal({
               <div>
                 <h3
                   className="text-lg font-medium text-gray-900 mb-3"
-                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                 
                 >
                   AI Feature
                 </h3>
@@ -559,7 +557,7 @@ export default function VideoLibraryModal({
                           ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                     
                     >
                       {feature}
                     </button>
@@ -571,7 +569,7 @@ export default function VideoLibraryModal({
               <div>
                 <h3
                   className="text-lg font-medium text-gray-900 mb-3"
-                  style={{ fontFamily: "TWK Everett, sans-serif" }}
+                 
                 >
                   Alliance
                 </h3>
@@ -588,7 +586,7 @@ export default function VideoLibraryModal({
                           ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
                           : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                     
                     >
                       {alliance}
                     </button>
@@ -676,10 +674,7 @@ export default function VideoLibraryModal({
                                   e.currentTarget.nextElementSibling.style.display = "block"
                                 }}
                               />
-                              <div
-                                className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900"
-                                style={{ display: "none" }}
-                              />
+                              <div className="hidden h-full w-full bg-gradient-to-br from-gray-800 to-gray-900" />
 
                               {/* Play button overlay */}
                               <div
@@ -732,25 +727,25 @@ export default function VideoLibraryModal({
                   <div className="p-6">
                     <div
                       className="text-[#FF462D] text-sm font-medium mb-2"
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                     
                     >
                       {item.alliance} / {item.customerName || "customer name"}
                     </div>
                     <h3
                       className="text-[#3D3C3C] text-lg font-medium mb-3 leading-tight"
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                     
                     >
                       {item.title}
                     </h3>
                     <p
                       className="text-gray-600 text-sm mb-4 leading-relaxed"
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                     
                     >
                       {item.description || "Content title utenim ad minim veniam, quis nostrud exercitation"}
                     </p>
                     <div
                       className="flex items-center text-[#3D3C3C] text-sm font-medium mb-4 cursor-pointer hover:text-[#FF462D]"
-                      style={{ fontFamily: "TWK Everett, sans-serif" }}
+                     
                       onClick={() =>
                         window.open(
                           "https://kyndryl.sharepoint.com/:v:/s/ADAI-Data-and-AI/ET1PopDNwD5Hm0Vd7mGTO1IBQOkLmQFAwuqKiSb3anjxWw?e=G3e1WY&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZ19MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
@@ -778,7 +773,7 @@ export default function VideoLibraryModal({
                           <span
                             key={tagIndex}
                             className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                           
                           >
                             {tag}
                           </span>
@@ -787,19 +782,19 @@ export default function VideoLibraryModal({
                         <>
                           <span
                             className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                           
                           >
                             {item.industry}
                           </span>
                           <span
                             className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                           
                           >
                             {item.aiFeature}
                           </span>
                           <span
                             className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                            style={{ fontFamily: "TWK Everett, sans-serif" }}
+                           
                           >
                             {item.alliance}
                           </span>
@@ -826,7 +821,7 @@ export default function VideoLibraryModal({
                         ? "text-[#FF462D] font-medium relative"
                         : "text-[#3D3C3C] hover:text-[#FF462D]"
                     }`}
-                    style={{ fontFamily: "TWK Everett, sans-serif" }}
+                   
                   >
                     {page}
                     {currentPage === page && (
@@ -847,7 +842,7 @@ export default function VideoLibraryModal({
             className={`flex items-center text-sm font-medium ${
               currentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
             }`}
-            style={{ fontFamily: "TWK Everett, sans-serif" }}
+           
           >
             <svg
               width="16"
@@ -868,7 +863,7 @@ export default function VideoLibraryModal({
             className={`flex items-center text-sm font-medium ${
               currentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
             }`}
-            style={{ fontFamily: "TWK Everett, sans-serif" }}
+           
           >
             Next
             <svg

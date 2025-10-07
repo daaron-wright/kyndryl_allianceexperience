@@ -1,5 +1,7 @@
 "use client"
 
+"use client"
+
 import { useEffect, useRef, useState } from "react"
 import { ChevronRight, X } from "lucide-react"
 import DemoLoginModal from "@/components/demo-login-modal"
@@ -7,18 +9,36 @@ import UseCasesFocusModal from "@/components/use-cases-focus-modal"
 import FeatureFocusModal from "@/components/feature-focus-modal"
 import VideoLibraryModal from "@/components/video-library-modal"
 
+type EmbedView = "video" | "figma" | "demo"
+
+type Story = {
+  id: number
+  title: string
+  description: string
+  image: string
+  alliance: string
+  tags: string[]
+  alliancePartner?: string
+  aiFeature: string
+  videoUrl?: string
+  embedUrl?: string
+  externalUrl?: string
+  demoUrl?: string
+  demoCredentials?: { username: string; password: string }
+}
+
 export default function AIJourneyPage() {
   const [isDemoLoginOpen, setIsDemoLoginOpen] = useState(false)
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false)
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
-  const [selectedStory, setSelectedStory] = useState(null)
-  const [activeEmbedStory, setActiveEmbedStory] = useState(null)
-  const [activeEmbedView, setActiveEmbedView] = useState<"video" | "figma" | "demo">("video")
+  const [selectedStory, setSelectedStory] = useState<Story | null>(null)
+  const [activeEmbedStory, setActiveEmbedStory] = useState<Story | null>(null)
+  const [activeEmbedView, setActiveEmbedView] = useState<EmbedView>("video")
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
-  const [selectedIndustries, setSelectedIndustries] = useState([])
-  const [selectedAIFeatures, setSelectedAIFeatures] = useState([])
+  const [selectedIndustries, setSelectedIndustries] = useState<string[]>([])
+  const [selectedAIFeatures, setSelectedAIFeatures] = useState<string[]>([])
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
   const [isVideoClicked, setIsVideoClicked] = useState(false)
   const isHydratingRef = useRef(true)
@@ -45,7 +65,7 @@ export default function AIJourneyPage() {
   )}`
   const maintenanceOperationsDemoUrl = "https://aeromonitor.apps-aws.com/login"
 
-  const openEmbedModalForStory = (story, overrides = {}) => {
+  const openEmbedModalForStory = (story: Story, overrides: Partial<Story> = {}) => {
     if (!story) {
       return
     }
@@ -54,19 +74,20 @@ export default function AIJourneyPage() {
     const hasVideo = Boolean(embedStory.videoUrl)
     const hasEmbed = Boolean(embedStory.embedUrl)
     const hasDemoLink = Boolean(embedStory.demoUrl)
-    const initialView = hasVideo ? "video" : hasEmbed ? "figma" : hasDemoLink ? "demo" : "figma"
+    const initialView: EmbedView = hasVideo ? "video" : hasEmbed ? "figma" : hasDemoLink ? "demo" : "figma"
 
     setActiveEmbedStory(embedStory)
     setActiveEmbedView(initialView)
   }
 
-  const customerStories = [
+  const customerStories: Story[] = [
     {
       id: 9,
       title: "Connected Traveler",
       description:
         "A real-time travel companion that orchestrates itineraries, monitors disruptions, and coordinates services across the journey to keep passengers informed and supported end-to-end.",
-      image: "https://cdn.builder.io/api/v1/image/assets%2F4f55495a54b1427b9bd40ba1c8f3c8aa%2F47d764b4eb0749968a9ea3df03744a3f?format=webp&width=800",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F4f55495a54b1427b9bd40ba1c8f3c8aa%2F47d764b4eb0749968a9ea3df03744a3f?format=webp&width=800",
       alliance: "Industry / Transportation",
       tags: ["Travel Companion", "Journey Orchestration", "Passenger Experience"],
       alliancePartner: "Google Cloud",
@@ -197,6 +218,7 @@ export default function AIJourneyPage() {
     "Energy & Utilities",
     "Transportation",
   ]
+
   const aiFeatureOptions = [
     "AI & Machine Learning",
     "Data Analytics",
@@ -241,7 +263,7 @@ export default function AIJourneyPage() {
     }
   }, [currentPage, totalPages])
 
-  const handleCardClick = (story) => {
+  const handleCardClick = (story: Story) => {
     if (story.embedUrl) {
       openEmbedModalForStory(story)
       return
@@ -256,15 +278,17 @@ export default function AIJourneyPage() {
     setActiveEmbedView("video")
   }
 
-  const toggleIndustryFilter = (industry) => {
+  const toggleIndustryFilter = (industry: string) => {
     setSelectedIndustries((prev) =>
-      prev.includes(industry) ? prev.filter((i) => i !== industry) : [...prev, industry],
+      prev.includes(industry) ? prev.filter((item) => item !== industry) : [...prev, industry],
     )
     setCurrentPage(1)
   }
 
-  const toggleAIFeatureFilter = (feature) => {
-    setSelectedAIFeatures((prev) => (prev.includes(feature) ? prev.filter((f) => f !== feature) : [...prev, feature]))
+  const toggleAIFeatureFilter = (feature: string) => {
+    setSelectedAIFeatures((prev) =>
+      prev.includes(feature) ? prev.filter((item) => item !== feature) : [...prev, feature],
+    )
     setCurrentPage(1)
   }
 
@@ -277,33 +301,26 @@ export default function AIJourneyPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-4 sm:px-8 lg:px-16 py-6 lg:py-12">
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#FF462D] m-0 leading-none font-sans">
+      <header className="border-b border-gray-200 bg-white px-4 py-6 sm:px-8 lg:px-16 lg:py-12">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <h1 className="m-0 font-sans text-3xl font-light leading-none text-[#FF462D] sm:text-4xl lg:text-5xl">
             Kyndryl's AI Journey
           </h1>
 
-          <nav
-            className="flex items-center gap-8 text-neutral-700"
-            style={{
-              gap: "clamp(16px, 2vw, 32px)",
-              fontSize: "clamp(14px, 1.5vw, 16px)",
-            }}
-          >
+          <nav className="flex w-full flex-wrap items-center gap-4 text-[clamp(14px,1.5vw,16px)] text-neutral-700 lg:w-auto lg:justify-end">
             <a className="hover:text-black" href="/alliances">
               Alliances
             </a>
             <a className="hover:text-black" href="/industries">
               Industries
             </a>
-            <a className="hover:text-black text-neutral-400 cursor-default font-light" href="#">
+            <a className="cursor-default font-light text-neutral-400" href="#">
               Capabilities
             </a>
-            <a className="hover:text-black text-[#FF462D] border-b-2 border-[#FF462D]" href="/ai-journey">
+            <a className="border-b-2 border-[#FF462D] text-[#FF462D] hover:text-black" href="/ai-journey">
               Kyndryl's AI Journey
             </a>
-            <div className="ml-4 flex items-center gap-2 rounded-md border border-neutral-300 px-3 py-2 text-sm">
+            <div className="order-last flex w-full items-center gap-2 rounded-md border border-neutral-300 px-3 py-2 text-sm sm:order-none sm:w-auto">
               <svg
                 width="16"
                 height="16"
@@ -313,17 +330,17 @@ export default function AIJourneyPage() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className="shrink-0"
               >
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
               <input
-                className="outline-none placeholder:text-neutral-400"
+                className="w-full bg-transparent text-sm text-neutral-700 placeholder:text-neutral-400 focus:outline-none sm:w-[clamp(140px,20vw,220px)]"
                 placeholder="Search"
-                style={{ width: "clamp(120px, 15vw, 180px)" }}
                 value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value)
+                onChange={(event) => {
+                  setSearchTerm(event.target.value)
                   setCurrentPage(1)
                 }}
               />
@@ -332,21 +349,20 @@ export default function AIJourneyPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-[#FF462D] bg-gradient-to-r from-[#FF462D] to-[#E63E32] text-white px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
+      <section className="bg-gradient-to-r from-[#FF462D] to-[#E63E32] px-4 py-12 text-white sm:px-8 lg:px-16 lg:py-20">
         <div className="max-w-4xl">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-6 text-white">Turn AI ambition into impact </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl font-light opacity-90 mb-8 text-white">{""}</p>
-          <div className="flex flex-wrap gap-4">
+          <h2 className="mb-6 text-2xl font-light text-white sm:text-3xl lg:text-4xl">Turn AI ambition into impact </h2>
+          <p className="mb-8 text-lg font-light text-white opacity-90 sm:text-xl lg:text-2xl">{""}</p>
+          <div className="flex flex-wrap gap-3 sm:gap-4">
             <button
               onClick={() => setIsDemoLoginOpen(true)}
-              className="bg-[#FF462D] text-white border border-[#F2F1EE] px-6 py-3 rounded-md font-medium hover:bg-[#F2F1EE] hover:text-[#FF462D] transition-colors"
+              className="rounded-md border border-[#F2F1EE] bg-[#FF462D] px-6 py-3 font-medium text-white transition-colors hover:bg-[#F2F1EE] hover:text-[#FF462D]"
             >
               Explore Demos
             </button>
             <button
               onClick={() => setIsVideoLibraryOpen(true)}
-              className="border border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-[#FF462D] transition-colors"
+              className="rounded-md border border-white px-6 py-3 font-medium text-white transition-colors hover:bg-white hover:text-[#FF462D]"
             >
               Customer Stories
             </button>
@@ -354,27 +370,23 @@ export default function AIJourneyPage() {
         </div>
       </section>
 
-      {/* Introduction + Video Section */}
-      <section id="introduction-section" className="bg-white px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Introduction */}
-            <div className="lg:pr-10 lg:self-start">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D3C3C] mb-6">
-                The Kyndryl Agentic AI Framework
-              </h2>
-              <p className="text-lg text-[#9E9287] mb-6 leading-relaxed">
-                AI is evolving, and enterprise leaders are asking what comes next. The answer isn’t more automation.
-                It’s orchestration. Most organizations are stuck in pilot purgatory. They’ve tested generative AI, but
-                struggle to scale it across silos, systems, and governance boundaries. Rigid workflows, fragmented data,
-                and compliance complexity stall progress and limit impact.
+      <section id="introduction-section" className="bg-white px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
+            <div className="lg:self-start lg:pr-10">
+              <h2 className="mb-6 text-2xl font-light text-[#3D3C3C] sm:text-3xl lg:text-4xl">The Kyndryl Agentic AI Framework</h2>
+              <p className="mb-6 text-lg leading-relaxed text-[#9E9287]">
+                AI is evolving, and enterprise leaders are asking what comes next. The answer isn’t more automation. It’s
+                orchestration. Most organizations are stuck in pilot purgatory. They’ve tested generative AI, but struggle
+                to scale it across silos, systems, and governance boundaries. Rigid workflows, fragmented data, and
+                compliance complexity stall progress and limit impact.
               </p>
-              <p className="text-lg text-[#9E9287] mb-8 leading-relaxed">
+              <p className="mb-8 text-lg leading-relaxed text-[#9E9287]">
                 {
                   "The Kyndryl Agentic AI Framework is a policy-driven system that coordinates intelligent agents to deliver outcomes, securely, at scale, and always within your governance boundaries. It's not just a platform. It's a new way to think about AI: one that connects strategy to execution, people to intelligent systems, and outcomes to measurable impact. Imagine a hybrid workforce where agents reason, adapt, and act in real time, alongside your people, within your policies, and across your infrastructure. Every decision is informed. Every action is traceable. Every outcome is intentional.\nWatch the explainer video to see how it works."
                 }
               </p>
-              <div className="flex flex-wrap gap-4 justify-start">
+              <div className="flex flex-wrap justify-start gap-3 sm:gap-4">
                 <button
                   onClick={() => {
                     const section = document.getElementById("customer-stories-section")
@@ -382,82 +394,77 @@ export default function AIJourneyPage() {
                       section.scrollIntoView({ behavior: "smooth" })
                     }
                   }}
-                  className="border border-[#FF462D] text-[#FF462D] px-6 py-3 rounded-md font-medium hover:bg-[#FF462D] hover:text-white transition-colors"
+                  className="rounded-md border border-[#FF462D] px-6 py-3 font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
                 >
                   View Case Studies
                 </button>
               </div>
             </div>
 
-            {/* Right side - Extended Video */}
-            <div className="relative flex items-center justify-center self-center">
+            <div className="relative flex items-center justify-center">
               <div className="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
                 {isVideoClicked ? (
                   <iframe
-                    width="100%"
-                    height="100%"
-                    src="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
                     title="Kyndryl Agentic AI Framework"
-                    frameBorder="0"
+                    src="https://s7d1.scene7.com/is/content/kyndryl/kyndryl-agentic-ai-framework-v1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    className="w-full h-full object-fill min-h-[400px]"
+                    className="h-full w-full min-h-[220px] sm:min-h-[320px] lg:min-h-[400px]"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-[#3D3C3C] min-h-[400px]">
+                  <div className="flex h-full w-full items-center justify-center bg-[#3D3C3C] text-white min-h-[220px] sm:min-h-[320px] lg:min-h-[400px]">
                     <span className="sr-only">Play Kyndryl Agentic AI Framework video</span>
                   </div>
                 )}
               </div>
-              {/* Play button overlay for better UX */}
               {!isVideoClicked && (
-                <div
-                  className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                <button
+                  type="button"
+                  className="absolute inset-0 flex items-center justify-center"
                   onClick={() => setIsVideoClicked(true)}
+                  aria-label="Play Kyndryl Agentic AI Framework video"
                 >
-                  <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm transition-colors hover:bg-white/30">
+                  <span className="rounded-full bg-white/20 p-4 backdrop-blur-sm transition-colors hover:bg-white/30">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white">
                       <polygon points="5,3 19,12 5,21" fill="currentColor" />
                     </svg>
-                  </div>
-                </div>
+                  </span>
+                </button>
               )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Customer Stories Section */}
       <section id="customer-stories-section" className="bg-[#F2F1EE]">
-        {/* Customer Stories Header */}
-        <div className="bg-white px-4 sm:px-8 lg:px-16 py-8 border-b border-gray-200">
-          <div className="flex items-center justify-between mb-6">
+        <div className="border-b border-gray-200 bg-white px-4 py-8 sm:px-8 lg:px-16">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h1 className="text-[32px] font-light text-[#FF462D]">Case Studies</h1>
 
-            <div className="flex items-center gap-4">
-              <div className="relative">
+            <div className="flex w-full flex-wrap items-center gap-4 md:w-auto md:justify-end">
+              <div className="relative w-full md:w-auto">
                 <input
                   type="text"
                   placeholder="Search"
                   value={searchTerm}
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value)
+                  onChange={(event) => {
+                    setSearchTerm(event.target.value)
                     setCurrentPage(1)
                   }}
-                  className="w-80 px-4 py-2 border border-gray-300 rounded-md text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 pr-10 text-gray-600 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#FF462D] md:w-64 lg:w-80"
                 />
-                <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
                     <path d="m21 21-4.35-4.35" />
                   </svg>
-                </button>
+                </span>
               </div>
 
               <div className="relative">
                 <button
-                  onClick={() => setIsFiltersExpanded(!isFiltersExpanded)}
-                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                  onClick={() => setIsFiltersExpanded((prev) => !prev)}
+                  className="flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-50 sm:w-auto"
                 >
                   <span>Filters</span>
                   <svg
@@ -474,16 +481,15 @@ export default function AIJourneyPage() {
                 </button>
 
                 {isFiltersExpanded && (
-                  <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg p-6 w-[600px] z-10">
-                    {/* Industry Filter */}
+                  <div className="absolute right-0 top-full z-10 mt-2 w-screen max-w-[min(90vw,600px)] rounded-lg border border-gray-200 bg-white p-6 shadow-lg sm:w-[32rem]">
                     <div className="mb-6">
-                      <h3 className="text-lg font-medium text-gray-900 mb-3">Industry</h3>
+                      <h3 className="mb-3 text-lg font-medium text-gray-900">Industry</h3>
                       <div className="flex flex-wrap gap-2">
                         <button
                           onClick={() => setSelectedIndustries([])}
-                          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                          className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                             selectedIndustries.length === 0
-                              ? "border-2 border-[#FF462D] text-[#FF462D] bg-white"
+                              ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
                               : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                           }`}
                         >
@@ -493,7 +499,7 @@ export default function AIJourneyPage() {
                           <button
                             key={industry}
                             onClick={() => toggleIndustryFilter(industry)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                               selectedIndustries.includes(industry)
                                 ? "bg-[#FF462D] text-white"
                                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -505,15 +511,14 @@ export default function AIJourneyPage() {
                       </div>
                     </div>
 
-                    {/* AI Feature Filter */}
                     <div className="mb-4">
-                      <h3 className="text-lg font-medium text-gray-900 mb-3">AI Feature</h3>
+                      <h3 className="mb-3 text-lg font-medium text-gray-900">AI Feature</h3>
                       <div className="flex flex-wrap gap-2">
                         <button
                           onClick={() => setSelectedAIFeatures([])}
-                          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                          className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                             selectedAIFeatures.length === 0
-                              ? "border-2 border-[#FF462D] text-[#FF462D] bg-white"
+                              ? "border-2 border-[#FF462D] bg-white text-[#FF462D]"
                               : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                           }`}
                         >
@@ -523,7 +528,7 @@ export default function AIJourneyPage() {
                           <button
                             key={feature}
                             onClick={() => toggleAIFeatureFilter(feature)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                               selectedAIFeatures.includes(feature)
                                 ? "bg-[#FF462D] text-white"
                                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -535,11 +540,10 @@ export default function AIJourneyPage() {
                       </div>
                     </div>
 
-                    {/* Clear Filters */}
-                    <div className="flex justify-end pt-4 border-t border-gray-200">
+                    <div className="flex justify-end border-t border-gray-200 pt-4">
                       <button
                         onClick={clearAllFilters}
-                        className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                        className="text-sm text-gray-500 transition-colors hover:text-gray-700"
                       >
                         Clear all filters
                       </button>
@@ -551,27 +555,26 @@ export default function AIJourneyPage() {
           </div>
         </div>
 
-        {/* Customer Stories Grid */}
-        <div className="px-4 sm:px-8 lg:px-16 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="px-4 py-12 sm:px-8 lg:px-16">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {currentItems.map((story) => (
-              <div
+              <article
                 key={story.id}
-                className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+                className="flex h-full cursor-pointer flex-col overflow-hidden rounded-lg bg-white shadow-sm transition-shadow hover:shadow-md"
                 onClick={() => handleCardClick(story)}
               >
-                <div className="w-full h-48 overflow-hidden">
+                <div className="h-48 w-full overflow-hidden">
                   <img
                     src={story.image && story.image.trim() !== "" ? story.image : "/placeholder.svg"}
                     alt={story.title}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="text-[#FF462D] text-sm font-medium mb-2">{story.alliance}</div>
-                  <h3 className="text-[#3D3C3C] text-lg font-medium mb-3 leading-tight">{story.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{story.description}</p>
-                  <div className="flex items-center text-[#3D3C3C] text-sm font-medium mb-4 hover:text-[#FF462D]">
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-2 text-sm font-medium text-[#FF462D]">{story.alliance}</div>
+                  <h3 className="mb-3 text-lg font-medium leading-tight text-[#3D3C3C]">{story.title}</h3>
+                  <p className="mb-4 text-sm leading-relaxed text-gray-600">{story.description}</p>
+                  <div className="mb-4 flex items-center text-sm font-medium text-[#3D3C3C] transition-colors hover:text-[#FF462D]">
                     Learn more
                     <svg
                       width="16"
@@ -585,48 +588,44 @@ export default function AIJourneyPage() {
                       <polyline points="9,18 15,12 9,6" />
                     </svg>
                   </div>
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="mt-auto flex flex-wrap gap-2">
                     {story.tags.map((tag, index) => (
-                      <span key={index} className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                      <span key={`${story.id}-${index}`} className="rounded bg-gray-100 px-3 py-1 text-xs text-gray-600">
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
-          {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center mt-12 mb-8">
-              <div className="flex items-center gap-8">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`text-lg ${
-                      renderCurrentPage === page ? "text-[#FF462D] font-medium relative" : "text-[#9E9287]"
-                    }`}
-                  >
-                    {page}
-                    {renderCurrentPage === page && (
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF462D]"></div>
-                    )}
-                  </button>
-                ))}
-              </div>
+            <div className="mt-12 mb-8 flex flex-wrap justify-center gap-6">
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`relative text-lg ${
+                    renderCurrentPage === page ? "font-medium text-[#FF462D]" : "text-[#9E9287]"
+                  }`}
+                >
+                  {page}
+                  {renderCurrentPage === page && (
+                    <span className="absolute -bottom-2 left-1/2 h-0.5 w-6 -translate-x-1/2 bg-[#FF462D]" />
+                  )}
+                </button>
+              ))}
             </div>
           )}
 
-          {/* Footer Navigation */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between mt-8">
+            <div className="mt-8 flex flex-col items-center gap-4 text-sm font-medium text-[#3D3C3C] sm:flex-row sm:justify-between">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                 disabled={renderCurrentPage === 1}
-                className={`flex items-center text-sm font-medium ${
-                  renderCurrentPage === 1 ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                className={`flex items-center gap-2 ${
+                  renderCurrentPage === 1 ? "text-gray-400" : "hover:text-[#FF462D]"
                 }`}
               >
                 <svg
@@ -636,7 +635,6 @@ export default function AIJourneyPage() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="mr-2"
                 >
                   <polyline points="15,18 9,12 15,6" />
                 </svg>
@@ -645,8 +643,8 @@ export default function AIJourneyPage() {
               <button
                 onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                 disabled={renderCurrentPage === totalPages}
-                className={`flex items-center text-sm font-medium ${
-                  renderCurrentPage === totalPages ? "text-gray-400" : "text-[#3D3C3C] hover:text-[#FF462D]"
+                className={`flex items-center gap-2 ${
+                  renderCurrentPage === totalPages ? "text-gray-400" : "hover:text-[#FF462D]"
                 }`}
               >
                 Next
@@ -657,7 +655,6 @@ export default function AIJourneyPage() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="ml-2"
                 >
                   <polyline points="9,18 15,12 9,6" />
                 </svg>
@@ -668,15 +665,12 @@ export default function AIJourneyPage() {
       </section>
 
       {activeEmbedStory && (
-        <div
-          className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 px-4 py-10"
-          onClick={handleCloseEmbed}
-        >
+        <div className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 px-4 py-10" onClick={handleCloseEmbed}>
           <div
             className="relative flex w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-gray-200 bg-[#F2F1EE] px-6 py-4">
+            <div className="flex flex-col gap-4 border-b border-gray-200 bg-[#F2F1EE] px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-medium text-[#FF462D]">{activeEmbedStory.alliance}</p>
                 <h2 className="text-2xl font-light text-[#3D3C3C]">{activeEmbedStory.title}</h2>
@@ -774,8 +768,8 @@ export default function AIJourneyPage() {
                 </div>
               ) : (
                 <iframe
-                  src={activeEmbedStory.embedUrl}
-                  title={`${activeEmbedStory.title} prototype`}
+                  src={activeEmbedStory?.embedUrl}
+                  title={`${activeEmbedStory?.title ?? ""} prototype`}
                   className="h-[70vh] w-full border-0"
                   allowFullScreen
                 />
@@ -785,23 +779,22 @@ export default function AIJourneyPage() {
         </div>
       )}
 
-      {/* CTA Section */}
-      <section className="bg-[#F2F1EE] px-4 sm:px-8 lg:px-16 py-12 lg:py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D3C3C] mb-6">Ready to explore?</h2>
-          <p className="text-lg text-[#9E9287] mb-8">
+      <section className="bg-[#F2F1EE] px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="mb-6 text-2xl font-light text-[#3D3C3C] sm:text-3xl lg:text-4xl">Ready to explore?</h2>
+          <p className="mb-8 text-lg text-[#9E9287]">
             Discover how our AI research can help solve your most challenging problems
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             <button
               onClick={() => setIsDemoLoginOpen(true)}
-              className="bg-[#FF462D] text-white border border-[#F2F1EE] px-8 py-3 rounded-md font-medium hover:bg-[#F2F1EE] hover:text-[#FF462D] transition-colors"
+              className="rounded-md border border-[#F2F1EE] bg-[#FF462D] px-8 py-3 font-medium text-white transition-colors hover:bg-[#F2F1EE] hover:text-[#FF462D]"
             >
               Explore Demos
             </button>
             <button
               onClick={() => setIsVideoLibraryOpen(true)}
-              className="border border-[#FF462D] text-[#FF462D] px-8 py-3 rounded-md font-medium hover:bg-[#FF462D] hover:text-white transition-colors"
+              className="rounded-md border border-[#FF462D] px-8 py-3 font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
             >
               Customer Stories
             </button>
@@ -812,7 +805,7 @@ export default function AIJourneyPage() {
                   section.scrollIntoView({ behavior: "smooth" })
                 }
               }}
-              className="border border-[#FF462D] text-[#FF462D] px-8 py-3 rounded-md font-medium hover:bg-[#FF462D] hover:text-white transition-colors"
+              className="rounded-md border border-[#FF462D] px-8 py-3 font-medium text-[#FF462D] transition-colors hover:bg-[#FF462D] hover:text-white"
             >
               Case Studies
             </button>
@@ -820,36 +813,29 @@ export default function AIJourneyPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white px-4 sm:px-8 lg:px-16 py-6 lg:py-8">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+      <footer className="border-t border-gray-200 bg-white px-4 py-6 sm:px-8 lg:px-16 lg:py-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center">
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image%281%29%281%29%281%29%281%29%281%29%281%29%281%29-xSaA10EDLaeXw1IM0kmRa89Z2EG3YK.png"
               alt="Kyndryl Alliance Experience"
-              className="object-contain h-8 lg:h-10 w-auto"
+              className="h-8 w-auto object-contain lg:h-10"
             />
           </div>
 
-          <div className="flex items-center gap-2">
-            <a href="/alliance-home" className="text-[#9E9287] no-underline text-sm lg:text-base font-light">
+          <div className="flex flex-wrap items-center gap-2 text-sm font-light text-[#9E9287] lg:text-base">
+            <a href="/alliance-home" className="text-[#9E9287] no-underline">
               Home
             </a>
-            <ChevronRight className="text-[#9E9287] w-4 h-4" />
-            <span className="text-[#29707A] text-sm lg:text-base text-[rgba(41,112,122,1)] font-medium">
-              Kyndryl's AI Journey
-            </span>
+            <ChevronRight className="h-4 w-4 text-[#9E9287]" />
+            <span className="font-medium text-[rgba(41,112,122,1)]">Kyndryl's AI Journey</span>
           </div>
         </div>
       </footer>
 
-      {/* Demo Login Modal */}
       {isDemoLoginOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
-        >
-          <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          <div className="max-h-[90vh] w-full max-w-4xl overflow-auto rounded-lg bg-white shadow-2xl">
             <DemoLoginModal
               onClose={() => setIsDemoLoginOpen(false)}
               onLogin={() => {
@@ -860,10 +846,9 @@ export default function AIJourneyPage() {
         </div>
       )}
 
-      {/* Use Cases Focus Modal */}
       {isUseCasesOpen && (
-        <div className="fixed inset-0 backdrop-blur-md bg-white/20 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/20 p-4 backdrop-blur-md">
+          <div className="max-h-[90vh] w-full max-w-5xl overflow-auto rounded-lg bg-white shadow-2xl">
             <UseCasesFocusModal
               isOpen={isUseCasesOpen}
               onClose={() => setIsUseCasesOpen(false)}
@@ -873,7 +858,6 @@ export default function AIJourneyPage() {
         </div>
       )}
 
-      {/* Feature Focus Modal */}
       {isFeatureModalOpen && selectedStory && (
         <FeatureFocusModal
           isOpen={isFeatureModalOpen}
@@ -886,10 +870,9 @@ export default function AIJourneyPage() {
         />
       )}
 
-      {/* Video Library Modal */}
       {isVideoLibraryOpen && (
-        <div className="fixed inset-0 backdrop-blur-md bg-white/20 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/20 p-4 backdrop-blur-md">
+          <div className="max-h-[90vh] w-full max-w-4xl overflow-auto rounded-lg bg-white shadow-2xl">
             <VideoLibraryModal onClose={() => setIsVideoLibraryOpen(false)} />
           </div>
         </div>
