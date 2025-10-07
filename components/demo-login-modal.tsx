@@ -5,7 +5,7 @@ interface DemoLoginModalProps {
   onLogin: () => void
 }
 
-export default function DemoLoginModal({ onClose, onLogin }: DemoLoginModalProps) {
+export default function DemoLoginModal({ onClose, onLogin: _onLogin }: DemoLoginModalProps) {
   return (
     <div className={`relative bg-white p-6 sm:p-8 ${fontFamilyClass}`}>
       <button
