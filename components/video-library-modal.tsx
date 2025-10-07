@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 
+const fontFamilyClass = "font-['TWK_Everett',sans-serif]"
+
 export default function VideoLibraryModal({
   onClose,
   initialAlliance = "All",
