@@ -674,10 +674,7 @@ export default function VideoLibraryModal({
                                   e.currentTarget.nextElementSibling.style.display = "block"
                                 }}
                               />
-                              <div
-                                className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900"
-                                style={{ display: "none" }}
-                              />
+                              <div className="hidden h-full w-full bg-gradient-to-br from-gray-800 to-gray-900" />
 
                               {/* Play button overlay */}
                               <div
