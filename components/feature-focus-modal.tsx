@@ -3,6 +3,8 @@
 import { X, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
 
+const fontFamilyClass = "font-['TWK_Everett',sans-serif]"
+
 interface TabContent {
   title: string
   subtitle: string
