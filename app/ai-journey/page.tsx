@@ -7,13 +7,31 @@ import UseCasesFocusModal from "@/components/use-cases-focus-modal"
 import FeatureFocusModal from "@/components/feature-focus-modal"
 import VideoLibraryModal from "@/components/video-library-modal"
 
+type EmbedView = "video" | "figma" | "demo"
+
+type Story = {
+  id: number
+  title: string
+  description: string
+  image: string
+  alliance: string
+  tags: string[]
+  alliancePartner?: string
+  aiFeature: string
+  videoUrl?: string
+  embedUrl?: string
+  externalUrl?: string
+  demoUrl?: string
+  demoCredentials?: { username: string; password: string }
+}
+
 export default function AIJourneyPage() {
   const [isDemoLoginOpen, setIsDemoLoginOpen] = useState(false)
   const [isUseCasesOpen, setIsUseCasesOpen] = useState(false)
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
-  const [selectedStory, setSelectedStory] = useState<any>(null)
-  const [activeEmbedStory, setActiveEmbedStory] = useState<any>(null)
-  const [activeEmbedView, setActiveEmbedView] = useState<"video" | "figma" | "demo">("video")
+  const [selectedStory, setSelectedStory] = useState<Story | null>(null)
+  const [activeEmbedStory, setActiveEmbedStory] = useState<Story | null>(null)
+  const [activeEmbedView, setActiveEmbedView] = useState<EmbedView>("video")
   const [searchTerm, setSearchTerm] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [isVideoLibraryOpen, setIsVideoLibraryOpen] = useState(false)
@@ -45,7 +63,7 @@ export default function AIJourneyPage() {
   )}`
   const maintenanceOperationsDemoUrl = "https://aeromonitor.apps-aws.com/login"
 
-  const openEmbedModalForStory = (story: any, overrides: Record<string, any> = {}) => {
+  const openEmbedModalForStory = (story: Story, overrides: Partial<Story> = {}) => {
     if (!story) {
       return
     }
@@ -54,13 +72,13 @@ export default function AIJourneyPage() {
     const hasVideo = Boolean(embedStory.videoUrl)
     const hasEmbed = Boolean(embedStory.embedUrl)
     const hasDemoLink = Boolean(embedStory.demoUrl)
-    const initialView = hasVideo ? "video" : hasEmbed ? "figma" : hasDemoLink ? "demo" : "figma"
+    const initialView: EmbedView = hasVideo ? "video" : hasEmbed ? "figma" : hasDemoLink ? "demo" : "figma"
 
     setActiveEmbedStory(embedStory)
     setActiveEmbedView(initialView)
   }
 
-  const customerStories = [
+  const customerStories: Story[] = [
     {
       id: 9,
       title: "Connected Traveler",
@@ -198,6 +216,7 @@ export default function AIJourneyPage() {
     "Energy & Utilities",
     "Transportation",
   ]
+
   const aiFeatureOptions = [
     "AI & Machine Learning",
     "Data Analytics",
@@ -242,7 +261,7 @@ export default function AIJourneyPage() {
     }
   }, [currentPage, totalPages])
 
-  const handleCardClick = (story: any) => {
+  const handleCardClick = (story: Story) => {
     if (story.embedUrl) {
       openEmbedModalForStory(story)
       return
@@ -259,13 +278,15 @@ export default function AIJourneyPage() {
 
   const toggleIndustryFilter = (industry: string) => {
     setSelectedIndustries((prev) =>
-      prev.includes(industry) ? prev.filter((i) => i !== industry) : [...prev, industry],
+      prev.includes(industry) ? prev.filter((item) => item !== industry) : [...prev, industry],
     )
     setCurrentPage(1)
   }
 
   const toggleAIFeatureFilter = (feature: string) => {
-    setSelectedAIFeatures((prev) => (prev.includes(feature) ? prev.filter((f) => f !== feature) : [...prev, feature]))
+    setSelectedAIFeatures((prev) =>
+      prev.includes(feature) ? prev.filter((item) => item !== feature) : [...prev, feature],
+    )
     setCurrentPage(1)
   }
 
@@ -316,8 +337,8 @@ export default function AIJourneyPage() {
                 className="w-full bg-transparent text-sm text-neutral-700 placeholder:text-neutral-400 focus:outline-none sm:w-[clamp(140px,20vw,220px)]"
                 placeholder="Search"
                 value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value)
+                onChange={(event) => {
+                  setSearchTerm(event.target.value)
                   setCurrentPage(1)
                 }}
               />
@@ -354,9 +375,9 @@ export default function AIJourneyPage() {
               <h2 className="mb-6 text-2xl font-light text-[#3D3C3C] sm:text-3xl lg:text-4xl">The Kyndryl Agentic AI Framework</h2>
               <p className="mb-6 text-lg leading-relaxed text-[#9E9287]">
                 AI is evolving, and enterprise leaders are asking what comes next. The answer isn’t more automation. It’s
-                orchestration. Most organizations are stuck in pilot purgatory. They’ve tested generative AI, but
-                struggle to scale it across silos, systems, and governance boundaries. Rigid workflows, fragmented data,
-                and compliance complexity stall progress and limit impact.
+                orchestration. Most organizations are stuck in pilot purgatory. They’ve tested generative AI, but struggle
+                to scale it across silos, systems, and governance boundaries. Rigid workflows, fragmented data, and
+                compliance complexity stall progress and limit impact.
               </p>
               <p className="mb-8 text-lg leading-relaxed text-[#9E9287]">
                 {
@@ -424,18 +445,18 @@ export default function AIJourneyPage() {
                   type="text"
                   placeholder="Search"
                   value={searchTerm}
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value)
+                  onChange={(event) => {
+                    setSearchTerm(event.target.value)
                     setCurrentPage(1)
                   }}
                   className="w-full rounded-md border border-gray-300 px-4 py-2 pr-10 text-gray-600 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#FF462D] md:w-64 lg:w-80"
                 />
-                <button className="absolute right-3 top-1/2 -translate-y-1/2 transform text-gray-500" aria-hidden>
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
                     <path d="m21 21-4.35-4.35" />
                   </svg>
-                </button>
+                </span>
               </div>
 
               <div className="relative">
@@ -579,7 +600,7 @@ export default function AIJourneyPage() {
 
           {totalPages > 1 && (
             <div className="mt-12 mb-8 flex flex-wrap justify-center gap-6">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
@@ -642,10 +663,7 @@ export default function AIJourneyPage() {
       </section>
 
       {activeEmbedStory && (
-        <div
-          className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 px-4 py-10"
-          onClick={handleCloseEmbed}
-        >
+        <div className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 px-4 py-10" onClick={handleCloseEmbed}>
           <div
             className="relative flex w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
             onClick={(event) => event.stopPropagation()}
@@ -748,8 +766,8 @@ export default function AIJourneyPage() {
                 </div>
               ) : (
                 <iframe
-                  src={activeEmbedStory.embedUrl}
-                  title={`${activeEmbedStory.title} prototype`}
+                  src={activeEmbedStory?.embedUrl}
+                  title={`${activeEmbedStory?.title ?? ""} prototype`}
                   className="h-[70vh] w-full border-0"
                   allowFullScreen
                 />
@@ -804,11 +822,11 @@ export default function AIJourneyPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2 text-sm font-light text-[#9E9287] lg:text-base">
-            <a href="/alliance-home" className="no-underline text-[#9E9287]">
+            <a href="/alliance-home" className="text-[#9E9287] no-underline">
               Home
             </a>
             <ChevronRight className="h-4 w-4 text-[#9E9287]" />
-            <span className="text-[rgba(41,112,122,1)] font-medium">Kyndryl's AI Journey</span>
+            <span className="font-medium text-[rgba(41,112,122,1)]">Kyndryl's AI Journey</span>
           </div>
         </div>
       </footer>
@@ -827,7 +845,7 @@ export default function AIJourneyPage() {
       )}
 
       {isUseCasesOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/20 backdrop-blur-md p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/20 p-4 backdrop-blur-md">
           <div className="max-h-[90vh] w-full max-w-5xl overflow-auto rounded-lg bg-white shadow-2xl">
             <UseCasesFocusModal
               isOpen={isUseCasesOpen}
@@ -851,7 +869,7 @@ export default function AIJourneyPage() {
       )}
 
       {isVideoLibraryOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/20 backdrop-blur-md p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/20 p-4 backdrop-blur-md">
           <div className="max-h-[90vh] w-full max-w-4xl overflow-auto rounded-lg bg-white shadow-2xl">
             <VideoLibraryModal onClose={() => setIsVideoLibraryOpen(false)} />
           </div>
