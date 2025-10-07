@@ -529,14 +529,6 @@ export default function FeatureFocusModal({
     onOpenEmbed(story)
   }
 
-  const imageSectionClassName = `${story?.id === 7 && onOpenEmbed ? "cursor-pointer" : "cursor-default"} flex-1 flex items-center justify-center px-12 my-12 mx-12 py-8`
-
-  const imageSectionStyle = {
-    backgroundImage: `url(${currentContent.image})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }
-
   const handleImageSectionClick = () => {
     if (story?.id === 7 && onOpenEmbed) {
       onOpenEmbed(story, {
