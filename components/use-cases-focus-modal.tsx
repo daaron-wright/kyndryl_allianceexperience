@@ -1,8 +1,8 @@
-"use client"
-
 import { X, Search, ChevronLeft, ChevronRight } from "lucide-react"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import FeatureFocusModal from "./feature-focus-modal"
+
+const fontFamilyClass = "font-['TWK_Everett',sans-serif]"
 
 interface UseCasesFocusModalProps {
   isOpen: boolean
@@ -12,7 +12,7 @@ interface UseCasesFocusModalProps {
 
 export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: UseCasesFocusModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(1) // Changed initial page from 2 to 1 so modal starts on first page
+  const [currentPage, setCurrentPage] = useState(1)
   const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
   const [selectedFeature, setSelectedFeature] = useState<any>(null)
 
@@ -20,7 +20,7 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
 
   const caseStudies = [
     {
-      id: 5, // Pricing Model in FeatureFocusModal
+      id: 5,
       image: "/placeholder-98f8c.png",
       alliance: "Industry / Financial Services",
       title: "Pricing Model",
@@ -29,7 +29,7 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
       tags: ["Pricing Strategy", "Revenue Optimization", "Market Analysis"],
     },
     {
-      id: 6, // Marketing Automation in FeatureFocusModal
+      id: 6,
       image: "/placeholder-98f8c.png",
       alliance: "Industry / Telecommunications",
       title: "Marketing Automation",
@@ -38,16 +38,16 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
       tags: ["Marketing AI", "Campaign Automation", "Customer Segmentation"],
     },
     {
-      id: 7, // X-Ray Image Analysis in FeatureFocusModal
+      id: 7,
       image: "/placeholder-98f8c.png",
-      alliance: "Industry / Transportation", // Updated to Transportation as per previous change
+      alliance: "Industry / Transportation",
       title: "X-Ray Image Analysis",
       description:
         "Advanced security screening analysis using AI to assist transportation professionals in threat detection and passenger safety.",
       tags: ["Security AI", "Image Analysis", "Transportation Technology"],
     },
     {
-      id: 8, // Smart Baggage Claim in FeatureFocusModal (but keeping ID 4 for proper grid display)
+      id: 8,
       image: "/smart-baggage-claim.png",
       alliance: "Industry / Transportation",
       title: "Smart Baggage Claim",
@@ -56,7 +56,7 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
       tags: ["Baggage Tracking", "Computer Vision", "Airport Operations"],
     },
     {
-      id: 1, // Agentic Airport AI Experience in FeatureFocusModal
+      id: 1,
       image: "/placeholder-98f8c.png",
       alliance: "Industry / Transportation",
       title: "Agentic Airport AI Experience",
@@ -65,7 +65,7 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
       tags: ["AI Automation", "Airport Operations", "Passenger Experience"],
     },
     {
-      id: 2, // Agentic Media Monitor in FeatureFocusModal
+      id: 2,
       image: "/placeholder-98f8c.png",
       alliance: "Industry / Communications & Media",
       title: "Agentic Media Monitor",
@@ -74,7 +74,7 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
       tags: ["Media Analysis", "Brand Monitoring", "AI Insights"],
     },
     {
-      id: 3, // Agentic Sales Assistant in FeatureFocusModal
+      id: 3,
       image: "/placeholder-98f8c.png",
       alliance: "Industry / Retail",
       title: "Agentic Sales Assistant",
@@ -83,7 +83,7 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
       tags: ["Sales Automation", "Lead Generation", "Customer Engagement"],
     },
     {
-      id: 4, // Legal Documents Generator in FeatureFocusModal
+      id: 4,
       image: "/placeholder-98f8c.png",
       alliance: "Industry / Government",
       title: "Legal Documents Generator",
@@ -93,200 +93,150 @@ export default function UseCasesFocusModal({ isOpen, onClose, onOpenEmbed }: Use
     },
   ]
 
+  const filteredStudies = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return caseStudies
+    }
+
+    const normalizedQuery = searchQuery.toLowerCase()
+    return caseStudies.filter((study) =>
+      [study.title, study.description, study.alliance, ...study.tags].some((value) =>
+        value.toLowerCase().includes(normalizedQuery),
+      ),
+    )
+  }, [caseStudies, searchQuery])
+
   const itemsPerPage = 4
-  const totalPages = Math.ceil(caseStudies.length / itemsPerPage)
-  const currentItems = caseStudies.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+  const totalPages = Math.max(1, Math.ceil(filteredStudies.length / itemsPerPage))
+  const safePage = Math.min(currentPage, totalPages)
+  const currentItems = filteredStudies.slice((safePage - 1) * itemsPerPage, safePage * itemsPerPage)
 
   const handleCardClick = (study: any) => {
     setSelectedFeature(study)
     setIsFeatureModalOpen(true)
   }
 
+  const closeFeatureModal = () => {
+    setIsFeatureModalOpen(false)
+    setSelectedFeature(null)
+  }
+
   return (
     <>
       <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 1000,
-          padding: "2rem",
-        }}
+        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/80 px-4 py-6 sm:p-8"
         onClick={onClose}
       >
         <div
-          style={{
-            backgroundColor: "white",
-            borderRadius: "8px",
-            width: "1422px",
-            height: "800px",
-            position: "relative",
-            boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
-            overflow: "hidden",
-          }}
-          onClick={(e) => e.stopPropagation()}
+          className={`relative flex h-full w-full max-w-[90rem] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.3)] ${fontFamilyClass}`}
+          onClick={(event) => event.stopPropagation()}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 pb-4">
-            <h1
-              style={{
-                fontSize: "2rem",
-                fontFamily: "TWK Everett, sans-serif",
-                fontWeight: 300,
-                color: "#FF462D",
-                margin: 0,
-              }}
-            >
-              Case studies
-            </h1>
+          <div className="flex flex-col gap-4 border-b border-gray-200 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <h1 className="text-2xl font-light text-[#FF462D]">Case studies</h1>
 
-            <div className="flex items-center gap-4">
-              {/* Search Bar */}
-              <div className="relative">
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="relative w-full sm:w-64 md:w-80">
                 <input
                   type="text"
                   placeholder="Search"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-80 px-4 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF462D] focus:border-transparent"
-                  style={{
-                    fontFamily: "TWK Everett, sans-serif",
+                  onChange={(event) => {
+                    setSearchQuery(event.target.value)
+                    setCurrentPage(1)
                   }}
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 pr-10 text-sm text-gray-700 placeholder:text-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#FF462D]"
                 />
-                <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
               </div>
 
-              {/* Close Button */}
-              <button onClick={onClose} className="text-gray-600 hover:text-gray-800 transition-colors">
+              <button
+                onClick={onClose}
+                className="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-800"
+                aria-label="Close case studies modal"
+              >
                 <X size={24} />
               </button>
             </div>
           </div>
 
-          {/* Case Studies Grid */}
-          <div className="px-16 py-8" style={{ backgroundColor: "#F2F1EE" }}>
-            <div className="grid grid-cols-4 gap-6 mb-16">
+          <div className="flex-1 overflow-y-auto bg-[#F2F1EE] px-4 py-6 sm:px-8 md:px-12">
+            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
               {currentItems.map((study) => (
-                <div
+                <article
                   key={study.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200"
-                  style={{
-                    height: "400px",
-                  }}
+                  className="flex h-full cursor-pointer flex-col overflow-hidden rounded-lg bg-white shadow-sm transition-all duration-200 hover:scale-[1.01] hover:shadow-lg"
                   onClick={() => handleCardClick(study)}
                 >
-                  <div
-                    className="w-full h-48 bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url(${study.image})`,
-                    }}
-                  />
-                  <div className="p-4">
-                    <p
-                      className="text-[#FF462D] text-sm font-medium mb-2"
-                      style={{
-                        fontFamily: "TWK Everett, sans-serif",
+                  <div className="h-48 w-full overflow-hidden bg-gray-100">
+                    <img src={study.image} alt={study.title} className="h-full w-full object-cover" />
+                  </div>
+                  <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
+                    <p className="mb-2 text-sm font-medium text-[#FF462D]">{study.alliance}</p>
+                    <h3 className="mb-3 text-lg font-medium leading-tight text-[#3D3C3C]">{study.title}</h3>
+                    <p className="mb-4 text-sm leading-relaxed text-[#727175]">{study.description}</p>
+                    <button
+                      className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-[#3D3C3C] transition-colors hover:text-[#FF462D]"
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        handleCardClick(study)
                       }}
                     >
-                      {study.alliance}
-                    </p>
-                    <h3
-                      className="text-[#3D3C3C] font-medium mb-3 text-lg leading-tight"
-                      style={{
-                        fontFamily: "TWK Everett, sans-serif",
-                      }}
-                    >
-                      {study.title}
-                    </h3>
-                    <p
-                      className="text-[#727175] text-sm mb-4 leading-relaxed"
-                      style={{
-                        fontFamily: "TWK Everett, sans-serif",
-                      }}
-                    >
-                      {study.description}
-                    </p>
-                    <div className="flex items-center justify-between mb-4">
-                      <button
-                        className="text-[#3D3C3C] text-sm font-medium hover:text-[#FF462D] transition-colors flex items-center gap-1"
-                        style={{
-                          fontFamily: "TWK Everett, sans-serif",
-                        }}
-                        onClick={(e) => {
-                          e.stopPropagation() // Prevent tile click event from firing
-                          handleCardClick(study) // Open the specific case study modal
-                        }}
-                      >
-                        Learn more
-                        <ChevronRight size={16} />
-                      </button>
+                      Learn more
+                      <ChevronRight size={16} />
+                    </button>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {study.tags.map((tag: string) => (
+                        <span key={tag} className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
 
-          {/* Pagination */}
-          <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center">
-            <div className="flex items-center gap-8">
-              <button
-                className="flex items-center gap-2 text-[#727175] hover:text-[#3D3C3C] transition-colors"
-                style={{
-                  fontFamily: "TWK Everett, sans-serif",
-                }}
-                onClick={() => setCurrentPage(currentPage > 1 ? currentPage - 1 : currentPage)}
-                disabled={currentPage === 1}
-              >
-                <ChevronLeft size={20} />
-                Previous
-              </button>
+          <div className="flex items-center justify-center gap-6 border-t border-gray-200 px-4 py-4 sm:px-8">
+            <button
+              className="flex items-center gap-2 text-sm text-[#727175] transition-colors hover:text-[#3D3C3C] disabled:text-gray-300"
+              onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+              disabled={safePage === 1}
+            >
+              <ChevronLeft size={20} />
+              Previous
+            </button>
 
-              <div className="flex items-center gap-6 relative">
-                {[1, 2].map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`px-1 py-2 text-sm font-medium transition-colors relative ${
-                      currentPage === page ? "text-[#FF462D]" : "text-[#727175] hover:text-[#3D3C3C]"
-                    }`}
-                    style={{
-                      fontFamily: "TWK Everett, sans-serif",
-                    }}
-                  >
-                    {page}
-                    {/* Active page underline indicator */}
-                    {currentPage === page && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF462D]" />}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                className="flex items-center gap-2 text-[#727175] hover:text-[#3D3C3C] transition-colors"
-                style={{
-                  fontFamily: "TWK Everett, sans-serif",
-                }}
-                onClick={() => setCurrentPage(currentPage < totalPages ? currentPage + 1 : currentPage)}
-                disabled={currentPage === totalPages}
-              >
-                Next
-                <ChevronRight size={20} />
-              </button>
+            <div className="flex items-center gap-4">
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`relative px-2 text-sm font-medium transition-colors ${
+                    safePage === page ? "text-[#FF462D]" : "text-[#727175] hover:text-[#3D3C3C]"
+                  }`}
+                >
+                  {page}
+                  {safePage === page && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#FF462D]" />}
+                </button>
+              ))}
             </div>
+
+            <button
+              className="flex items-center gap-2 text-sm text-[#727175] transition-colors hover:text-[#3D3C3C] disabled:text-gray-300"
+              onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+              disabled={safePage === totalPages}
+            >
+              Next
+              <ChevronRight size={20} />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Feature Modal */}
       <FeatureFocusModal
         isOpen={isFeatureModalOpen}
-        onClose={() => setIsFeatureModalOpen(false)}
+        onClose={closeFeatureModal}
         story={selectedFeature}
         onOpenEmbed={onOpenEmbed}
       />
