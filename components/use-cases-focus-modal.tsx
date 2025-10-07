@@ -1,5 +1,4 @@
 import { X, Search, ChevronLeft, ChevronRight } from "lucide-react"
-import { X, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import { useMemo, useState } from "react"
 import FeatureFocusModal from "./feature-focus-modal"
 
